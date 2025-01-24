@@ -35,26 +35,9 @@ const buttons = [
     type: 'admin',
     icon: 'uil-dashboard',
     links: [
-      {name: 'Overview', url: '/dashboard/overview', icon: 'uil-eye'},
-      {name: 'Analytics', url: '/dashboard/analytics', icon: 'uil-chart'}
-    ]
-  },
-  {
-    name: 'Users',
-    type: 'admin',
-    icon: 'uil-users-alt',
-    links: [
-      {name: 'User List', url: '/users/list', icon: 'uil-list-ul'},
-      {name: 'Add User', url: '/users/add', icon: 'uil-user-plus'}
-    ]
-  },
-  {
-    name: 'Settings',
-    type: 'admin',
-    icon: 'uil-setting',
-    links: [
-      {name: 'General Settings', url: '/settings/general', icon: 'uil-cog'},
-      {name: 'Security Settings', url: '/settings/security', icon: 'uil-lock'}
+      { name: 'Overview', url: '/dashboard/overview', icon: 'uil-eye' },
+      { name: 'Analytics', url: '/dashboard/analytics', icon: 'uil-chart' },
+      { name: 'Admin Dashboard', url: '/dashboard/admin', icon: 'uil-user' } // For Admin Dashboard
     ]
   },
   {
@@ -62,44 +45,44 @@ const buttons = [
     type: 'admin',
     icon: 'uil-file-alt',
     links: [
-      {name: 'Manage Articles', url: '/articles/manage', icon: 'uil-edit'},
-      {name: 'Add New Article', url: '/articles/add', icon: 'uil-plus-circle'}
+      { name: 'All Articles', url: '/articles', icon: 'uil-list-ul' },
+      { name: 'Add New Article', url: '/articles/add', icon: 'uil-plus-circle' }
     ]
   },
   {
     name: 'Stories',
     type: 'admin',
-    icon: 'uil-book',
+    icon: 'uil-book-open',
     links: [
-      {name: 'Manage Stories', url: '/stories/manage', icon: 'uil-folder'},
-      {name: 'Add New Story', url: '/stories/add', icon: 'uil-plus'}
+      { name: 'All Stories', url: '/stories', icon: 'uil-list-ul' },
+      { name: 'Add New Story', url: '/stories/add', icon: 'uil-plus-circle' }
+    ]
+  },
+  {
+    name: 'Users',
+    type: 'admin',
+    icon: 'uil-users-alt',
+    links: [
+      { name: 'User Management', url: '/users/manage', icon: 'uil-user-check' },
+      { name: 'Add New User', url: '/users/add', icon: 'uil-user-plus' }
+    ]
+  },
+  {
+    name: 'Volunteers',
+    type: 'admin',
+    icon: 'uil-hands',
+    links: [
+      { name: 'All Volunteers', url: '/volunteers', icon: 'uil-list-ul' },
+      { name: 'Add New Volunteer', url: '/volunteers/add', icon: 'uil-user-plus' }
     ]
   },
   {
     name: 'Activities',
     type: 'admin',
-    icon: 'uil-calendar-alt',
+    icon: 'uil-calendar',
     links: [
-      {name: 'Manage Activities', url: '/activities/manage', icon: 'uil-calendar'},
-      {name: 'Add New Activity', url: '/activities/add', icon: 'uil-calendar-plus'}
-    ]
-  },
-  {
-    name: 'Volunteer',
-    type: 'admin',
-    icon: 'uil-heart',
-    links: [
-      {name: 'Manage Volunteer', url: '/volunteer/manage', icon: 'uil-hands-helping'},
-      {name: 'Add New Volunteer', url: '/volunteer/add', icon: 'uil-user-check'}
-    ]
-  },
-  {
-    name: 'Team',
-    type: 'admin',
-    icon: 'mdi-users',
-    links: [
-      {name: 'Manage Team', url: '/team/manage', icon: 'uil-users-alt'},
-      {name: 'Add New Team', url: '/team/add', icon: 'uil-user-plus'}
+      { name: 'All Activities', url: '/activities', icon: 'uil-calendar-alt' },
+      { name: 'Add New Activity', url: '/activities/add', icon: 'uil-plus-circle' }
     ]
   }
 ];
