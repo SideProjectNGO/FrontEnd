@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 interface Article {
   article_id: number;
   title: string;
@@ -11,15 +10,14 @@ interface Article {
   author_country: string;
   main_photo_url: string;
   sub_photo_urls: string[];
-  publication_date: string;
 }
 
 const articles: Article[] = [
   {
     article_id: 1,
     title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This article explores current trends and technologies in web development.",
-    summary: "This article discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
+    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
     author_id: 101,
     date: "2022-06-12",
     author_name: "John Doe",
@@ -29,14 +27,12 @@ const articles: Article[] = [
       "https://example.com/images/technologies.jpg",
       "https://example.com/images/trends.jpg"
     ],
-    publication_date: "2025-01-20T14:00:00Z",
-
   },
   {
-    article_id: 1,
+    article_id: 2,
     title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This article explores current trends and technologies in web development.",
-    summary: "This article discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
+    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
     author_id: 101,
     date: "2022-06-12",
     author_name: "John Doe",
@@ -46,14 +42,12 @@ const articles: Article[] = [
       "https://example.com/images/technologies.jpg",
       "https://example.com/images/trends.jpg"
     ],
-    publication_date: "2025-01-20T14:00:00Z",
-
   },
   {
-    article_id: 1,
+    article_id: 3,
     title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This article explores current trends and technologies in web development.",
-    summary: "This article discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
+    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
     author_id: 101,
     date: "2022-06-12",
     author_name: "John Doe",
@@ -63,10 +57,27 @@ const articles: Article[] = [
       "https://example.com/images/technologies.jpg",
       "https://example.com/images/trends.jpg"
     ],
-    publication_date: "2025-01-20T14:00:00Z",
-
   },
 ];
+
+const currentIndex = ref(0);
+const itemsPerPage = 3;
+
+const visibleArticles = computed(() =>
+    articles.slice(currentIndex.value, currentIndex.value + itemsPerPage)
+);
+
+function nextPage() {
+  currentIndex.value = (currentIndex.value + itemsPerPage) % articles.length;
+}
+
+function prevPage() {
+  currentIndex.value = (currentIndex.value - itemsPerPage + articles.length) % articles.length;
+}
+
+function viewArticle(id: number) {
+  useRouter().push(`/articles/${id}`);
+}
 
 console.log(articles);
 
@@ -76,11 +87,11 @@ console.log(articles);
 <template>
   <div class="articles-container">
     <div class="container">
-      <div class="article-cards" v-for="(article, index) in articles" :key="article.article_id">
+      <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
         <div class="card">
           <div class="article-header">
             <h4 class="article-date">{{ article.date }}</h4>
-            <button class="btn-more">Learn more</button>
+            <button @click="viewArticle(article.article_id)">Learn More</button>
           </div>
           <div class="article-main-photo">
             <img src="../public/images/logo.webp" alt="Article Image" class="article-image"/>
@@ -112,13 +123,23 @@ console.log(articles);
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="btn-container">
+        <button @click="prevPage">
+          Previous
+        </button>
+
+        <button @click="nextPage">
+          Next
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .articles-container {
-  display: flex;
-  justify-content: center;
+  display: block;
   padding: 20px;
 }
 
@@ -137,8 +158,7 @@ console.log(articles);
 
 .card {
   width: 350px;
-  border: 3px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--border-color);
   overflow: hidden;
   background-color: var(--background);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -146,6 +166,7 @@ console.log(articles);
   display: flex;
   flex-direction: column;
   padding: 15px;
+  box-shadow: rgba(149, 157, 165, 0.4) 0 8px 24px;
 }
 
 .article-header {
@@ -200,7 +221,7 @@ console.log(articles);
   min-height: 120px;
 }
 
-.author-details{
+.author-details {
   display: flex;
   justify-content: space-between;
   color: var(--black-text-hover);
@@ -215,7 +236,7 @@ console.log(articles);
 .social-links {
   display: flex;
   gap: 15px;
-  min-height: 30px;
+  min-height: 20px;
 }
 
 .social-icon {
@@ -227,5 +248,26 @@ console.log(articles);
 .social-icon:hover {
   color: var(--primary-hover);
 }
+
+.container .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.container .btn-container button {
+  margin-right: 50px;
+  padding: 10px;
+  border: 2px solid var(--primary-hover);
+  min-width: 120px;
+}
+
+.container .btn-container button:hover {
+  background: var(--primary-hover);
+  color: var(--text-hover);
+  transition: background-color 0.3s ease-in-out;
+}
+
 </style>
 
