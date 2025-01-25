@@ -5,48 +5,45 @@ const currentYear = new Date().getFullYear();
 <template>
   <div class="footer">
     <div class="main-container">
-      <div class="links-container">
+      <div class="links-item">
         <div class="logo-container">
-          <a>
-            <img src="../public/images/logo.webp" alt="logo">
-          </a>
+          <div class="logo-img">
+            <a>
+              <img src="../public/images/logo.webp" alt="logo">
+            </a>
+          </div>
         </div>
         <div class="links">
           <h2>Quick Links</h2>
           <ul>
             <li>
               <router-link to="/home">
-              <span>
-                <UIcon name="material-symbols-contact-page"
-                />
-              </span>Home
+          <span>
+            <UIcon name="material-symbols-contact-page"/>
+          </span>Home
               </router-link>
             </li>
             <li>
               <router-link to="/home">
-              <span>
-                <UIcon name="mdi-about"
-                />
-              </span>About
+          <span>
+            <UIcon name="mdi-about"/>
+          </span>About
               </router-link>
             </li>
             <li>
               <router-link to="/home">
-              <span>
-                <UIcon name="mdi-book"
-                />
-              </span>Stories
+          <span>
+            <UIcon name="mdi-book"/>
+          </span>Stories
               </router-link>
             </li>
             <li>
               <router-link to="/articles">
-              <span>
-                <UIcon name="mdi-book"
-                />
-              </span>Articles
+          <span>
+            <UIcon name="mdi-book"/>
+          </span>Articles
               </router-link>
             </li>
-
           </ul>
         </div>
         <div class="subscribe-section">
@@ -103,6 +100,7 @@ const currentYear = new Date().getFullYear();
 .footer {
   padding: 1em 0;
   background-color: var(--primary-color);
+  animation: fadeIn 1s ease-in;
 }
 
 .main-container {
@@ -116,24 +114,23 @@ const currentYear = new Date().getFullYear();
   }
 }
 
-.links-container {
+.links-item {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin: 1rem auto;
 }
 
-.links-container div {
-  flex: calc(100% / 3);
+.links-item div {
+  flex: 2;
 }
 
 .logo-container {
-  max-width: 200px;
-  max-height: 200px;
   margin: 0 auto;
 }
 
 @media (max-width: 800px) {
-  .links-container {
+  .links-item {
     display: block;
   }
 }
@@ -141,6 +138,7 @@ const currentYear = new Date().getFullYear();
 .divider {
   margin: 1rem 0;
   border: 2px solid var(--text-hover);
+  animation: fadeIn 2s ease-in;
 }
 
 .links {
@@ -171,12 +169,12 @@ const currentYear = new Date().getFullYear();
 .others-links-section li a {
   color: var(--text-color);
   margin-right: .5rem;
+  transition: color 0.3s ease-in-out;
 }
 
 .links ul li a:hover,
 .others-links-section li a:hover {
   color: var(--text-hover);
-  transition: .3s ease-in-out;
 }
 
 .subscribe-section {
@@ -224,11 +222,11 @@ const currentYear = new Date().getFullYear();
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .subscribe-button button:hover {
-  background-color: var(--text-color);
-  transition: .3s ease-in-out;
+  background-color: var(--text-hover);
 }
 
 .socials-container {
@@ -252,12 +250,13 @@ const currentYear = new Date().getFullYear();
   border: 2px solid var(--text-color);
   border-radius: 50%;
   color: var(--text-color);
+  transition: transform 0.3s ease-in-out;
 }
 
 .social-icons ul li:hover {
   color: var(--text-hover);
   border: 2px solid var(--text-hover);
-  transition: .3s ease-in-out;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1200px) {
@@ -275,6 +274,7 @@ const currentYear = new Date().getFullYear();
   font-size: 1.2rem;
   color: var(--text-color);
   padding: 2rem 0;
+  animation: fadeIn 3s ease-in;
 }
 
 .footer-bottom a {
@@ -283,5 +283,14 @@ const currentYear = new Date().getFullYear();
 
 a:hover {
   color: var(--text-hover);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
