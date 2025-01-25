@@ -63,7 +63,7 @@ onMounted(() => {
 .header-container {
   background-color: var(--primary-color);
   padding: 0.5rem 1rem;
-  max-height: 500px;
+  min-height: 50px;
 }
 
 .header-wrapper {
@@ -71,6 +71,8 @@ onMounted(() => {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .social-links {

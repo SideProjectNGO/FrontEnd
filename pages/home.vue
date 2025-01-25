@@ -3,7 +3,6 @@
 </script>
 
 <template>
-  <LogoMessageComponent/>
   <NavBar/>
 </template>
 

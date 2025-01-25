@@ -36,12 +36,14 @@
 
 .logo-image {
   width: 100%;
+  max-height: 100px;
+  max-width: 100px;
   height: auto;
   display: block;
 }
 
 .message-text {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   justify-content: center;
