@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import { z } from "zod";
+import {ref, watch} from "vue";
+import {z} from "zod";
 
 const formSchema = z.object({
   form_id: z.string().min(1, "Form ID is required"),
-  title: z.string().min(1, "Title is required"),
-  content: z.string().min(1, "Content is required"),
-  summary: z.string().min(1, "Summary is required"),
+  title: z.string().min(5, "Title is required"),
+  content: z.string().min(50, "Content is required"),
+  summary: z.string().min(50, "Summary is required"),
   author_id: z.number().min(1, "Author ID is required"),
   date: z.string().min(1, "Date is required"),
-  author_name: z.string().min(1, "Author Name is required"),
-  author_country: z.string().min(1, "Author Country is required"),
+  author_name: z.string().min(5, "Author Name is required"),
+  author_country: z.string().min(5, "Author Country is required"),
   main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
   sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
   author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
@@ -26,14 +26,63 @@ type Field = {
 };
 
 const fields: Field[] = [
-  { id: "title", label: "Title", type: "text", placeholder: "Enter article title", icon: "mdi-book-open" },
-  { id: "content", label: "Content", type: "textarea", placeholder: "Enter article content", icon: "mdi-file-document" },
-  { id: "summary", label: "Summary", type: "text", placeholder: "Enter article summary", icon: "mdi-note-outline" },
-  { id: "author_name", label: "Author Name", type: "text", placeholder: "Enter author name", icon: "mdi-account" },
-  { id: "author_country", label: "Author Country", type: "text", placeholder: "Enter author country", icon: "mdi-earth" },
-  { id: "main_photo", label: "Main Photo", type: "file", placeholder: "Upload main photo", icon: "mdi-image" },
-  { id: "sub_photo", label: "Sub Photos", type: "file", placeholder: "Upload sub photos", icon: "mdi-image" },
-  { id: "author_photo", label: "Author Photo", type: "file", placeholder: "Upload author photo", icon: "mdi-account-circle" },
+  {
+    id: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "Enter article title",
+    icon: "mdi-book-open"
+  },
+  {
+    id: "content",
+    label: "Content",
+    type: "textarea",
+    placeholder: "Enter article content",
+    icon: "mdi-file-document"
+  },
+  {
+    id: "summary",
+    label: "Summary",
+    type: "text",
+    placeholder: "Enter article summary",
+    icon: "mdi-note-outline"
+  },
+  {
+    id: "author_name",
+    label: "Author Name",
+    type: "text",
+    placeholder: "Enter author name",
+    icon: "mdi-account"
+  },
+  {
+    id: "author_country",
+    label: "Author Country",
+    type: "select",
+    placeholder: "Enter author country",
+    icon: "mdi-earth",
+    options: nationalities,
+  },
+  {
+    id: "main_photo",
+    label: "Main Photo",
+    type: "file",
+    placeholder: "Upload main photo",
+    icon: "mdi-image"
+  },
+  {
+    id: "sub_photo",
+    label: "Sub Photos",
+    type: "file",
+    placeholder: "Upload sub photos",
+    icon: "mdi-image"
+  },
+  {
+    id: "author_photo",
+    label: "Author Photo",
+    type: "file",
+    placeholder: "Upload author photo",
+    icon: "mdi-account-circle"
+  },
 ];
 
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
@@ -128,16 +177,16 @@ const handleFormSubmit = () => {
   <div class="admin-dashboard">
     <div class="admin-container">
       <div class="side-bar">
-        <AdminSidebar />
+        <AdminSidebar/>
       </div>
       <div class="new-article-form">
         <div class="container">
-          <h2 class="form-heading">Please fill this form</h2>
+          <h2 class="form-heading">Add New article</h2>
           <form @submit.prevent="handleFormSubmit">
             <div v-for="field in fields" :key="field.id" class="form-group">
               <label :for="field.id">
                 <span class="icon">
-                  <UIcon :name="field.icon" />
+                  <UIcon :name="field.icon"/>
                 </span>
                 {{ field.label }}
               </label>
@@ -201,18 +250,16 @@ const handleFormSubmit = () => {
 
 .container {
   max-width: 1200px;
-  margin: 30px auto;
-  background: var(--background);
+  margin: auto;
   padding: 10px 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .form-heading {
   font-size: 1.5rem;
   text-align: start;
   color: var(--primary-color);
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .form-group {

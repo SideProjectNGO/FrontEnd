@@ -5,7 +5,7 @@
   <div class="admin-dashboard">
     <div class="admin-container">
       <div class="side-bar">
-        <AdminSidebar />
+        <AdminSidebar/>
       </div>
       <div class="content-dashboard">
         <!-- Your content here -->
@@ -22,6 +22,7 @@
 }
 
 .admin-container .side-bar {
+  height: 100%;
 }
 
 .admin-container .content-dashboard {
