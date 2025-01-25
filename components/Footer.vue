@@ -12,6 +12,31 @@ const currentYear = new Date().getFullYear();
               <img src="../public/images/logo.webp" alt="logo">
             </a>
           </div>
+          <div class="social-icons">
+            <ul>
+              <li>
+                <a href="https:///" target="_blank" rel="noopener">
+                  <UIcon name="ic-baseline-facebook"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://" target="_blank" rel="noopener">
+                  <UIcon name="mdi-twitter"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://" target="_blank" rel="noopener">
+                  <UIcon name="mdi-youtube"/>
+                </a>
+              </li>
+              <li>
+                <a href="https" target="_blank" rel="noopener">
+                  <UIcon name="mdi-instagram"/>
+                </a>
+              </li>
+            </ul>
+          </div>
+
         </div>
         <div class="links">
           <h2>Quick Links</h2>
@@ -60,34 +85,6 @@ const currentYear = new Date().getFullYear();
       </div>
       <hr class="divider">
       <div class="socials-section">
-        <div class="socials-container">
-          <div></div>
-          <div class="social-icons">
-            <ul>
-              <li>
-                <a href="https:///" target="_blank" rel="noopener">
-                  <UIcon name="ic-baseline-facebook"/>
-                </a>
-              </li>
-              <li>
-                <a href="https://" target="_blank" rel="noopener">
-                  <UIcon name="mdi-twitter"/>
-                </a>
-              </li>
-              <li>
-                <a href="https://" target="_blank" rel="noopener">
-                  <UIcon name="mdi-youtube"/>
-                </a>
-              </li>
-              <li>
-                <a href="https" target="_blank" rel="noopener">
-                  <UIcon name="mdi-instagram"/>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div></div>
-        </div>
         <div class="footer-bottom">
           <p>&copy; Copyright <a href="">My child {{ currentYear }}</a></p>
         </div>
@@ -129,6 +126,14 @@ const currentYear = new Date().getFullYear();
   margin: 0 auto;
 }
 
+.logo-container .logo-img {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
 @media (max-width: 800px) {
   .links-item {
     display: block;
@@ -146,8 +151,7 @@ const currentYear = new Date().getFullYear();
 }
 
 .links h2,
-.subscribe-section h2,
-.others-links-section h2 {
+.subscribe-section h2 {
   color: var(--text-color);
   font-size: 1.5rem;
   margin: 15px 0;
@@ -157,6 +161,8 @@ const currentYear = new Date().getFullYear();
 .others-links-section ul li {
   list-style: none;
   font-size: 1rem;
+  padding: 5px;
+  background-color: transparent;
 }
 
 .links ul li a span,
@@ -172,9 +178,10 @@ const currentYear = new Date().getFullYear();
   transition: color 0.3s ease-in-out;
 }
 
-.links ul li a:hover,
-.others-links-section li a:hover {
+.links ul li:hover {
   color: var(--text-hover);
+  background-color: var(--primary-hover);
+  transition: color 0.3s ease-in-out;
 }
 
 .subscribe-section {
@@ -229,9 +236,9 @@ const currentYear = new Date().getFullYear();
   background-color: var(--text-hover);
 }
 
-.socials-container {
-  display: flex;
-  justify-content: space-between;
+.social-icons {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .social-icons ul {
