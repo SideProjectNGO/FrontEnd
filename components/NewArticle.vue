@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import {ref, watch} from "vue";
-import {z} from "zod";
+import { ref, watch } from "vue";
+import { z } from "zod";
 
 const formSchema = z.object({
   form_id: z.string().min(1, "Form ID is required"),
-  name: z.string().min(1, "Name is required"),
-  cv: z.string()
-      .refine((value) => /\.(png|jpe?g|pdf|docx?)$/i.test(value), "CV must be a PNG, JPG, PDF, or Word file"),
-
+  title: z.string().min(1, "Title is required"),
+  content: z.string().min(1, "Content is required"),
+  summary: z.string().min(1, "Summary is required"),
+  author_id: z.number().min(1, "Author ID is required"),
+  date: z.string().min(1, "Date is required"),
+  author_name: z.string().min(1, "Author Name is required"),
+  author_country: z.string().min(1, "Author Country is required"),
+  main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
+  sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
+  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
 });
 
 type Field = {
@@ -20,28 +26,45 @@ type Field = {
 };
 
 const fields: Field[] = [
-  {
-    id: "name", label: "Name",
-    type: "text",
-    placeholder: "Enter your name",
-    icon: "mdi-account"
-  },
+  { id: "title", label: "Title", type: "text", placeholder: "Enter article title", icon: "mdi-book-open" },
+  { id: "content", label: "Content", type: "textarea", placeholder: "Enter article content", icon: "mdi-file-document" },
+  { id: "summary", label: "Summary", type: "text", placeholder: "Enter article summary", icon: "mdi-note-outline" },
+  { id: "author_name", label: "Author Name", type: "text", placeholder: "Enter author name", icon: "mdi-account" },
+  { id: "author_country", label: "Author Country", type: "text", placeholder: "Enter author country", icon: "mdi-earth" },
+  { id: "main_photo", label: "Main Photo", type: "file", placeholder: "Upload main photo", icon: "mdi-image" },
+  { id: "sub_photo", label: "Sub Photos", type: "file", placeholder: "Upload sub photos", icon: "mdi-image" },
+  { id: "author_photo", label: "Author Photo", type: "file", placeholder: "Upload author photo", icon: "mdi-account-circle" },
 ];
 
-const formData = ref<Record<keyof typeof formSchema.shape, string>>({
+const formData = ref<Record<keyof typeof formSchema.shape, any>>({
   form_id: "",
-  name: "",
-  cv: "",
+  title: "",
+  content: "",
+  summary: "",
+  author_id: 0,
+  date: "",
+  author_name: "",
+  author_country: "",
+  main_photo: null,
+  sub_photo: [],
+  author_photo: null,
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
   form_id: undefined,
-  name: undefined,
-  cv: undefined,
-
+  title: undefined,
+  content: undefined,
+  summary: undefined,
+  author_id: undefined,
+  date: undefined,
+  author_name: undefined,
+  author_country: undefined,
+  main_photo: undefined,
+  sub_photo: undefined,
+  author_photo: undefined,
 });
 
-function validateField(fieldName: keyof typeof formSchema.shape, value: string) {
+function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
   try {
     formSchema.shape[fieldName].parse(value);
     errors.value[fieldName] = undefined;
@@ -56,26 +79,30 @@ fields.forEach((field) => {
   watch(
       () => formData.value[field.id as keyof typeof formSchema.shape],
       (newValue) => {
-        validateField(field.id, newValue || "");
+        validateField(field.id, newValue);
       }
   );
 });
 
-const handleFileInput = (event: Event) => {
+const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
   const target = event.target as HTMLInputElement;
   const files = target.files;
 
   if (files && files.length > 0) {
     const file = files[0];
-    const allowedTypes = ['image/png', 'image/jpeg', 'application/pdf'];
+    const allowedTypes = ['image/png', 'image/jpeg'];
     const fileType = file.type;
 
     if (allowedTypes.includes(fileType)) {
       console.log("Selected valid file:", file);
-      formData.value.cv = file.name;
+      if (fieldName === "sub_photo") {
+        formData.value[fieldName].push(file);
+      } else {
+        formData.value[fieldName] = file;
+      }
     } else {
-      console.log("Invalid file type. Please upload a PNG, JPG, or PDF file.");
-      alert("Invalid file type. Please upload a PNG, JPG, or PDF file.");
+      console.log("Invalid file type. Please upload a PNG or JPG file.");
+      alert("Invalid file type. Please upload a PNG or JPG file.");
     }
   } else {
     console.log("No file selected");
@@ -84,7 +111,7 @@ const handleFileInput = (event: Event) => {
 
 const handleFormSubmit = () => {
   fields.forEach((field) => {
-    validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape] || "");
+    validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape]);
   });
 
   if (Object.values(errors.value).some((error) => error)) {
@@ -92,7 +119,7 @@ const handleFormSubmit = () => {
   } else {
     console.log("Valid data:", formData.value);
     alert("Form submitted successfully");
-    location.reload();
+    // location.reload();
   }
 };
 </script>
@@ -145,7 +172,7 @@ const handleFormSubmit = () => {
                   :id="field.id"
                   type="file"
                   class="file-input"
-                  @change="handleFileInput"
+                  @change="handleFileInput($event, field.id)"
               />
               <p v-if="errors[field.id]?.[0]" class="error-message">{{ errors[field.id]?.[0] }}</p>
             </div>
