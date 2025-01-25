@@ -58,6 +58,36 @@ const articles: Article[] = [
       "https://example.com/images/trends.jpg"
     ],
   },
+  {
+    article_id: 1,
+    title: "The Importance of Web Development in 2025",
+    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
+    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    author_id: 101,
+    date: "2022-06-12",
+    author_name: "John Doe",
+    author_country: "United States",
+    main_photo_url: "https://example.com/images/web-development-2025.jpg",
+    sub_photo_urls: [
+      "https://example.com/images/technologies.jpg",
+      "https://example.com/images/trends.jpg"
+    ],
+  },
+  {
+    article_id: 3,
+    title: "The Importance of Web Development in 2025",
+    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
+    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    author_id: 101,
+    date: "2022-06-12",
+    author_name: "John Doe",
+    author_country: "United States",
+    main_photo_url: "https://example.com/images/web-development-2025.jpg",
+    sub_photo_urls: [
+      "https://example.com/images/technologies.jpg",
+      "https://example.com/images/trends.jpg"
+    ],
+  },
 ];
 
 const currentIndex = ref(0);
@@ -148,6 +178,8 @@ console.log(articles);
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  max-width: 1200px;
+  margin: 5rem auto;
 }
 
 .article-cards {
