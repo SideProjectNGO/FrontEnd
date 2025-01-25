@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
-import { ref, computed } from "vue";
+import {useRoute, useRouter} from "vue-router";
+import {computed} from "vue";
 
 interface Article {
   article_id: number;
@@ -11,24 +11,78 @@ interface Article {
   date: string;
   author_name: string;
   author_country: string;
-  main_photo_url: string;
-  sub_photo_urls: string[];
+  main_photo: string;
+  sub_photo: string[];
   author_photo: string;
 }
 
 const articles: Article[] = [
   {
     article_id: 1,
-    title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This article explores current trends and technologies in web development.",
-    summary: "This article discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    title: "The Impact of Early Childhood Education",
+    content: `
+      Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
+
+      The importance of fostering creativity and curiosity cannot be overstated. Activities like storytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
+
+      Equitable access to early education remains a challenge in many regions. Economic barriers, lack of trained educators, and inadequate facilities can limit opportunities for children, especially in marginalized communities. Addressing these issues is key to ensuring that every child gets a strong start in life.
+    `,
+    summary: "Explores the importance of early childhood education and its role in shaping a child’s future success.",
     author_id: 101,
-    date: "2022-06-12",
-    author_name: "John Doe",
-    author_country: "United States",
-    main_photo_url: "https://example.com/images/web-development-2025.jpg",
+    date: "2025-01-15",
+    author_name: "Jane Smith",
+    author_country: "Canada",
+    main_photo: "https://example.com/images/web-development-2025.jpg",
     author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo_urls: [
+    sub_photo: [
+      "~/public/images/children.jpg",
+      "~/public/images/children.jpg",
+      "~/public/images/children.jpg",
+      "~/public/images/children.jpg",
+    ],
+  },
+  {
+    article_id: 2,
+    title: "The Role of Play in Child Development",
+    content: `
+      Play is a fundamental aspect of childhood that supports a child's physical, emotional, and cognitive development. Through play, children explore their environment, develop problem-solving skills, and learn to interact with others. It is a natural way for them to express their creativity and emotions.
+
+      Physical play, such as running, climbing, or playing sports, enhances motor skills and overall health. Social play, like role-playing or group games, teaches children cooperation, empathy, and conflict resolution. Each type of play offers unique benefits, helping children grow holistically.
+
+      Unfortunately, modern challenges such as screen addiction and lack of safe outdoor spaces have reduced opportunities for children to play. Parents and communities need to prioritize playtime to ensure that children can fully benefit from its developmental advantages.
+    `,
+    summary: "Highlights the critical role of play in fostering a child’s holistic growth and development.",
+    author_id: 102,
+    date: "2025-01-18",
+    author_name: "Michael Lee",
+    author_country: "Australia",
+    main_photo: "https://example.com/images/web-development-2025.jpg",
+    author_photo: "https://example.com/images/web-development-2025.jpg",
+    sub_photo: [
+      "~/public/images/children.jpg",
+      "~/public/images/children.jpg",
+      "~/public/images/children.jpg",
+      "~/public/images/children.jpg",
+    ],
+  },
+  {
+    article_id: 3,
+    title: "The Challenges of Childhood Nutrition",
+    content: `
+      Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
+
+      Overnutrition and obesity are growing concerns in developed nations. Many children consume diets high in sugar, fat, and processed foods, leading to health issues like diabetes and heart problems. On the other hand, undernutrition is still a critical issue in many developing countries, where children suffer from stunted growth and poor health due to food insecurity.
+
+      Educating parents and caregivers about balanced diets and healthy eating habits is vital. Schools can also play a significant role by providing nutritious meals and incorporating food education into their curricula. Addressing these challenges requires a collaborative effort from families, educators, and policymakers.
+    `,
+    summary: "Explores the importance of proper childhood nutrition and the challenges faced worldwide.",
+    author_id: 103,
+    date: "2025-01-20",
+    author_name: "Sarah Khan",
+    author_country: "India",
+    main_photo: "https://example.com/images/web-development-2025.jpg",
+    author_photo: "https://example.com/images/web-development-2025.jpg",
+    sub_photo: [
       "~/public/images/children.jpg",
       "~/public/images/children.jpg",
       "~/public/images/children.jpg",
@@ -36,6 +90,7 @@ const articles: Article[] = [
     ],
   },
 ];
+
 
 const route = useRoute();
 const router = useRouter();
@@ -48,19 +103,19 @@ function goBack() {
 </script>
 
 <template>
-  <NavBar />
+  <NavBar/>
   <transition name="fade">
     <div v-if="article" class="article-details">
       <div class="article-details-container">
         <h1 class="article-title">{{ article.title }}</h1>
 
-        <img src="~/public/images/children.jpg" :alt="article.title" class="article-image" />
+        <img src="~/public/images/children.jpg" :alt="article.title" class="article-image"/>
 
-        <hr class="divider" />
+        <hr class="divider"/>
 
         <div class="author-info">
           <div class="author-photo">
-            <img src="~/public/images/children.jpg" :alt="'Photo of ' + article.author_name" />
+            <img src="~/public/images/children.jpg" :alt="'Photo of ' + article.author_name"/>
           </div>
           <div class="author-details">
             <p><strong>Author:</strong> {{ article.author_name }} ({{ article.author_country }})</p>
@@ -68,16 +123,16 @@ function goBack() {
           </div>
         </div>
 
-        <hr class="divider" />
+        <hr class="divider"/>
 
 
-        <p>{{ article.content }}</p>
+        <div class="article-content"> {{ article.content }}</div>
 
         <div class="sub-photos">
           <h3 class="title">Photos</h3>
           <div class="sub-photos-grid">
             <img
-                v-for="photo in article.sub_photo_urls"
+                v-for="photo in article.sub_photo"
                 :key="photo"
                 src="~/public/images/children.jpg"
                 :alt="'Additional photo for ' + article.title"
@@ -90,6 +145,8 @@ function goBack() {
       </div>
     </div>
   </transition>
+  <Articles/>
+  <Footer/>
 </template>
 
 <style scoped>
@@ -126,21 +183,25 @@ function goBack() {
 
 .author-info {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   margin-bottom: 20px;
 }
 
-.divider{
+.divider {
   border: 2px solid var(--text-hover);
   margin: 20px 0;
 }
 
 .author-info .author-photo img {
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.article-content {
+  text-align: justify;;
 }
 
 .title {

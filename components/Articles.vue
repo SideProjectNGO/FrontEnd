@@ -15,80 +15,69 @@ interface Article {
 const articles: Article[] = [
   {
     article_id: 1,
-    title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
-    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
+    title: "The Impact of Early Childhood Education",
+    content: `
+      Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
+
+      The importance of fostering creativity and curiosity cannot be overstated. Activities like storytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
+
+      Equitable access to early education remains a challenge in many regions. Economic barriers, lack of trained educators, and inadequate facilities can limit opportunities for children, especially in marginalized communities. Addressing these issues is key to ensuring that every child gets a strong start in life.
+    `,
+    summary: "Explores the importance of early childhood education and its role in shaping a child’s future success.",
     author_id: 101,
-    date: "2022-06-12",
-    author_name: "John Doe",
-    author_country: "United States",
-    main_photo_url: "https://example.com/images/web-development-2025.jpg",
+    date: "2025-01-15",
+    author_name: "Jane Smith",
+    author_country: "Canada",
+    main_photo_url: "https://example.com/images/early-education.jpg",
     sub_photo_urls: [
-      "https://example.com/images/technologies.jpg",
-      "https://example.com/images/trends.jpg"
+      "https://example.com/images/kindergarten.jpg",
+      "https://example.com/images/learning-tools.jpg",
     ],
   },
   {
     article_id: 2,
-    title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
-    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
-    author_id: 101,
-    date: "2022-06-12",
-    author_name: "John Doe",
-    author_country: "United States",
-    main_photo_url: "https://example.com/images/web-development-2025.jpg",
+    title: "The Role of Play in Child Development",
+    content: `
+      Play is a fundamental aspect of childhood that supports a child's physical, emotional, and cognitive development. Through play, children explore their environment, develop problem-solving skills, and learn to interact with others. It is a natural way for them to express their creativity and emotions.
+
+      Physical play, such as running, climbing, or playing sports, enhances motor skills and overall health. Social play, like role-playing or group games, teaches children cooperation, empathy, and conflict resolution. Each type of play offers unique benefits, helping children grow holistically.
+
+      Unfortunately, modern challenges such as screen addiction and lack of safe outdoor spaces have reduced opportunities for children to play. Parents and communities need to prioritize playtime to ensure that children can fully benefit from its developmental advantages.
+    `,
+    summary: "Highlights the critical role of play in fostering a child’s holistic growth and development.",
+    author_id: 102,
+    date: "2025-01-18",
+    author_name: "Michael Lee",
+    author_country: "Australia",
+    main_photo_url: "https://example.com/images/children-playing.jpg",
     sub_photo_urls: [
-      "https://example.com/images/technologies.jpg",
-      "https://example.com/images/trends.jpg"
+      "https://example.com/images/outdoor-play.jpg",
+      "https://example.com/images/group-games.jpg",
     ],
   },
   {
     article_id: 3,
-    title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
-    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
-    author_id: 101,
-    date: "2022-06-12",
-    author_name: "John Doe",
-    author_country: "United States",
-    main_photo_url: "https://example.com/images/web-development-2025.jpg",
+    title: "The Challenges of Childhood Nutrition",
+    content: `
+      Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
+
+      Overnutrition and obesity are growing concerns in developed nations. Many children consume diets high in sugar, fat, and processed foods, leading to health issues like diabetes and heart problems. On the other hand, undernutrition is still a critical issue in many developing countries, where children suffer from stunted growth and poor health due to food insecurity.
+
+      Educating parents and caregivers about balanced diets and healthy eating habits is vital. Schools can also play a significant role by providing nutritious meals and incorporating food education into their curricula. Addressing these challenges requires a collaborative effort from families, educators, and policymakers.
+    `,
+    summary: "Explores the importance of proper childhood nutrition and the challenges faced worldwide.",
+    author_id: 103,
+    date: "2025-01-20",
+    author_name: "Sarah Khan",
+    author_country: "India",
+    main_photo_url: "https://example.com/images/child-nutrition.jpg",
     sub_photo_urls: [
-      "https://example.com/images/technologies.jpg",
-      "https://example.com/images/trends.jpg"
+      "https://example.com/images/healthy-meals.jpg",
+      "https://example.com/images/growth-chart.jpg",
     ],
-  },
-  {
-    article_id: 1,
-    title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
-    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
-    author_id: 101,
-    date: "2022-06-12",
-    author_name: "John Doe",
-    author_country: "United States",
-    main_photo_url: "https://example.com/images/web-development-2025.jpg",
-    sub_photo_urls: [
-      "https://example.com/images/technologies.jpg",
-      "https://example.com/images/trends.jpg"
-    ],
-  },
-  {
-    article_id: 3,
-    title: "The Importance of Web Development in 2025",
-    content: "Web development is an ever-evolving field. In 2025, it's crucial for businesses to have an online presence that engages users and provides seamless experiences. This articles explores current trends and technologies in web development.",
-    summary: "This articles discusses the significance of web development in 2025, focusing on emerging trends and technologies that are reshaping the digital landscape.",
-    author_id: 101,
-    date: "2022-06-12",
-    author_name: "John Doe",
-    author_country: "United States",
-    main_photo_url: "https://example.com/images/web-development-2025.jpg",
-    sub_photo_urls: [
-      "https://example.com/images/technologies.jpg",
-      "https://example.com/images/trends.jpg"
-    ],
-  },
+  }
 ];
+
 
 const currentIndex = ref(0);
 const itemsPerPage = 3;

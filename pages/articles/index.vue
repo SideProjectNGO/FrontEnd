@@ -3,7 +3,9 @@
 </script>
 
 <template>
+  <NavBar/>
   <Articles/>
+  <Footer/>
 </template>
 
 <style scoped>
