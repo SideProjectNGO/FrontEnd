@@ -2,10 +2,21 @@
   <div class="header-container">
     <div class="header-wrapper">
       <div class="logo-container">
-        <div class="logo">
-          <a href="">
-            <img src="" alt="Logo" />
-          </a>
+        <div class="social-media-container">
+          <div class="social-links">
+            <a href="" target="_blank" class="social-icon">
+              <UIcon name="mdi-facebook" size="24"/>
+            </a>
+            <a href="" target="_blank" class="social-icon">
+              <UIcon name="mdi-whatsapp" size="24"/>
+            </a>
+            <a href="" target="_blank" class="social-icon">
+              <UIcon name="mdi-instagram" size="24"/>
+            </a>
+            <a href="" target="_blank" class="social-icon">
+              <UIcon name="mdi-youtube" size="24"/>
+            </a>
+          </div>
         </div>
         <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle-btn">
           <UIcon name="uil-bars" />
@@ -19,9 +30,9 @@
       <nav v-if="isLinksVisible || !isMobile" class="navigation-menu">
         <ul class="navigation-links">
           <li><router-link to="/home">Home</router-link></li>
-          <li><router-link to="/">About</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
           <li><router-link to="/">Stories</router-link></li>
-          <li><router-link to="/">Articles</router-link></li>
+          <li><router-link to="/articles">Articles</router-link></li>
           <li><router-link to="/">Volunteer</router-link></li>
         </ul>
       </nav>
@@ -62,10 +73,20 @@ onMounted(() => {
   align-items: center;
 }
 
-.logo img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.social-links {
+  display: flex;
+  gap: 15px;
+  min-height: 20px;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: var(--text-hover);
 }
 
 .header-title h2 {
@@ -114,6 +135,10 @@ onMounted(() => {
   }
 
   .header-title h2 {
+    display: none;
+  }
+
+  .social-media-container{
     display: none;
   }
 

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <Admin/>
+  <AdminSidebar/>
 </template>
 
 <style scoped>
