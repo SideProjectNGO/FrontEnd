@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { z } from 'zod';
+import {ref, watch} from 'vue';
+import {z} from 'zod';
 
 const formSchema = z.object({
   admin_name: z.string().min(5, 'Name is required'),
@@ -40,8 +40,8 @@ const fields: Field[] = [
     type: 'select',
     placeholder: 'Admin type',
     options: [
-      { value: 'admin', label: 'Admin' },
-      { value: 'super-admin', label: 'Super admin' },
+      {value: 'admin', label: 'Admin'},
+      {value: 'super-admin', label: 'Super admin'},
     ],
     icon: 'mdi-account-circle'
   },
@@ -134,7 +134,7 @@ const handleFormSubmit = (event: Event) => {
   <div class="admin-dashboard">
     <div class="admin-container">
       <div class="side-bar">
-        <AdminSidebar />
+        <AdminSidebar/>
       </div>
       <div class="new-article-form">
         <div class="container">
@@ -143,7 +143,7 @@ const handleFormSubmit = (event: Event) => {
             <div v-for="field in fields" :key="field.id" class="form-group">
               <label :for="field.id">
                 <span class="icon">
-                  <UIcon :name="field.icon" />
+                  <UIcon :name="field.icon"/>
                 </span>
                 {{ field.label }}
               </label>
@@ -192,10 +192,10 @@ const handleFormSubmit = (event: Event) => {
 }
 
 .new-article-form {
-  background-color: #f9f9f9;
+  background: var(--background);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .container {

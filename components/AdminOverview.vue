@@ -61,7 +61,7 @@ onMounted(() => {
       <div class="side-bar">
         <AdminSidebar/>
       </div>
-      <div class="new-article-form">
+      <div class="admin-content-dashboard">
         <div class="content-container">
           <div class="dashboard-cards">
             <div
@@ -91,11 +91,9 @@ onMounted(() => {
   padding: 20px;
 }
 
-.new-article-form {
-  background: var(--background);
+.admin-content-dashboard {
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .dashboard-cards {

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import AdminOverview from "~/components/AdminOverview.vue";
+
 definePageMeta({
   middleware: 'auth',
 });
@@ -8,7 +10,7 @@ definePageMeta({
 
 <template>
   <AdminNavBar/>
-  <Admin/>
+  <AdminOverview/>
   <AdminFooter/>
 </template>
 
