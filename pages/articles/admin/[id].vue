@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {useRoute, useRouter} from "vue-router";
 import {computed} from "vue";
-import {defineComponent} from 'vue'
 
 interface Article {
   article_id: number;
@@ -104,53 +103,76 @@ function goBack() {
 </script>
 
 <template>
-  <NavBar/>
-  <transition name="fade">
-    <div v-if="article" class="article-details">
-      <div class="article-details-container">
-        <h1 class="article-title">{{ article.title }}</h1>
+  <AdminNavBar/>
+  <div class="admin-dashboard">
+    <div class="admin-container">
+      <div class="side-bar">
+        <AdminSidebar/>
+      </div>
+      <div class="content-dashboard">
+        <transition name="fade">
+          <div v-if="article" class="article-details">
+            <div class="article-details-container">
+              <h1 class="article-title">{{ article.title }}</h1>
 
-        <img src="~/public/images/children.jpg" :alt="article.title" class="article-image"/>
+              <img src="~/public/images/children.jpg" :alt="article.title" class="article-image"/>
 
-        <hr class="divider"/>
+              <hr class="divider"/>
 
-        <div class="author-info">
-          <div class="author-photo">
-            <img src="~/public/images/children.jpg" :alt="'Photo of ' + article.author_name"/>
+              <div class="author-info">
+                <div class="author-photo">
+                  <img src="~/public/images/children.jpg" :alt="'Photo of ' + article.author_name"/>
+                </div>
+                <div class="author-details">
+                  <p><strong>Author:</strong> {{ article.author_name }} ({{ article.author_country }})</p>
+                  <p><strong>Date:</strong> {{ article.date }}</p>
+                </div>
+              </div>
+
+              <hr class="divider"/>
+
+
+              <div class="article-content"> {{ article.content }}</div>
+
+              <div class="sub-photos">
+                <h3 class="title">Photos</h3>
+                <div class="sub-photos-grid">
+                  <img
+                      v-for="photo in article.sub_photo"
+                      :key="photo"
+                      src="~/public/images/children.jpg"
+                      :alt="'Additional photo for ' + article.title"
+                      class="sub-photo"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="author-details">
-            <p><strong>Author:</strong> {{ article.author_name }} ({{ article.author_country }})</p>
-            <p><strong>Date:</strong> {{ article.date }}</p>
-          </div>
-        </div>
+        </transition>
 
-        <hr class="divider"/>
-
-
-        <div class="article-content"> {{ article.content }}</div>
-
-        <div class="sub-photos">
-          <h3 class="title">Photos</h3>
-          <div class="sub-photos-grid">
-            <img
-                v-for="photo in article.sub_photo"
-                :key="photo"
-                src="~/public/images/children.jpg"
-                :alt="'Additional photo for ' + article.title"
-                class="sub-photo"
-            />
-          </div>
-        </div>
-
-        <button class="back-btn" @click="goBack">Back to Articles</button>
       </div>
     </div>
-  </transition>
-  <Articles/>
-  <Footer/>
+  </div>
 </template>
 
 <style scoped>
+
+.admin-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}
+
+.admin-container .side-bar {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .article-details-container {
   max-width: 1200px;
   margin: auto;
@@ -232,21 +254,6 @@ function goBack() {
 
 .sub-photo:hover {
   transform: scale(1.1);
-}
-
-.back-btn {
-  padding: 10px 20px;
-  border: 2px solid var(--primary-hover);
-  border-radius: 15px;
-  background-color: var(--background);
-  color: var(--primary-hover);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.back-btn:hover {
-  background-color: var(--primary-hover);
-  color: white;
 }
 
 @keyframes fade-in {

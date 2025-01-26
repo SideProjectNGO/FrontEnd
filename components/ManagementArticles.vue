@@ -115,7 +115,7 @@ function prevPage() {
 }
 
 function viewArticle(id: number) {
-  useRouter().push(`/articles/${id}`);
+  useRouter().push(`/articles/admin/${id}`);
 }
 
 console.log(articles);
@@ -130,6 +130,9 @@ console.log(articles);
       </div>
 
       <div class="articles-container">
+        <div class="container">
+          <h1 class="title"> Management Articles</h1>
+        </div>
         <div class="container">
           <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
             <div class="card">
@@ -185,6 +188,12 @@ console.log(articles);
 .articles-container {
   display: block;
   padding: 20px;
+}
+
+.container h1 {
+  margin: 2rem auto;
+  font-size: 1.8rem;
+  color: var(--primary-hover);
 }
 
 .container {

@@ -45,8 +45,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-file-alt',
     links: [
-      { name: 'All Articles', url: '/articles', icon: 'uil-list-ul' },
-      { name: 'Add New Article', url: '/articles/add', icon: 'uil-plus-circle' }
+      { name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul' },
+      { name: 'Add New Article', url: '/articles/admin/new-article', icon: 'uil-plus-circle' }
     ]
   },
   {
