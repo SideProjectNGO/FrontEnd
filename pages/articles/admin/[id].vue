@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {useRoute, useRouter} from "vue-router";
-import {computed} from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { computed, ref } from "vue";
 
 interface Article {
   article_id: number;
@@ -11,9 +11,9 @@ interface Article {
   date: string;
   author_name: string;
   author_country: string;
-  main_photo: string;
-  sub_photo: string[];
-  author_photo: string;
+  main_photo: File | string; // Accepts both File and string
+  sub_photo: (File | string)[]; // Accepts an array of File or string
+  author_photo: File | string; // Accepts both File and string
 }
 
 const articles: Article[] = [
@@ -21,142 +21,108 @@ const articles: Article[] = [
     article_id: 1,
     title: "The Impact of Early Childhood Education",
     content: `
-      Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
-
-      The importance of fostering creativity and curiosity cannot be overstated. Activities like storytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
-
-      Equitable access to early education remains a challenge in many regions. Economic barriers, lack of trained educators, and inadequate facilities can limit opportunities for children, especially in marginalized communities. Addressing these issues is key to ensuring that every child gets a strong start in life.
+      Early childhood education lays the foundation for lifelong learning and development...
     `,
     summary: "Explores the importance of early childhood education and its role in shaping a child’s future success.",
     author_id: 101,
     date: "2025-01-15",
     author_name: "Jane Smith",
     author_country: "Canada",
-    main_photo: "https://example.com/images/web-development-2025.jpg",
-    author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo: [
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-    ],
-  },
-  {
-    article_id: 2,
-    title: "The Role of Play in Child Development",
-    content: `
-      Play is a fundamental aspect of childhood that supports a child's physical, emotional, and cognitive development. Through play, children explore their environment, develop problem-solving skills, and learn to interact with others. It is a natural way for them to express their creativity and emotions.
-
-      Physical play, such as running, climbing, or playing sports, enhances motor skills and overall health. Social play, like role-playing or group games, teaches children cooperation, empathy, and conflict resolution. Each type of play offers unique benefits, helping children grow holistically.
-
-      Unfortunately, modern challenges such as screen addiction and lack of safe outdoor spaces have reduced opportunities for children to play. Parents and communities need to prioritize playtime to ensure that children can fully benefit from its developmental advantages.
-    `,
-    summary: "Highlights the critical role of play in fostering a child’s holistic growth and development.",
-    author_id: 102,
-    date: "2025-01-18",
-    author_name: "Michael Lee",
-    author_country: "Australia",
-    main_photo: "https://example.com/images/web-development-2025.jpg",
-    author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo: [
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-    ],
-  },
-  {
-    article_id: 3,
-    title: "The Challenges of Childhood Nutrition",
-    content: `
-      Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
-
-      Overnutrition and obesity are growing concerns in developed nations. Many children consume diets high in sugar, fat, and processed foods, leading to health issues like diabetes and heart problems. On the other hand, undernutrition is still a critical issue in many developing countries, where children suffer from stunted growth and poor health due to food insecurity.
-
-      Educating parents and caregivers about balanced diets and healthy eating habits is vital. Schools can also play a significant role by providing nutritious meals and incorporating food education into their curricula. Addressing these challenges requires a collaborative effort from families, educators, and policymakers.
-    `,
-    summary: "Explores the importance of proper childhood nutrition and the challenges faced worldwide.",
-    author_id: 103,
-    date: "2025-01-20",
-    author_name: "Sarah Khan",
-    author_country: "India",
-    main_photo: "https://example.com/images/web-development-2025.jpg",
-    author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo: [
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-    ],
+    main_photo: null,
+    author_photo: null,
+    sub_photo: [],
   },
 ];
-
 
 const route = useRoute();
 const router = useRouter();
 const articleId = parseInt(route.params.id as string);
+
 const article = computed(() => articles.find((a) => a.article_id === articleId));
 
-function goBack() {
-  router.push("/articles");
-}
+const editedArticle = ref({ ...article.value });
+
+const updateArticle = () => {
+  const index = articles.findIndex((a) => a.article_id === articleId);
+  if (index !== -1) {
+    // Process main photo and author photo files
+    if (editedArticle.value.main_photo instanceof File) {
+      editedArticle.value.main_photo = URL.createObjectURL(editedArticle.value.main_photo);
+    }
+    if (editedArticle.value.author_photo instanceof File) {
+      editedArticle.value.author_photo = URL.createObjectURL(editedArticle.value.author_photo);
+    }
+    // Process sub-photos
+    editedArticle.value.sub_photo = editedArticle.value.sub_photo.filter(file => file instanceof File);
+
+    articles[index] = { ...editedArticle.value };
+    router.push(`/articles/admin/${articleId}`);
+  }
+};
+
+const deleteArticle = () => {
+  const index = articles.findIndex((a) => a.article_id === articleId);
+  if (index !== -1) {
+    articles.splice(index, 1);
+    router.push('/articles/admin');
+  }
+};
 </script>
 
 <template>
-  <AdminNavBar/>
   <div class="admin-dashboard">
     <div class="admin-container">
       <div class="side-bar">
-        <AdminSidebar/>
+        <AdminSidebar />
       </div>
-      <div class="content-dashboard">
-        <transition name="fade">
-          <div v-if="article" class="article-details">
-            <div class="article-details-container">
-              <h1 class="article-title">{{ article.title }}</h1>
+      <div class="article-details">
+        <div>
+          <h1>{{ article?.title }}</h1>
+          <p>{{ article?.content }}</p>
+          <form @submit.prevent="updateArticle" class="article-form">
+            <div v-for="(value, key) in editedArticle" :key="key" class="form-group">
+              <label :for="key" class="form-label">{{ key.charAt(0).toUpperCase() + key.slice(1) }}:</label>
 
-              <img src="~/public/images/children.jpg" :alt="article.title" class="article-image"/>
-
-              <hr class="divider"/>
-
-              <div class="author-info">
-                <div class="author-photo">
-                  <img src="~/public/images/children.jpg" :alt="'Photo of ' + article.author_name"/>
-                </div>
-                <div class="author-details">
-                  <p><strong>Author:</strong> {{ article.author_name }} ({{ article.author_country }})</p>
-                  <p><strong>Date:</strong> {{ article.date }}</p>
-                </div>
-              </div>
-
-              <hr class="divider"/>
-
-
-              <div class="article-content"> {{ article.content }}</div>
-
-              <div class="sub-photos">
-                <h3 class="title">Photos</h3>
-                <div class="sub-photos-grid">
-                  <img
-                      v-for="photo in article.sub_photo"
-                      :key="photo"
-                      src="~/public/images/children.jpg"
-                      :alt="'Additional photo for ' + article.title"
-                      class="sub-photo"
-                  />
-                </div>
-              </div>
+              <input
+                  v-if="key === 'main_photo' || key === 'author_photo'"
+                  @change="event => editedArticle[key] = event.target.files[0]"
+                  :type="'file'"
+                  :id="key"
+                  class="form-input"
+              />
+              <input
+                  v-if="key === 'sub_photo'"
+                  @change="event => editedArticle[key] = Array.from(event.target.files)"
+                  :type="'file'"
+                  multiple
+                  :id="key"
+                  class="form-input"
+              />
+              <input
+                  v-if="key !== 'content' && key !== 'main_photo' && key !== 'sub_photo' && key !== 'author_photo'"
+                  v-model="editedArticle[key]"
+                  :type="'text'"
+                  :id="key"
+                  class="form-input"
+              />
+              <textarea
+                  v-if="key === 'content'"
+                  v-model="editedArticle[key]"
+                  :id="key"
+                  class="form-textarea"
+              ></textarea>
             </div>
-          </div>
-        </transition>
+            <button type="submit" class="submit-button">Save Article</button>
+          </form>
 
+          <button @click="deleteArticle" style="background-color: red;">Delete Article</button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
 .admin-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -167,104 +133,178 @@ function goBack() {
   height: 100%;
 }
 
-@media (max-width: 768px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.article-details-container {
-  max-width: 1200px;
-  margin: auto;
-  animation: fade-in 0.8s ease-in-out;
-}
-
 .article-details {
-  padding: 20px;
-}
-
-.article-title {
-  font-weight: bold;
-  font-size: 2rem;
-  color: var(--primary-hover);
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.article-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin: 30px 0;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.article-image:hover {
-  transform: scale(1.03);
-}
-
-.author-info {
-  display: flex;
-  gap: 50px;
-  margin-bottom: 20px;
-}
-
-.divider {
-  border: 2px solid var(--text-hover);
-  margin: 20px 0;
-}
-
-.author-info .author-photo img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.article-content {
-  text-align: justify;;
-}
-
-.title {
-  font-size: 1.8rem;
-  color: var(--primary-hover);
+  width: 95%;
   margin: 1rem auto;
 }
 
-.sub-photos {
-  margin-top: 20px;
-}
-
-.sub-photos-grid {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 40px 0;
-}
-
-.sub-photo {
-  width: 100px;
-  height: 100px;
+.article-form {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  background-color: #f9f9f9;
 }
 
-.sub-photo:hover {
-  transform: scale(1.1);
+.form-group {
+  margin-bottom: 15px;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.form-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button[style="background-color: red;"] {
+  background-color: red;
+}
+
+button[style="background-color: red;"]:hover {
+  background-color: darkred;
+}
+</style>
+
+
+<style scoped>
+.admin-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}
+
+.admin-container .side-bar {
+  height: 100%;
+}
+
+.article-details {
+  width: 95%;
+  margin: 1rem auto;
+}
+
+.article-form {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.form-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button[style="background-color: red;"] {
+  background-color: red;
+}
+
+button[style="background-color: red;"]:hover {
+  background-color: darkred;
+}
 </style>
