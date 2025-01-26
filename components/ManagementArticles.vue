@@ -75,11 +75,32 @@ const articles: Article[] = [
       "https://example.com/images/healthy-meals.jpg",
       "https://example.com/images/growth-chart.jpg",
     ],
+  },
+  {
+    article_id: 3,
+    title: "The Challenges of Childhood Nutrition",
+    content: `
+      Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
+
+      Overnutrition and obesity are growing concerns in developed nations. Many children consume diets high in sugar, fat, and processed foods, leading to health issues like diabetes and heart problems. On the other hand, undernutrition is still a critical issue in many developing countries, where children suffer from stunted growth and poor health due to food insecurity.
+
+      Educating parents and caregivers about balanced diets and healthy eating habits is vital. Schools can also play a significant role by providing nutritious meals and incorporating food education into their curricula. Addressing these challenges requires a collaborative effort from families, educators, and policymakers.
+    `,
+    summary: "Explores the importance of proper childhood nutrition and the challenges faced worldwide.",
+    author_id: 103,
+    date: "2025-01-20",
+    author_name: "Sarah Khan",
+    author_country: "India",
+    main_photo_url: "https://example.com/images/child-nutrition.jpg",
+    sub_photo_urls: [
+      "https://example.com/images/healthy-meals.jpg",
+      "https://example.com/images/growth-chart.jpg",
+    ],
   }
 ];
 
 const currentIndex = ref(0);
-const itemsPerPage = 3;
+const itemsPerPage = 4;
 
 const visibleArticles = computed(() =>
     articles.slice(currentIndex.value, currentIndex.value + itemsPerPage)
@@ -101,61 +122,66 @@ console.log(articles);
 
 </script>
 
-
 <template>
-  <div class="articles-container">
-    <div class="container">
-      <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
-        <div class="card">
-          <div class="article-header">
-            <h4 class="article-date">{{ article.date }}</h4>
-            <button @click="viewArticle(article.article_id)">Learn More</button>
-          </div>
-          <div class="article-main-photo">
-            <img src="../public/images/logo.webp" alt="Article Image" class="article-image"/>
-          </div>
-          <div class="article-body">
-            <h3 class="article-title">{{ article.title }}</h3>
-            <p class="article-summary">{{ article.summary }}</p>
-            <div class="author-details">
-              <h2>{{ article.author_name }}</h2>
-              <h2>{{ article.author_country }}</h2>
-            </div>
-          </div>
-          <div class="article-footer">
-            <div class="social-links">
-              <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-facebook" size="24"/>
-              </a>
-              <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-whatsapp" size="24"/>
-              </a>
-              <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-instagram" size="24"/>
-              </a>
-              <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-youtube" size="24"/>
-              </a>
+  <div class="admin-dashboard">
+    <div class="admin-container">
+      <div class="side-bar">
+        <AdminSidebar/>
+      </div>
+
+      <div class="articles-container">
+        <div class="container">
+          <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
+            <div class="card">
+              <div class="article-header">
+                <h4 class="article-date">{{ article.date }}</h4>
+                <button @click="viewArticle(article.article_id)">Learn More</button>
+              </div>
+              <div class="article-body">
+                <h3 class="article-title">{{ article.title }}</h3>
+                <div class="author-details">
+                  <h2>{{ article.author_name }}</h2>
+                  <h2>{{ article.author_country }}</h2>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="btn-container">
-        <button @click="prevPage">
-          Previous
-        </button>
+        <div class="container">
+          <div class="btn-container">
+            <button @click="prevPage">
+              Previous
+            </button>
 
-        <button @click="nextPage">
-          Next
-        </button>
+            <button @click="nextPage">
+              Next
+            </button>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <style scoped>
+.admin-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}
+
+.admin-container .side-bar {
+  height: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .articles-container {
   display: block;
   padding: 20px;
@@ -167,7 +193,7 @@ console.log(articles);
   gap: 20px;
   justify-content: center;
   max-width: 1200px;
-  margin: 5rem auto;
+  margin: 0 auto;
 }
 
 .article-cards {
@@ -177,7 +203,7 @@ console.log(articles);
 }
 
 .card {
-  width: 350px;
+  width: 250px;
   border: 2px solid var(--border-color);
   overflow: hidden;
   background-color: var(--background);
@@ -209,20 +235,6 @@ console.log(articles);
   margin: 10px 0;
 }
 
-.article-main-photo {
-  width: 100%;
-  height: 200px;
-  min-height: 200px;
-  border: 2px solid var(--primary-hover);
-}
-
-.article-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin: 0;
-}
-
 .article-body {
   padding: 15px;
 }
@@ -234,39 +246,10 @@ console.log(articles);
   min-height: 50px;
 }
 
-.article-summary {
-  text-align: justify;
-  margin: 15px 0;
-  color: var(--black-text-hover);
-  min-height: 120px;
-}
-
 .author-details {
   display: flex;
   justify-content: space-between;
   color: var(--black-text-hover);
-}
-
-.article-footer {
-  display: inline-flex;
-  padding: 10px;
-  justify-content: center;
-}
-
-.social-links {
-  display: flex;
-  gap: 15px;
-  min-height: 20px;
-}
-
-.social-icon {
-  font-size: 1.5rem;
-  color: var(--primary-hover);
-  transition: color 0.3s;
-}
-
-.social-icon:hover {
-  color: var(--primary-hover);
 }
 
 .container .btn-container {
@@ -288,6 +271,4 @@ console.log(articles);
   color: var(--text-hover);
   transition: background-color 0.3s ease-in-out;
 }
-
 </style>
-
