@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <Articles/>
+  <NewAdminForm/>
 </template>
 
 <style scoped>
