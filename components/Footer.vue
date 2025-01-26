@@ -30,7 +30,7 @@ const currentYear = new Date().getFullYear();
                 </a>
               </li>
               <li>
-                <a href="https" target="_blank" rel="noopener">
+                <a href="" target="_blank" rel="noopener">
                   <UIcon name="mdi-instagram"/>
                 </a>
               </li>
@@ -254,7 +254,6 @@ const currentYear = new Date().getFullYear();
   text-align: center;
   font-size: 1.5rem;
   padding: 5px;
-  border: 2px solid var(--text-color);
   border-radius: 50%;
   color: var(--text-color);
   transition: transform 0.3s ease-in-out;
@@ -262,7 +261,6 @@ const currentYear = new Date().getFullYear();
 
 .social-icons ul li:hover {
   color: var(--text-hover);
-  border: 2px solid var(--text-hover);
   transform: scale(1.1);
 }
 
