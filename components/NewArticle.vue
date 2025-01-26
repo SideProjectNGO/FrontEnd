@@ -3,7 +3,6 @@ import {ref, watch} from "vue";
 import {z} from "zod";
 
 const formSchema = z.object({
-  form_id: z.string().min(1, "Form ID is required"),
   title: z.string().min(5, "Title is required"),
   content: z.string().min(50, "Content is required"),
   summary: z.string().min(50, "Summary is required"),
@@ -86,7 +85,6 @@ const fields: Field[] = [
 ];
 
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
-  form_id: "",
   title: "",
   content: "",
   summary: "",
@@ -100,7 +98,6 @@ const formData = ref<Record<keyof typeof formSchema.shape, any>>({
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
-  form_id: undefined,
   title: undefined,
   content: undefined,
   summary: undefined,

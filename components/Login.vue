@@ -66,22 +66,28 @@ fields.forEach((field) => {
 });
 
 const handleFormSubmit = () => {
-
   fields.forEach((field) => {
-    validateField(field.validationKey, formData.value[field.id as keyof typeof loginSchema.shape] || "");
-    alert("Sign up successfully")
-    location.reload();
+    validateField(
+        field.validationKey,
+        formData.value[field.id as keyof typeof loginSchema.shape] || ""
+    );
   });
 
   if (Object.values(errors.value).some((error) => error)) {
     console.log("Validation errors:", errors.value);
   } else {
     console.log("Valid data:", formData.value);
-    errors.value = {password: undefined, username: undefined};
+
+    const fakeToken = "your_fake_access_token";
+
+    useCookie('token').value = fakeToken;
+
+    alert("Login successfully!");
+    navigateTo('/admin');
   }
 };
-</script>
 
+</script>
 
 <template>
   <div class="login-wrapper">
