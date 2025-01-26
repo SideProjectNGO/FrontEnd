@@ -8,6 +8,10 @@ interface TeamMember {
   bio: string;
   position: string;
   photo_url: string;
+  social_media: {
+    whatsapp: string;
+    email: string;
+  }
 }
 
 const team: TeamMember[] = [
@@ -20,6 +24,10 @@ const team: TeamMember[] = [
     `,
     position: "Software Engineer",
     photo_url: "https://example.com/images/alice-johnson.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/11234567890",
+      email: "alice.johnson@example.com"
+    }
   },
   {
     member_id: 2,
@@ -30,6 +38,10 @@ const team: TeamMember[] = [
     `,
     position: "Lead Software Engineer",
     photo_url: "https://example.com/images/bob-carter.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/44123456789",
+      email: "bob.carter@example.com"
+    }
   },
   {
     member_id: 3,
@@ -40,6 +52,10 @@ const team: TeamMember[] = [
     `,
     position: "Software Architect",
     photo_url: "https://example.com/images/charles-williams.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/12345678901",
+      email: "charles.williams@example.com"
+    }
   },
   {
     member_id: 4,
@@ -50,6 +66,10 @@ const team: TeamMember[] = [
     `,
     position: "Product Manager",
     photo_url: "https://example.com/images/diana-harris.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/61412345678",
+      email: "diana.harris@example.com"
+    }
   },
   {
     member_id: 5,
@@ -60,6 +80,10 @@ const team: TeamMember[] = [
     `,
     position: "DevOps Engineer",
     photo_url: "https://example.com/images/eve-scott.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/49123456789",
+      email: "eve.scott@example.com"
+    }
   },
   {
     member_id: 6,
@@ -70,6 +94,10 @@ const team: TeamMember[] = [
     `,
     position: "Quality Assurance Engineer",
     photo_url: "https://example.com/images/frank-taylor.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/33712345678",
+      email: "frank.taylor@example.com"
+    }
   },
   {
     member_id: 7,
@@ -80,6 +108,10 @@ const team: TeamMember[] = [
     `,
     position: "UX/UI Designer",
     photo_url: "https://example.com/images/grace-lee.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/821012345678",
+      email: "grace.lee@example.com"
+    }
   },
   {
     member_id: 8,
@@ -90,6 +122,10 @@ const team: TeamMember[] = [
     `,
     position: "Chief Technology Officer",
     photo_url: "https://example.com/images/harry-adams.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/11223456789",
+      email: "harry.adams@example.com"
+    }
   },
   {
     member_id: 9,
@@ -100,6 +136,10 @@ const team: TeamMember[] = [
     `,
     position: "Scrum Master",
     photo_url: "https://example.com/images/isabel-moore.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/12345678902",
+      email: "isabel.moore@example.com"
+    }
   },
   {
     member_id: 10,
@@ -110,13 +150,15 @@ const team: TeamMember[] = [
     `,
     position: "Customer Success Engineer",
     photo_url: "https://example.com/images/james-green.jpg",
+    social_media: {
+      whatsapp: "https://wa.me/44123456780",
+      email: "james.green@example.com"
+    }
   },
 ];
 
-
 const currentIndex = ref(0);
 const teamPerPage = 5;
-
 const visibleTeam = computed(() =>
     team.slice(currentIndex.value, currentIndex.value + teamPerPage)
 );
@@ -134,21 +176,41 @@ function prevPage() {
 
 <template>
   <div class="team-section">
+    <h2 class="team-title">Meet Our Team</h2>
     <div class="team-grid">
       <div v-for="member in visibleTeam" :key="member.member_id" class="team-card">
         <div class="team-photo">
-          <img src="/public/images/team-member.jpeg" :alt="`Photo of ${member.name}`"/>
+          <img src="../public/images/team-member.jpeg" :alt="`Photo of ${member.name}`"/>
         </div>
         <div class="team-details">
           <h2>{{ member.name }}</h2>
           <h3>{{ member.position }}</h3>
         </div>
+
+        <div class="team-contact-info">
+          <a v-if="member.social_media.whatsapp" :href="'https://wa.me/' + member.social_media.whatsapp" target="_blank"
+             aria-label="WhatsApp">
+            <UIcon name="mdi-whatsapp"/>
+          </a>
+          <a v-if="member.social_media.email" :href="'mailto:' + member.social_media.email" target="_blank"
+             aria-label="Email">
+            <UIcon name="mdi-email"/>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="pagination">
-      <button @click="prevPage" class="btn">Previous</button>
-      <button @click="nextPage" class="btn">Next</button>
+    <div class="container">
+      <div class="btn-container">
+        <button @click="prevPage">
+          Previous
+        </button>
+
+        <button @click="nextPage">
+          Next
+        </button>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -158,9 +220,17 @@ function prevPage() {
   background: url("../public/images/bg-team.jpg") no-repeat center center / cover;
 }
 
+.team-title {
+  text-align: center;
+  color: var(--primary-hover);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 40px 0;
+}
+
 .team-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
   justify-content: center;
   max-width: 1200px;
@@ -168,13 +238,13 @@ function prevPage() {
 }
 
 .team-card {
-  width: 220px;
-  min-height: 300px;
-  padding: 20px;
-  text-align: center;
+  background: var(--background);
   border: 3px solid #ddd;
   border-radius: 10px;
+  padding: 20px;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--primary-color);
 }
 
 .team-card:hover {
@@ -191,6 +261,11 @@ function prevPage() {
   height: 130px;
   border-radius: 50%;
   margin: 15px auto;
+  border: 5px solid var(--primary-color);
+}
+
+.team-details {
+  min-height: 90px;
 }
 
 .team-details h2 {
@@ -201,30 +276,37 @@ function prevPage() {
 
 .team-details h3 {
   font-size: 16px;
-  color: #555;
 }
 
-.pagination {
+.team-contact-info {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
-  gap: 15px;
 }
 
-.btn {
-  padding: 10px 20px;
-  border: 2px solid var(--primary-hover);
-  background: transparent;
-  color: var(--primary-color);
-  font-size: 16px;
-  border-radius: 5px;
+.team-contact-info a {
+  font-size: 1.5rem;
+  margin-right: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn:hover {
+.container .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.container .btn-container button {
+  margin-right: 50px;
+  padding: 10px;
+  border: 2px solid var(--primary-hover);
+  min-width: 120px;
+}
+
+.container .btn-container button:hover {
   background: var(--primary-hover);
   color: var(--text-hover);
+  transition: background-color 0.3s ease-in-out;
 }
 </style>
 
