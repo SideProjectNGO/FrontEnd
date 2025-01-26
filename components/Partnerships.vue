@@ -1,50 +1,47 @@
-<script lang="ts">
+<script>
 import { ref, computed } from "vue";
 
-const images = [
-  { id: 1, title: "Image 1", image: "path/to/image1.jpg" },
-  { id: 2, title: "Image 2", image: "path/to/image2.jpg" },
-  { id: 3, title: "Image 3", image: "path/to/image3.jpg" },
-  { id: 4, title: "Image 4", image: "path/to/image4.jpg" },
-  { id: 5, title: "Image 5", image: "path/to/image5.jpg" },
-  { id: 6, title: "Image 6", image: "path/to/image6.jpg" },
-  { id: 7, title: "Image 7", image: "path/to/image7.jpg" },
-  { id: 8, title: "Image 8", image: "path/to/image8.jpg" },
-];
+const images = Array.from({ length: 15 }, (_, i) => ({
+  id: i + 1,
+  title: `Image ${i + 1}`,
+  image: `path/to/image${i + 1}.jpg`,
+}));
 
+const rowPattern = [6, 5];
 const currentIndex = ref(0);
-const itemsPerPage = 3;
 
-const visibleImages = computed(() => {
-  return images.slice(currentIndex.value, currentIndex.value + itemsPerPage);
+const groupedImages = computed(() => {
+  const rows = [];
+  let start = 0;
+  let patternIndex = 0;
+
+  while (start < images.length) {
+    const rowSize = rowPattern[patternIndex];
+    rows.push(images.slice(start, start + rowSize));
+    start += rowSize;
+    patternIndex = (patternIndex + 1) % rowPattern.length;
+  }
+
+  return rows;
 });
 
-function nextPage() {
-  currentIndex.value = (currentIndex.value + itemsPerPage) % images.length;
-}
-
-function prevPage() {
-  currentIndex.value = (currentIndex.value - itemsPerPage + images.length) % images.length;
-}
+export default {
+  setup() {
+    return {
+      groupedImages,
+    };
+  },
+};
 </script>
 
 <template>
   <div class="partnerships-section">
     <div class="container">
-      <transition-group name="fade-slide" tag="div">
-        <div
-            v-for="image in visibleImages"
-            :key="image.id"
-            class="image-container"
-        >
-          <img src="../public/images/logo.webp" :alt="image.title" class="image" />
-          <img src="~/public/images/team-member.jpeg" :alt="image.title" class="image" />
+      <div v-for="(row, rowIndex) in groupedImages" :key="'row-' + rowIndex" class="row">
+        <div v-for="image in row" :key="image.id" class="image-container">
+          <img src="../public/images/un-logo-1.avif" :alt="image.title" class="image" />
         </div>
-      </transition-group>
-    </div>
-    <div class="btn-container">
-      <button @click="prevPage">Previous</button>
-      <button @click="nextPage">Next</button>
+      </div>
     </div>
   </div>
 </template>
@@ -52,50 +49,47 @@ function prevPage() {
 <style scoped>
 .partnerships-section {
   padding: 2rem;
+  background-color: #f9f9f9;
 }
-
 .container {
   max-width: 1200px;
   margin: auto;
+}
+
+.row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.5rem;
+  width: 70%;
+  margin: 1rem auto;
 }
 
 .image-container {
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
+  max-width: calc(20% - 1.5rem);
 }
 
 .image {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.btn-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+.image:hover {
+  transform: scale(1.05);
 }
 
-button {
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+@media (max-width: 768px) {
+  .image-container {
+    max-width: calc(33.333% - 1.5rem);
+  }
 }
 
-button:hover {
-  background-color: var(--primary-hover);
+@media (max-width: 480px) {
+  .image-container {
+    max-width: 100%;
+  }
 }
-
 </style>
