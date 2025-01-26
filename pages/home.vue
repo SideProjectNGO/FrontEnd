@@ -4,6 +4,7 @@
 
 <template>
   <NavBar/>
+  <Footer/>
 </template>
 
 <style scoped>
