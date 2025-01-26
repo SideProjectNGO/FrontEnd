@@ -25,7 +25,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background);
+  background: linear-gradient(to bottom right, #f5f5f5, #809D3C, #5D8736);
+  opacity: 0;
+  animation: fadeIn 2s forwards;
 }
 
 .container {
@@ -42,6 +44,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  animation: slideIn 1.5s ease-in-out 0.5s forwards;
 }
 
 .landing-image {
@@ -56,20 +60,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  opacity: 0;
+  animation: fadeInDetails 2s ease-in-out 1s forwards;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .description {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  color: var(--primary-hover);
+  color: var(--text-color);
 }
 
 .cta-button {
@@ -77,15 +83,133 @@
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: bold;
-  color: white;
-  background: var(--primary-hover);
+  color: var(--primary-color);
+  background: var(--text-color);
   border-radius: 8px;
+  width: fit-content;
+  margin: auto;
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s ease;
+  opacity: 0;
+  animation: fadeInButton 2s ease-in-out 1.5s forwards;
 }
 
 .cta-button:hover {
-  background: var(--primary-color);
+  background: var(--background);
+  transition: background 0.3s ease;
+}
+
+@media screen and (max-width: 1200px) {
+  .landing-page {
+    min-height: 100vh;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-image {
+    max-width: 250px;
+    height: 300px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .landing-page {
+    min-height: 100vh;
+  }
+
+  .landing-image {
+    max-width: 200px;
+    height: 250px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .description {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .landing-image {
+    max-width: 180px;
+    height: 220px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDetails {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
