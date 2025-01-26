@@ -3,6 +3,7 @@
 </script>
 
 <template>
+  <AdminNavBar/>
   <NewAdminForm/>
 </template>
 
