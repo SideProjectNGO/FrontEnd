@@ -16,6 +16,7 @@ const currentYear = new Date().getFullYear();
 .footer-admin-section {
   margin: auto;
   background-color: var(--primary-color);
+  height: 50px;
 }
 
 .footer-container {

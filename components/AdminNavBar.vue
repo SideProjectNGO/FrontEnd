@@ -4,18 +4,22 @@
       <div class="logo-container">
         <div class="logo">
           <a href="">
-            <img src="/images/logo.webp" alt="Logo" />
+            <img src="/images/logo.webp" alt="Logo"/>
           </a>
         </div>
         <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle-btn">
-          <UIcon name="uil-bars" />
+          <UIcon name="uil-bars"/>
         </button>
       </div>
 
       <nav v-if="isLinksVisible || !isMobile" class="navigation-menu">
         <ul class="navigation-links">
-          <li><router-link to="/">Setting</router-link></li>
-          <li><router-link to="/">logout</router-link></li>
+          <li>
+            <router-link to="/">Setting</router-link>
+          </li>
+          <li>
+            <button @click="logout">Logout</button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -23,14 +27,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
+import {useRouter} from 'vue-router';
 
 const isLinksVisible = ref(false);
 const isMobile = ref(false);
+const router = useRouter();
 
 function toggleLinksVisibility() {
   isLinksVisible.value = !isLinksVisible.value;
-  console.log('Links visibility toggled:', isLinksVisible.value);
+}
+
+function logout() {
+  useCookie('token').value = null;
+  router.push('/login');
 }
 
 onMounted(() => {
@@ -82,7 +92,8 @@ onMounted(() => {
   background-color: var(--primary-hover);
 }
 
-.navigation-links a {
+.navigation-links a,
+.navigation-links button {
   color: var(--text-color);
   padding: 0 0.5rem;
   font-size: 1rem;

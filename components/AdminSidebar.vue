@@ -35,9 +35,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-dashboard',
     links: [
-      { name: 'Overview', url: '/dashboard/overview', icon: 'uil-eye' },
-      { name: 'Analytics', url: '/dashboard/analytics', icon: 'uil-chart' },
-      { name: 'Admin Dashboard', url: '/dashboard/admin', icon: 'uil-user' } // For Admin Dashboard
+      { name: 'Overview', url: '/admin', icon: 'uil-eye' },
     ]
   },
   {
@@ -70,10 +68,10 @@ const buttons = [
   {
     name: 'Volunteers',
     type: 'admin',
-    icon: 'uil-hands',
+    icon: 'uil-users-alt',
     links: [
-      { name: 'All Volunteers', url: '/volunteers', icon: 'uil-list-ul' },
-      { name: 'Add New Volunteer', url: '/volunteers/add', icon: 'uil-user-plus' }
+      { name: 'All Volunteers', url: '/', icon: 'uil-list-ul' },
+      { name: 'Add New Volunteer', url: '/volunteer-form', icon: 'uil-user-plus' }
     ]
   },
   {
@@ -100,7 +98,7 @@ function toggleLinks(index) {
 
 <style scoped>
 .sidebar {
-  background-color: var(--primary-hover);
+  background-color: var(--background);
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -116,7 +114,7 @@ function toggleLinks(index) {
   width: 100%;
   padding: 10px;
   text-align: left;
-  background-color: var(--background);
+  background-color: transparent;
   color: var(--primary-hover);
   border: none;
   border-radius: 5px;
@@ -142,7 +140,7 @@ function toggleLinks(index) {
 
 .links-container a {
   text-decoration: none;
-  color: var(--text-hover);
+  color: var(--primary-hover);
 }
 
 .btn-sidebar .icon {
@@ -152,7 +150,7 @@ function toggleLinks(index) {
 
 .links-container .icon {
   margin-right: 10px;
-  color: var(--text-hover);
+  color: var(--primary-hover);
 }
 
 </style>

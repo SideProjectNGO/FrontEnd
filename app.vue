@@ -10,7 +10,7 @@
   --text-color: #DDDDDD;
   --text-hover: #EEEEEE;
   --black-text-hover: black;
-  --background: #ffffff;
+  --background: #f5f5f5;
   --border-color: #5C7285;
   --btn-submit-color: #388e3c;
 }
