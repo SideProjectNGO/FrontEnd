@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import {ref, } from 'vue';
+import AdminSidebar from '~/components/AdminSidebar.vue';
+
+definePageMeta({
+  middleware: 'auth',
+});
+
 interface Article {
   article_id: number;
   title: string;
@@ -75,27 +82,6 @@ const articles: Article[] = [
       "https://example.com/images/healthy-meals.jpg",
       "https://example.com/images/growth-chart.jpg",
     ],
-  },
-  {
-    article_id: 3,
-    title: "The Challenges of Childhood Nutrition",
-    content: `
-      Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
-
-      Overnutrition and obesity are growing concerns in developed nations. Many children consume diets high in sugar, fat, and processed foods, leading to health issues like diabetes and heart problems. On the other hand, undernutrition is still a critical issue in many developing countries, where children suffer from stunted growth and poor health due to food insecurity.
-
-      Educating parents and caregivers about balanced diets and healthy eating habits is vital. Schools can also play a significant role by providing nutritious meals and incorporating food education into their curricula. Addressing these challenges requires a collaborative effort from families, educators, and policymakers.
-    `,
-    summary: "Explores the importance of proper childhood nutrition and the challenges faced worldwide.",
-    author_id: 103,
-    date: "2025-01-20",
-    author_name: "Sarah Khan",
-    author_country: "India",
-    main_photo_url: "https://example.com/images/child-nutrition.jpg",
-    sub_photo_urls: [
-      "https://example.com/images/healthy-meals.jpg",
-      "https://example.com/images/growth-chart.jpg",
-    ],
   }
 ];
 
@@ -128,41 +114,38 @@ console.log(articles);
       <div class="side-bar">
         <AdminSidebar/>
       </div>
-
-      <div class="articles-container">
-        <div class="container">
-          <h1 class="title"> Management Articles</h1>
-        </div>
-        <div class="container">
-          <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
-            <div class="card">
-              <div class="article-header">
-                <h4 class="article-date">{{ article.date }}</h4>
-                <button @click="viewArticle(article.article_id)">Learn More</button>
-              </div>
-              <div class="article-body">
-                <h3 class="article-title">{{ article.title }}</h3>
-                <div class="author-details">
-                  <h2>{{ article.author_name }}</h2>
-                  <h2>{{ article.author_country }}</h2>
+      <div class="admin-content-dashboard">
+        <div class="articles-container">
+          <div class="container">
+            <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
+              <div class="card">
+                <div class="article-header">
+                  <h4 class="article-date">{{ article.date }}</h4>
+                  <button @click="viewArticle(article.article_id)">Learn More</button>
+                </div>
+                <div class="article-body">
+                  <h3 class="article-title">{{ article.title }}</h3>
+                  <div class="author-details">
+                    <h2>{{ article.author_name }}</h2>
+                    <h2>{{ article.author_country }}</h2>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="container">
-          <div class="btn-container">
-            <button @click="prevPage">
-              Previous
-            </button>
+          <div class="container">
+            <div class="btn-container">
+              <button @click="prevPage">
+                Previous
+              </button>
 
-            <button @click="nextPage">
-              Next
-            </button>
+              <button @click="nextPage">
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -170,30 +153,19 @@ console.log(articles);
 <style scoped>
 .admin-container {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr;
   gap: 20px;
+  padding: 20px;
 }
 
-.admin-container .side-bar {
-  height: 100%;
-}
-
-
-@media (max-width: 768px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
+.admin-content-dashboard {
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .articles-container {
   display: block;
   padding: 20px;
-}
-
-.container h1 {
-  margin: 2rem auto;
-  font-size: 1.8rem;
-  color: var(--primary-hover);
 }
 
 .container {
@@ -202,7 +174,7 @@ console.log(articles);
   gap: 20px;
   justify-content: center;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 
 .article-cards {
@@ -212,7 +184,7 @@ console.log(articles);
 }
 
 .card {
-  width: 250px;
+  width: 260px;
   border: 2px solid var(--border-color);
   overflow: hidden;
   background-color: var(--background);
@@ -280,4 +252,18 @@ console.log(articles);
   color: var(--text-hover);
   transition: background-color 0.3s ease-in-out;
 }
+
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
+  }
+
+}
 </style>
+
