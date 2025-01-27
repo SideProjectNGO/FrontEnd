@@ -4,6 +4,8 @@
 
 <template>
   <NavBar/>
+  <LandingPage/>
+  <Articles/>
   <Footer/>
 </template>
 
