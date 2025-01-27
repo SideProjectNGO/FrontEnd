@@ -1,14 +1,10 @@
 <script lang="ts">
-import {defineComponent} from 'vue'
 
-export default defineComponent({
-  name: "new-article"
-})
 </script>
 
 <template>
   <AdminNavBar/>
-  <NewArticle/>
+  <NewArticleForm/>
   <AdminFooter/>
 </template>
 
