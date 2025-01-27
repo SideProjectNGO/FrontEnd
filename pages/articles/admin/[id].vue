@@ -37,6 +37,36 @@ const articles: Article[] = [
     author_photo: null,
     sub_photo: [],
   },
+  {
+    article_id: 2,
+    title: 'The Impact of Early Childhood Education',
+    content: `
+      Early childhood education lays the foundation for lifelong learning and development...
+    `,
+    summary: 'Explores the importance of early childhood education and its role in shaping a child’s future success.',
+    date: '2025-01-15',
+    author_name: 'Jane Smith',
+    author_country: 'Canada',
+    author_id: 1,
+    main_photo: null,
+    author_photo: null,
+    sub_photo: [],
+  },
+  {
+    article_id: 3,
+    title: 'The Impact of Early Childhood Education',
+    content: `
+      Early childhood education lays the foundation for lifelong learning and development...
+    `,
+    summary: 'Explores the importance of early childhood education and its role in shaping a child’s future success.',
+    date: '2025-01-15',
+    author_name: 'Jane Smith',
+    author_country: 'Canada',
+    author_id: 1,
+    main_photo: null,
+    author_photo: null,
+    sub_photo: [],
+  },
 ];
 
 const route = useRoute();
