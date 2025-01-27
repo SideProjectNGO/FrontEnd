@@ -31,9 +31,9 @@
         <ul class="navigation-links">
           <li><router-link to="/home">Home</router-link></li>
           <li><router-link to="/about">About</router-link></li>
-          <li><router-link to="/">Stories</router-link></li>
+          <li><router-link to="/stories">Stories</router-link></li>
           <li><router-link to="/articles">Articles</router-link></li>
-          <li><router-link to="/">Volunteer</router-link></li>
+          <li><router-link to="/volunteer-form">Volunteer</router-link></li>
         </ul>
       </nav>
     </div>
