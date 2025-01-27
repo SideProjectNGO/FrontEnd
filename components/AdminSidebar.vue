@@ -52,8 +52,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-book-open',
     links: [
-      { name: 'All Stories', url: '/stories', icon: 'uil-list-ul' },
-      { name: 'Add New Story', url: '/stories/add', icon: 'uil-plus-circle' }
+      { name: 'All Stories', url: '/stories/admin/', icon: 'uil-list-ul' },
+      { name: 'Add New Story', url: '/stories/admin/new-story', icon: 'uil-plus-circle' }
     ]
   },
   {
