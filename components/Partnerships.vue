@@ -1,15 +1,19 @@
-<script>
-import { ref, computed } from "vue";
+<script setup>
+import {computed} from "vue";
 
-const images = Array.from({ length: 15 }, (_, i) => ({
-  id: i + 1,
-  title: `Image ${i + 1}`,
-  image: `path/to/image${i + 1}.jpg`,
-}));
+const images = [
+  {id: 1, title: "John", image: "/images/mychild logo.jpg"},
+  {id: 2, title: "Jane", image: "/images/mychild logo.jpg"},
+  {id: 3, title: "Alex", image: "/images/mychild logo.jpg"},
+  {id: 4, title: "Emma", image: "/images/mychild logo.jpg"},
+  {id: 5, title: "Chris", image: "/images/mychild logo.jpg"},
+  {id: 6, title: "Sophia", image: "/images/mychild logo.jpg"},
+  {id: 7, title: "Daniel", image: "/images/mychild logo.jpg"},
+  {id: 8, title: "Olivia", image: "/images/mychild logo.jpg"},
+  {id: 9, title: "Michael", image: "/images/mychild logo.jpg"},
+];
 
 const rowPattern = [6, 5];
-const currentIndex = ref(0);
-
 const groupedImages = computed(() => {
   const rows = [];
   let start = 0;
@@ -24,22 +28,16 @@ const groupedImages = computed(() => {
 
   return rows;
 });
-
-export default {
-  setup() {
-    return {
-      groupedImages,
-    };
-  },
-};
 </script>
+
 
 <template>
   <div class="partnerships-section">
+    <h1 class="title">Strength in Partnerships</h1>
     <div class="container">
       <div v-for="(row, rowIndex) in groupedImages" :key="'row-' + rowIndex" class="row">
         <div v-for="image in row" :key="image.id" class="image-container">
-          <img src="../public/images/un-logo-1.avif" :alt="image.title" class="image" />
+          <img :src="image.image" :alt="image.title" class="image"/>
         </div>
       </div>
     </div>
@@ -51,6 +49,13 @@ export default {
   padding: 2rem;
   background-color: #f9f9f9;
 }
+
+.partnerships-section .title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary-hover);
+}
+
 .container {
   max-width: 1200px;
   margin: auto;
