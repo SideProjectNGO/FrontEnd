@@ -14,15 +14,22 @@
           they are protected from harm, empowered to dream, and nurtured to become compassionate, confident leaders of
           tomorrow.
         </p>
+      </div>
+      <div class="box">
+        <img src="../public/images/vision.jpeg" alt="vision">
+      </div>
+    </div>
+    <div class="container">
+      <div class="box">
+        <img src="../public/images/vision.jpeg" alt="vision">
+      </div>
+      <div class="box">
         <h2 class="sub-title">Mission</h2>
         <p class="description">
           Our mission is to provide holistic care, education, and support to children in need.
           Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has
           access to a safe, nurturing environment and the resources they need to unlock their full potential.
         </p>
-      </div>
-      <div>
-        <img src="../public/images/vision.jpeg" alt="vision">
       </div>
     </div>
   </div>
