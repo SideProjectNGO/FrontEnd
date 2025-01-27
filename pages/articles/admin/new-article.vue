@@ -8,7 +8,7 @@ export default defineComponent({
 
 <template>
   <AdminNavBar/>
-  <NewAdminForm/>
+  <NewArticle/>
   <AdminFooter/>
 </template>
 
