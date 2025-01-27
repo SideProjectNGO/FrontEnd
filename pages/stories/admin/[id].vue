@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {useRoute, useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 import {computed} from "vue";
 
-interface Article {
-  article_id: number;
+interface Story {
+  story_id: number;
   title: string;
   content: string;
   summary: string;
@@ -12,13 +12,12 @@ interface Article {
   author_name: string;
   author_country: string;
   main_photo: string;
-  sub_photo: string[];
   author_photo: string;
 }
 
-const articles: Article[] = [
+const stories: Story[] = [
   {
-    article_id: 1,
+    story_id: 1,
     title: "The Impact of Early Childhood Education",
     content: `
       Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
@@ -34,15 +33,9 @@ const articles: Article[] = [
     author_country: "Canada",
     main_photo: "https://example.com/images/web-development-2025.jpg",
     author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo: [
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-    ],
   },
   {
-    article_id: 2,
+    story_id: 2,
     title: "The Role of Play in Child Development",
     content: `
       Play is a fundamental aspect of childhood that supports a child's physical, emotional, and cognitive development. Through play, children explore their environment, develop problem-solving skills, and learn to interact with others. It is a natural way for them to express their creativity and emotions.
@@ -58,15 +51,9 @@ const articles: Article[] = [
     author_country: "Australia",
     main_photo: "https://example.com/images/web-development-2025.jpg",
     author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo: [
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-    ],
   },
   {
-    article_id: 3,
+    story_id: 3,
     title: "The Challenges of Childhood Nutrition",
     content: `
       Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
@@ -82,85 +69,61 @@ const articles: Article[] = [
     author_country: "India",
     main_photo: "https://example.com/images/web-development-2025.jpg",
     author_photo: "https://example.com/images/web-development-2025.jpg",
-    sub_photo: [
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-      "~/public/images/children.jpg",
-    ],
   },
 ];
 
 
 const route = useRoute();
-const router = useRouter();
-const articleId = parseInt(route.params.id as string);
-const article = computed(() => articles.find((a) => a.article_id === articleId));
+const storyId = parseInt(route.params.id as string);
+const story = computed(() => stories.find((a) => a.story_id === storyId));
 
-function goBack() {
-  router.push("/articles");
-}
 </script>
 
 <template>
   <NavBar/>
   <transition name="fade">
-    <div v-if="article" class="article-details">
-      <div class="article-details-container">
-        <h1 class="article-title">{{ article.title }}</h1>
+    <div v-if="story" class="story-details">
+      <div class="story-details-container">
+        <h1 class="story-title">{{ story.title }}</h1>
 
-        <img src="~/public/images/children.jpg" :alt="article.title" class="article-image"/>
+        <img src="~/public/images/children.jpg" :alt="story.title" class="story-image"/>
 
         <hr class="divider"/>
 
         <div class="author-info">
           <div class="author-photo">
-            <img src="~/public/images/children.jpg" :alt="'Photo of ' + article.author_name"/>
+            <img src="~/public/images/children.jpg" :alt="'Photo of ' + story.author_name"/>
           </div>
           <div class="author-details">
-            <p><strong>Author:</strong> {{ article.author_name }} ({{ article.author_country }})</p>
-            <p><strong>Date:</strong> {{ article.date }}</p>
+            <p><strong>Author:</strong> {{ story.author_name }} ({{ story.author_country }})</p>
+            <p><strong>Date:</strong> {{ story.date }}</p>
           </div>
         </div>
 
         <hr class="divider"/>
 
 
-        <div class="article-content"> {{ article.content }}</div>
+        <div class="story-content"> {{ story.content }}</div>
 
-        <div class="sub-photos">
-          <h3 class="title">Photos</h3>
-          <div class="sub-photos-grid">
-            <img
-                v-for="photo in article.sub_photo"
-                :key="photo"
-                src="~/public/images/children.jpg"
-                :alt="'Additional photo for ' + article.title"
-                class="sub-photo"
-            />
-          </div>
-        </div>
-
-        <button class="back-btn" @click="goBack">Back to Articles</button>
       </div>
     </div>
   </transition>
-  <Articles/>
+  <stories/>
   <Footer/>
 </template>
 
 <style scoped>
-.article-details-container {
+.story-details-container {
   max-width: 1200px;
   margin: auto;
   animation: fade-in 0.8s ease-in-out;
 }
 
-.article-details {
+.story-details {
   padding: 20px;
 }
 
-.article-title {
+.story-title {
   font-weight: bold;
   font-size: 2rem;
   color: var(--primary-hover);
@@ -168,7 +131,7 @@ function goBack() {
   margin-bottom: 20px;
 }
 
-.article-image {
+.story-image {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
@@ -177,7 +140,7 @@ function goBack() {
   transition: transform 0.3s ease;
 }
 
-.article-image:hover {
+.story-image:hover {
   transform: scale(1.03);
 }
 
@@ -200,52 +163,8 @@ function goBack() {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.article-content {
+.story-content {
   text-align: justify;;
-}
-
-.title {
-  font-size: 1.8rem;
-  color: var(--primary-hover);
-  margin: 1rem auto;
-}
-
-.sub-photos {
-  margin-top: 20px;
-}
-
-.sub-photos-grid {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 40px 0;
-}
-
-.sub-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.sub-photo:hover {
-  transform: scale(1.1);
-}
-
-.back-btn {
-  padding: 10px 20px;
-  border: 2px solid var(--primary-hover);
-  border-radius: 15px;
-  background-color: var(--background);
-  color: var(--primary-hover);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.back-btn:hover {
-  background-color: var(--primary-hover);
-  color: white;
 }
 
 @keyframes fade-in {

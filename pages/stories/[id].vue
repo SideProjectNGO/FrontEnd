@@ -72,7 +72,6 @@ const stories: Story[] = [
   },
 ];
 
-
 const route = useRoute();
 const storyId = parseInt(route.params.id as string);
 const story = computed(() => stories.find((a) => a.story_id === storyId));

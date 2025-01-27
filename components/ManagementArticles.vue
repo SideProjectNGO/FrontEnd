@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, } from 'vue';
+import {ref,} from 'vue';
 import AdminSidebar from '~/components/AdminSidebar.vue';
 
 definePageMeta({
@@ -117,11 +117,17 @@ console.log(articles);
       <div class="admin-content-dashboard">
         <div class="articles-container">
           <div class="container">
-            <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
-              <div class="card">
+            <transition-group name="fade-slide" tag="div" class="article-cards">
+              <div
+                  class="card"
+                  v-for="(article, index) in visibleArticles"
+                  :key="article.article_id"
+              >
                 <div class="article-header">
                   <h4 class="article-date">{{ article.date }}</h4>
-                  <button @click="viewArticle(article.article_id)">Learn More</button>
+                  <button @click="viewArticle(article.article_id)">
+                    Learn More
+                  </button>
                 </div>
                 <div class="article-body">
                   <h3 class="article-title">{{ article.title }}</h3>
@@ -131,17 +137,12 @@ console.log(articles);
                   </div>
                 </div>
               </div>
-            </div>
+            </transition-group>
           </div>
           <div class="container">
             <div class="btn-container">
-              <button @click="prevPage">
-                Previous
-              </button>
-
-              <button @click="nextPage">
-                Next
-              </button>
+              <button @click="prevPage">Previous</button>
+              <button @click="nextPage">Next</button>
             </div>
           </div>
         </div>
@@ -263,7 +264,17 @@ console.log(articles);
   .admin-container {
     grid-template-columns: 1fr;
   }
+}
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 
