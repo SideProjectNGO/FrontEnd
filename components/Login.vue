@@ -90,20 +90,21 @@ const handleFormSubmit = () => {
 </script>
 
 <template>
-  <div class="login-wrapper">
-    <div class="login-container">
+  <div class="login-page">
+    <div class="login-wrapper">
 
-      <div class="form-section">
+      <div class="form-container">
         <form @submit.prevent="handleFormSubmit">
-          <h2 class="form-heading">Welcome Back </h2>
-          <div v-for="field in fields" :key="field.id" class="form-group">
+          <h2 class="form-title">Welcome Back</h2>
+          <div v-for="field in fields" :key="field.id" class="form-field">
             <label :for="field.id">
               <span class="icon">
                 <UIcon
                     :name="field.icon"
                 />
               </span>
-              {{ field.label }}</label>
+              {{ field.label }}
+            </label>
             <input
                 v-if="field.type !== 'textarea'"
                 :id="field.id"
@@ -118,15 +119,14 @@ const handleFormSubmit = () => {
                 :placeholder="field.placeholder"
                 v-model="formData[field.validationKey]"
                 required
-            >
-            </textarea>
-            <p v-if="errors[field.validationKey]?.[0]" class="error-message">{{ errors[field.validationKey]?.[0] }}</p>
+            ></textarea>
+            <p v-if="errors[field.validationKey]?.[0]" class="error-text">{{ errors[field.validationKey]?.[0] }}</p>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn-submit">Submit</button>
+            <button type="submit" class="submit-btn">Submit</button>
           </div>
         </form>
-        <div class="social-media-links">
+        <div class="social-links">
           <ul>
             <li><a>
               <UIcon name="mdi-facebook" class="icon facebook"/>
@@ -143,26 +143,26 @@ const handleFormSubmit = () => {
           </ul>
         </div>
 
-        <div class="form-divider">
-          <hr/>
-          <router-link to="/signup" class="divider-text">Sign Up</router-link>
-          <hr/>
+        <div class="form-footer">
+          <hr />
+          <router-link to="/signup" class="signup-link">Sign Up</router-link>
+          <hr />
         </div>
       </div>
 
-      <div class="info-section">
-        <h2 class="info-heading">Every Child is My Child</h2>
-        <img src="../public/images/logo.webp" alt="Login illustration" class="info-image"/>
+      <div class="info-container">
+        <h2 class="info-title">Every Child is My Child</h2>
+        <img src="../public/images/logo.webp" alt="Login illustration" class="info-image" />
       </div>
     </div>
 
-    <div class="decorative-shape top-shape"></div>
-    <div class="decorative-shape bottom-shape"></div>
+    <div class="decorative-circle top-circle"></div>
+    <div class="decorative-circle bottom-circle"></div>
   </div>
 </template>
 
 <style scoped>
-.login-wrapper {
+.login-page {
   background: white;
   height: 100vh;
   display: flex;
@@ -173,7 +173,7 @@ const handleFormSubmit = () => {
   overflow: hidden;
 }
 
-.login-container {
+.login-wrapper {
   display: flex;
   flex-direction: row;
   width: 70%;
@@ -185,7 +185,7 @@ const handleFormSubmit = () => {
   z-index: 1001;
 }
 
-.form-section {
+.form-container {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -196,7 +196,7 @@ const handleFormSubmit = () => {
   min-height: 600px;
 }
 
-.form-heading {
+.form-title {
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -204,27 +204,27 @@ const handleFormSubmit = () => {
   text-align: center;
 }
 
-.form-section form {
+.form-container form {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
 }
 
-.form-group {
+.form-field {
   width: 100%;
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.form-field label {
   margin-bottom: 8px;
   font-size: 1rem;
   color: var(--primary-color);
 }
 
-.form-group input,
-.form-group textarea {
+.form-field input,
+.form-field textarea {
   padding: 10px;
   font-size: 0.9rem;
   border: 1px solid #ccc;
@@ -233,8 +233,8 @@ const handleFormSubmit = () => {
   transition: border-color 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.form-field input:focus,
+.form-field textarea:focus {
   border-color: var(--primary-color, #007bff);
 }
 
@@ -243,7 +243,7 @@ const handleFormSubmit = () => {
   text-align: center;
 }
 
-.btn-submit {
+.submit-btn {
   width: 100%;
   padding: 10px 20px;
   background: var(--primary-color);
@@ -256,35 +256,35 @@ const handleFormSubmit = () => {
   transition: background 0.3s ease;
 }
 
-.btn-submit:hover {
+.submit-btn:hover {
   background: var(--primary-hover);
 }
 
-.error-message {
+.error-text {
   color: red;
   font-size: 0.8rem;
   margin-top: 5px;
 }
 
-.social-media-links {
+.social-links {
   margin-top: 20px;
   text-align: center;
 }
 
-.social-media-links ul {
+.social-links ul {
   display: flex;
   justify-content: center;
   gap: 15px;
   padding: 0;
 }
 
-.social-media-links ul li {
+.social-links ul li {
   font-size: 1.5rem;
   color: var(--primary-hover);
   cursor: pointer;
 }
 
-.info-section {
+.info-container {
   flex: 1;
   background-color: var(--primary-color);
   color: var(--text-color);
@@ -296,7 +296,7 @@ const handleFormSubmit = () => {
   padding: 30px;
 }
 
-.info-heading {
+.info-title {
   margin-bottom: 20px;
   font-size: 1.8rem;
   font-weight: bold;
@@ -308,13 +308,13 @@ const handleFormSubmit = () => {
   border-radius: 10px;
 }
 
-.decorative-shape {
+.decorative-circle {
   position: absolute;
   z-index: 0;
   border-radius: 50%;
 }
 
-.top-shape {
+.top-circle {
   width: 300px;
   height: 300px;
   background: var(--primary-color);
@@ -322,7 +322,7 @@ const handleFormSubmit = () => {
   left: -150px;
 }
 
-.bottom-shape {
+.bottom-circle {
   width: 250px;
   height: 250px;
   background: #eeeeee;
@@ -330,7 +330,7 @@ const handleFormSubmit = () => {
   right: -125px;
 }
 
-.form-divider {
+.form-footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -338,52 +338,51 @@ const handleFormSubmit = () => {
   padding: 20px 0;
 }
 
-.form-divider hr {
+.form-footer hr {
   flex: 1;
   border: none;
   border-top: 2px solid var(--primary-hover);
 }
 
-.divider-text {
+.signup-link {
   font-size: 1.2rem;
   color: var(--primary-color);
   padding: 0 10px;
 }
 
-
 @media (max-width: 1200px) {
-  .login-container {
+  .login-wrapper {
     width: 90%;
     flex-direction: column;
     height: auto;
   }
 
-  .form-section,
-  .info-section {
+  .form-container,
+  .info-container {
     padding: 20px;
     min-height: auto;
   }
 
-  .form-heading {
+  .form-title {
     font-size: 1.5rem;
   }
 
-  .info-heading {
+  .info-title {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .login-wrapper {
+  .login-page {
     padding: 10px;
   }
 
-  .btn-submit {
+  .submit-btn {
     font-size: 0.9rem;
     padding: 8px;
   }
 
-  .social-media-links ul {
+  .social-links ul {
     gap: 10px;
   }
 
@@ -393,16 +392,17 @@ const handleFormSubmit = () => {
 }
 
 @media (max-width: 480px) {
-  .form-heading {
+  .form-title {
     font-size: 1.2rem;
   }
 
-  .btn-submit {
+  .submit-btn {
     font-size: 0.8rem;
   }
 
-  .info-heading {
+  .info-title {
     font-size: 1.2rem;
   }
 }
 </style>
+
