@@ -97,22 +97,22 @@ console.log(stories);
 
 <template>
   <div class="admin-dashboard">
-    <div class="admin-container">
-      <div class="side-bar">
+    <div class="admin-wrapper">
+      <div class="sidebar">
         <AdminSidebar/>
       </div>
-      <div class="admin-content-dashboard">
-        <h2 class="title">Management Stories</h2>
-        <div class="stories-container">
-          <div class="container">
-            <div class="story-cards" v-for="(story, index) in visibleStories" :key="story.story_id">
+      <div class="dashboard-content">
+        <h2 class="page-title">Management Stories</h2>
+        <div class="stories-wrapper">
+          <div class="stories-list">
+            <div class="story-card" v-for="(story, index) in visibleStories" :key="story.story_id">
               <div class="card">
-                <div class="story-header">
+                <div class="card-header">
                   <h4 class="story-date">{{ story.date }}</h4>
                 </div>
-                <div class="story-body">
+                <div class="card-body">
                   <h3 class="story-title" @click="viewStory(story.story_id)">{{ story.title }}</h3>
-                  <div class="author-details">
+                  <div class="author-info">
                     <h2>{{ story.author_name }}</h2>
                     <h2>{{ story.author_country }}</h2>
                   </div>
@@ -120,15 +120,10 @@ console.log(stories);
               </div>
             </div>
           </div>
-          <div class="container">
-            <div class="btn-container">
-              <button @click="prevPage">
-                Previous
-              </button>
-
-              <button @click="nextPage">
-                Next
-              </button>
+          <div class="pagination">
+            <div class="pagination-controls">
+              <button @click="prevPage">Previous</button>
+              <button @click="nextPage">Next</button>
             </div>
           </div>
         </div>
@@ -138,19 +133,19 @@ console.log(stories);
 </template>
 
 <style scoped>
-.admin-container {
+.admin-wrapper {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
   padding: 20px;
 }
 
-.admin-content-dashboard {
+.dashboard-content {
   padding: 20px;
   border-radius: 10px;
 }
 
-.title {
+.page-title {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
@@ -158,12 +153,11 @@ console.log(stories);
   margin: 0;
 }
 
-.stories-container {
-  display: block;
+.stories-wrapper {
   padding: 20px;
 }
 
-.container {
+.stories-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -172,7 +166,7 @@ console.log(stories);
   margin: 5rem auto;
 }
 
-.story-cards {
+.story-card {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -191,27 +185,20 @@ console.log(stories);
   box-shadow: rgba(149, 157, 165, 0.4) 0 8px 24px;
 }
 
-.story-header {
+.card-header {
   display: flex;
   justify-content: space-between;
   min-height: 60px;
 }
 
-.article-header button {
-  border: 2px solid var(--border-color);
-  margin: 10px 0;
-  padding: 5px 10px;
-  border-radius: 15px;
-}
-
-.card .story-header .story-date {
+.card-header .story-date {
   font-weight: 600;
   font-size: .9rem;
   color: var(--black-text-hover);
   margin: 10px 0;
 }
 
-.story-body {
+.card-body {
   padding: 15px;
 }
 
@@ -222,43 +209,36 @@ console.log(stories);
   min-height: 50px;
 }
 
-.author-details {
+.author-info {
   display: flex;
   justify-content: space-between;
   color: var(--black-text-hover);
 }
 
-.container .btn-container {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 30px auto;
 }
 
-.container .btn-container button {
+.pagination-controls button {
   margin-right: 50px;
   padding: 10px;
   border: 2px solid var(--primary-hover);
   min-width: 120px;
 }
 
-.container .btn-container button:hover {
+.pagination-controls button:hover {
   background: var(--primary-hover);
   color: var(--text-hover);
   transition: background-color 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {
-  .admin-container {
+  .admin-wrapper {
     grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 768px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
-
 }
 </style>
 
