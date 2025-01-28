@@ -2,25 +2,25 @@
 </script>
 
 <template>
-  <div class="landing-page">
-    <div class="container">
-      <div class="landing-image-container">
+  <div class="landing-section">
+    <div class="content-wrapper">
+      <div class="image-container">
         <img src="../public/images/child.jpeg" alt="landing-image" class="landing-image"/>
       </div>
-      <div class="landing-details-container">
-        <h2 class="title">Every Child is My Child</h2>
-        <p class="description">
+      <div class="text-container">
+        <h2 class="headline">Every Child is My Child</h2>
+        <p class="subtext">
           Millions of children around the world face devastating losses and an uncertain future due to escalating armed
           conflicts, inequalities, and the impact of climate change on their lives and health.
         </p>
-        <router-link to="/about" class="cta-button">MORE ABOUT MYCHILD</router-link>
+        <router-link to="/about" class="cta-link">MORE ABOUT MYCHILD</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.landing-page {
+.landing-section {
   height: 90vh;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
   animation: fadeIn 2s forwards;
 }
 
-.container {
+.content-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -40,7 +40,7 @@
   padding: 1.5rem;
 }
 
-.landing-image-container {
+.image-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@
   object-fit: cover;
 }
 
-.landing-details-container {
+.text-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,21 +65,21 @@
   animation: fadeInDetails 2s ease-in-out 1s forwards;
 }
 
-.title {
+.headline {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: var(--text-color);
 }
 
-.description {
+.subtext {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   color: var(--text-color);
 }
 
-.cta-button {
+.cta-link {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -96,17 +96,17 @@
   animation: fadeInButton 2s ease-in-out 1.5s forwards;
 }
 
-.cta-button:hover {
+.cta-link:hover {
   background: var(--background);
   transition: background 0.3s ease;
 }
 
 @media screen and (max-width: 1200px) {
-  .landing-page {
+  .landing-section {
     min-height: 100vh;
   }
 
-  .container {
+  .content-wrapper {
     grid-template-columns: 1fr;
   }
 
@@ -115,22 +115,22 @@
     height: auto;
   }
 
-  .title {
+  .headline {
     font-size: 2rem;
   }
 
-  .description {
+  .subtext {
     font-size: 0.9rem;
   }
 
-  .cta-button {
+  .cta-link {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .landing-page {
+  .landing-section {
     min-height: 100vh;
   }
 
@@ -139,17 +139,17 @@
     height: auto;
   }
 
-  .title {
+  .headline {
     font-size: 1.7rem;
     text-align: center;
   }
 
-  .description {
+  .subtext {
     font-size: 1rem;
     text-align: center;
   }
 
-  .cta-button {
+  .cta-link {
     width: 100%;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -162,15 +162,15 @@
     height: auto;
   }
 
-  .title {
+  .headline {
     font-size: 1.5rem;
   }
 
-  .description {
+  .subtext {
     font-size: 0.9rem;
   }
 
-  .cta-button {
+  .cta-link {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
@@ -214,3 +214,4 @@
   }
 }
 </style>
+
