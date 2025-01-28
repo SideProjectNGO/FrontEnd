@@ -19,7 +19,7 @@
           </div>
         </div>
         <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle-btn">
-          <UIcon name="uil-bars" />
+          <UIcon name="uil-bars"/>
         </button>
       </div>
 
@@ -29,11 +29,24 @@
 
       <nav v-if="isLinksVisible || !isMobile" class="navigation-menu">
         <ul class="navigation-links">
-          <li><router-link to="/home">Home</router-link></li>
-          <li><router-link to="/about">About</router-link></li>
-          <li><router-link to="/stories">Stories</router-link></li>
-          <li><router-link to="/articles">Articles</router-link></li>
-          <li><router-link to="/volunteer-form">Volunteer</router-link></li>
+          <li>
+            <router-link to="/home">Home</router-link>
+          </li>
+          <li>
+            <router-link to="/about">About</router-link>
+          </li>
+          <li>
+            <router-link to="/articles">Articles</router-link>
+          </li>
+          <li>
+            <router-link to="/activities">Activities</router-link>
+          </li>
+          <li>
+            <router-link to="/stories">Stories</router-link>
+          </li>
+          <li>
+            <router-link to="/volunteer-form">Volunteer</router-link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -41,7 +54,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 
 const isLinksVisible = ref(false);
 const isMobile = ref(false);
@@ -140,7 +153,7 @@ onMounted(() => {
     display: none;
   }
 
-  .social-media-container{
+  .social-media-container {
     display: none;
   }
 
