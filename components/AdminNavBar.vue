@@ -18,6 +18,9 @@
             <router-link to="/">Setting</router-link>
           </li>
           <li>
+            <router-link to="/home">Home</router-link>
+          </li>
+          <li>
             <button @click="logout">Logout</button>
           </li>
         </ul>
