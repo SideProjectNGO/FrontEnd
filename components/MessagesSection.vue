@@ -86,42 +86,40 @@ function prevPage() {
   currentIndex.value = (currentIndex.value - itemsPerPage + messages.length) % messages.length;
 }
 </script>
-
 <template>
   <div class="messages-section">
-    <div class="container">
-      <button @click="prevPage" aria-label="Previous message" class="navigation-btn">
+    <div class="content-wrapper">
+      <button @click="prevPage" aria-label="Previous message" class="nav-btn">
         <UIcon name="mdi-arrow-left"/>
       </button>
       <div
-          class="message-box"
+          class="message-card"
           v-for="message in visibleMessages"
           :key="message.id"
           :style="{ animation: 'fadeIn 1s ease-out' }"
       >
-        <div class="message-box-image" v-if="message.image">
+        <div class="message-image" v-if="message.image">
           <img :src="message.image" alt="Message Image"/>
         </div>
-        <div class="message-box-content">
-          <h3 class="sub-title">{{ message.title }}</h3>
-          <p class="description">{{ message.message }}</p>
+        <div class="message-text">
+          <h3 class="message-title">{{ message.title }}</h3>
+          <p class="message-description">{{ message.message }}</p>
         </div>
       </div>
-      <button @click="nextPage" aria-label="Next message" class="navigation-btn">
+      <button @click="nextPage" aria-label="Next message" class="nav-btn">
         <UIcon name="mdi-arrow-right"/>
       </button>
     </div>
-    <div class="btn-container">
-      <button @click="prevPage" aria-label="Previous message" class="navigation-btn">
+    <div class="navigation-buttons">
+      <button @click="prevPage" aria-label="Previous message" class="nav-btn">
         <UIcon name="mdi-arrow-left"/>
       </button>
-      <button @click="nextPage" aria-label="Next message" class="navigation-btn">
+      <button @click="nextPage" aria-label="Next message" class="nav-btn">
         <UIcon name="mdi-arrow-right"/>
       </button>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .messages-section {
@@ -137,14 +135,14 @@ function prevPage() {
   flex-direction: column;
 }
 
-.messages-section .container {
+.messages-section .content-wrapper {
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.messages-section .message-box {
+.messages-section .message-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +155,7 @@ function prevPage() {
   border-radius: 50px 0;
 }
 
-.messages-section .message-box-image {
+.messages-section .message-image {
   width: 150px;
   height: 150px;
   min-height: 170px;
@@ -165,29 +163,29 @@ function prevPage() {
   margin-bottom: 20px;
 }
 
-.messages-section .message-box-image img {
+.messages-section .message-image img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.message-box-content {
+.message-text {
   text-align: center;
   min-height: 180px;
 }
 
-.sub-title {
+.message-title {
   font-size: 1.5rem;
   color: var(--text-color);
 }
 
-.description {
+.message-description {
   font-size: 1.2rem;
   color: var(--text-color);
 }
 
-.navigation-btn {
+.nav-btn {
   background-color: transparent;
   cursor: pointer;
   font-size: 2rem;
@@ -199,12 +197,12 @@ function prevPage() {
   border-radius: 30px;
 }
 
-.navigation-btn:hover {
+.nav-btn:hover {
   color: var(--primary-hover);
   transform: scale(1.2);
 }
 
-.btn-container {
+.navigation-buttons {
   display: none;
 }
 
@@ -218,38 +216,39 @@ function prevPage() {
 }
 
 @media (max-width: 768px) {
-  .messages-section .container {
+  .messages-section .content-wrapper {
     flex-direction: column;
     padding: 20px;
   }
 
-  .messages-section .container button {
+  .messages-section .content-wrapper button {
     display: none;
   }
 
-  .message-box-content {
+  .message-text {
     min-height: 280px;
   }
 
-  .btn-container {
+  .navigation-buttons {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-top: 20px;
   }
 
-  .btn-container button {
+  .navigation-buttons button {
     width: 50px;
     height: 50px;
     margin: 0 10px;
     font-size: 1.5rem;
   }
 
-  .messages-section .message-box {
+  .messages-section .message-card {
     width: 100%;
   }
 }
 </style>
+
 
 
 
