@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import {useRoute, } from "vue-router";
-import {computed} from "vue";
+import AdminSidebar from '~/components/AdminSidebar.vue';
+import { useRoute, useRouter } from 'vue-router';
+import { reactive, computed } from 'vue';
 
-interface Story {
-  story_id: number;
+definePageMeta({
+  middleware: 'auth',
+});
+
+interface Activity {
+  activity_id: number;
   title: string;
   content: string;
   summary: string;
@@ -11,170 +16,393 @@ interface Story {
   date: string;
   author_name: string;
   author_country: string;
-  main_photo: string;
-  author_photo: string;
+  main_photo: File | string | null;
+  sub_photo: (File | string)[];
+  author_photo: File | string | null;
 }
 
-const stories: Story[] = [
+const activities: Activity[] = [
   {
-    story_id: 1,
-    title: "The Impact of Early Childhood Education",
+    activity_id: 1,
+    title: 'The Impact of Early Childhood Education',
     content: `
-      Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
-
-      The importance of fostering creativity and curiosity cannot be overstated. Activities like storytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
-
-      Equitable access to early education remains a challenge in many regions. Economic barriers, lack of trained educators, and inadequate facilities can limit opportunities for children, especially in marginalized communities. Addressing these issues is key to ensuring that every child gets a strong start in life.
+      Early childhood education lays the foundation for lifelong learning and development...
     `,
-    summary: "Explores the importance of early childhood education and its role in shaping a child’s future success.",
-    author_id: 101,
-    date: "2025-01-15",
-    author_name: "Jane Smith",
-    author_country: "Canada",
-    main_photo: "https://example.com/images/web-development-2025.jpg",
-    author_photo: "https://example.com/images/web-development-2025.jpg",
+    summary: 'Explores the importance of early childhood education and its role in shaping a child’s future success.',
+    date: '2025-01-15',
+    author_name: 'Jane Smith',
+    author_country: 'Canada',
+    author_id: 1,
+    main_photo: null,
+    author_photo: null,
+    sub_photo: [],
   },
   {
-    story_id: 2,
-    title: "The Role of Play in Child Development",
+    activity_id: 2,
+    title: 'The Impact of Early Childhood Education',
     content: `
-      Play is a fundamental aspect of childhood that supports a child's physical, emotional, and cognitive development. Through play, children explore their environment, develop problem-solving skills, and learn to interact with others. It is a natural way for them to express their creativity and emotions.
-
-      Physical play, such as running, climbing, or playing sports, enhances motor skills and overall health. Social play, like role-playing or group games, teaches children cooperation, empathy, and conflict resolution. Each type of play offers unique benefits, helping children grow holistically.
-
-      Unfortunately, modern challenges such as screen addiction and lack of safe outdoor spaces have reduced opportunities for children to play. Parents and communities need to prioritize playtime to ensure that children can fully benefit from its developmental advantages.
+      Early childhood education lays the foundation for lifelong learning and development...
     `,
-    summary: "Highlights the critical role of play in fostering a child’s holistic growth and development.",
-    author_id: 102,
-    date: "2025-01-18",
-    author_name: "Michael Lee",
-    author_country: "Australia",
-    main_photo: "https://example.com/images/web-development-2025.jpg",
-    author_photo: "https://example.com/images/web-development-2025.jpg",
+    summary: 'Explores the importance of early childhood education and its role in shaping a child’s future success.',
+    date: '2025-01-15',
+    author_name: 'Jane Smith',
+    author_country: 'Canada',
+    author_id: 1,
+    main_photo: null,
+    author_photo: null,
+    sub_photo: [],
   },
   {
-    story_id: 3,
-    title: "The Challenges of Childhood Nutrition",
+    activity_id: 3,
+    title: 'The Impact of Early Childhood Education',
     content: `
-      Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
-
-      Overnutrition and obesity are growing concerns in developed nations. Many children consume diets high in sugar, fat, and processed foods, leading to health issues like diabetes and heart problems. On the other hand, undernutrition is still a critical issue in many developing countries, where children suffer from stunted growth and poor health due to food insecurity.
-
-      Educating parents and caregivers about balanced diets and healthy eating habits is vital. Schools can also play a significant role by providing nutritious meals and incorporating food education into their curricula. Addressing these challenges requires a collaborative effort from families, educators, and policymakers.
+      Early childhood education lays the foundation for lifelong learning and development...
     `,
-    summary: "Explores the importance of proper childhood nutrition and the challenges faced worldwide.",
-    author_id: 103,
-    date: "2025-01-20",
-    author_name: "Sarah Khan",
-    author_country: "India",
-    main_photo: "https://example.com/images/web-development-2025.jpg",
-    author_photo: "https://example.com/images/web-development-2025.jpg",
+    summary: 'Explores the importance of early childhood education and its role in shaping a child’s future success.',
+    date: '2025-01-15',
+    author_name: 'Jane Smith',
+    author_country: 'Canada',
+    author_id: 1,
+    main_photo: null,
+    author_photo: null,
+    sub_photo: [],
   },
 ];
 
 const route = useRoute();
-const storyId = parseInt(route.params.id as string);
-const story = computed(() => stories.find((a) => a.story_id === storyId));
+const router = useRouter();
+const activityId = parseInt(route.params.id as string);
 
+const activity = computed(() => activities.find((a) => a.activity_id === activityId));
+
+const editedActivity = reactive<Activity>({
+  activity_id: activity.value?.activity_id || 0,
+  title: activity.value?.title || '',
+  content: activity.value?.content || '',
+  summary: activity.value?.summary || '',
+  author_id: activity.value?.author_id || 0,
+  date: activity.value?.date || '',
+  author_name: activity.value?.author_name || '',
+  author_country: activity.value?.author_country || '',
+  main_photo: activity.value?.main_photo || null,
+  sub_photo: activity.value?.sub_photo || [],
+  author_photo: activity.value?.author_photo || null,
+});
+
+const updateActivity = () => {
+  const index = activities.findIndex((a) => a.activity_id === activityId);
+  if (index !== -1) {
+    if (editedActivity.main_photo instanceof File) {
+      editedActivity.main_photo = URL.createObjectURL(editedActivity.main_photo);
+    }
+    if (editedActivity.author_photo instanceof File) {
+      editedActivity.author_photo = URL.createObjectURL(editedActivity.author_photo);
+    }
+    editedActivity.sub_photo = editedActivity.sub_photo.filter(file => file instanceof File);
+    activities[index] = { ...editedActivity };
+    alert('Activity updated successfully!');
+    router.push(`/activities/admin/${activityId}`);
+  }
+};
+
+const deleteActivity = () => {
+  const index = activities.findIndex((a) => a.activity_id === activityId);
+  if (index !== -1) {
+    activities.splice(index, 1);
+    alert('Activity deleted successfully!');
+    router.push('/activities/admin');
+  }
+};
 </script>
 
 <template>
-  <NavBar/>
-  <transition name="fade">
-    <div v-if="story" class="story-details">
-      <div class="story-details-container">
-        <h1 class="story-title">{{ story.title }}</h1>
+  <AdminNavBar />
+  <div class="admin-dashboard">
+    <div class="admin-container">
+      <div class="side-bar">
+        <AdminSidebar />
+      </div>
+      <div class="admin-content-dashboard">
+        <div class="activity-details">
+          <div>
+            <h1>{{ activity?.title }}</h1>
+            <form @submit.prevent="updateActivity" class="activity-form">
+              <div v-for="(value, key) in editedActivity" :key="key" class="form-group">
+                <label :for="key" class="form-label">{{ key.charAt(0).toUpperCase() + key.slice(1) }}:</label>
 
-        <img src="~/public/images/children.jpg" :alt="story.title" class="story-image"/>
+                <input
+                    v-if="key === 'main_photo' || key === 'author_photo'"
+                    @change="event => {
+                    const target = event.target as HTMLInputElement;
+                    if (target?.files) {
+                      editedActivity[key] = target.files[0];
+                    }
+                  }"
+                    type="file"
+                    :id="key"
+                    class="form-input"
+                />
+                <input
+                    v-if="key === 'sub_photo'"
+                    @change="event => {
+                    const target = event.target as HTMLInputElement;
+                    if (target?.files) {
+                      editedActivity[key] = Array.from(target.files);
+                    }
+                  }"
+                    type="file"
+                    multiple
+                    :id="key"
+                    class="form-input"
+                />
+                <input
+                    v-if="key !== 'content' && key !== 'main_photo' && key !== 'sub_photo' && key !== 'author_photo'"
+                    v-model="editedActivity[key]"
+                    type="text"
+                    :id="key"
+                    class="form-input"
+                />
+                <textarea
+                    v-if="key === 'content'"
+                    v-model="editedActivity[key]"
+                    :id="key"
+                    class="form-textarea"
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-button">Save Activity</button>
+            </form>
 
-        <hr class="divider"/>
-
-        <div class="author-info">
-          <div class="author-photo">
-            <img src="~/public/images/children.jpg" :alt="'Photo of ' + story.author_name"/>
-          </div>
-          <div class="author-details">
-            <p><strong>Author:</strong> {{ story.author_name }} ({{ story.author_country }})</p>
-            <p><strong>Date:</strong> {{ story.date }}</p>
+            <button @click="deleteActivity" style="background-color: red;">Delete Activity</button>
           </div>
         </div>
-
-        <hr class="divider"/>
-
-
-        <div class="story-content"> {{ story.content }}</div>
-
       </div>
     </div>
-  </transition>
-  <Stories/>
-  <Footer/>
+  </div>
+  <AdminFooter />
 </template>
 
-<style scoped>
-.story-details-container {
-  max-width: 1200px;
-  margin: auto;
-  animation: fade-in 0.8s ease-in-out;
-}
 
-.story-details {
+
+<style scoped>
+.admin-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
   padding: 20px;
 }
 
-.story-title {
-  font-weight: bold;
-  font-size: 2rem;
-  color: var(--primary-hover);
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.story-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin: 30px 0;
+.admin-content-dashboard {
   border-radius: 10px;
-  transition: transform 0.3s ease;
 }
 
-.story-image:hover {
-  transform: scale(1.03);
+
+.activity-header button {
+  border: 2px solid var(--border-color);
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 15px;
 }
 
-.author-info {
-  display: flex;
-  gap: 50px;
-  margin-bottom: 20px;
+.container .btn-container button {
+  margin-right: 50px;
+  padding: 10px;
+  border: 2px solid var(--primary-hover);
+  min-width: 120px;
 }
 
-.divider {
-  border: 2px solid var(--text-hover);
-  margin: 20px 0;
+.container .btn-container button:hover {
+  background: var(--primary-hover);
+  color: var(--text-hover);
+  transition: background-color 0.3s ease-in-out;
 }
 
-.author-info .author-photo img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.story-content {
-  text-align: justify;;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
   }
+}
+
+
+.activity-details {
+  width: 95%;
+  margin: 1rem auto;
+}
+
+.activity-form {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.form-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button[style="background-color: red;"] {
+  background-color: red;
+}
+
+button[style="background-color: red;"]:hover {
+  background-color: darkred;
+}
+</style>
+
+
+<style scoped>
+.admin-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}
+
+.admin-container .side-bar {
+  height: 100%;
+}
+
+.activity-details {
+  width: 95%;
+  margin: 1rem auto;
+}
+
+.activity-form {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.form-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button[style="background-color: red;"] {
+  background-color: red;
+}
+
+button[style="background-color: red;"]:hover {
+  background-color: darkred;
 }
 
 </style>
+
