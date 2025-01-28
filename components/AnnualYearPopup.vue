@@ -1,15 +1,18 @@
+<script setup>
+</script>
+
 <template>
   <div class="popup-overlay" @click.self="$emit('close')">
-    <div class="popup">
-      <div class="container">
+    <div class="popup-container">
+      <div class="popup-content-wrapper">
         <div class="popup-header">
           <span>Annual Year Popup</span>
-          <span class="close-button" @click="$emit('close')">X</span>
+          <span class="close-btn" @click="$emit('close')">X</span>
         </div>
-        <div class="popup-content">
-          <div class="item-box">
-            <h2 class="title">Our Annual Report: A Year of Impact</h2>
-            <p class="description">
+        <div class="popup-body">
+          <div class="text-box">
+            <h2 class="report-title">Our Annual Report: A Year of Impact</h2>
+            <p class="report-description">
               Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.
             </p>
             <button class="download-btn">Download</button>
@@ -22,9 +25,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-</script>
 
 <style scoped>
 .popup-overlay {
@@ -41,7 +41,7 @@
   animation: fadeInOverlay 0.3s ease-in-out;
 }
 
-.popup {
+.popup-container {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -59,7 +59,7 @@
   font-weight: bold;
 }
 
-.close-button {
+.close-btn {
   background-color: transparent;
   border: none;
   font-size: 18px;
@@ -67,25 +67,25 @@
   color: #333;
 }
 
-.popup-content {
+.popup-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 20px;
   gap: 20px;
 }
 
-.item-box {
+.text-box {
   display: flex;
   flex-direction: column;
 }
 
-.title {
+.report-title {
   font-size: 1.2rem;
   color: var(--primary-color);
   margin-bottom: 10px;
 }
 
-.description {
+.report-description {
   font-size: 0.9rem;
   text-align: justify;
   color: #333;
@@ -128,11 +128,11 @@
 }
 
 @media (max-width: 768px) {
-  .popup-content {
+  .popup-body {
     grid-template-columns: 1fr;
   }
 
-  .item-box {
+  .text-box {
     margin-bottom: 20px;
   }
 
@@ -140,7 +140,7 @@
     font-size: 16px;
   }
 
-  .description {
+  .report-description {
     font-size: 0.85rem;
   }
 
