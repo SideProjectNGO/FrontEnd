@@ -16,7 +16,6 @@ interface Article {
   author_name: string;
   author_country: string;
   main_photo_url: string;
-  sub_photo_urls: string[];
 }
 
 const articles: Article[] = [
@@ -26,7 +25,7 @@ const articles: Article[] = [
     content: `
       Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
 
-      The importance of fostering creativity and curiosity cannot be overstated. Activities like storytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
+      The importance of fostering creativity and curiosity cannot be overstated. Activities like articletelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
 
       Equitable access to early education remains a challenge in many regions. Economic barriers, lack of trained educators, and inadequate facilities can limit opportunities for children, especially in marginalized communities. Addressing these issues is key to ensuring that every child gets a strong start in life.
     `,
@@ -36,10 +35,6 @@ const articles: Article[] = [
     author_name: "Jane Smith",
     author_country: "Canada",
     main_photo_url: "https://example.com/images/early-education.jpg",
-    sub_photo_urls: [
-      "https://example.com/images/kindergarten.jpg",
-      "https://example.com/images/learning-tools.jpg",
-    ],
   },
   {
     article_id: 2,
@@ -57,10 +52,6 @@ const articles: Article[] = [
     author_name: "Michael Lee",
     author_country: "Australia",
     main_photo_url: "https://example.com/images/children-playing.jpg",
-    sub_photo_urls: [
-      "https://example.com/images/outdoor-play.jpg",
-      "https://example.com/images/group-games.jpg",
-    ],
   },
   {
     article_id: 3,
@@ -78,10 +69,6 @@ const articles: Article[] = [
     author_name: "Sarah Khan",
     author_country: "India",
     main_photo_url: "https://example.com/images/child-nutrition.jpg",
-    sub_photo_urls: [
-      "https://example.com/images/healthy-meals.jpg",
-      "https://example.com/images/growth-chart.jpg",
-    ],
   }
 ];
 
@@ -100,12 +87,12 @@ function prevPage() {
   currentIndex.value = (currentIndex.value - itemsPerPage + articles.length) % articles.length;
 }
 
+
 function viewArticle(id: number) {
   useRouter().push(`/articles/admin/${id}`);
 }
 
 console.log(articles);
-
 </script>
 
 <template>
@@ -118,32 +105,30 @@ console.log(articles);
         <h2 class="title">Management Articles</h2>
         <div class="articles-container">
           <div class="container">
-            <transition-group name="fade-slide" tag="div" class="article-cards">
-              <div
-                  class="card"
-                  v-for="(article, index) in visibleArticles"
-                  :key="article.article_id"
-              >
+            <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
+              <div class="card">
                 <div class="article-header">
                   <h4 class="article-date">{{ article.date }}</h4>
-                  <button @click="viewArticle(article.article_id)">
-                    Learn More
-                  </button>
                 </div>
                 <div class="article-body">
-                  <h3 class="article-title">{{ article.title }}</h3>
+                  <h3 class="article-title" @click="viewArticle(article.article_id)">{{ article.title }}</h3>
                   <div class="author-details">
                     <h2>{{ article.author_name }}</h2>
                     <h2>{{ article.author_country }}</h2>
                   </div>
                 </div>
               </div>
-            </transition-group>
+            </div>
           </div>
           <div class="container">
             <div class="btn-container">
-              <button @click="prevPage">Previous</button>
-              <button @click="nextPage">Next</button>
+              <button @click="prevPage">
+                Previous
+              </button>
+
+              <button @click="nextPage">
+                Next
+              </button>
             </div>
           </div>
         </div>
@@ -271,17 +256,7 @@ console.log(articles);
   .admin-container {
     grid-template-columns: 1fr;
   }
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 </style>
 
