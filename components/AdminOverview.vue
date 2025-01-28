@@ -10,7 +10,6 @@ const articlesCount = ref(0);
 const storiesCount = ref(0);
 const volunteerRequestsCount = ref(0);
 const activitiesCount = ref(0);
-
 const fetchDashboardData = () => {
   setTimeout(() => {
     articlesCount.value = 10;
@@ -19,8 +18,6 @@ const fetchDashboardData = () => {
     volunteerRequestsCount.value = 3;
   }, 500);
 };
-
-
 const items = [
   {
     title: 'Total Articles',
@@ -56,24 +53,22 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="admin-dashboard">
-    <div class="admin-container">
-      <div class="side-bar">
-        <AdminSidebar/>
+  <div class="dashboard">
+    <div class="dashboard-wrapper">
+      <div class="sidebar">
+        <AdminSidebar />
       </div>
-      <div class="admin-content-dashboard">
-        <div class="content-container">
-          <div class="dashboard-cards">
+      <div class="dashboard-main-content">
+        <div class="content-wrapper">
+          <div class="card-container">
             <div
                 class="dashboard-card"
                 v-for="item in items"
                 :key="item.title"
-                :style="{background: item.color}"
+                :style="{ background: item.color }"
             >
               <h3>{{ item.title }}</h3>
-              <UIcon
-                  :name="item.icon"
-              />
+              <UIcon :name="item.icon" />
               <p>{{ item.count }}</p>
             </div>
           </div>
@@ -84,19 +79,19 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.admin-container {
+.dashboard-wrapper {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
   padding: 20px;
 }
 
-.admin-content-dashboard {
+.dashboard-main-content {
   padding: 20px;
   border-radius: 10px;
 }
 
-.dashboard-cards {
+.card-container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -121,11 +116,11 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .admin-container {
+  .dashboard-wrapper {
     grid-template-columns: 1fr;
   }
 
-  .dashboard-cards {
+  .card-container {
     flex-direction: column;
     align-items: center;
   }
@@ -137,10 +132,10 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .admin-container {
+  .dashboard-wrapper {
     grid-template-columns: 1fr;
   }
-
 }
 </style>
+
 
