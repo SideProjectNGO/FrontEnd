@@ -115,6 +115,7 @@ console.log(articles);
         <AdminSidebar/>
       </div>
       <div class="admin-content-dashboard">
+        <h2 class="title">Management Articles</h2>
         <div class="articles-container">
           <div class="container">
             <transition-group name="fade-slide" tag="div" class="article-cards">
@@ -162,6 +163,12 @@ console.log(articles);
 .admin-content-dashboard {
   padding: 20px;
   border-radius: 10px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .articles-container {
