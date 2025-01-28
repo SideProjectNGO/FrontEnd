@@ -13,7 +13,7 @@
           Millions of children around the world face devastating losses and an uncertain future due to escalating armed
           conflicts, inequalities, and the impact of climate change on their lives and health.
         </p>
-        <router-link to="/about" class="cta-button">More About MyChild</router-link>
+        <router-link to="/about" class="cta-button">MORE ABOUT MYCHILD</router-link>
       </div>
     </div>
   </div>

@@ -71,7 +71,7 @@ console.log(stories);
 
 <template>
   <div class="stories-container">
-    <h1 class="title">Stories Around world</h1>
+    <h1 class="title">Stories around world</h1>
     <div class="container">
       <div
           class="story-cards"

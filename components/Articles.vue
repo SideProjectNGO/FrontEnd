@@ -104,7 +104,7 @@ console.log(articles);
 
 <template>
   <div class="articles-container">
-    <h2 class="title">Articles</h2>
+    <h2 class="title">Articles around world</h2>
     <div class="container">
       <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
         <div class="card">
@@ -175,7 +175,7 @@ console.log(articles);
   gap: 20px;
   justify-content: center;
   max-width: 1200px;
-  margin: 5rem auto;
+  margin: 1rem auto;
 }
 
 .article-cards {
