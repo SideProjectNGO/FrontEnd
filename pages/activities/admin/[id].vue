@@ -197,6 +197,14 @@ const deleteActivity = () => {
   margin: 1rem auto;
 }
 
+@media (max-width: 1200px) {
+  .dashboard-container {
+    display: block;
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
 .activity-form {
   max-width: 100%;
   margin: 20px auto;
