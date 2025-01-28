@@ -15,20 +15,20 @@ const closePopup = () => {
 </script>
 
 <template>
-  <div class="annual-year-report">
-    <div class="container">
-      <div class="item-box">
-        <h2 class="title">Our Annual Report: A Year of Impact</h2>
-        <p class="description">
+  <div class="annual-report">
+    <div class="content-wrapper">
+      <div class="text-box">
+        <h2 class="report-title">Our Annual Report: A Year of Impact</h2>
+        <p class="report-description">
           Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the
           achievements, challenges, and milestones that have shaped our mission to empower children. From the success
           stories of the children we serve to the dedication of our team and supporters, this report offers a
           comprehensive look at the impact we’ve had together.
         </p>
-        <button @click="openPopup" class="download-btn">Open Popup</button>
+        <button @click="openPopup" class="open-popup-btn">Open Popup</button>
       </div>
       <div class="image-box">
-        <img src="../public/images/partnership-logo-4.jpeg" alt="annual year report"/>
+        <img src="../public/images/partnership-logo-4.jpeg" alt="annual year report" />
       </div>
     </div>
     <Popup v-if="annualYearPopup" @close="closePopup"></Popup>
@@ -37,12 +37,12 @@ const closePopup = () => {
 
 <style scoped>
 
-.annual-year-report {
+.annual-report {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.container {
+.content-wrapper {
   width: 90%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -51,20 +51,24 @@ const closePopup = () => {
   align-items: center;
 }
 
+.text-box {
+  display: flex;
+  flex-direction: column;
+}
 
-.title {
+.report-title {
   font-size: 1.2rem;
   color: var(--primary-color);
   margin-bottom: 10px;
 }
 
-.description {
+.report-description {
   font-size: 0.9rem;
   text-align: justify;
   color: #333;
 }
 
-.download-btn {
+.open-popup-btn {
   margin-top: 20px;
   padding: 10px;
   border-radius: 5px;
