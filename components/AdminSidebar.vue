@@ -35,7 +35,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-dashboard',
     links: [
-      { name: 'Overview', url: '/admin', icon: 'uil-eye' },
+      {name: 'Overview', url: '/admin', icon: 'uil-eye'},
     ]
   },
   {
@@ -43,8 +43,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-file-alt',
     links: [
-      { name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul' },
-      { name: 'Add New Article', url: '/articles/admin/new-article', icon: 'uil-plus-circle' }
+      {name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul'},
+      {name: 'Add New Article', url: '/articles/admin/new-article', icon: 'uil-plus-circle'}
     ]
   },
   {
@@ -52,26 +52,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-book-open',
     links: [
-      { name: 'All Stories', url: '/stories/admin/', icon: 'uil-list-ul' },
-      { name: 'Add New Story', url: '/stories/admin/new-story', icon: 'uil-plus-circle' }
-    ]
-  },
-  {
-    name: 'Users',
-    type: 'admin',
-    icon: 'uil-users-alt',
-    links: [
-      { name: 'User Management', url: '/users/manage', icon: 'uil-user-check' },
-      { name: 'Add New User', url: '/users/add', icon: 'uil-user-plus' }
-    ]
-  },
-  {
-    name: 'Volunteers',
-    type: 'admin',
-    icon: 'uil-users-alt',
-    links: [
-      { name: 'All Volunteers', url: '/', icon: 'uil-list-ul' },
-      { name: 'Add New Volunteer', url: '/volunteer-form', icon: 'uil-user-plus' }
+      {name: 'All Stories', url: '/stories/admin/', icon: 'uil-list-ul'},
+      {name: 'Add New Story', url: '/stories/admin/new-story', icon: 'uil-plus-circle'}
     ]
   },
   {
@@ -79,10 +61,28 @@ const buttons = [
     type: 'admin',
     icon: 'uil-calendar',
     links: [
-      { name: 'All Activities', url: '/activities', icon: 'uil-calendar-alt' },
-      { name: 'Add New Activity', url: '/activities/add', icon: 'uil-plus-circle' }
+      {name: 'All Activities', url: '/activities', icon: 'uil-calendar-alt'},
+      {name: 'Add New Activity', url: '/activities/admin/new-activity-form', icon: 'uil-plus-circle'}
     ]
-  }
+  },
+  {
+    name: 'Users',
+    type: 'admin',
+    icon: 'uil-users-alt',
+    links: [
+      {name: 'User Management', url: '/users/manage', icon: 'uil-user-check'},
+      {name: 'Add New User', url: '/users/add', icon: 'uil-user-plus'}
+    ]
+  },
+  {
+    name: 'Volunteers',
+    type: 'admin',
+    icon: 'uil-users-alt',
+    links: [
+      {name: 'All Volunteers', url: '/', icon: 'uil-list-ul'},
+      {name: 'Add New Volunteer', url: '/volunteer-form', icon: 'uil-user-plus'}
+    ]
+  },
 ];
 
 const activeButton = ref(null);
