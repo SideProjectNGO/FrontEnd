@@ -117,13 +117,13 @@ const deleteActivity = () => {
 
 <template>
   <AdminNavBar />
-  <div class="admin-dashboard">
-    <div class="admin-container">
-      <div class="side-bar">
+  <div class="dashboard-wrapper">
+    <div class="dashboard-container">
+      <div class="sidebar-wrapper">
         <AdminSidebar />
       </div>
-      <div class="admin-content-dashboard">
-        <div class="activity-details">
+      <div class="dashboard-content">
+        <div class="activity-section">
           <div>
             <h1>{{ activity?.title }}</h1>
             <form @submit.prevent="updateActivity" class="activity-form">
@@ -140,7 +140,7 @@ const deleteActivity = () => {
                   }"
                     type="file"
                     :id="key"
-                    class="form-input"
+                    class="input-field"
                 />
                 <input
                     v-if="key === 'sub_photo'"
@@ -153,26 +153,26 @@ const deleteActivity = () => {
                     type="file"
                     multiple
                     :id="key"
-                    class="form-input"
+                    class="input-field"
                 />
                 <input
                     v-if="key !== 'content' && key !== 'main_photo' && key !== 'sub_photo' && key !== 'author_photo'"
                     v-model="editedActivity[key]"
                     type="text"
                     :id="key"
-                    class="form-input"
+                    class="input-field"
                 />
                 <textarea
                     v-if="key === 'content'"
                     v-model="editedActivity[key]"
                     :id="key"
-                    class="form-textarea"
+                    class="textarea-field"
                 ></textarea>
               </div>
-              <button type="submit" class="submit-button">Save Activity</button>
+              <button type="submit" class="button-save">Save Activity</button>
             </form>
 
-            <button @click="deleteActivity" style="background-color: red;">Delete Activity</button>
+            <button @click="deleteActivity" class="button-delete">Delete Activity</button>
           </div>
         </div>
       </div>
@@ -181,149 +181,18 @@ const deleteActivity = () => {
   <AdminFooter />
 </template>
 
-
-
 <style scoped>
-.admin-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 20px;
-  padding: 20px;
-}
-
-.admin-content-dashboard {
-  border-radius: 10px;
-}
-
-
-.activity-header button {
-  border: 2px solid var(--border-color);
-  margin: 10px 0;
-  padding: 5px 10px;
-  border-radius: 15px;
-}
-
-.container .btn-container button {
-  margin-right: 50px;
-  padding: 10px;
-  border: 2px solid var(--primary-hover);
-  min-width: 120px;
-}
-
-.container .btn-container button:hover {
-  background: var(--primary-hover);
-  color: var(--text-hover);
-  transition: background-color 0.3s ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-.activity-details {
-  width: 95%;
-  margin: 1rem auto;
-}
-
-.activity-form {
-  max-width: 100%;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  border-color: #4CAF50;
-  outline: none;
-}
-
-.form-textarea {
-  height: 150px;
-  resize: vertical;
-}
-
-.submit-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-  background-color: #45a049;
-}
-
-button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-button[style="background-color: red;"] {
-  background-color: red;
-}
-
-button[style="background-color: red;"]:hover {
-  background-color: darkred;
-}
-</style>
-
-
-<style scoped>
-.admin-container {
+.dashboard-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 20px;
 }
 
-.admin-container .side-bar {
+.sidebar-wrapper {
   height: 100%;
 }
 
-.activity-details {
+.activity-section {
   width: 95%;
   margin: 1rem auto;
 }
@@ -348,8 +217,8 @@ button[style="background-color: red;"]:hover {
   font-size: 16px;
 }
 
-.form-input,
-.form-textarea {
+.input-field,
+.textarea-field {
   width: 100%;
   padding: 10px;
   font-size: 14px;
@@ -357,18 +226,18 @@ button[style="background-color: red;"]:hover {
   border-radius: 4px;
 }
 
-.form-input:focus,
-.form-textarea:focus {
+.input-field:focus,
+.textarea-field:focus {
   border-color: #4CAF50;
   outline: none;
 }
 
-.form-textarea {
+.textarea-field {
   height: 150px;
   resize: vertical;
 }
 
-.submit-button {
+.button-save {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #4CAF50;
@@ -379,30 +248,23 @@ button[style="background-color: red;"]:hover {
   transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
+.button-save:hover {
   background-color: #45a049;
 }
 
-button {
+.button-delete {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: red;
   color: white;
   border: none;
   cursor: pointer;
   margin-right: 10px;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #45a049;
-}
-
-button[style="background-color: red;"] {
-  background-color: red;
-}
-
-button[style="background-color: red;"]:hover {
+.button-delete:hover {
   background-color: darkred;
 }
-
 </style>
+
 
