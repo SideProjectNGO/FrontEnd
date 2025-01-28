@@ -154,6 +154,8 @@ console.log(stories);
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0;
 }
 
 .stories-container {
