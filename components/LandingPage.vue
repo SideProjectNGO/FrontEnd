@@ -51,9 +51,10 @@
 .landing-image {
   width: 100%;
   max-width: 300px;
-  height: 400px;
+  height: auto;
   border-radius: 50% 50% 0 0;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
 }
 
 .landing-details-container {
@@ -110,8 +111,8 @@
   }
 
   .landing-image {
-    max-width: 250px;
-    height: 300px;
+    max-width: 70%;
+    height: auto;
   }
 
   .title {
@@ -135,7 +136,7 @@
 
   .landing-image {
     max-width: 200px;
-    height: 250px;
+    height: auto;
   }
 
   .title {
@@ -158,7 +159,7 @@
 @media screen and (max-width: 480px) {
   .landing-image {
     max-width: 180px;
-    height: 220px;
+    height: auto;
   }
 
   .title {
