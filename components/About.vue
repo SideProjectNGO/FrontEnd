@@ -24,25 +24,25 @@ const aboutItem = [
 </script>
 
 <template>
-  <div class="about">
-    <h1 class="title">More about MyChild</h1>
-    <div class="container" v-for="item in aboutItem" :key="item.id">
+  <div class="about-section">
+    <h1 class="about-title">More about MyChild</h1>
+    <div class="about-grid" v-for="item in aboutItem" :key="item.id">
       <template v-if="item.id % 2 !== 0">
-        <div class="item-box">
-          <h2 class="sub-title">{{ item.title }}</h2>
-          <p class="description">{{ item.content }}</p>
+        <div class="text-content">
+          <h2 class="item-title">{{ item.title }}</h2>
+          <p class="item-description">{{ item.content }}</p>
         </div>
-        <div class="image-box">
+        <div class="image-content">
           <img :src="item.image" :alt="item.title" />
         </div>
       </template>
       <template v-else>
-        <div class="image-box">
+        <div class="image-content">
           <img :src="item.image" :alt="item.title" />
         </div>
-        <div class="item-box">
-          <h2 class="sub-title">{{ item.title }}</h2>
-          <p class="description">{{ item.content }}</p>
+        <div class="text-content">
+          <h2 class="item-title">{{ item.title }}</h2>
+          <p class="item-description">{{ item.content }}</p>
         </div>
       </template>
     </div>
@@ -51,20 +51,20 @@ const aboutItem = [
 
 <style scoped>
 
-.about {
+.about-section {
   margin: 5rem auto;
   max-width: 1200px;
   padding: 0 1rem;
 }
 
-.title {
+.about-title {
   text-align: center;
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 2rem;
 }
 
-.about .container {
+.about-grid {
   width: 90%;
   margin: 0 auto;
   display: grid;
@@ -73,7 +73,7 @@ const aboutItem = [
   align-items: center;
 }
 
-.about .container .sub-title {
+.item-title {
   text-align: start;
   font-size: 1.5rem;
   color: var(--primary-hover);
@@ -81,48 +81,49 @@ const aboutItem = [
   margin-bottom: 1rem;
 }
 
-.about .container .description {
+.item-description {
   text-align: justify;
 }
 
 @media (max-width: 768px) {
-  .about .container {
+  .about-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin: 1rem auto;
   }
 
-  .about {
+  .about-section {
     margin: 3rem auto;
   }
 
-  .title {
+  .about-title {
     font-size: 1.8rem;
   }
 
-  .about .container .sub-title {
+  .item-title {
     font-size: 1.3rem;
   }
 }
 
 @media (max-width: 480px) {
-  .about .container {
+  .about-grid {
     gap: 1rem;
     margin: 1rem auto;
   }
 
-  .title {
+  .about-title {
     font-size: 1.5rem;
   }
 
-  .about .container .sub-title {
+  .item-title {
     font-size: 1.2rem;
   }
 
-  .about {
+  .about-section {
     margin: 2rem auto;
   }
 }
 
 </style>
+
 
