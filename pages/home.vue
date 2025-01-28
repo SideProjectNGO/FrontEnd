@@ -5,8 +5,8 @@
 <template>
   <NavBar/>
   <LandingPage/>
-  <Articles/>
   <Stories/>
+  <Articles/>
   <Footer/>
 </template>
 

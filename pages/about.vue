@@ -6,6 +6,7 @@
   <NavBar/>
   <LandingPage/>
   <About/>
+  <AnnualYearSection/>
   <TeamMemberCard/>
   <Partnerships/>
   <Footer/>
