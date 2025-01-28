@@ -1,34 +1,3 @@
-<template>
-  <div class="header-container">
-    <div class="header-wrapper">
-      <div class="logo-container">
-        <div class="logo">
-          <a href="">
-            <img src="/images/logo.webp" alt="Logo"/>
-          </a>
-        </div>
-        <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle-btn">
-          <UIcon name="uil-bars"/>
-        </button>
-      </div>
-
-      <nav v-if="isLinksVisible || !isMobile" class="navigation-menu">
-        <ul class="navigation-links">
-          <li>
-            <router-link to="/">Setting</router-link>
-          </li>
-          <li>
-            <router-link to="/home">Home</router-link>
-          </li>
-          <li>
-            <button @click="logout">Logout</button>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import {ref, onMounted} from 'vue';
 import {useRouter} from 'vue-router';
@@ -54,34 +23,65 @@ onMounted(() => {
 });
 </script>
 
+<template>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="logo-wrapper">
+          <a href="">
+            <img src="/images/logo.webp" alt="Logo" />
+          </a>
+        </div>
+        <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle">
+          <UIcon name="uil-bars" />
+        </button>
+      </div>
+
+      <nav v-if="isLinksVisible || !isMobile" class="navigation">
+        <ul class="nav-links">
+          <li>
+            <router-link to="/">Setting</router-link>
+          </li>
+          <li>
+            <router-link to="/home">Home</router-link>
+          </li>
+          <li>
+            <button @click="logout">Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</template>
+
 <style scoped>
-.header-container {
+.header {
   background-color: var(--primary-color);
   padding: 0.5rem 1rem;
   max-height: 500px;
 }
 
-.header-wrapper {
+.header-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.logo img {
+.logo-wrapper img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-.navigation-links {
+.nav-links {
   display: inline-flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.navigation-links li {
+.nav-links li {
   display: inline-block;
   padding: 0.3rem;
   margin-right: 0.5rem;
@@ -90,48 +90,49 @@ onMounted(() => {
   background-color: transparent;
 }
 
-.navigation-links li:hover {
+.nav-links li:hover {
   border: 1px solid var(--primary-color);
   background-color: var(--primary-hover);
 }
 
-.navigation-links a,
-.navigation-links button {
+.nav-links a,
+.nav-links button {
   color: var(--text-color);
   padding: 0 0.5rem;
   font-size: 1rem;
   text-decoration: none;
 }
 
-.navigation-links a:hover {
+.nav-links a:hover {
   color: var(--text-hover);
   transition: 0.3s ease-in-out;
 }
 
 @media (max-width: 1200px) {
-  .header-wrapper {
+  .header-content {
     display: block;
   }
 
-  .logo-container {
+  .logo-section {
     display: flex;
     justify-content: space-between;
   }
 
-  .menu-toggle-btn {
+  .menu-toggle {
     font-size: 2rem;
     margin: 0 1rem;
     color: var(--text-hover);
   }
 
-  .navigation-links {
+  .nav-links {
     display: block;
     margin: 1rem 0;
   }
 
-  .navigation-links li {
+  .nav-links li {
     display: block;
     margin-left: 0.5rem;
   }
 }
 </style>
+
