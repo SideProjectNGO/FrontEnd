@@ -217,7 +217,7 @@ function prevPage() {
 <style scoped>
 .team-section {
   padding: 40px 20px;
-  background: url("../public/images/bg-team.jpg") no-repeat center center / cover;
+  background-color: var(--background);
 }
 
 .team-title {
@@ -294,10 +294,10 @@ function prevPage() {
   justify-content: center;
   align-items: center;
   margin: 30px auto;
+  gap: 40px;
 }
 
 .container .btn-container button {
-  margin-right: 50px;
   padding: 10px;
   border: 2px solid var(--primary-hover);
   min-width: 120px;
