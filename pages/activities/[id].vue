@@ -2,8 +2,8 @@
 import {useRoute, } from "vue-router";
 import {computed} from "vue";
 
-interface Story {
-  story_id: number;
+interface Activity {
+  activity_id: number;
   title: string;
   content: string;
   summary: string;
@@ -15,14 +15,14 @@ interface Story {
   author_photo: string;
 }
 
-const stories: Story[] = [
+const activities: Activity[] = [
   {
-    story_id: 1,
+    activity_id: 1,
     title: "The Impact of Early Childhood Education",
     content: `
       Early childhood education lays the foundation for lifelong learning and development. During these formative years, children develop essential cognitive, social, and emotional skills that influence their future success. Research shows that children who attend quality early education programs are more likely to perform well academically and socially.
 
-      The importance of fostering creativity and curiosity cannot be overstated. Activities like storytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
+      The importance of fostering creativity and curiosity cannot be overstated. Activities like activitytelling, play-based learning, and hands-on exploration help children build critical thinking and problem-solving skills. Moreover, these experiences boost their confidence and independence, shaping a positive attitude toward learning.
 
       Equitable access to early education remains a challenge in many regions. Economic barriers, lack of trained educators, and inadequate facilities can limit opportunities for children, especially in marginalized communities. Addressing these issues is key to ensuring that every child gets a strong start in life.
     `,
@@ -35,7 +35,7 @@ const stories: Story[] = [
     author_photo: "https://example.com/images/web-development-2025.jpg",
   },
   {
-    story_id: 2,
+    activity_id: 2,
     title: "The Role of Play in Child Development",
     content: `
       Play is a fundamental aspect of childhood that supports a child's physical, emotional, and cognitive development. Through play, children explore their environment, develop problem-solving skills, and learn to interact with others. It is a natural way for them to express their creativity and emotions.
@@ -53,7 +53,7 @@ const stories: Story[] = [
     author_photo: "https://example.com/images/web-development-2025.jpg",
   },
   {
-    story_id: 3,
+    activity_id: 3,
     title: "The Challenges of Childhood Nutrition",
     content: `
       Childhood nutrition is a cornerstone of healthy development, yet it remains a challenge in many parts of the world. Proper nutrition during the early years is essential for physical growth, brain development, and immune function. Malnutrition, whether from lack of food or poor dietary choices, can have long-lasting effects.
@@ -73,36 +73,36 @@ const stories: Story[] = [
 ];
 
 const route = useRoute();
-const storyId = parseInt(route.params.id as string);
-const story = computed(() => stories.find((a) => a.story_id === storyId));
+const activityId = parseInt(route.params.id as string);
+const activity = computed(() => activities.find((a) => a.activity_id === activityId));
 
 </script>
 
 <template>
   <NavBar/>
   <transition name="fade">
-    <div v-if="story" class="story-details">
-      <div class="story-details-container">
-        <h1 class="story-title">{{ story.title }}</h1>
+    <div v-if="activity" class="activity-details">
+      <div class="activity-details-container">
+        <h1 class="activity-title">{{ activity.title }}</h1>
 
-        <img src="~/public/images/children.jpg" :alt="story.title" class="story-image"/>
+        <img src="~/public/images/children.jpg" :alt="activity.title" class="activity-image"/>
 
         <hr class="divider"/>
 
         <div class="author-info">
           <div class="author-photo">
-            <img src="~/public/images/children.jpg" :alt="'Photo of ' + story.author_name"/>
+            <img src="~/public/images/children.jpg" :alt="'Photo of ' + activity.author_name"/>
           </div>
           <div class="author-details">
-            <p><strong>Author:</strong> {{ story.author_name }} ({{ story.author_country }})</p>
-            <p><strong>Date:</strong> {{ story.date }}</p>
+            <p><strong>Author:</strong> {{ activity.author_name }} ({{ activity.author_country }})</p>
+            <p><strong>Date:</strong> {{ activity.date }}</p>
           </div>
         </div>
 
         <hr class="divider"/>
 
 
-        <div class="story-content"> {{ story.content }}</div>
+        <div class="activity-content"> {{ activity.content }}</div>
 
       </div>
     </div>
@@ -112,17 +112,17 @@ const story = computed(() => stories.find((a) => a.story_id === storyId));
 </template>
 
 <style scoped>
-.story-details-container {
+.activity-details-container {
   max-width: 1200px;
   margin: auto;
   animation: fade-in 0.8s ease-in-out;
 }
 
-.story-details {
+.activity-details {
   padding: 20px;
 }
 
-.story-title {
+.activity-title {
   font-weight: bold;
   font-size: 2rem;
   color: var(--primary-hover);
@@ -130,7 +130,7 @@ const story = computed(() => stories.find((a) => a.story_id === storyId));
   margin-bottom: 20px;
 }
 
-.story-image {
+.activity-image {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
@@ -139,7 +139,7 @@ const story = computed(() => stories.find((a) => a.story_id === storyId));
   transition: transform 0.3s ease;
 }
 
-.story-image:hover {
+.activity-image:hover {
   transform: scale(1.03);
 }
 
@@ -162,7 +162,7 @@ const story = computed(() => stories.find((a) => a.story_id === storyId));
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.story-content {
+.activity-content {
   text-align: justify;;
 }
 
