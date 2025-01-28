@@ -5,6 +5,7 @@
 <template>
   <NavBar/>
   <LandingPage/>
+  <MessagesSection/>
   <Stories/>
   <Articles/>
   <Footer/>

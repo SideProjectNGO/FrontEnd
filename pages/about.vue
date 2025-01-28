@@ -7,6 +7,7 @@
   <LandingPage/>
   <About/>
   <AnnualYearSection/>
+  <MessagesSection/>
   <TeamMemberCard/>
   <Partnerships/>
   <Footer/>
