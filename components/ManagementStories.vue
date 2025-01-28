@@ -150,6 +150,12 @@ console.log(stories);
   border-radius: 10px;
 }
 
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .stories-container {
   display: block;
   padding: 20px;
