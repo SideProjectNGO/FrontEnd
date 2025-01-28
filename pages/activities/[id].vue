@@ -107,7 +107,7 @@ const story = computed(() => stories.find((a) => a.story_id === storyId));
       </div>
     </div>
   </transition>
-  <Stories/>
+  <Activities/>
   <Footer/>
 </template>
 
