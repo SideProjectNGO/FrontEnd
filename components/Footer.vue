@@ -36,41 +36,42 @@ const currentYear = new Date().getFullYear();
               </li>
             </ul>
           </div>
-
         </div>
+
         <div class="links">
           <h2>Quick Links</h2>
           <ul>
             <li>
               <router-link to="/home">
-          <span>
-            <UIcon name="material-symbols-contact-page"/>
-          </span>Home
+                <span>
+                  <UIcon name="material-symbols-contact-page"/>
+                </span>Home
               </router-link>
             </li>
             <li>
               <router-link to="/home">
-          <span>
-            <UIcon name="mdi-about"/>
-          </span>About
+                <span>
+                  <UIcon name="mdi-about"/>
+                </span>About
               </router-link>
             </li>
             <li>
               <router-link to="/home">
-          <span>
-            <UIcon name="mdi-book"/>
-          </span>Stories
+                <span>
+                  <UIcon name="mdi-book"/>
+                </span>Stories
               </router-link>
             </li>
             <li>
               <router-link to="/articles">
-          <span>
-            <UIcon name="mdi-book"/>
-          </span>Articles
+                <span>
+                  <UIcon name="mdi-book"/>
+                </span>Articles
               </router-link>
             </li>
           </ul>
         </div>
+
         <div class="subscribe-section">
           <h1 class="subscribe-title">Subscribe</h1>
           <div class="container-form">
@@ -78,7 +79,7 @@ const currentYear = new Date().getFullYear();
               <input type="email" placeholder="Enter your email"/>
             </div>
             <div class="subscribe-button">
-              <button>Subscribe</button>
+              <button class="subscribe-btn">Subscribe</button>
             </div>
           </div>
         </div>
@@ -102,7 +103,7 @@ const currentYear = new Date().getFullYear();
 
 .main-container {
   display: block;
-  padding: 0 100px;
+  padding: 0 5%;
 }
 
 @media (max-width: 800px) {
@@ -115,39 +116,45 @@ const currentYear = new Date().getFullYear();
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 1rem auto;
+  justify-content: space-between;
+  margin: 1rem 0;
 }
 
 .links-item div {
-  flex: 2;
+  flex: 1;
+  margin-right: 2rem;
 }
 
 .logo-container {
-  margin: 0 auto;
+  text-align: center;
+  margin: 1rem 0;
 }
 
-.logo-container .logo-img {
+.logo-container .logo-img img {
   width: 100%;
-  height: 100%;
-  max-width: 200px;
-  max-height: 200px;
-  margin: 0 auto;
+  height: auto;
+  max-width: 150px;
+  justify-content: center;
+}
+
+.divider {
+  border: 2px solid var(--text-color);
 }
 
 @media (max-width: 800px) {
   .links-item {
-    display: block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-container .logo-img img {
+    max-width: 120px;
   }
 }
 
-.divider {
-  margin: 1rem 0;
-  border: 2px solid var(--text-hover);
-  animation: fadeIn 2s ease-in;
-}
-
 .links {
-  margin: 0 5rem;
+  margin-top: 2rem;
 }
 
 .links h2,
@@ -157,60 +164,56 @@ const currentYear = new Date().getFullYear();
   margin: 15px 0;
 }
 
-.links ul li,
-.others-links-section ul li {
+.links ul {
+  padding-left: 0;
+  margin: 0;
+}
+
+.links ul li {
   list-style: none;
   font-size: 1rem;
-  padding: 5px;
-  background-color: transparent;
+  padding: 5px 0;
+  border-radius: 5px;
 }
 
-.links ul li a span,
-.others-links-section li a span {
+.links ul li a {
   color: var(--text-color);
-  margin-right: .5rem;
-}
-
-.links ul li a,
-.others-links-section li a {
-  color: var(--text-color);
-  margin-right: .5rem;
-  transition: color 0.3s ease-in-out;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .links ul li:hover {
   color: var(--text-hover);
   background-color: var(--primary-hover);
-  transition: color 0.3s ease-in-out;
+
 }
 
 .subscribe-section {
-  text-align: start;
-  padding: 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.subscribe-title {
+  font-size: 1.5rem;
+  color: var(--text-color);
 }
 
 .container-form {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 20px;
+  margin-top: 1rem;
 }
 
 @media (max-width: 800px) {
   .container-form {
-    display: block;
-    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
   }
 
   .container-form div {
-    margin: 3rem 0;
+    margin: 1rem 0;
   }
-}
-
-.subscribe-title {
-  color: var(--text-color);
-  margin-bottom: 10px;
-  margin-top: -20px;
-  font-size: 1.5rem;
 }
 
 .subscribe-input input {
@@ -268,15 +271,11 @@ const currentYear = new Date().getFullYear();
   .links ul li span {
     display: none;
   }
-
-  .others-links-section ul li span {
-    display: none;
-  }
 }
 
 .footer-bottom {
-  text-align: start;
-  font-size: 1.2rem;
+  text-align: center;
+  font-size: 1.5rem;
   color: var(--text-color);
   padding: 2rem 0;
   animation: fadeIn 3s ease-in;
