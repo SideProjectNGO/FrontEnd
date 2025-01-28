@@ -54,6 +54,7 @@ const aboutItem = [
 .about {
   margin: 5rem auto;
   max-width: 1200px;
+  padding: 0 1rem;
 }
 
 .title {
@@ -64,7 +65,7 @@ const aboutItem = [
 }
 
 .about .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -82,6 +83,45 @@ const aboutItem = [
 
 .about .container .description {
   text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .about .container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .about {
+    margin: 3rem auto;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .about .container .sub-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about .container {
+    gap: 1rem;
+    margin: 1rem auto;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .about .container .sub-title {
+    font-size: 1.2rem;
+  }
+
+  .about {
+    margin: 2rem auto;
+  }
 }
 
 </style>
