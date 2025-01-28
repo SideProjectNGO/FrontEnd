@@ -22,23 +22,22 @@ onMounted(() => {
   });
 });
 </script>
-
 <template>
-  <div class="header">
-    <div class="header-content">
-      <div class="logo-section">
-        <div class="logo-wrapper">
+  <div class="header-bar">
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-container">
           <a href="">
             <img src="/images/logo.webp" alt="Logo" />
           </a>
         </div>
-        <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle">
+        <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-button">
           <UIcon name="uil-bars" />
         </button>
       </div>
 
-      <nav v-if="isLinksVisible || !isMobile" class="navigation">
-        <ul class="nav-links">
+      <nav v-if="isLinksVisible || !isMobile" class="nav-bar">
+        <ul class="nav-items">
           <li>
             <router-link to="/">Setting</router-link>
           </li>
@@ -55,33 +54,33 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.header {
+.header-bar {
   background-color: var(--primary-color);
   padding: 0.5rem 1rem;
   max-height: 500px;
 }
 
-.header-content {
+.header-inner {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.logo-wrapper img {
+.logo-container img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-.nav-links {
+.nav-items {
   display: inline-flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.nav-links li {
+.nav-items li {
   display: inline-block;
   padding: 0.3rem;
   margin-right: 0.5rem;
@@ -90,49 +89,50 @@ onMounted(() => {
   background-color: transparent;
 }
 
-.nav-links li:hover {
+.nav-items li:hover {
   border: 1px solid var(--primary-color);
   background-color: var(--primary-hover);
 }
 
-.nav-links a,
-.nav-links button {
+.nav-items a,
+.nav-items button {
   color: var(--text-color);
   padding: 0 0.5rem;
   font-size: 1rem;
   text-decoration: none;
 }
 
-.nav-links a:hover {
+.nav-items a:hover {
   color: var(--text-hover);
   transition: 0.3s ease-in-out;
 }
 
 @media (max-width: 1200px) {
-  .header-content {
+  .header-inner {
     display: block;
   }
 
-  .logo-section {
+  .logo-area {
     display: flex;
     justify-content: space-between;
   }
 
-  .menu-toggle {
+  .menu-button {
     font-size: 2rem;
     margin: 0 1rem;
     color: var(--text-hover);
   }
 
-  .nav-links {
+  .nav-items {
     display: block;
     margin: 1rem 0;
   }
 
-  .nav-links li {
+  .nav-items li {
     display: block;
     margin-left: 0.5rem;
   }
 }
 </style>
+
 
