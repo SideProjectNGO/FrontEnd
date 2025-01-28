@@ -1,13 +1,12 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script setup lang="ts">
 
-export default defineComponent({
-  name: "index"
-})
+import ManagementStories from "~/components/ManagementStories.vue";
 </script>
 
 <template>
-
+  <AdminNavBar/>
+  <ManagementStories/>
+  <AdminFooter/>
 </template>
 
 <style scoped>
