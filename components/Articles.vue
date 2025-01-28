@@ -104,6 +104,7 @@ console.log(articles);
 
 <template>
   <div class="articles-container">
+    <h2 class="title">Articles</h2>
     <div class="container">
       <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
         <div class="card">
@@ -159,6 +160,13 @@ console.log(articles);
 .articles-container {
   display: block;
   padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--primary-color);
 }
 
 .container {
