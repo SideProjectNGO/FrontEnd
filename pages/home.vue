@@ -6,6 +6,7 @@
   <NavBar/>
   <LandingPage/>
   <Articles/>
+  <Stories/>
   <Footer/>
 </template>
 
