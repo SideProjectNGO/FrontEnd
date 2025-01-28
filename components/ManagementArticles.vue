@@ -97,31 +97,29 @@ console.log(articles);
 
 <template>
   <div class="admin-dashboard">
-    <div class="admin-container">
-      <div class="side-bar">
-        <AdminSidebar/>
+    <div class="dashboard-wrapper">
+      <div class="sidebar">
+        <AdminSidebar />
       </div>
-      <div class="admin-content-dashboard">
-        <h2 class="title">Management Articles</h2>
-        <div class="articles-container">
-          <div class="container">
-            <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
-              <div class="card">
-                <div class="article-header">
-                  <h4 class="article-date">{{ article.date }}</h4>
-                </div>
-                <div class="article-body">
-                  <h3 class="article-title" @click="viewArticle(article.article_id)">{{ article.title }}</h3>
-                  <div class="author-details">
-                    <h2>{{ article.author_name }}</h2>
-                    <h2>{{ article.author_country }}</h2>
-                  </div>
+      <div class="dashboard-content">
+        <h2 class="page-title">Management Articles</h2>
+        <div class="articles-list">
+          <div class="articles-wrapper">
+            <div class="article-card" v-for="(article, index) in visibleArticles" :key="article.article_id">
+              <div class="card-header">
+                <h4 class="publication-date">{{ article.date }}</h4>
+              </div>
+              <div class="card-body">
+                <h3 class="article-title" @click="viewArticle(article.article_id)">{{ article.title }}</h3>
+                <div class="author-info">
+                  <h2>{{ article.author_name }}</h2>
+                  <h2>{{ article.author_country }}</h2>
                 </div>
               </div>
             </div>
           </div>
-          <div class="container">
-            <div class="btn-container">
+          <div class="pagination-wrapper">
+            <div class="pagination-buttons">
               <button @click="prevPage">
                 Previous
               </button>
@@ -138,19 +136,19 @@ console.log(articles);
 </template>
 
 <style scoped>
-.admin-container {
+.dashboard-wrapper {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
   padding: 20px;
 }
 
-.admin-content-dashboard {
+.dashboard-content {
   padding: 20px;
   border-radius: 10px;
 }
 
-.title {
+.page-title {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
@@ -158,12 +156,12 @@ console.log(articles);
   margin: 0;
 }
 
-.articles-container {
+.articles-list {
   display: block;
   padding: 20px;
 }
 
-.container {
+.articles-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -172,46 +170,34 @@ console.log(articles);
   margin: 5rem auto;
 }
 
-.article-cards {
+.article-card {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-.card {
   width: 260px;
   border: 2px solid var(--border-color);
   overflow: hidden;
   background-color: var(--background);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
   padding: 15px;
   box-shadow: rgba(149, 157, 165, 0.4) 0 8px 24px;
 }
 
-.article-header {
+.card-header {
   display: flex;
   justify-content: space-between;
   min-height: 60px;
 }
 
-.article-header button {
-  border: 2px solid var(--border-color);
-  margin: 10px 0;
-  padding: 5px 10px;
-  border-radius: 15px;
-}
-
-.card .article-header .article-date {
+.card-header .publication-date {
   font-weight: 600;
   font-size: .9rem;
   color: var(--black-text-hover);
   margin: 10px 0;
 }
 
-.article-body {
+.card-body {
   padding: 15px;
 }
 
@@ -222,43 +208,37 @@ console.log(articles);
   min-height: 50px;
 }
 
-.author-details {
+.author-info {
   display: flex;
   justify-content: space-between;
   color: var(--black-text-hover);
 }
 
-.container .btn-container {
+.pagination-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 30px auto;
 }
 
-.container .btn-container button {
+.pagination-buttons button {
   margin-right: 50px;
   padding: 10px;
   border: 2px solid var(--primary-hover);
   min-width: 120px;
 }
 
-.container .btn-container button:hover {
+.pagination-buttons button:hover {
   background: var(--primary-hover);
   color: var(--text-hover);
   transition: background-color 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {
-  .admin-container {
+  .dashboard-wrapper {
     grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 768px) {
-  .admin-container {
-    grid-template-columns: 1fr;
-  }
-
 }
 </style>
+
 
