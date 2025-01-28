@@ -13,7 +13,7 @@ const images = [
   {id: 9, title: "Michael", image: "/images/mychild logo.jpg"},
 ];
 
-const rowPattern = [6, 5];
+const rowPattern = [5, 4];
 const groupedImages = computed(() => {
   const rows = [];
   let start = 0;
@@ -29,7 +29,6 @@ const groupedImages = computed(() => {
   return rows;
 });
 </script>
-
 
 <template>
   <div class="partnerships-section">
@@ -66,13 +65,13 @@ const groupedImages = computed(() => {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  width: 70%;
+  width: 100%;
   margin: 1rem auto;
 }
 
 .image-container {
   flex: 1;
-  max-width: calc(20% - 1.5rem);
+  max-width: calc(16.666% - 1.5rem);
 }
 
 .image {
@@ -84,6 +83,12 @@ const groupedImages = computed(() => {
 
 .image:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .image-container {
+    max-width: calc(20% - 1.5rem);
+  }
 }
 
 @media (max-width: 768px) {
