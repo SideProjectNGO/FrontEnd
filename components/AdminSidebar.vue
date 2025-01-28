@@ -1,31 +1,3 @@
-<template>
-  <div class="sidebar">
-
-    <div v-for="(button, index) in buttons" :key="index" class="button-group">
-      <button @click="toggleLinks(index)" class="btn-sidebar">
-        <UIcon
-            :name="button.icon"
-            class="icon"
-        />
-        {{ button.name }}
-      </button>
-
-      <div v-if="activeButton === index" class="links-container">
-        <ul>
-          <li v-for="(link, i) in button.links" :key="i">
-            <UIcon
-                :name="link.icon"
-                class="icon"
-            />
-            <a :href="link.url">{{ link.name }}</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</template>
-
 <script setup>
 import {ref} from 'vue';
 
@@ -96,8 +68,36 @@ function toggleLinks(index) {
 }
 </script>
 
+<template>
+  <div class="sidebar-menu">
+
+    <div v-for="(button, index) in buttons" :key="index" class="button-item">
+      <button @click="toggleLinks(index)" class="sidebar-btn">
+        <UIcon
+            :name="button.icon"
+            class="icon-img"
+        />
+        {{ button.name }}
+      </button>
+
+      <div v-if="activeButton === index" class="links-section">
+        <ul>
+          <li v-for="(link, i) in button.links" :key="i">
+            <UIcon
+                :name="link.icon"
+                class="icon-img"
+            />
+            <a :href="link.url">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</template>
+
 <style scoped>
-.sidebar {
+.sidebar-menu {
   background-color: var(--background);
   padding: 20px;
   width: 100%;
@@ -106,11 +106,11 @@ function toggleLinks(index) {
   max-width: 400px;
 }
 
-.button-group {
+.button-item {
   margin-bottom: 20px;
 }
 
-.btn-sidebar {
+.sidebar-btn {
   width: 100%;
   padding: 10px;
   text-align: left;
@@ -121,36 +121,37 @@ function toggleLinks(index) {
   cursor: pointer;
 }
 
-.btn-sidebar:hover {
+.sidebar-btn:hover {
   background-color: var(--text-hover);
 }
 
-.links-container {
+.links-section {
   margin-top: 10px;
 }
 
-.links-container ul {
+.links-section ul {
   list-style-type: none;
   padding-left: 20px;
 }
 
-.links-container li {
+.links-section li {
   margin: 5px 0;
 }
 
-.links-container a {
+.links-section a {
   text-decoration: none;
   color: var(--primary-hover);
 }
 
-.btn-sidebar .icon {
+.sidebar-btn .icon-img {
   margin-right: 10px;
   color: var(--primary-hover);
 }
 
-.links-container .icon {
+.links-section .icon-img {
   margin-right: 10px;
   color: var(--primary-hover);
 }
 
 </style>
+
