@@ -103,52 +103,51 @@ console.log(articles);
 
 
 <template>
-  <div class="articles-container">
-    <h2 class="title">Articles around world</h2>
-    <div class="container">
-      <div class="article-cards" v-for="(article, index) in visibleArticles" :key="article.article_id">
-        <div class="card">
+  <div class="articles-section">
+    <h2 class="section-title">Articles Around the World</h2>
+    <div class="articles-wrapper">
+      <div class="article-card" v-for="(article, index) in visibleArticles" :key="article.article_id">
+        <div class="article-content">
           <div class="article-header">
             <h4 class="article-date">{{ article.date }}</h4>
-            <button @click="viewArticle(article.article_id)">Learn More</button>
+            <button @click="viewArticle(article.article_id)" class="learn-more-btn">Learn More</button>
           </div>
-          <div class="article-main-photo">
-            <img src="../public/images/logo.webp" alt="Article Image" class="article-image"/>
+          <div class="article-image-container">
+            <img src="../public/images/logo.webp" alt="Article Image" class="article-image" />
           </div>
-          <div class="article-body">
+          <div class="article-details">
             <h3 class="article-title">{{ article.title }}</h3>
             <p class="article-summary">{{ article.summary }}</p>
-            <div class="author-details">
+            <div class="author-info">
               <h2>{{ article.author_name }}</h2>
               <h2>{{ article.author_country }}</h2>
             </div>
           </div>
           <div class="article-footer">
-            <div class="social-links">
+            <div class="social-icons">
               <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-facebook" size="24"/>
+                <UIcon name="mdi-facebook" size="24" />
               </a>
               <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-whatsapp" size="24"/>
+                <UIcon name="mdi-whatsapp" size="24" />
               </a>
               <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-instagram" size="24"/>
+                <UIcon name="mdi-instagram" size="24" />
               </a>
               <a href="" target="_blank" class="social-icon">
-                <UIcon name="mdi-youtube" size="24"/>
+                <UIcon name="mdi-youtube" size="24" />
               </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="btn-container">
-        <button @click="prevPage">
+    <div class="pagination-container">
+      <div class="pagination-btns">
+        <button @click="prevPage" class="pagination-btn">
           Previous
         </button>
-
-        <button @click="nextPage">
+        <button @click="nextPage" class="pagination-btn">
           Next
         </button>
       </div>
@@ -157,19 +156,19 @@ console.log(articles);
 </template>
 
 <style scoped>
-.articles-container {
+.articles-section {
   display: block;
   padding: 20px;
 }
 
-.title {
+.section-title {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
   color: var(--primary-color);
 }
 
-.container {
+.articles-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -178,13 +177,7 @@ console.log(articles);
   margin: 1rem auto;
 }
 
-.article-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.card {
+.article-card {
   width: 350px;
   border: 2px solid var(--border-color);
   overflow: hidden;
@@ -203,21 +196,21 @@ console.log(articles);
   min-height: 60px;
 }
 
-.article-header button {
+.learn-more-btn {
   border: 2px solid var(--border-color);
   margin: 10px 0;
   padding: 5px 10px;
   border-radius: 15px;
 }
 
-.card .article-header .article-date {
+.article-date {
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: var(--black-text-hover);
   margin: 10px 0;
 }
 
-.article-main-photo {
+.article-image-container {
   width: 100%;
   height: 200px;
   min-height: 200px;
@@ -231,7 +224,7 @@ console.log(articles);
   margin: 0;
 }
 
-.article-body {
+.article-details {
   padding: 15px;
 }
 
@@ -249,7 +242,7 @@ console.log(articles);
   min-height: 120px;
 }
 
-.author-details {
+.author-info {
   display: flex;
   justify-content: space-between;
   color: var(--black-text-hover);
@@ -261,7 +254,7 @@ console.log(articles);
   justify-content: center;
 }
 
-.social-links {
+.social-icons {
   display: flex;
   gap: 15px;
   min-height: 20px;
@@ -277,25 +270,29 @@ console.log(articles);
   color: var(--primary-hover);
 }
 
-.container .btn-container {
+.pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 30px auto;
 }
 
-.container .btn-container button {
-  margin-right: 50px;
+.pagination-btns {
+  display: flex;
+  gap: 20px;
+}
+
+.pagination-btn {
   padding: 10px;
   border: 2px solid var(--primary-hover);
   min-width: 120px;
 }
 
-.container .btn-container button:hover {
+.pagination-btn:hover {
   background: var(--primary-hover);
   color: var(--text-hover);
   transition: background-color 0.3s ease-in-out;
 }
-
 </style>
+
 
