@@ -34,7 +34,7 @@ const buttons = [
     icon: 'uil-calendar',
     links: [
       {name: 'All Activities', url: '/activities/admin/', icon: 'uil-calendar-alt'},
-      {name: 'Add New Activity', url: '/activities/admin/new-activity-form', icon: 'uil-plus-circle'}
+      {name: 'Add New Activity', url: '/activities/admin/new-activity', icon: 'uil-plus-circle'}
     ]
   },
   {
