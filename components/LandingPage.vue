@@ -1,19 +1,24 @@
 <script lang="ts">
 </script>
 
+<script setup>
+import { useI18n } from "#imports";
+
+const { t } = useI18n();
+</script>
+
 <template>
   <div class="landing-section">
     <div class="content-wrapper">
       <div class="image-container">
-        <img src="../public/images/child.jpeg" alt="landing-image" class="landing-image"/>
+        <img src="/images/child.jpeg" alt="landing-image" class="landing-image" />
       </div>
       <div class="text-container">
-        <h2 class="headline">Every Child is My Child</h2>
+        <h2 class="headline">{{ t("landing.headline") }}</h2>
         <p class="subtext">
-          Millions of children around the world face devastating losses and an uncertain future due to escalating armed
-          conflicts, inequalities, and the impact of climate change on their lives and health.
+          {{ t("landing.description") }}
         </p>
-        <router-link to="/about" class="cta-link">MORE ABOUT MYCHILD</router-link>
+        <NuxtLink to="/about" class="cta-link">{{ t("landing.more_about") }}</NuxtLink>
       </div>
     </div>
   </div>

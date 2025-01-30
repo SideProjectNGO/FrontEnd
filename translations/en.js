@@ -28,6 +28,13 @@ export default {
             content: "Our mission is to provide holistic care, education, and support to children in need. Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has access to a safe, nurturing environment and the resources they need to unlock their full potential.",
         },
     },
-
-
+    footer: {
+        copyright: "Copyright",
+    },
+    landing: {
+        headline: "Every Child is My Child",
+        description:
+            "Millions of children around the world face devastating losses and an uncertain future due to escalating armed conflicts, inequalities, and the impact of climate change on their lives and health.",
+        more_about: "MORE ABOUT MYCHILD",
+    },
 };

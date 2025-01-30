@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { useI18n } from "#imports";
 
+const { t } = useI18n();
 const currentYear = new Date().getFullYear();
 </script>
 
 <template>
   <div class="footer-admin-section">
     <div class="footer-container">
-      <p>&copy; Copyright <a href="">My Child {{ currentYear }}</a></p>
+      <p>
+        &copy; {{ t("footer.copyright") }}
+        <a href="">My Child {{ currentYear }}</a>
+      </p>
     </div>
   </div>
 </template>

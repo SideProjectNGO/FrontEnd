@@ -22,6 +22,7 @@ onMounted(() => {
   });
 });
 </script>
+
 <template>
   <div class="header-bar">
     <div class="header-inner">

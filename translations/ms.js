@@ -28,5 +28,13 @@ export default {
             content: "Misi kami adalah untuk menyediakan penjagaan holistik, pendidikan, dan sokongan kepada kanak-kanak yang memerlukan. Melalui program berasaskan komuniti, advokasi, dan penyelesaian yang mampan, kami berusaha untuk memastikan setiap kanak-kanak mempunyai akses kepada persekitaran yang selamat, penyayang, dan sumber yang mereka perlukan untuk mencapai potensi penuh mereka.",
         },
     },
-
+    footer: {
+        copyright: "Hak Cipta",
+    },
+    landing: {
+        headline: "Setiap Kanak-Kanak adalah Anak Saya",
+        description:
+            "Jutaan kanak-kanak di seluruh dunia menghadapi kehilangan yang dahsyat dan masa depan yang tidak menentu akibat konflik bersenjata yang semakin meningkat, ketidaksamaan, dan kesan perubahan iklim terhadap kehidupan dan kesihatan mereka.",
+        more_about: "LEBIH LANJUT TENTANG MYCHILD",
+    },
 };
