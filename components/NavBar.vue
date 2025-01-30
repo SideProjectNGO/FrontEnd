@@ -1,17 +1,19 @@
 <script setup>
-import {ref, onMounted} from 'vue';
+import { ref, onMounted } from "vue";
+import { useI18n } from "#imports";
 
+const { t } = useI18n();
 const isLinksVisible = ref(false);
 const isMobile = ref(false);
 
 function toggleLinksVisibility() {
   isLinksVisible.value = !isLinksVisible.value;
-  console.log('Links visibility toggled:', isLinksVisible.value);
+  console.log("Links visibility toggled:", isLinksVisible.value);
 }
 
 onMounted(() => {
   isMobile.value = window.innerWidth <= 1200;
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     isMobile.value = window.innerWidth <= 1200;
   });
 });
@@ -22,55 +24,47 @@ onMounted(() => {
     <div class="header-content">
       <div class="logo-and-social">
         <div class="social-icons">
-          <div class="social-links">
+          <div class="logo-box">
             <a href="" target="_blank" class="social-link">
-              <UIcon name="mdi-facebook" size="24"/>
-            </a>
-            <a href="" target="_blank" class="social-link">
-              <UIcon name="mdi-whatsapp" size="24"/>
-            </a>
-            <a href="" target="_blank" class="social-link">
-              <UIcon name="mdi-instagram" size="24"/>
-            </a>
-            <a href="" target="_blank" class="social-link">
-              <UIcon name="mdi-youtube" size="24"/>
+              <img src="../public/images/logo.webp" alt="logo" class="logo">
             </a>
           </div>
         </div>
         <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle">
-          <UIcon name="uil-bars"/>
+          <UIcon name="uil-bars" />
         </button>
       </div>
 
       <div class="header-heading">
-        <h2>Every Child is My Child</h2>
+        <h2>{{ t("header.tagline") }}</h2>
       </div>
 
       <nav v-if="isLinksVisible || !isMobile" class="nav-menu">
         <ul class="nav-links">
           <li>
-            <router-link to="/home">Home</router-link>
+            <NuxtLink to="/home">{{ t("header.nav.home") }}</NuxtLink>
           </li>
           <li>
-            <router-link to="/about">About</router-link>
+            <NuxtLink to="/about">{{ t("header.nav.about") }}</NuxtLink>
           </li>
           <li>
-            <router-link to="/articles">Articles</router-link>
+            <NuxtLink to="/articles">{{ t("header.nav.articles") }}</NuxtLink>
           </li>
           <li>
-            <router-link to="/activities">Activities</router-link>
+            <NuxtLink to="/activities">{{ t("header.nav.activities") }}</NuxtLink>
           </li>
           <li>
-            <router-link to="/stories">Stories</router-link>
+            <NuxtLink to="/stories">{{ t("header.nav.stories") }}</NuxtLink>
           </li>
           <li>
-            <router-link to="/volunteer-form">Volunteer</router-link>
+            <NuxtLink to="/volunteer-form">{{ t("header.nav.volunteer") }}</NuxtLink>
           </li>
         </ul>
       </nav>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .header {
@@ -88,10 +82,15 @@ onMounted(() => {
   margin: 0 auto;
 }
 
-.social-links {
-  display: flex;
+.logo-box {
+  display: block;
   gap: 15px;
   min-height: 20px;
+}
+
+.logo-box .logo{
+  width: 50px;
+  height: 50px;
 }
 
 .social-link {

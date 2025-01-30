@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import {ref, computed} from 'vue';
+import { ref, computed } from 'vue';
+import { useI18n } from '#imports';
+
+const { t } = useI18n();
 
 interface Message {
   id: number;
@@ -11,62 +14,62 @@ interface Message {
 const messages: Message[] = [
   {
     id: 1,
-    title: "Supporting Children for a Better Future",
-    message: "Every child deserves a chance to thrive. NGOs like ours play a pivotal role in providing care, education, and a brighter future for children in need.",
+    title: t("messages.supportingChildren"),
+    message: t("messages.message1"),
     image: "images/child.jpeg",
   },
   {
     id: 2,
-    title: "Empathy and Action: A Lifeline for Children",
-    message: "It’s not just about providing basic needs. It’s about offering a safe space where children can feel loved and supported, enabling them to flourish and reach their full potential.",
+    title: t("messages.empathyAndAction"),
+    message: t("messages.message2"),
     image: "images/child.jpeg",
   },
   {
     id: 3,
-    title: "The Power of Education",
-    message: "When we educate a child, we open doors to endless possibilities. NGOs like ours provide critical educational resources that break the cycle of poverty and build a better tomorrow.",
+    title: t("messages.powerOfEducation"),
+    message: t("messages.message3"),
     image: "images/child.jpeg",
   },
   {
     id: 4,
-    title: "Protecting Innocence",
-    message: "Children are the future, and it’s our responsibility to protect them. By supporting organizations that care for vulnerable children, we can help safeguard their innocence and provide opportunities for growth.",
+    title: t("messages.protectingInnocence"),
+    message: t("messages.message4"),
     image: "images/child.jpeg",
   },
   {
     id: 5,
-    title: "Investing in Children, Investing in Tomorrow",
-    message: "Supporting children today is an investment in a better, more compassionate world. Through our efforts, we help shape resilient, empowered future leaders.",
+    title: t("messages.investingInChildren"),
+    message: t("messages.message5"),
     image: "images/child.jpeg",
   },
   {
     id: 6,
-    title: "Hope for Every Child",
-    message: "In many parts of the world, children face unimaginable challenges. NGOs are working tirelessly to bring hope and change through education, healthcare, and essential resources.",
+    title: t("messages.hopeForEveryChild"),
+    message: t("messages.message6"),
     image: "images/child.jpeg",
   },
   {
     id: 7,
-    title: "A Right to Care and Education",
-    message: "Every child has a right to grow in a safe environment and receive the education they deserve. Our NGO works to ensure that no child is left behind due to their circumstances.",
+    title: t("messages.rightToCare"),
+    message: t("messages.message7"),
     image: "images/child.jpeg",
   },
   {
     id: 8,
-    title: "Together We Can Make a Difference",
-    message: "Through collective action, we can ensure that vulnerable children receive the care, support, and education they need to succeed in life. Join us in making a lasting impact!",
+    title: t("messages.togetherWeCan"),
+    message: t("messages.message8"),
     image: "images/child.jpeg",
   },
   {
     id: 9,
-    title: "Raising a Generation of Leaders",
-    message: "When children are nurtured, cared for, and given opportunities, they grow into confident leaders who can shape the world for the better. Let’s be part of that transformation.",
+    title: t("messages.raisingLeaders"),
+    message: t("messages.message9"),
     image: "images/child.jpeg",
   },
   {
     id: 10,
-    title: "No Child Should Be Left Behind",
-    message: "Every child deserves an opportunity to dream and achieve. Through NGOs, we are ensuring that every child, regardless of their background, gets the support they need to build a bright future.",
+    title: t("messages.noChildLeftBehind"),
+    message: t("messages.message10"),
     image: "images/child.jpeg",
   }
 ];
@@ -86,6 +89,7 @@ function prevPage() {
   currentIndex.value = (currentIndex.value - itemsPerPage + messages.length) % messages.length;
 }
 </script>
+
 <template>
   <div class="messages-section">
     <div class="content-wrapper">

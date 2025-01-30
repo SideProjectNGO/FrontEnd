@@ -16,7 +16,6 @@ const currentYear = new Date().getFullYear();
   </div>
 </template>
 
-
 <style scoped>
 .footer-admin-section {
   margin: auto;
