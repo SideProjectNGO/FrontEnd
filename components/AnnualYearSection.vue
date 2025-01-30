@@ -1,7 +1,9 @@
 <script setup>
-import {ref} from 'vue';
 import Popup from '../components/AnnualYearPopup.vue';
+import {ref} from "vue";
+import {useI18n} from "#imports";
 
+const {t} = useI18n();
 
 const annualYearPopup = ref(false);
 
@@ -18,22 +20,20 @@ const closePopup = () => {
   <div class="annual-report">
     <div class="content-wrapper">
       <div class="text-box">
-        <h2 class="report-title">Our Annual Report: A Year of Impact</h2>
+        <h2 class="report-title">{{ t("annualReport.reportTitle") }}</h2>
         <p class="report-description">
-          Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the
-          achievements, challenges, and milestones that have shaped our mission to empower children. From the success
-          stories of the children we serve to the dedication of our team and supporters, this report offers a
-          comprehensive look at the impact we’ve had together.
+          {{ t("annualReport.reportDescription") }}
         </p>
-        <button @click="openPopup" class="open-popup-btn">Open Popup</button>
+        <button @click="openPopup" class="open-popup-btn">{{ t("annualReport.openPopupButton") }}</button>
       </div>
       <div class="image-box">
-        <img src="../public/images/partnership-logo-4.jpeg" alt="annual year report" />
+        <img src="../public/images/partnership-logo-4.jpeg" alt="annual year report"/>
       </div>
     </div>
     <Popup v-if="annualYearPopup" @close="closePopup"></Popup>
   </div>
 </template>
+
 
 <style scoped>
 

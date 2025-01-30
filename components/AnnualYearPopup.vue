@@ -1,4 +1,7 @@
-<script setup>
+<script setup lang="ts">
+import { useI18n } from "#imports";
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -6,16 +9,16 @@
     <div class="popup-container">
       <div class="popup-content-wrapper">
         <div class="popup-header">
-          <span>Annual Year Popup</span>
+          <span>{{ t("popup.title") }}</span>
           <span class="close-btn" @click="$emit('close')">X</span>
         </div>
         <div class="popup-body">
           <div class="text-box">
-            <h2 class="report-title">Our Annual Report: A Year of Impact</h2>
+            <h2 class="report-title">{{ t("popup.reportTitle") }}</h2>
             <p class="report-description">
-              Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.
+              {{ t("popup.reportDescription") }}
             </p>
-            <button class="download-btn">Download</button>
+            <button class="download-btn">{{ t("popup.downloadButton") }}</button>
           </div>
           <div class="image-box">
             <img src="../public/images/landing-image.jpeg" alt="annual-report" />

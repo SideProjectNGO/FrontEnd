@@ -35,6 +35,17 @@ export default {
         noChildLeftBehind: "No Child Should Be Left Behind",
         message10: "Every child deserves an opportunity to dream and achieve. Through NGOs, we are ensuring that every child, regardless of their background, gets the support they need to build a bright future."
     },
+    annualReport: {
+        reportTitle: "Our Annual Report: A Year of Impact",
+        reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
+        openPopupButton: "Open Popup",
+    },
+    popup: {
+        title: "Annual Year Popup",
+        reportTitle: "Our Annual Report: A Year of Impact",
+        reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
+        downloadButton: "Download",
+    },
     names: {
         john: "John",
         jane: "Jane",

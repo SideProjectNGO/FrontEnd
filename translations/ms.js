@@ -46,6 +46,17 @@ export default {
         olivia: "Olivia",
         michael: "Michael",
     },
+    annualReport: {
+        reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
+        reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
+        openPopupButton: "Buka Popup",
+    },
+    popup: {
+        title: "Popup Tahun Tahunan",
+        reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
+        reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
+        downloadButton: "Muat Turun",
+    },
     about: {
         sectionTitle: "Lebih lanjut mengenai MyChild",
         aboutUs: {
