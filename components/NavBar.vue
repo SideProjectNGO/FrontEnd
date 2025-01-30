@@ -152,8 +152,8 @@ onMounted(() => {
     display: none;
   }
 
-  .social-icons {
-    display: none;
+  .logo-box {
+    display: block;
   }
 
   .logo-and-social {
