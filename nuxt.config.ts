@@ -5,8 +5,8 @@ export default defineNuxtConfig({
     i18n: {
         locales: [
             {code: 'en', iso: 'en-US', file: 'translations/en.js', dir: 'ltr'},
+            {code: 'ms', iso: 'ms-MY', file: 'translations/ms.js', dir: 'ltr'},
             // {code: 'ar', iso: 'ar-SA', file: 'translations/ar.js', dir: 'rtl'},
-            {code: 'ms', iso: 'ms-MY', file: 'translations/ms.js', dir: 'ltr'}
         ],
         defaultLocale: 'en',
         detectBrowserLanguage: false,

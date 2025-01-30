@@ -75,6 +75,21 @@ export default {
     footer: {
         copyright: "Copyright",
     },
+    footerText: {
+        copyright: "Copyright &copy; My child {year}",
+        subscribe: "Subscribe Now",
+    },
+    linksTitle: {
+        home: "Home",
+        about: "About Us",
+        stories: "Our Stories",
+        articles: "Latest Articles",
+    },
+    subscribeForm: {
+        placeholder: "Enter your email address",
+        button: "Subscribe",
+    },
+    quickLinksSection: "Quick Navigation",
     landing: {
         headline: "Every Child is My Child",
         description:

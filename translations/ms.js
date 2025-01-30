@@ -75,6 +75,21 @@ export default {
     footer: {
         copyright: "Hak Cipta",
     },
+    footerText: {
+        copyright: "Hak cipta &copy; Anak saya {year}",
+        subscribe: "Langgan Sekarang",
+    },
+    linksTitle: {
+        home: "Halaman Utama",
+        about: "Tentang Kami",
+        stories: "Cerita Kami",
+        articles: "Artikel Terbaru",
+    },
+    subscribeForm: {
+        placeholder: "Masukkan alamat emel anda",
+        button: "Langgan",
+    },
+    quickLinksSection: "Navigasi Pantas",
     landing: {
         headline: "Setiap Kanak-Kanak adalah Anak Saya",
         description:

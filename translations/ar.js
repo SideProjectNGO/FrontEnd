@@ -75,6 +75,21 @@ export default {
     footer: {
         copyright: "حقوق النشر",
     },
+    footerText: {
+        copyright: "حقوق الطبع والنشر &copy; طفلي {year}",
+        subscribe: "اشترك الآن",
+    },
+    linksTitle: {
+        home: "الصفحة الرئيسية",
+        about: "معلومات عنا",
+        stories: "قصصنا",
+        articles: "أحدث المقالات",
+    },
+    subscribeForm: {
+        placeholder: "أدخل بريدك الإلكتروني",
+        button: "اشترك",
+    },
+    quickLinksSection: "التنقل السريع",
     landing: {
         headline: "كل طفل هو طفلي",
         description:

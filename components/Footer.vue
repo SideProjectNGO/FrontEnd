@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear();
+const { t } = useI18n();
 </script>
 
 <template>
@@ -39,47 +40,47 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div class="links">
-          <h2>Quick Links</h2>
+          <h2>{{ t('quickLinksSection') }}</h2>
           <ul>
             <li>
               <router-link to="/home">
                 <span>
-                  <UIcon name="material-symbols-contact-page"/>
-                </span>Home
+                  <UIcon name="material-symbols-contact-page"   class="links-icon"/>
+                </span>{{ t('linksTitle.home') }}
               </router-link>
             </li>
             <li>
               <router-link to="/home">
                 <span>
-                  <UIcon name="mdi-about"/>
-                </span>About
+                  <UIcon name="mdi-about"   class="links-icon"/>
+                </span>{{ t('linksTitle.about') }}
               </router-link>
             </li>
             <li>
               <router-link to="/home">
                 <span>
-                  <UIcon name="mdi-book"/>
-                </span>Stories
+                  <UIcon name="mdi-book"   class="links-icon"/>
+                </span>{{ t('linksTitle.stories') }}
               </router-link>
             </li>
             <li>
-              <router-link to="/articles">
+              <router-link to="/articles"   class="links-icon">
                 <span>
-                  <UIcon name="mdi-book"/>
-                </span>Articles
+                  <UIcon name="mdi-book"   class="links-icon"/>
+                </span>{{ t('linksTitle.articles') }}
               </router-link>
             </li>
           </ul>
         </div>
 
         <div class="subscribe-section">
-          <h1 class="subscribe-title">Subscribe</h1>
+          <h1 class="subscribe-title">{{ t('footerText.subscribe') }}</h1>
           <div class="container-form">
             <div class="subscribe-input">
-              <input type="email" placeholder="Enter your email"/>
+              <input type="email" :placeholder="t('subscribeForm.placeholder')" />
             </div>
             <div class="subscribe-button">
-              <button class="subscribe-btn">Subscribe</button>
+              <button class="subscribe-btn">{{ t('subscribeForm.button') }}</button>
             </div>
           </div>
         </div>
@@ -87,7 +88,7 @@ const currentYear = new Date().getFullYear();
       <hr class="divider">
       <div class="socials-section">
         <div class="footer-bottom">
-          <p>&copy; Copyright <a href="">My child {{ currentYear }}</a></p>
+          <p>{{ t('footerText.copyright', { year: currentYear }) }}</p>
         </div>
       </div>
     </div>
@@ -174,6 +175,11 @@ const currentYear = new Date().getFullYear();
   font-size: 1rem;
   padding: 5px 0;
   border-radius: 5px;
+}
+
+.links-icon{
+  font-size: 1.2rem;
+  margin-right: 15px;
 }
 
 .links ul li a {
