@@ -1,16 +1,19 @@
 <script setup>
-import {computed} from "vue";
+import { computed } from "vue";
+import { useI18n } from "#imports";
+
+const { t } = useI18n();
 
 const images = [
-  {id: 1, title: "John", image: "/images/mychild logo.jpg"},
-  {id: 2, title: "Jane", image: "/images/mychild logo.jpg"},
-  {id: 3, title: "Alex", image: "/images/mychild logo.jpg"},
-  {id: 4, title: "Emma", image: "/images/mychild logo.jpg"},
-  {id: 5, title: "Chris", image: "/images/mychild logo.jpg"},
-  {id: 6, title: "Sophia", image: "/images/mychild logo.jpg"},
-  {id: 7, title: "Daniel", image: "/images/mychild logo.jpg"},
-  {id: 8, title: "Olivia", image: "/images/mychild logo.jpg"},
-  {id: 9, title: "Michael", image: "/images/mychild logo.jpg"},
+  { id: 1, title: "names.john", image: "/images/mychild logo.jpg" },
+  { id: 2, title: "names.jane", image: "/images/mychild logo.jpg" },
+  { id: 3, title: "names.alex", image: "/images/mychild logo.jpg" },
+  { id: 4, title: "names.emma", image: "/images/mychild logo.jpg" },
+  { id: 5, title: "names.chris", image: "/images/mychild logo.jpg" },
+  { id: 6, title: "names.sophia", image: "/images/mychild logo.jpg" },
+  { id: 7, title: "names.daniel", image: "/images/mychild logo.jpg" },
+  { id: 8, title: "names.olivia", image: "/images/mychild logo.jpg" },
+  { id: 9, title: "names.michael", image: "/images/mychild logo.jpg" },
 ];
 
 const rowPattern = [5, 4];
@@ -32,11 +35,11 @@ const groupedImages = computed(() => {
 
 <template>
   <div class="partnerships-section">
-    <h1 class="title">Strength in Partnerships</h1>
+    <h1 class="title">{{ t("partnerships.title") }}</h1>
     <div class="container">
       <div v-for="(row, rowIndex) in groupedImages" :key="'row-' + rowIndex" class="row">
         <div v-for="image in row" :key="image.id" class="image-container">
-          <img :src="image.image" :alt="image.title" class="image"/>
+          <img src="../public/images/un-logo-1.avif" :alt="t(image.title)" class="image" />
         </div>
       </div>
     </div>
