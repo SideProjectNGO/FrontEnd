@@ -1,31 +1,33 @@
 <script setup lang="ts">
+import { useI18n } from "#imports";
+
+const { t } = useI18n();
 
 const aboutItem = [
   {
     id: 1,
-    title: "About Us",
-    content: "At MyChild, we are a dedicated team of local and international individuals passionate about nurturing and empowering children. Our diverse team includes core members and educators who share a unified goal: ensuring that every child has the opportunity to thrive.",
+    title: t("about.aboutUs.title"),
+    content: t("about.aboutUs.content"),
     image: "/images/about-us.webp",
   },
   {
     id: 2,
-    title: "Our Vision",
-    content: "A world where every child, regardless of their background, enjoys equal access to opportunities for growth, education, and happiness. We envision a future where no child is left behind, where they are protected from harm, empowered to dream, and nurtured to become compassionate, confident leaders of tomorrow.",
+    title: t("about.vision.title"),
+    content: t("about.vision.content"),
     image: "/images/vision.jpeg",
   },
   {
     id: 3,
-    title: "Our Mission",
-    content: "Our mission is to provide holistic care, education, and support to children in need. Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has access to a safe, nurturing environment and the resources they need to unlock their full potential.",
+    title: t("about.mission.title"),
+    content: t("about.mission.content"),
     image: "/images/mission.webp",
-  }
+  },
 ];
-
 </script>
 
 <template>
   <div class="about-section">
-    <h1 class="about-title">More about MyChild</h1>
+    <h1 class="about-title">{{ t("about.sectionTitle") }}</h1>
     <div class="about-grid" v-for="item in aboutItem" :key="item.id">
       <template v-if="item.id % 2 !== 0">
         <div class="text-content">
