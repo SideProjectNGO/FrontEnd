@@ -1,40 +1,68 @@
 <script setup>
+import { useI18n } from "#i18n";
+
+const { locale } = useI18n();
+
+const switchLanguage = (lang) => {
+  locale.value = lang;
+  console.log(`Language switched to: ${locale.value}`);
+};
 </script>
 
-
 <template>
-  <div class="footer-admin-section">
-    <ul class="translate-navbar">
-      <li><button @click="switchLanguage('en')">English</button></li>
-      <li><button @click="switchLanguage('ar')">عربي</button></li>
-      <li><button @click="switchLanguage('ms')">Bahasa Melayu</button></li>
-    </ul>
-  </div>
+  <nav class="translate-navbar">
+    <div class="translate-navbar-container">
+      <button @click="switchLanguage('en')" aria-label="English">
+        <UIcon name="twemoji-flag-united-kingdom" class="flag-icon" />
+        English
+      </button>
+      <button @click="switchLanguage('ar')" aria-label="العربية">
+        <UIcon name="twemoji-flag-saudi-arabia" class="flag-icon" />
+        عربي
+      </button>
+      <button @click="switchLanguage('ms')" aria-label="Bahasa Melayu">
+        <UIcon name="twemoji-flag-malaysia" class="flag-icon" />
+        Bahasa Melayu
+      </button>
+    </div>
+  </nav>
 </template>
 
-
-
-
 <style scoped>
-.footer-admin-section {
-  margin: auto;
+.translate-navbar {
+  width: 100%;
   background-color: var(--primary-color);
-  height: 50px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-.translate-navbar {
-  display: flex;
-  margin: 0  auto;
-  align-items: center;
-  text-align: center;
-  font-size: 1.2rem;
-  padding: .5rem;
-  color: var(--text-color);
+.translate-navbar-container {
   max-width: 1200px;
-  background-color: var(--primary-color);
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
 }
-.footer-container .translate-navbar li {
-  display: block;
-  margin-right: 20px;
+
+.translate-navbar-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  color: var(--text-color);
+  padding: 8px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.translate-navbar-container button:hover {
+  background-color: var(--text-color);
+  color: var(--primary-color);
+}
+
+.flag-icon {
+  font-size: 1.5rem;
 }
 </style>
