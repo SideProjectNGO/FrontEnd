@@ -31,10 +31,11 @@ const switchLanguage = (lang) => {
 <style scoped>
 .translate-navbar {
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--background);
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
+  box-shadow: rgba(149, 157, 165, 0.7) 0 8px 24px;
 }
 
 .translate-navbar-container {
@@ -49,7 +50,7 @@ const switchLanguage = (lang) => {
   align-items: center;
   gap: 8px;
   background: none;
-  color: var(--text-color);
+  color: var(--primary-color);
   padding: 8px 15px;
   font-size: 1rem;
   cursor: pointer;
@@ -58,8 +59,8 @@ const switchLanguage = (lang) => {
 }
 
 .translate-navbar-container button:hover {
-  background-color: var(--text-color);
-  color: var(--primary-color);
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
 }
 
 .flag-icon {
