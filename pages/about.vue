@@ -3,6 +3,7 @@
 </script>
 
 <template>
+  <TranslateNavbar/>
   <NavBar/>
   <LandingPage/>
   <About/>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear();
-const { t } = useI18n();
+const {t} = useI18n();
 </script>
 
 <template>
@@ -45,28 +45,28 @@ const { t } = useI18n();
             <li>
               <router-link to="/home">
                 <span>
-                  <UIcon name="material-symbols-contact-page"   class="links-icon"/>
+                  <UIcon name="material-symbols-contact-page" class="links-icon"/>
                 </span>{{ t('linksTitle.home') }}
               </router-link>
             </li>
             <li>
               <router-link to="/home">
                 <span>
-                  <UIcon name="mdi-about"   class="links-icon"/>
+                  <UIcon name="mdi-about" class="links-icon"/>
                 </span>{{ t('linksTitle.about') }}
               </router-link>
             </li>
             <li>
               <router-link to="/home">
                 <span>
-                  <UIcon name="mdi-book"   class="links-icon"/>
+                  <UIcon name="mdi-book" class="links-icon"/>
                 </span>{{ t('linksTitle.stories') }}
               </router-link>
             </li>
             <li>
-              <router-link to="/articles"   class="links-icon">
+              <router-link to="/articles" class="links-icon">
                 <span>
-                  <UIcon name="mdi-book"   class="links-icon"/>
+                  <UIcon name="mdi-book" class="links-icon"/>
                 </span>{{ t('linksTitle.articles') }}
               </router-link>
             </li>
@@ -77,7 +77,7 @@ const { t } = useI18n();
           <h1 class="subscribe-title">{{ t('footerText.subscribe') }}</h1>
           <div class="container-form">
             <div class="subscribe-input">
-              <input type="email" :placeholder="t('subscribeForm.placeholder')" />
+              <input type="email" :placeholder="t('subscribeForm.placeholder')"/>
             </div>
             <div class="subscribe-button">
               <button class="subscribe-btn">{{ t('subscribeForm.button') }}</button>
@@ -88,9 +88,10 @@ const { t } = useI18n();
       <hr class="divider">
       <div class="socials-section">
         <div class="footer-bottom">
-          <p>{{ t('footerText.copyright', { year: currentYear }) }}</p>
+          <p>{{ t('footerText.copyright', {year: currentYear}) }}</p>
         </div>
       </div>
+      <TranslateNavbar/>
     </div>
   </div>
 </template>
@@ -177,7 +178,7 @@ const { t } = useI18n();
   border-radius: 5px;
 }
 
-.links-icon{
+.links-icon {
   font-size: 1.2rem;
   margin-right: 15px;
 }
@@ -293,6 +294,35 @@ const { t } = useI18n();
 
 a:hover {
   color: var(--text-hover);
+}
+
+.translate-navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+}
+
+.translate-navbar-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  color: var(--primary-color);
+  padding: 8px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.translate-navbar-container button:hover {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+}
+
+.flag-icon {
+  font-size: 1.5rem;
 }
 
 @keyframes fadeIn {
