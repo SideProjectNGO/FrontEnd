@@ -1,11 +1,25 @@
 <script setup>
 import { useI18n } from "#i18n";
+import { useRouter } from 'vue-router';
 
 const { locale } = useI18n();
+const router = useRouter();
 
 const switchLanguage = (lang) => {
   locale.value = lang;
   console.log(`Language switched to: ${locale.value}`);
+
+  const currentRoute = router.currentRoute.value;
+  let path = currentRoute.path;
+  const langPattern = /^\/(en|ar|ms)/;
+
+  if (langPattern.test(path)) {
+    path = path.replace(langPattern, `/${lang}`);
+  } else {
+    path = `/${lang}${path}`;
+  }
+
+  router.push(path);
 };
 </script>
 
