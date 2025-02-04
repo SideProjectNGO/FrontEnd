@@ -234,7 +234,6 @@ const handleFormSubmit = () => {
       </div>
 
       <div class="form-wrapper">
-        <h2 class="form-heading">{{ t('volunteer_form.title') }}</h2>
         <form @submit.prevent="handleFormSubmit" class="volunteer-form-grid">
           <div
               v-for="field in fields"
@@ -364,13 +363,6 @@ const handleFormSubmit = () => {
   margin: 20px;
 }
 
-.form-heading {
-  font-size: 1.5rem;
-  text-align: start;
-  color: var(--primary-color);
-  padding: 20px 0;
-}
-
 .volunteer-form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -426,12 +418,6 @@ textarea {
   resize: vertical;
 }
 
-.error-message {
-  color: #ff4d4f;
-  font-size: 0.875rem;
-  margin-top: 5px;
-}
-
 .file-input::-webkit-file-upload-button {
   align-items: center;
   background-color: var(--primary-color);
@@ -484,10 +470,5 @@ textarea {
   .container {
     padding: 20px;
   }
-
-  .form-heading {
-    font-size: 1.5rem;
-  }
-
 }
 </style>
