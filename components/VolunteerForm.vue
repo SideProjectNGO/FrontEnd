@@ -430,11 +430,11 @@ textarea {
 }
 
 .file-input::-webkit-file-upload-button:hover {
-  background-color: var(--btn-submit-color);
+  background-color: var(--primary-hover);
 }
 
 .file-input::-webkit-file-upload-button:active {
-  background-color: var(--btn-submit-color);
+  background-color: var(--primary-hover);
 }
 
 .btn-submit {
