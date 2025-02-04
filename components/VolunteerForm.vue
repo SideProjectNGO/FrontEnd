@@ -2,16 +2,19 @@
 import {ref, watch} from "vue";
 import {z} from "zod";
 import {nationalities} from "~/utils/dropdownOptions.js";
+import {useI18n} from "#imports";
+
+const {t} = useI18n();
 
 const formSchema = z.object({
-  form_id: z.string().min(1, "Form ID is required"),
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().regex(/^\+?\d{10,15}$/, "Phone number must be valid"),
-  address: z.string().min(10, "Address is required"),
+  form_id: z.string().min(1, t('volunteer_form.validation.required')),
+  name: z.string().min(1, t('volunteer_form.validation.required')),
+  email: z.string().email(t('volunteer_form.validation.email')),
+  phone: z.string().regex(/^\+?\d{10,15}$/, t('volunteer_form.validation.phone')),
+  address: z.string().min(10, t('volunteer_form.validation.required')),
   message: z.string().optional(),
   cv: z.string()
-      .refine((value) => /\.(png|jpe?g|pdf|docx?)$/i.test(value), "CV must be a PNG, JPG, PDF, or Word file"),
+      .refine((value) => /\.(png|jpe?g|pdf|docx?)$/i.test(value), t('volunteer_form.validation.cv')),
   status: z.enum(["pending"]),
   gender: z.string().optional(),
   created_at: z.string().optional(),
@@ -31,100 +34,100 @@ type Field = {
 
 const fields: Field[] = [
   {
-    id: "name", label: "Name",
+    id: "name", label: t('volunteer_form.form_fields.name'),
     type: "text",
-    placeholder: "Enter your name",
+    placeholder: t('volunteer_form.placeholders.name'),
     icon: "mdi-account"
   },
   {
     id: "email",
-    label: "Email",
+    label: t('volunteer_form.form_fields.email'),
     type: "email",
-    placeholder: "Enter your email address",
+    placeholder: t('volunteer_form.placeholders.email'),
     icon: "mdi-email"
   },
   {
     id: "phone",
-    label: "Phone",
+    label: t('volunteer_form.form_fields.phone'),
     type: "tel",
-    placeholder: "Enter your phone number",
+    placeholder: t('volunteer_form.placeholders.phone'),
     icon: "mdi-phone"
   },
   {
     id: "dob",
-    label: "Date of Birth",
+    label: t('volunteer_form.form_fields.dob'),
     type: "date",
-    placeholder: "Select your date of birth",
+    placeholder: t('volunteer_form.placeholders.dob'),
     icon: "mdi-calendar"
   },
   {
     id: "gender",
-    label: "Gender",
+    label: t('volunteer_form.form_fields.gender'),
     type: "select",
-    placeholder: "Select your gender",
+    placeholder: t('volunteer_form.placeholders.gender'),
     icon: "mdi-account-circle",
     options: [
-      {value: "male", label: "Male"},
-      {value: "female", label: "Female"},
+      {value: "male", label: t('volunteer_form.list.1')},
+      {value: "female", label: t('volunteer_form.list.2')},
     ],
   },
   {
     id: "nationality",
-    label: "Nationality",
+    label: t('volunteer_form.form_fields.nationality'),
     type: "select",
-    placeholder: "Select your gender",
+    placeholder: t('volunteer_form.placeholders.nationality'),
     icon: "mdi-account-circle",
     options: nationalities,
   },
   {
     id: "days",
-    label: "Preferred Days and Times",
+    label: t('volunteer_form.form_fields.days'),
     type: "select",
-    placeholder: "Select your availability",
+    placeholder: t('volunteer_form.placeholders.days'),
     icon: "mdi-calendar",
     options: [
-      {value: "weekdays", label: "Weekdays"},
-      {value: "weekends", label: "Weekends"},
-      {value: "evenings", label: "Evenings"},
+      {value: "weekdays", label: t('volunteer_form.list.3')},
+      {value: "weekends", label: t('volunteer_form.list.4')},
+      {value: "evenings", label: t('volunteer_form.list.5')},
     ],
   },
   {
     id: "address",
-    label: "Address",
+    label: t('volunteer_form.form_fields.address'),
     type: "text",
-    placeholder: "Enter your address",
+    placeholder: t('volunteer_form.placeholders.address'),
     icon: "mdi-message"
   },
   {
     id: "message",
-    label: "Message",
+    label: t('volunteer_form.form_fields.message'),
     type: "textarea",
-    placeholder: "Enter your message or notes",
+    placeholder: t('volunteer_form.placeholders.message'),
     icon: "mdi-message"
   },
   {
     id: "cv",
-    label: "CV",
+    label: t('volunteer_form.form_fields.cv'),
     type: "file",
-    placeholder: "Upload your CV",
+    placeholder: t('volunteer_form.placeholders.cv'),
     icon: "mdi-file"
   },
 ];
 
-const formData = ref<Record<keyof typeof formSchema.shape, string>>({
+const formData = ref<Record<keyof typeof formSchema.shape, string | null>>({
   form_id: "",
   name: "",
   email: "",
   phone: "",
   message: "",
-  cv: "",
+  cv: null,
   status: "pending",
   created_at: "",
   dob: "",
   address: "",
-  days: "",
-  gender: "",
-  nationality: ""
+  days: null,
+  gender: null,
+  nationality: null
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
@@ -166,21 +169,10 @@ fields.forEach((field) => {
 const handleFileInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
   const files = target.files;
-
   if (files && files.length > 0) {
-    const file = files[0];
-    const allowedTypes = ['image/png', 'image/jpeg', 'application/pdf'];
-    const fileType = file.type;
-
-    if (allowedTypes.includes(fileType)) {
-      console.log("Selected valid file:", file); // Proceed with uploading the file
-      formData.value.cv = file.name; // You can store the filename or handle the upload here
-    } else {
-      console.log("Invalid file type. Please upload a PNG, JPG, or PDF file.");
-      alert("Invalid file type. Please upload a PNG, JPG, or PDF file.");
-    }
+    formData.value.cv = files[0];
   } else {
-    console.log("No file selected");
+    formData.value.cv = "";
   }
 };
 
@@ -189,65 +181,111 @@ const handleFormSubmit = () => {
     validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape] || "");
   });
 
-  if (Object.values(errors.value).some((error) => error)) {
+  if (Object.values(errors.value).some((error) => error?.length)) {
     console.log("Validation errors:", errors.value);
   } else {
     console.log("Valid data:", formData.value);
     alert("Form submitted successfully");
-    location.reload();
   }
 };
+
 </script>
 
 <template>
   <div class="volunteer-form">
     <div class="container">
-      <h2 class="form-heading">Please fill this form</h2>
-      <form @submit.prevent="handleFormSubmit">
-        <div v-for="field in fields" :key="field.id" class="form-group">
-          <label :for="field.id">
-            <span class="icon">
-              <UIcon :name="field.icon"/>
-            </span>
-            {{ field.label }}
-          </label>
-          <select
-              v-if="field.type === 'select'"
-              :id="field.id"
-              v-model="formData[field.id]"
-              class="select-input"
-          >
-            <option value="" disabled>{{ field.placeholder }}</option>
-            <option v-for="option in field.options" :key="option.value" :value="option.value">
-              {{ option.label }}
-            </option>
-          </select>
-          <input
-              v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
-              :id="field.id"
-              :type="field.type"
-              :placeholder="field.placeholder"
-              v-model="formData[field.id]"
-              class="text-input"
-          />
-          <textarea
-              v-else-if="field.type === 'textarea'"
-              :id="field.id"
-              :placeholder="field.placeholder"
-              v-model="formData[field.id]"
-              class="textarea-input"
-          ></textarea>
-          <input
-              v-else-if="field.type === 'file'"
-              :id="field.id"
-              type="file"
-              class="file-input"
-              @change="handleFileInput"
-          />
-          <p v-if="errors[field.id]?.[0]" class="error-message">{{ errors[field.id]?.[0] }}</p>
+
+      <div class="description-wrapper">
+        <h2 class="description-title">{{ t('volunteer_form.title') }}</h2>
+        <div class="description-text">
+          <p class="description">{{ t('volunteer_form.description') }}</p>
+          <h3 class="sub-title">{{ t('volunteer_form.why_volunteer') }}</h3>
+          <ul>
+            <li>
+              <UIcon
+                  name="mdi-user"
+                  class="icons"
+              />
+              {{ t('volunteer_form.list.1') }}
+            </li>
+            <li>
+              <UIcon
+                  name="mdi-user"
+                  class="icons"
+              />
+              {{ t('volunteer_form.list.2') }}
+            </li>
+            <li>
+              <UIcon
+                  name="mdi-user"
+                  class="icons"
+              />
+              {{ t('volunteer_form.list.3') }}
+            </li>
+            <li>
+              <UIcon
+                  name="mdi-user"
+                  class="icons"
+              />
+              {{ t('volunteer_form.list.4') }}
+            </li>
+          </ul>
         </div>
-        <button type="submit" class="btn-submit">Submit</button>
-      </form>
+      </div>
+
+      <div class="form-wrapper">
+        <h2 class="form-heading">{{ t('volunteer_form.title') }}</h2>
+        <form @submit.prevent="handleFormSubmit" class="volunteer-form-grid">
+          <div
+              v-for="field in fields"
+              :key="field.id"
+              class="volunteer-form-group"
+              :class="{ 'full-width': field.type === 'textarea' || field.type === 'file'}"
+          >
+            <label :for="field.id">
+              <span class="icon">
+                <UIcon :name="field.icon"/>
+              </span>
+              {{ field.label }}
+            </label>
+            <select
+                v-if="field.type === 'select'"
+                :id="field.id"
+                v-model="formData[field.id]"
+                class="select-input"
+            >
+              <option value="" disabled>{{ field.placeholder }}</option>
+              <option v-for="option in field.options" :key="option.value" :value="option.value">
+                {{ option.label }}
+              </option>
+            </select>
+            <input
+                v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
+                :id="field.id"
+                :type="field.type"
+                :placeholder="field.placeholder"
+                v-model="formData[field.id]"
+                class="text-input"
+            />
+            <textarea
+                v-else-if="field.type === 'textarea'"
+                :id="field.id"
+                :placeholder="field.placeholder"
+                v-model="formData[field.id]"
+                class="textarea-input"
+            ></textarea>
+            <input
+                v-else-if="field.type === 'file'"
+                :id="field.id"
+                type="file"
+                class="file-input"
+                @change="handleFileInput"
+            />
+          </div>
+          <button type="submit" class="btn-submit  full-width">{{ t('volunteer_form.submit') }}</button>
+        </form>
+
+      </div>
     </div>
   </div>
 </template>
@@ -260,12 +298,70 @@ const handleFormSubmit = () => {
 }
 
 .container {
-  max-width: 800px;
-  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
   background: var(--background);
-  padding: 10px 40px;
-  border-radius: 10px;
+  gap: 20px;
+  border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 1200px) {
+  .volunteer-form {
+    background-color: #f9f9f9;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.container .description-wrapper {
+  background-color: var(--primary-color);
+  padding: 20px;
+}
+
+.container .description-text {
+  margin: 3rem auto;
+}
+
+.container .description-wrapper h2,
+.container .description-wrapper h3 {
+  text-align: start;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-hover);
+  margin-bottom: 20px;
+}
+
+.container .description-wrapper ul li {
+  list-style: none;
+  font-size: 1rem;
+  color: var(--text-hover);
+  text-align: justify;
+}
+
+.container .description-wrapper ul li .icons {
+  margin-right: 10px;
+}
+
+.container .description-wrapper p {
+  font-size: .9rem;
+  text-align: justify;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.container .form-wrapper {
+  margin: 20px;
 }
 
 .form-heading {
@@ -275,11 +371,23 @@ const handleFormSubmit = () => {
   padding: 20px 0;
 }
 
-.form-group {
-  margin-bottom: 5px;
+.volunteer-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 15px ;
+  margin: 0;
 }
 
-.form-group label {
+.volunteer-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.volunteer-form-group label {
   display: block;
   font-size: 1rem;
   color: var(--primary-color);
@@ -303,7 +411,6 @@ const handleFormSubmit = () => {
   border-radius: 5px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  margin: 0;
 }
 
 .text-input:focus,
@@ -347,14 +454,14 @@ textarea {
 .btn-submit {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   background-color: var(--primary-color);
   color: var(--text-color);
   border: none;
   outline: none;
   padding: 10px 15px;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 20px 0;
   cursor: pointer;
   margin: 1rem auto;
   transition: background-color 0.3s ease;

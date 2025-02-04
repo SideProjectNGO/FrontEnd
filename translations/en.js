@@ -96,4 +96,46 @@ export default {
             "Millions of children around the world face devastating losses and an uncertain future due to escalating armed conflicts, inequalities, and the impact of climate change on their lives and health.",
         more_about: "MORE ABOUT MYCHILD",
     },
+    volunteer_form: {
+        title: "Volunteer Form",
+        description: "Join our mission to create a brighter future for children! At Mychild, we believe that every child deserves love, care, and the opportunity to grow in a safe and nurturing environment. By becoming a volunteer, you will play a vital role in shaping young lives—whether by providing education, emotional support, or simply being a caring presence.",
+        why_volunteer: "Why Volunteer?",
+        list: {
+            1: "Make a meaningful impact on children's lives",
+            2: "Gain valuable experience in child care and community service",
+            3: "Be part of a compassionate and dedicated team",
+            4: "Experience the joy of giving back"
+        },
+        form_fields: {
+            name: "Name",
+            email: "Email",
+            phone: "Phone",
+            dob: "Date of Birth",
+            gender: "Gender",
+            nationality: "Nationality",
+            days: "Preferred Days and Times",
+            address: "Address",
+            message: "Message",
+            cv: "CV"
+        },
+        placeholders: {
+            name: "Enter your name",
+            email: "Enter your email address",
+            phone: "Enter your phone number",
+            dob: "Select your date of birth",
+            gender: "Select your gender",
+            nationality: "Select your nationality",
+            days: "Select your availability",
+            address: "Enter your address",
+            message: "Enter your message or notes",
+            cv: "Upload your CV"
+        },
+        validation: {
+            required: "This field is required",
+            email: "Invalid email address",
+            phone: "Phone number must be valid",
+            cv: "CV must be a PNG, JPG, PDF, or Word file"
+        },
+        submit:"Submit"
+    }
 };

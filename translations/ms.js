@@ -96,4 +96,47 @@ export default {
             "Jutaan kanak-kanak di seluruh dunia menghadapi kehilangan yang dahsyat dan masa depan yang tidak menentu akibat konflik bersenjata yang semakin meningkat, ketidaksamaan, dan kesan perubahan iklim terhadap kehidupan dan kesihatan mereka.",
         more_about: "LEBIH LANJUT TENTANG MYCHILD",
     },
+    volunteer_form: {
+        title: "Borang Sukarelawan",
+        description: "Sertai misi kami untuk mencipta masa depan yang lebih cerah untuk kanak-kanak! Di Mychild, kami percaya bahawa setiap kanak-kanak berhak mendapat kasih sayang, penjagaan, dan peluang untuk berkembang dalam persekitaran yang selamat dan memupuk. Dengan menjadi sukarelawan, anda akan memainkan peranan penting dalam membentuk kehidupan muda—sama ada dengan memberikan pendidikan, sokongan emosi, atau hanya dengan menjadi kehadiran yang prihatin.",
+        why_volunteer: "Kenapa Sukarelawan?",
+        list: {
+            1: "Buat impak yang bermakna dalam kehidupan kanak-kanak",
+            2: "Dapatkan pengalaman berharga dalam penjagaan kanak-kanak dan perkhidmatan komuniti",
+            3: "Menjadi sebahagian daripada pasukan yang penyayang dan berdedikasi",
+            4: "Rasai kegembiraan memberi kembali"
+        },
+        form_fields: {
+            name: "Nama",
+            email: "Emel",
+            phone: "Telefon",
+            dob: "Tarikh Lahir",
+            gender: "Jantina",
+            nationality: "Kewarganegaraan",
+            days: "Hari dan Masa Pilihan",
+            address: "Alamat",
+            message: "Mesej",
+            cv: "CV"
+        },
+        placeholders: {
+            name: "Masukkan nama anda",
+            email: "Masukkan alamat emel anda",
+            phone: "Masukkan nombor telefon anda",
+            dob: "Pilih tarikh lahir anda",
+            gender: "Pilih jantina anda",
+            nationality: "Pilih kewarganegaraan anda",
+            days: "Pilih ketersediaan anda",
+            address: "Masukkan alamat anda",
+            message: "Masukkan mesej atau nota anda",
+            cv: "Muat naik CV anda"
+        },
+        validation: {
+            required: "Medan ini diperlukan",
+            email: "Alamat emel tidak sah",
+            phone: "Nombor telefon mesti sah",
+            cv: "CV mesti dalam format PNG, JPG, PDF, atau Word"
+        },
+        submit: "Hantar"
+    }
+
 };
