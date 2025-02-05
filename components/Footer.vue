@@ -10,7 +10,7 @@ const {t} = useI18n();
         <div class="logo-container">
           <div class="logo-img">
             <a>
-              <img src="../public/images/logo.webp" alt="logo">
+              <img src="../public/images/landing-image-1.jpeg" alt="logo">
             </a>
           </div>
           <div class="social-icons">
@@ -111,6 +111,7 @@ const {t} = useI18n();
 @media (max-width: 800px) {
   .main-container {
     padding: 0;
+    margin: 0;
   }
 }
 
@@ -135,7 +136,7 @@ const {t} = useI18n();
 .logo-container .logo-img img {
   width: 100%;
   height: auto;
-  max-width: 150px;
+  max-width: 250px;
   justify-content: center;
 }
 
@@ -150,8 +151,13 @@ const {t} = useI18n();
     text-align: center;
   }
 
+  .logo-container .logo-img{
+    margin: 0 auto;
+  }
+
   .logo-container .logo-img img {
-    max-width: 120px;
+    max-width: 220px;
+    margin: 0 auto;
   }
 }
 
@@ -221,6 +227,10 @@ const {t} = useI18n();
   .container-form div {
     margin: 1rem 0;
   }
+
+  .subscribe-section {
+    display: none;
+  }
 }
 
 .subscribe-input input {
@@ -275,8 +285,8 @@ const {t} = useI18n();
 }
 
 @media (max-width: 1200px) {
-  .links ul li span {
-    display: none;
+  .links ul li {
+    text-align: start;
   }
 }
 
@@ -296,13 +306,6 @@ a:hover {
   color: var(--text-hover);
 }
 
-.translate-navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 15px;
-}
-
 .translate-navbar-container button {
   display: flex;
   align-items: center;
@@ -319,10 +322,6 @@ a:hover {
 .translate-navbar-container button:hover {
   background-color: var(--primary-hover);
   color: var(--text-hover);
-}
-
-.flag-icon {
-  font-size: 1.5rem;
 }
 
 @keyframes fadeIn {
