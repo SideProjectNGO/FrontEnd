@@ -1,24 +1,19 @@
-<script lang="ts">
-</script>
+<script lang="ts" setup>
+import {useI18n} from "#imports";
 
-<script setup>
-import { useI18n } from "#imports";
-
-const { t } = useI18n();
+const {t} = useI18n();
 </script>
 
 <template>
   <div class="landing-section">
     <div class="content-wrapper">
-      <div class="image-container">
-        <img src="/images/child.jpeg" alt="landing-image" class="landing-image" />
-      </div>
       <div class="text-container">
         <h2 class="headline">{{ t("landing.headline") }}</h2>
-        <p class="subtext">
-          {{ t("landing.description") }}
-        </p>
+        <p class="subtext">{{ t("landing.description") }}</p>
         <NuxtLink to="/about" class="cta-link">{{ t("landing.more_about") }}</NuxtLink>
+      </div>
+      <div class="image-container">
+        <img src="/images/landing-image-1.jpeg" alt="landing-image" class="landing-image"/>
       </div>
     </div>
   </div>
@@ -26,13 +21,13 @@ const { t } = useI18n();
 
 <style scoped>
 .landing-section {
-  height: 90vh;
+  height: 81vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #f5f5f5, #809D3C, #5D8736);
+  background: linear-gradient(135deg, #003366 30%, #004983 60%, #00aeef);
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  animation: fadeIn 1.5s forwards;
 }
 
 .content-wrapper {
@@ -50,16 +45,15 @@ const { t } = useI18n();
   justify-content: center;
   align-items: center;
   opacity: 0;
-  animation: slideIn 1.5s ease-in-out 0.5s forwards;
+  animation: slideIn 1.2s ease-out forwards;
 }
 
 .landing-image {
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
   height: auto;
-  border-radius: 50% 50% 0 0;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .text-container {
@@ -67,7 +61,7 @@ const { t } = useI18n();
   flex-direction: column;
   justify-content: center;
   opacity: 0;
-  animation: fadeInDetails 2s ease-in-out 1s forwards;
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
 
 .headline {
@@ -90,34 +84,33 @@ const { t } = useI18n();
   font-size: 1rem;
   font-weight: bold;
   color: var(--primary-color);
-  background: var(--text-color);
+  background: var(--background);
   border-radius: 8px;
-  width: fit-content;
-  margin: auto;
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s ease;
   opacity: 0;
-  animation: fadeInButton 2s ease-in-out 1.5s forwards;
+  animation: fadeIn 1.8s ease-in-out forwards;
 }
 
 .cta-link:hover {
-  background: var(--background);
+  background: var(--primary-hover);
   transition: background 0.3s ease;
 }
 
-@media screen and (max-width: 1200px) {
+
+@media (max-width: 1200px) {
   .landing-section {
     min-height: 100vh;
   }
 
   .content-wrapper {
     grid-template-columns: 1fr;
+    text-align: center;
   }
 
   .landing-image {
-    max-width: 70%;
-    height: auto;
+    max-width: 80%;
   }
 
   .headline {
@@ -129,44 +122,30 @@ const { t } = useI18n();
   }
 
   .cta-link {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .landing-section {
-    min-height: 100vh;
-  }
-
+@media (max-width: 768px) {
   .landing-image {
-    max-width: 200px;
+    max-width: 100%;
     height: auto;
   }
 
   .headline {
-    font-size: 1.7rem;
-    text-align: center;
+    font-size: 1.8rem;
   }
 
   .subtext {
     font-size: 1rem;
-    text-align: center;
   }
 
   .cta-link {
     width: 100%;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .landing-image {
-    max-width: 180px;
-    height: auto;
-  }
-
+@media (max-width: 480px) {
   .headline {
     font-size: 1.5rem;
   }
@@ -192,7 +171,7 @@ const { t } = useI18n();
 
 @keyframes slideIn {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-30px);
     opacity: 0;
   }
   to {
@@ -200,23 +179,4 @@ const { t } = useI18n();
     opacity: 1;
   }
 }
-
-@keyframes fadeInDetails {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInButton {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 </style>
-
