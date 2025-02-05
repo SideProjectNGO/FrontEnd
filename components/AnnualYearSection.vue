@@ -27,7 +27,7 @@ const closePopup = () => {
         <button @click="openPopup" class="open-popup-btn">{{ t("annualReport.openPopupButton") }}</button>
       </div>
       <div class="image-box">
-        <img src="../public/images/partnership-logo-4.jpeg" alt="annual year report"/>
+        <img src="../public/images/MyChild%20logo.png" alt="annual year report"/>
       </div>
     </div>
     <Popup v-if="annualYearPopup" @close="closePopup"></Popup>

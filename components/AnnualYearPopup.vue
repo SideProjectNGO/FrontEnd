@@ -1,7 +1,19 @@
 <script setup lang="ts">
-import { useI18n } from "#imports";
+import {useI18n} from "#imports";
 
-const { t } = useI18n();
+const {t} = useI18n();
+
+const downloadFile = async () => {
+  const fileUrl = "/files/MyChild.pdf";
+
+  const link = document.createElement("a");
+  link.href = fileUrl;
+  link.setAttribute("download", "download.pdf");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 </script>
 
 <template>
@@ -18,10 +30,10 @@ const { t } = useI18n();
             <p class="report-description">
               {{ t("popup.reportDescription") }}
             </p>
-            <button class="download-btn">{{ t("popup.downloadButton") }}</button>
+            <button class="download-btn" @click="downloadFile">{{ t("popup.downloadButton") }}</button>
           </div>
           <div class="image-box">
-            <img src="../public/images/landing-image.jpeg" alt="annual-report" />
+            <img src="../public/images/MyChild%20logo.png" alt="annual-report"/>
           </div>
         </div>
       </div>
@@ -30,6 +42,7 @@ const { t } = useI18n();
 </template>
 
 <style scoped>
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -49,7 +62,7 @@ const { t } = useI18n();
   padding: 20px;
   border-radius: 10px;
   position: relative;
-  max-width: 700px;
+  max-width: 800px;
   width: 90%;
   animation: slideUp 0.3s ease-in-out;
 }
@@ -60,6 +73,7 @@ const { t } = useI18n();
   align-items: center;
   font-size: 18px;
   font-weight: bold;
+  color: var(--primary-color);
 }
 
 .close-btn {
@@ -67,7 +81,7 @@ const { t } = useI18n();
   border: none;
   font-size: 18px;
   cursor: pointer;
-  color: #333;
+  color:var(--primary-color);
 }
 
 .popup-body {
