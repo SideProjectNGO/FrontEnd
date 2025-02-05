@@ -6,36 +6,15 @@ const {t} = useI18n();
 <template>
   <div class="footer">
     <div class="main-container">
+
       <div class="links-item">
+
         <div class="logo-container">
+          <h2></h2>
           <div class="logo-img">
             <a>
               <img src="../public/images/landing-image-1.jpeg" alt="logo">
             </a>
-          </div>
-          <div class="social-icons">
-            <ul>
-              <li>
-                <a href="https:///" target="_blank" rel="noopener">
-                  <UIcon name="ic-baseline-facebook"/>
-                </a>
-              </li>
-              <li>
-                <a href="https://" target="_blank" rel="noopener">
-                  <UIcon name="mdi-twitter"/>
-                </a>
-              </li>
-              <li>
-                <a href="https://" target="_blank" rel="noopener">
-                  <UIcon name="mdi-youtube"/>
-                </a>
-              </li>
-              <li>
-                <a href="" target="_blank" rel="noopener">
-                  <UIcon name="mdi-instagram"/>
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
 
@@ -73,16 +52,40 @@ const {t} = useI18n();
           </ul>
         </div>
 
-        <div class="subscribe-section">
-          <h1 class="subscribe-title">{{ t('footerText.subscribe') }}</h1>
-          <div class="container-form">
-            <div class="subscribe-input">
-              <input type="email" :placeholder="t('subscribeForm.placeholder')"/>
-            </div>
-            <div class="subscribe-button">
-              <button class="subscribe-btn">{{ t('subscribeForm.button') }}</button>
-            </div>
-          </div>
+        <div class="social-media-section">
+          <h2>Our Channels</h2>
+          <ul class="social-icons">
+            <li>
+              <a href="https://www.instagram.com/yourpage" target="_blank">
+                <UIcon name="mdi-instagram" class="links-icon"/>
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/yourpage" target="_blank">
+                <UIcon name="mdi-facebook" class="links-icon"/>
+                <span>Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@yourpage" target="_blank">
+                <UIcon name="mdi-user" class="links-icon"/>
+                <span>TikTok</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/yourchannel" target="_blank">
+                <UIcon name="mdi-telegram" class="links-icon"/>
+                <span>Telegram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/yourphonenumber" target="_blank">
+                <UIcon name="mdi-whatsapp" class="links-icon"/>
+                <span>WhatsApp</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <hr class="divider">
@@ -117,7 +120,6 @@ const {t} = useI18n();
 
 .links-item {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 1rem 0;
@@ -135,9 +137,11 @@ const {t} = useI18n();
 
 .logo-container .logo-img img {
   width: 100%;
-  height: auto;
   max-width: 250px;
+  height: auto;
+  align-content: center;
   justify-content: center;
+  margin: auto;
 }
 
 .divider {
@@ -151,13 +155,8 @@ const {t} = useI18n();
     text-align: center;
   }
 
-  .logo-container .logo-img{
-    margin: 0 auto;
-  }
-
   .logo-container .logo-img img {
     max-width: 220px;
-    margin: 0 auto;
   }
 }
 
@@ -166,14 +165,17 @@ const {t} = useI18n();
 }
 
 .links h2,
-.subscribe-section h2 {
+.social-media-section h2,
+.logo-container h2 {
   color: var(--text-color);
   font-size: 1.5rem;
   margin: 15px 0;
+  justify-content: start;
+  text-align: start;
 }
 
 .links ul {
-  padding-left: 0;
+  padding: 0;
   margin: 0;
 }
 
@@ -182,11 +184,6 @@ const {t} = useI18n();
   font-size: 1rem;
   padding: 5px 0;
   border-radius: 5px;
-}
-
-.links-icon {
-  font-size: 1.2rem;
-  margin-right: 15px;
 }
 
 .links ul li a {
@@ -198,90 +195,47 @@ const {t} = useI18n();
 .links ul li:hover {
   color: var(--text-hover);
   background-color: var(--primary-hover);
-
 }
 
-.subscribe-section {
+.links-icon {
+  margin-right: 15px;
+}
+
+.social-media-section {
   text-align: center;
   padding: 1rem;
 }
 
-.subscribe-title {
-  font-size: 1.5rem;
-  color: var(--text-color);
-}
-
-.container-form {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-top: 1rem;
-}
-
-@media (max-width: 800px) {
-  .container-form {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .container-form div {
-    margin: 1rem 0;
-  }
-
-  .subscribe-section {
-    display: none;
-  }
-}
-
-.subscribe-input input {
-  padding: .5rem;
-  font-size: 1rem;
-  width: 12rem;
-  border: 1px solid var(--text-color);
-  border-radius: 5px;
-}
-
-.subscribe-button button {
-  padding: .5rem;
-  font-size: 1rem;
-  background-color: var(--text-color);
-  color: var(--primary-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.subscribe-button button:hover {
-  background-color: var(--text-hover);
-}
-
 .social-icons {
-  width: 70%;
-  margin: 0 auto;
-}
-
-.social-icons ul {
-  display: flex;
-  justify-content: space-between;
-  gap: 0 10px;
-  margin: 20px 0;
-}
-
-.social-icons ul li {
-  width: 3rem;
-  height: 3rem;
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 5px;
-  border-radius: 50%;
+  display: block;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
   color: var(--text-color);
-  transition: transform 0.3s ease-in-out;
 }
 
-.social-icons ul li:hover {
-  color: var(--text-hover);
-  transform: scale(1.1);
+.social-icons li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+.social-icons svg {
+  font-size: 24px;
 }
 
 @media (max-width: 1200px) {
