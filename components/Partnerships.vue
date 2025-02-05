@@ -3,7 +3,6 @@ import { computed } from "vue";
 import { useI18n } from "#imports";
 
 const { t } = useI18n();
-
 const images = [
   { id: 1, title: "names.john", image: "/images/mychild logo.jpg" },
   { id: 2, title: "names.jane", image: "/images/mychild logo.jpg" },
@@ -15,7 +14,6 @@ const images = [
   { id: 8, title: "names.olivia", image: "/images/mychild logo.jpg" },
   { id: 9, title: "names.michael", image: "/images/mychild logo.jpg" },
 ];
-
 const rowPattern = [5, 4];
 const groupedImages = computed(() => {
   const rows = [];

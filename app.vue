@@ -5,8 +5,8 @@
 
 <style>
 :root {
-  --primary-color: #5D8736;
-  --primary-hover: #809D3C;
+  --primary-color: #004983;
+  --primary-hover: #00aeef;
   --text-color: #DDDDDD;
   --text-hover: #EEEEEE;
   --black-text-hover: black;

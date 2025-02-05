@@ -64,18 +64,18 @@ const fields: Field[] = [
     id: "gender",
     label: t('volunteer_form.form_fields.gender'),
     type: "select",
-    placeholder: t('volunteer_form.placeholders.gender'),
+    placeholder: "Select gender",
     icon: "mdi-account-circle",
     options: [
-      {value: "male", label: t('volunteer_form.list.1')},
-      {value: "female", label: t('volunteer_form.list.2')},
+      {value: "male", label: "Male"},
+      {value: "female", label: "Female"},
     ],
   },
   {
     id: "nationality",
     label: t('volunteer_form.form_fields.nationality'),
     type: "select",
-    placeholder: t('volunteer_form.placeholders.nationality'),
+    placeholder: "Select Nationality",
     icon: "mdi-account-circle",
     options: nationalities,
   },
@@ -86,9 +86,9 @@ const fields: Field[] = [
     placeholder: t('volunteer_form.placeholders.days'),
     icon: "mdi-calendar",
     options: [
-      {value: "weekdays", label: t('volunteer_form.list.3')},
-      {value: "weekends", label: t('volunteer_form.list.4')},
-      {value: "evenings", label: t('volunteer_form.list.5')},
+      {value: "weekdays", label: "Weekdays"},
+      {value: "weekends", label: "weekends"},
+      {value: "evenings", label: "Evenings"},
     ],
   },
   {
@@ -247,6 +247,7 @@ const handleFormSubmit = () => {
               </span>
               {{ field.label }}
             </label>
+
             <select
                 v-if="field.type === 'select'"
                 :id="field.id"
@@ -258,6 +259,8 @@ const handleFormSubmit = () => {
                 {{ option.label }}
               </option>
             </select>
+
+
             <input
                 v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
                 :id="field.id"
@@ -366,7 +369,7 @@ const handleFormSubmit = () => {
 .volunteer-form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0 15px ;
+  gap: 0 15px;
   margin: 0;
 }
 

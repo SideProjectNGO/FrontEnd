@@ -13,10 +13,14 @@ const switchLanguage = (lang) => {
   let path = currentRoute.path;
   const langPattern = /^\/(en|ar|ms)/;
 
-  if (langPattern.test(path)) {
-    path = path.replace(langPattern, `/${lang}`);
+  if (lang === 'en') {
+    path = path.replace(langPattern, '');
   } else {
-    path = `/${lang}${path}`;
+    if (!langPattern.test(path)) {
+      path = `/${lang}${path}`;
+    } else {
+      path = path.replace(langPattern, `/${lang}`);
+    }
   }
 
   router.push(path);

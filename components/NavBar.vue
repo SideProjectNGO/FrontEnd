@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { useI18n } from "#imports";
+import {ref, onMounted} from "vue";
+import {useI18n} from "#imports";
 
-const { t } = useI18n();
+const {t} = useI18n();
 const isLinksVisible = ref(false);
 const isMobile = ref(false);
 
@@ -26,12 +26,12 @@ onMounted(() => {
         <div class="social-icons">
           <div class="logo-box">
             <a href="" target="_blank" class="social-link">
-              <img src="../public/images/logo.webp" alt="logo" class="logo">
+              <img src="../public/images/MyChild%20logo.png" alt="logo" class="logo">
             </a>
           </div>
         </div>
         <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-toggle">
-          <UIcon name="uil-bars" />
+          <UIcon name="uil-bars"/>
         </button>
       </div>
 
@@ -88,9 +88,10 @@ onMounted(() => {
   min-height: 20px;
 }
 
-.logo-box .logo{
+.logo-box .logo {
   width: 50px;
-  height: 50px;
+  height: 40px;
+  border-radius: 10px;
 }
 
 .social-link {

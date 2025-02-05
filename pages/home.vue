@@ -7,6 +7,7 @@
   <NavBar/>
   <LandingPage/>
   <MessagesSection/>
+  <Activities/>
   <Stories/>
   <Articles/>
   <Footer/>
