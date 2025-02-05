@@ -72,24 +72,28 @@ export default {
             content: "مهمتنا هي تقديم رعاية شاملة وتعليم ودعم للأطفال المحتاجين. من خلال برامج مجتمعية مدفوعة بالمبادرة، والمناصرة، والحلول المستدامة، نسعى لضمان حصول كل طفل على بيئة آمنة ومغذية والموارد التي يحتاجها لتحقيق إمكاناته الكاملة.",
         },
     },
-    footer: {
-        copyright: "حقوق النشر",
+    footerTitle: {
+        logo: "الشعار",
+        connectWithUs: "تواصل معنا",
     },
-    footerText: {
-        copyright: "حقوق الطبع والنشر &copy; طفلي {year}",
-        subscribe: "اشترك الآن",
+    quickLinksSection: "الروابط السريعة",
+    socialMedia: {
+        instagram: "إنستغرام",
+        facebook: "فيسبوك",
+        tiktok: "تيك توك",
+        telegram: "تيليجرام",
+        whatsapp: "واتساب",
     },
     linksTitle: {
         home: "الصفحة الرئيسية",
-        about: "معلومات عنا",
-        stories: "قصصنا",
-        articles: "أحدث المقالات",
+        about: "عنّا",
+        stories: "القصص",
+        articles: "المقالات",
     },
-    subscribeForm: {
-        placeholder: "أدخل بريدك الإلكتروني",
-        button: "اشترك",
+    footerText: {
+        copyright: "حقوق الطبع والنشر &copy; MyChild {year}",
+        subscribe: "اشترك الآن",
     },
-    quickLinksSection: "التنقل السريع",
     landing: {
         headline: "كل طفل هو طفلي",
         description:
@@ -138,5 +142,4 @@ export default {
         },
         submit: "إرسال"
     }
-
 };

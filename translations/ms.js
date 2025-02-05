@@ -72,24 +72,28 @@ export default {
             content: "Misi kami adalah untuk menyediakan penjagaan holistik, pendidikan, dan sokongan kepada kanak-kanak yang memerlukan. Melalui program berasaskan komuniti, advokasi, dan penyelesaian yang mampan, kami berusaha untuk memastikan setiap kanak-kanak mempunyai akses kepada persekitaran yang selamat, penyayang, dan sumber yang mereka perlukan untuk mencapai potensi penuh mereka.",
         },
     },
-    footer: {
-        copyright: "Hak Cipta",
+    footerTitle: {
+        logo: "Logo",
+        connectWithUs: "Berhubung Dengan Kami",
+    },
+    quickLinksSection: "Pautan Pantas",
+    linksTitle: {
+        home: "Laman Utama",
+        about: "Tentang Kami",
+        stories: "Kisah",
+        articles: "Artikel",
     },
     footerText: {
         copyright: "Hak cipta &copy; Anak saya {year}",
         subscribe: "Langgan Sekarang",
     },
-    linksTitle: {
-        home: "Halaman Utama",
-        about: "Tentang Kami",
-        stories: "Cerita Kami",
-        articles: "Artikel Terbaru",
+    socialMedia: {
+        instagram: "Instagram",
+        facebook: "Facebook",
+        tiktok: "TikTok",
+        telegram: "Telegram",
+        whatsapp: "WhatsApp",
     },
-    subscribeForm: {
-        placeholder: "Masukkan alamat emel anda",
-        button: "Langgan",
-    },
-    quickLinksSection: "Navigasi Pantas",
     landing: {
         headline: "Setiap Kanak-Kanak adalah Anak Saya",
         description:
