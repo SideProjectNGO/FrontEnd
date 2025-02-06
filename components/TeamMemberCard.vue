@@ -1,199 +1,253 @@
 <script setup lang="ts">
-import {ref, computed} from "vue";
+import { ref, computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 interface TeamMember {
   member_id: number;
   name: string;
-  countries: string[];
-  bio: string;
+  countries: string;
+  flag_icon_name: string;
   position: string;
   photo_url: string;
   social_media: {
     whatsapp: string;
     email: string;
-  }
+  };
 }
 
+const { t } = useI18n();
 const team: TeamMember[] = [
   {
     member_id: 1,
-    name: "Alice Johnson",
-    countries: ["United States"],
-    bio: `
-      Alice is a highly skilled Software Engineer with 8 years of experience in building scalable and efficient software systems. She specializes in back-end development and has worked across various industries, developing robust solutions for complex challenges.
-    `,
-    position: "Software Engineer",
-    photo_url: "https://example.com/images/alice-johnson.jpg",
+    name: "PN. AINI HAZRIN AHMAD ANUAR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "VICE_CHAIRMAN",
+    photo_url: "/images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
     social_media: {
-      whatsapp: "https://wa.me/11234567890",
-      email: "alice.johnson@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 2,
-    name: "Bob Carter",
-    countries: ["United Kingdom"],
-    bio: `
-      Bob is a Senior Developer with expertise in both front-end and back-end technologies. With over 12 years in the software development industry, Bob excels in leading teams and ensuring best practices in software design.
-    `,
-    position: "Lead Software Engineer",
-    photo_url: "https://example.com/images/bob-carter.jpg",
+    name: "DR. SITI MUYASSARAH ABD NASIR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "SECRETARY",
+    photo_url: "/images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
     social_media: {
-      whatsapp: "https://wa.me/44123456789",
-      email: "bob.carter@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 3,
-    name: "Charles Williams",
-    countries: ["Canada"],
-    bio: `
-      Charles is an experienced Software Architect, skilled in designing scalable and maintainable software systems. He has a deep understanding of cloud infrastructure and microservices architecture, which he applies to optimize performance and user experience.
-    `,
-    position: "Software Architect",
-    photo_url: "https://example.com/images/charles-williams.jpg",
+    name: "HJ. MOHD AZMI B. ABDUL HAMID",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "Chairman",
+    photo_url: "/images/team/HJ. MOHD AZMI B. ABDUL HAMID.avif",
     social_media: {
-      whatsapp: "https://wa.me/12345678901",
-      email: "charles.williams@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 4,
-    name: "Diana Harris",
-    countries: ["Australia"],
-    bio: `
-      Diana is a Product Manager with a background in both engineering and business. She works closely with stakeholders to ensure that the product aligns with the company’s goals while meeting market demands.
-    `,
-    position: "Product Manager",
-    photo_url: "https://example.com/images/diana-harris.jpg",
+    name: "PN. WAN NOR SHEILA MIOR SHARIFFUDIN",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "SOCMED- INSTAGRAM",
+    photo_url: "/images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.jpg",
     social_media: {
-      whatsapp: "https://wa.me/61412345678",
-      email: "diana.harris@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 5,
-    name: "Eve Scott",
-    countries: ["Germany"],
-    bio: `
-      Eve is a DevOps Engineer with experience in automating deployment pipelines and managing cloud infrastructure. She ensures continuous integration and delivery, optimizing operations for maximum efficiency.
-    `,
-    position: "DevOps Engineer",
-    photo_url: "https://example.com/images/eve-scott.jpg",
+    name: "PN. AZZAMURNI MOHTAR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "ADVOCACY",
+    photo_url: "/images/team/PN. AZZAMURNI MOHTAR.jpg",
     social_media: {
-      whatsapp: "https://wa.me/49123456789",
-      email: "eve.scott@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 6,
-    name: "Frank Taylor",
-    countries: ["France"],
-    bio: `
-      Frank is a QA Engineer with a focus on automation and performance testing. He works to ensure that the software runs smoothly and meets all quality standards before release.
-    `,
-    position: "Quality Assurance Engineer",
-    photo_url: "https://example.com/images/frank-taylor.jpg",
+    name: "PN. NORHAZALIANA AFFENDI",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "PUBLICITY & PROMOTION",
+    photo_url: "/images/team/PN. NORHAZALIANA AFFENDI.jpg",
     social_media: {
-      whatsapp: "https://wa.me/33712345678",
-      email: "frank.taylor@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 7,
-    name: "Grace Lee",
-    countries: ["South Korea"],
-    bio: `
-      Grace is a UX/UI Designer who focuses on creating intuitive and user-friendly interfaces. Her goal is to ensure that users have a seamless experience with the software, enhancing both usability and engagement.
-    `,
-    position: "UX/UI Designer",
-    photo_url: "https://example.com/images/grace-lee.jpg",
+    name: "DR. SHARIFAH NADIYA BT SYED YAHYA",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "SPONSORSHIP",
+    photo_url: "/images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.jpg",
     social_media: {
-      whatsapp: "https://wa.me/821012345678",
-      email: "grace.lee@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 8,
-    name: "Harry Adams",
-    countries: ["United States"],
-    bio: `
-      Harry is the CTO of the company, responsible for the overall technology strategy. He leads the engineering teams, ensuring that the company is always ahead of the curve in adopting new technologies and best practices.
-    `,
-    position: "Chief Technology Officer",
-    photo_url: "https://example.com/images/harry-adams.jpg",
+    name: "PN. AZIZAH SIRON",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "INTERNATIONAL LIASON",
+    photo_url: "/images/team/PN. AZIZAH SIRON.jpg",
     social_media: {
-      whatsapp: "https://wa.me/11223456789",
-      email: "harry.adams@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 9,
-    name: "Isabel Moore",
-    countries: ["Canada"],
-    bio: `
-      Isabel is an Agile Coach with a focus on Scrum methodologies. She works with teams to ensure they are following Agile principles, improving collaboration, and delivering high-quality software on time.
-    `,
-    position: "Scrum Master",
-    photo_url: "https://example.com/images/isabel-moore.jpg",
+    name: "CIK NUR AKHTAR AMIN",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "PROTOCOL",
+    photo_url: "/images/team/CIK NUR AKHTAR AMIN.jpg",
     social_media: {
-      whatsapp: "https://wa.me/12345678902",
-      email: "isabel.moore@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
   {
     member_id: 10,
-    name: "James Green",
-    countries: ["United Kingdom"],
-    bio: `
-      James is a Customer Success Engineer, helping clients maximize the value of their software solutions. He provides support, training, and troubleshooting to ensure that customers have a positive experience and achieve their business goals.
-    `,
-    position: "Customer Success Engineer",
-    photo_url: "https://example.com/images/james-green.jpg",
+    name: "PN. SITI KHAIRUL BARIYAH MOHAMOOD",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "SOCMED (FACEBOOK)",
+    photo_url: "/images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.jpg",
     social_media: {
-      whatsapp: "https://wa.me/44123456780",
-      email: "james.green@example.com"
+      whatsapp: "",
+      email: ""
     }
   },
+  {
+    member_id: 11,
+    name: "PN. ZURINA ABDUL KADIR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "MULTIMEDIA",
+    photo_url: "/images/team/PN. ZURINA ABDUL KADIR.jpg",
+    social_media: {
+      whatsapp: "",
+      email: ""
+    }
+  },
+  {
+    member_id: 12,
+    name: "PN. QUQRIAH AQYNIZA BINTI ZAKARIA",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "DOCUMENTATION & REPORT",
+    photo_url: "/images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.jpg",
+    social_media: {
+      whatsapp: "",
+      email: ""
+    }
+  },
+  {
+    member_id: 13,
+    name: "PN. MAHANI ZAKARIA",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "LOGISTIC",
+    photo_url: "/images/team/PN. MAHANI ZAKARIA.jpg",
+    social_media: {
+      whatsapp: "",
+      email: ""
+    }
+  },
+  {
+    member_id: 14,
+    name: "EN. MOHD LUTFI B. MOHD KHIDIR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "SOCMED- TIKTOK",
+    photo_url: "/images/team/EN. MOHD LUTFI B. MOHD KHIDIR.jpg",
+    social_media: {
+      whatsapp: "",
+      email: ""
+    }
+  },
+  {
+    member_id: 15,
+    name: "DR. SITI FARIZA BINTI MOHAMAD ISA",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "Public Relation Officer",
+    photo_url: "/images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.jpg",
+    social_media: {
+      whatsapp: "",
+      email: ""
+    }
+  },
+  {
+    member_id: 16,
+    name: "MOHD REDZUAN BIN ZULKIFLEE",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "LOGISTIC",
+    photo_url: "images/team/MOHD REDZUAN BIN ZULKIFLEE.jpg",
+    social_media: {
+      whatsapp: "",
+      email: ""
+    }
+  }
 ];
-
 const currentIndex = ref(0);
 const teamPerPage = 5;
-const visibleTeam = computed(() =>
-    team.slice(currentIndex.value, currentIndex.value + teamPerPage)
-);
+const visibleTeam = computed(() => team.slice(currentIndex.value, currentIndex.value + teamPerPage));
 
 function nextPage() {
-  currentIndex.value =
-      (currentIndex.value + teamPerPage) % team.length;
+  currentIndex.value = (currentIndex.value + teamPerPage) % team.length;
 }
 
 function prevPage() {
-  currentIndex.value =
-      (currentIndex.value - teamPerPage + team.length) % team.length;
+  currentIndex.value = (currentIndex.value - teamPerPage + team.length) % team.length;
 }
+
 </script>
 
 <template>
   <div class="team-section">
-    <h2 class="team-title">Meet Our Team</h2>
+    <h2 class="team-title">{{ t('team.meet_our_team') }}</h2>
     <div class="team-grid">
       <div v-for="member in visibleTeam" :key="member.member_id" class="team-card">
         <div class="team-photo">
-          <img src="../public/images/team-member.jpeg" :alt="`Photo of ${member.name}`"/>
+          <img :src="member.photo_url" :alt="`Photo of ${member.name}`"/>
         </div>
         <div class="team-details">
-          <h2>{{ member.name }}</h2>
-          <h3>{{ member.position }}</h3>
+          <div class="box">
+            <h2>{{ member.name }}</h2>
+            <p>
+              <UIcon name="twemoji-flag-malaysia" class="flag-icon" />
+              {{ member.countries }}
+            </p>
+          </div>
+          <h3>{{ t(`team.${member.position.toLowerCase().replace(/[\s&-]/g, "_")}`) }}</h3>
         </div>
 
         <div class="team-contact-info">
-          <a v-if="member.social_media.whatsapp" :href="'https://wa.me/' + member.social_media.whatsapp" target="_blank"
-             aria-label="WhatsApp">
+          <a v-if="member.social_media.whatsapp" :href="'https://wa.me/' + member.social_media.whatsapp" target="_blank" aria-label="WhatsApp">
             <UIcon name="mdi-whatsapp"/>
           </a>
-          <a v-if="member.social_media.email" :href="'mailto:' + member.social_media.email" target="_blank"
-             aria-label="Email">
+          <a v-if="member.social_media.email" :href="'mailto:' + member.social_media.email" target="_blank" aria-label="Email">
             <UIcon name="mdi-email"/>
           </a>
         </div>
@@ -202,15 +256,13 @@ function prevPage() {
     <div class="container">
       <div class="btn-container">
         <button @click="prevPage">
-          Previous
+          {{ t('team.previous') }}
         </button>
-
         <button @click="nextPage">
-          Next
+          {{ t('team.next') }}
         </button>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -222,7 +274,7 @@ function prevPage() {
 
 .team-title {
   text-align: center;
-  color: var(--primary-hover);
+  color: var(--primary-color);
   font-size: 1.5rem;
   font-weight: bold;
   margin: 40px 0;
@@ -261,21 +313,29 @@ function prevPage() {
   height: 130px;
   border-radius: 50%;
   margin: 15px auto;
-  border: 5px solid var(--primary-color);
 }
 
-.team-details {
+.team-details .box {
   min-height: 90px;
 }
 
 .team-details h2 {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 5px;
 }
 
+.team-details p {
+  font-size: 1rem;
+}
+
+.team-details .flag-icon {
+  margin-right: 10px;
+}
+
 .team-details h3 {
-  font-size: 16px;
+  font-size: .8rem;
+  font-weight: 800;
 }
 
 .team-contact-info {
@@ -299,13 +359,15 @@ function prevPage() {
 
 .container .btn-container button {
   padding: 10px;
-  border: 2px solid var(--primary-hover);
+  border: 2px solid var(--primary-color);
   min-width: 120px;
+  border-radius: 15px;
+  color: var(--primary-color);
 }
 
 .container .btn-container button:hover {
-  background: var(--primary-hover);
-  color: var(--text-hover);
+  background: var(--primary-color);
+  color: var(--text-color);
   transition: background-color 0.3s ease-in-out;
 }
 </style>

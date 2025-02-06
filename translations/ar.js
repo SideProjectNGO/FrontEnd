@@ -141,5 +141,23 @@ export default {
             cv: "يجب أن تكون السيرة الذاتية بصيغة PNG أو JPG أو PDF أو Word"
         },
         submit: "إرسال"
-    }
+    },
+    meet_our_team: "تعرف على فريقنا",
+    previous: "السابق",
+    next: "التالي",
+    vice_chairman: "نائب الرئيس",
+    secretary: "السكرتير",
+    chairman: "الرئيس",
+    socmed_instagram: "وسائل التواصل الاجتماعي - انستجرام",
+    advocacy: "المناصرة",
+    publicity_promotion: "الإعلان والترويج",
+    sponsorship: "الرعاية",
+    international_liason: "الاتصال الدولي",
+    protocol: "البروتوكول",
+    socmed_facebook: "وسائل التواصل الاجتماعي - فيسبوك",
+    multimedia: "الوسائط المتعددة",
+    documentation_report: "التوثيق والتقارير",
+    logistic: "اللوجستيات",
+    socmed_tiktok: "وسائل التواصل الاجتماعي - تيك توك",
+    public_relation_officer: "مسؤول العلاقات العامة"
 };

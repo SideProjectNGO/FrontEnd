@@ -141,5 +141,25 @@ export default {
             cv: "CV must be a PNG, JPG, PDF, or Word file"
         },
         submit:"Submit"
+    },
+    team: {
+        meet_our_team: "Meet Our Team",
+        previous: "Previous",
+        next: "Next",
+        vice_chairman: "Vice Chairman",
+        secretary: "Secretary",
+        chairman: "Chairman",
+        socmed_instagram: "SOCMED - Instagram",
+        advocacy: "Advocacy",
+        publicity_promotion: "Publicity & Promotion",
+        sponsorship: "Sponsorship",
+        international_liason: "International Liaison",
+        protocol: "Protocol",
+        socmed_facebook: "SOCMED - Facebook",
+        multimedia: "Multimedia",
+        documentation_report: "Documentation & Report",
+        logistic: "Logistic",
+        socmed_tiktok: "SOCMED - TikTok",
+        public_relation_officer: "Public Relation Officer"
     }
 };

@@ -141,6 +141,25 @@ export default {
             cv: "CV mesti dalam format PNG, JPG, PDF, atau Word"
         },
         submit: "Hantar"
+    },
+    team: {
+        meet_our_team: "Temui Pasukan Kami",
+        previous: "Sebelumnya",
+        next: "Seterusnya",
+        vice_chairman: "Naib Pengerusi",
+        secretary: "Setiausaha",
+        chairman: "Pengerusi",
+        socmed_instagram: "Media Sosial - Instagram",
+        advocacy: "Advokasi",
+        publicity_promotion: "Publisiti & Promosi",
+        sponsorship: "Penajaan",
+        international_liason: "Perhubungan Antarabangsa",
+        protocol: "Protokol",
+        socmed_facebook: "Media Sosial - Facebook",
+        multimedia: "Multimedia",
+        documentation_report: "Dokumentasi & Laporan",
+        logistic: "Logistik",
+        socmed_tiktok: "Media Sosial - TikTok",
+        public_relation_officer: "Pegawai Perhubungan Awam"
     }
-
 };
