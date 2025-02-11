@@ -34,10 +34,6 @@ const switchLanguage = (lang) => {
         <UIcon name="twemoji-flag-united-kingdom" class="flag-icon" />
         English
       </button>
-<!--      <button @click="switchLanguage('ar')" aria-label="العربية">-->
-<!--        <UIcon name="twemoji-flag-saudi-arabia" class="flag-icon" />-->
-<!--        عربي-->
-<!--      </button>-->
       <button @click="switchLanguage('ms')" aria-label="Bahasa Melayu">
         <UIcon name="twemoji-flag-malaysia" class="flag-icon" />
         Bahasa Melayu
