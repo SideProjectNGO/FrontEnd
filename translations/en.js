@@ -8,6 +8,7 @@ export default {
             activities: "Activities",
             stories: "Stories",
             volunteer: "Volunteer",
+            donate: "Donate",
         },
     },
     partnerships: {

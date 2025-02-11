@@ -8,6 +8,7 @@ export default {
             activities: "Aktiviti",
             stories: "Kisah",
             volunteer: "Sukarelawan",
+            donate: "Menderma",
         },
     },
     partnerships: {
