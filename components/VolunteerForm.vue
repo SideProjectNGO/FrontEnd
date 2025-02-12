@@ -331,17 +331,23 @@ const handleFormSubmit = () => {
   padding: 20px;
 }
 
-.container .description-text {
-  margin: 3rem auto;
+.container .description-wrapper h2{
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-hover);
+  margin-bottom: 20px;
 }
 
-.container .description-wrapper h2,
 .container .description-wrapper h3 {
   text-align: start;
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--text-hover);
   margin-bottom: 20px;
+}
+.container .description-text {
+  margin: 1rem auto;
 }
 
 .container .description-wrapper ul li {
