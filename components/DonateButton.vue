@@ -57,9 +57,10 @@ onMounted(() => {
   display: block;
   flex-direction: column;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 5rem auto;
   padding: 0;
   background: var(--background);
+  box-shadow: rgba(149, 157, 165, 0.4) 0 10px 20px;
 }
 
 .donate-container {
@@ -75,6 +76,8 @@ onMounted(() => {
   justify-content: center;
   background: var(--primary-color);
   padding: 1.5rem;
+  align-content: center;
+  align-items: center;
 }
 
 .donate-message-container {
@@ -85,7 +88,7 @@ onMounted(() => {
 .donate-title {
   text-align: center;
   align-content: center;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.5rem;
   margin: 2rem auto;
   color: var(--primary-color);

@@ -4,6 +4,7 @@
 <template>
   <NavBar/>
   <DonateButton/>
+  <DonateManual/>
   <Footer/>
 </template>
 
