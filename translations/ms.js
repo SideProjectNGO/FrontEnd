@@ -170,5 +170,10 @@ export default {
     donate_email: "Sila e-mel kami di {email} dengan nama anda dan slip pemindahan supaya kami boleh menjejaki sumbangan anda.",
     donate_receipt: "Sumbangan kepada MyChild tidak layak untuk potongan cukai, tetapi kami akan mengeluarkan resit sebagai pengesahan sumbangan anda.",
     donate_thank_you: "Terima kasih kerana menjadi sebahagian daripada misi kami untuk menjaga kanak-kanak di mana sahaja mereka berada. Kebaikan anda membawa perubahan!",
-
+    donate_message_title: "Beri Harapan, Ubah Masa Depan Kanak-Kanak",
+    donate_message_text: "Setiap kanak-kanak berhak mendapat kasih sayang, pendidikan, dan peluang untuk masa depan yang lebih baik. Sumbangan anda boleh menyediakan makanan, tempat tinggal, dan peluang pembelajaran kepada kanak-kanak yang memerlukan. Bersama-sama, kita boleh mengubah kehidupan dan mencipta masa depan yang lebih cerah. Sertai kami dalam membawa perubahan hari ini!",
+    donate_benefit_1: "Makanan berkhasiat untuk kanak-kanak kurang bernasib baik",
+    donate_benefit_2: "Akses kepada pendidikan berkualiti dan kelengkapan sekolah",
+    donate_benefit_3: "Tempat perlindungan yang selamat dan sokongan penjagaan kesihatan",
+    donate_benefit_4: "Masa depan yang lebih cerah penuh dengan harapan dan peluang"
 };

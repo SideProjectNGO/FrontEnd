@@ -170,5 +170,11 @@ export default {
     donate_email: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
     donate_receipt: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
     donate_thank_you: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
+    donate_message_title: "Give Hope, Change a Child’s Future",
+    donate_message_text: "Every child deserves love, education, and a chance for a better tomorrow. Your donation can provide food, shelter, and learning opportunities to children in need. Together, we can transform lives and create a brighter future. Join us in making a difference today!",
+    donate_benefit_1: "Nutritious meals for underprivileged children",
+    donate_benefit_2: "Access to quality education and school supplies",
+    donate_benefit_3: "Safe shelter and healthcare support",
+    donate_benefit_4: "A brighter future full of hope and opportunities"
 };
 
