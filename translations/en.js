@@ -141,7 +141,7 @@ export default {
             phone: "Phone number must be valid",
             cv: "CV must be a PNG, JPG, PDF, or Word file"
         },
-        submit:"Submit"
+        submit: "Submit"
     },
     team: {
         meet_our_team: "Meet Our Team",
@@ -162,5 +162,15 @@ export default {
         logistic: "Logistic",
         socmed_tiktok: "SOCMED - TikTok",
         public_relation_officer: "Public Relation Officer"
-    }
+    },
+    donate: {
+        title: "Empower a Child’s Future, Change the World",
+        subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
+        bankTransfer: "Donate via bank transfer:",
+        bankDetails: "Liberty to Learn Berhad, RHB Bank – Account Number: 214234324234230",
+        emailInstruction: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
+        taxInfo: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
+        thankYou: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
+    },
 };
+

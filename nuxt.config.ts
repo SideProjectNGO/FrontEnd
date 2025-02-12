@@ -6,7 +6,6 @@ export default defineNuxtConfig({
         locales: [
             { code: 'en', iso: 'en-US', file: 'translations/en.js', dir: 'ltr' },
             { code: 'ms', iso: 'ms-MY', file: 'translations/ms.js', dir: 'ltr' },
-            { code: 'ar', iso: 'ar-SA', file: 'translations/ar.js', dir: 'rtl' },
         ],
         defaultLocale: 'en',
         detectBrowserLanguage: false,
