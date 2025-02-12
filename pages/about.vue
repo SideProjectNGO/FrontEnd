@@ -7,9 +7,9 @@
   <NavBar/>
   <LandingPage/>
   <About/>
-  <Test/>
   <AnnualYearSection/>
   <MessagesSection/>
+  <MediaGallery type="image"/>
   <TeamMemberCard/>
   <Partnerships/>
   <Footer/>
