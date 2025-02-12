@@ -8,7 +8,7 @@ export default {
             activities: "Aktiviti",
             stories: "Kisah",
             volunteer: "Sukarelawan",
-            donate:"Menderma"
+            donate: "Menderma"
         },
     },
     partnerships: {
@@ -163,13 +163,12 @@ export default {
         socmed_tiktok: "Media Sosial - TikTok",
         public_relation_officer: "Pegawai Perhubungan Awam"
     },
-    donate: {
-        title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
-        subtitle: "Sumbangan anda boleh mengubah kehidupan. Setiap derma membantu menyediakan pendidikan, penjagaan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
-        bankTransfer: "Derma melalui pindahan bank:",
-        bankDetails: "Liberty to Learn Berhad, RHB Bank – Nombor Akaun: 214234324234230",
-        emailInstruction: "Sila hantarkan e-mel kepada kami di {email} dengan nama dan slip pindahan supaya kami boleh mengesan sumbangan anda.",
-        taxInfo: "Sumbangan kepada MyChild tidak layak untuk pelepasan cukai, tetapi kami akan mengeluarkan resit sebagai pengesahan derma anda.",
-        thankYou: "Terima kasih kerana menjadi sebahagian daripada misi kami untuk menjaga kanak-kanak di mana sahaja mereka berada. Kebaikan anda memberi perbezaan!",
-    },
+    donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
+    donate_subtitle: "Sokongan anda boleh mengubah kehidupan. Setiap sumbangan membantu menyediakan pendidikan, penjagaan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
+    donate_bank_transfer: "Sumbang melalui pemindahan bank:",
+    donate_bank_details: "Liberty to Learn Berhad, RHB Bank – Nombor Akaun: 214234324234230",
+    donate_email: "Sila e-mel kami di {email} dengan nama anda dan slip pemindahan supaya kami boleh menjejaki sumbangan anda.",
+    donate_receipt: "Sumbangan kepada MyChild tidak layak untuk potongan cukai, tetapi kami akan mengeluarkan resit sebagai pengesahan sumbangan anda.",
+    donate_thank_you: "Terima kasih kerana menjadi sebahagian daripada misi kami untuk menjaga kanak-kanak di mana sahaja mereka berada. Kebaikan anda membawa perubahan!",
+
 };

@@ -124,7 +124,7 @@ onMounted(() => {
 .nav-links li {
   display: inline-block;
   padding: 0.3rem;
-  margin-right: 0.5rem;
+  margin-right: 0.2rem;
   border-radius: 0.5rem;
   border: 1px solid transparent;
   background-color: transparent;
