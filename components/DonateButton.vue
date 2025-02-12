@@ -1,8 +1,8 @@
 <script setup>
 import {onMounted} from 'vue'
-import { useI18n } from "#imports";
+import {useI18n} from "#imports";
 
-const { t } = useI18n();
+const {t} = useI18n();
 onMounted(() => {
   if (typeof window !== 'undefined') {
     const script = document.createElement('script')
@@ -41,10 +41,6 @@ onMounted(() => {
           <li>
             <UIcon name="mdi-check-circle" class="icon"/>
             {{ t("donate_benefit_3") }}
-          </li>
-          <li>
-            <UIcon name="mdi-check-circle" class="icon"/>
-            {{ t("donate_benefit_4") }}
           </li>
         </ul>
       </div>
