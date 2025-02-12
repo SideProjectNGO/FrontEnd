@@ -11,6 +11,23 @@ export default {
             donate: "Donate",
         },
     },
+    about: {
+        sectionTitle: "More about MyChild",
+        aboutUs: {
+            title: "About Us",
+            content: "MyChild International is a global humanitarian initiative under MAPIM, committed to protecting and empowering children affected by war, poverty, and displacement. Through advocacy, humanitarian aid, and sustainable programs in education, healthcare, and shelter, we strive to ensure every child grows up in a safe and nurturing environment."
+
+        },
+        vision: {
+            title: "Our Vision",
+            content: "A world where every child is safe, valued, and given the opportunity to reach their full potential."
+        },
+        mission: {
+            title: "Our Mission",
+            content: "Our mission is to provide holistic care, education, and support to children in need. Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has access to a safe, nurturing environment and the resources they need to unlock their full potential.",
+        },
+    },
+
     partnerships: {
         title: "Strength in Partnerships",
     },
@@ -57,21 +74,6 @@ export default {
         daniel: "Daniel",
         olivia: "Olivia",
         michael: "Michael",
-    },
-    about: {
-        sectionTitle: "More about MyChild",
-        aboutUs: {
-            title: "About Us",
-            content: "At MyChild, we are a dedicated team of local and international individuals passionate about nurturing and empowering children. Our diverse team includes core members and educators who share a unified goal: ensuring that every child has the opportunity to thrive.",
-        },
-        vision: {
-            title: "Our Vision",
-            content: "A world where every child, regardless of their background, enjoys equal access to opportunities for growth, education, and happiness. We envision a future where no child is left behind, where they are protected from harm, empowered to dream, and nurtured to become compassionate, confident leaders of tomorrow.",
-        },
-        mission: {
-            title: "Our Mission",
-            content: "Our mission is to provide holistic care, education, and support to children in need. Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has access to a safe, nurturing environment and the resources they need to unlock their full potential.",
-        },
     },
     footerTitle: {
         logo: "Logo",

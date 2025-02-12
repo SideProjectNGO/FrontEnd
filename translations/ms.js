@@ -11,6 +11,22 @@ export default {
             donate: "Menderma"
         },
     },
+    about: {
+        sectionTitle: "Lebih lanjut mengenai MyChild",
+        aboutUs: {
+            title: "Tentang Kami",
+            content: "MyChild International ialah inisiatif kemanusiaan global di bawah MAPIM yang berdedikasi untuk melindungi dan memperkasakan kanak-kanak yang terjejas akibat peperangan, kemiskinan, dan penindasan. Melalui advokasi, bantuan kemanusiaan, serta program pendidikan, kesihatan, dan perlindungan yang mampan, kami berusaha memastikan setiap kanak-kanak membesar dalam persekitaran yang selamat dan penuh kasih sayang.",
+        },
+        vision: {
+            title: "Visi Kami",
+            content: "Dunia di mana setiap kanak-kanak selamat, dihargai, dan diberi peluang untuk mencapai potensi penuh mereka."
+        },
+        mission: {
+            title: "Misi Kami",
+            content: "Misi kami adalah untuk menyediakan penjagaan holistik, pendidikan, dan sokongan kepada kanak-kanak yang memerlukan. Melalui program berasaskan komuniti, advokasi, dan penyelesaian yang mampan, kami berusaha untuk memastikan setiap kanak-kanak mempunyai akses kepada persekitaran yang selamat, penyayang, dan sumber yang mereka perlukan untuk mencapai potensi penuh mereka.",
+        },
+    },
+
     partnerships: {
         title: "Kekuatan dalam Perkongsian",
     },
@@ -57,21 +73,6 @@ export default {
         reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
         reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
         downloadButton: "Muat Turun",
-    },
-    about: {
-        sectionTitle: "Lebih lanjut mengenai MyChild",
-        aboutUs: {
-            title: "Tentang Kami",
-            content: "Di MyChild, kami adalah pasukan yang berdedikasi terdiri daripada individu tempatan dan antarabangsa yang bersemangat dalam memupuk dan memperkasakan kanak-kanak. Pasukan kami yang pelbagai termasuk ahli teras dan pendidik yang berkongsi matlamat yang sama: memastikan setiap kanak-kanak mempunyai peluang untuk berkembang.",
-        },
-        vision: {
-            title: "Visi Kami",
-            content: "Dunia di mana setiap kanak-kanak, tanpa mengira latar belakang mereka, mempunyai akses yang sama kepada peluang untuk berkembang, belajar, dan bahagia. Kami membayangkan masa depan di mana tiada kanak-kanak tertinggal, di mana mereka dilindungi dari bahaya, diberi kuasa untuk bermimpi, dan dipupuk untuk menjadi pemimpin yang penyayang dan yakin.",
-        },
-        mission: {
-            title: "Misi Kami",
-            content: "Misi kami adalah untuk menyediakan penjagaan holistik, pendidikan, dan sokongan kepada kanak-kanak yang memerlukan. Melalui program berasaskan komuniti, advokasi, dan penyelesaian yang mampan, kami berusaha untuk memastikan setiap kanak-kanak mempunyai akses kepada persekitaran yang selamat, penyayang, dan sumber yang mereka perlukan untuk mencapai potensi penuh mereka.",
-        },
     },
     footerTitle: {
         logo: "Logo",

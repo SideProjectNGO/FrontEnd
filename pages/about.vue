@@ -7,6 +7,7 @@
   <NavBar/>
   <LandingPage/>
   <About/>
+  <Test/>
   <AnnualYearSection/>
   <MessagesSection/>
   <TeamMemberCard/>
