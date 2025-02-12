@@ -48,7 +48,7 @@ const { t } = useI18n();
 .donate-manual-container {
   background: var(--background);
   padding: 2rem;
-  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.4) 0 10px 20px;
 }
 
 .title {
