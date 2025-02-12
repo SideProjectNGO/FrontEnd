@@ -62,7 +62,6 @@ onMounted(() => {
           <li>
             <NuxtLink to="/donate">{{ t("header.nav.donate") }}</NuxtLink>
           </li>
-
         </ul>
       </nav>
     </div>
