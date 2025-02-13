@@ -154,24 +154,41 @@ export default {
         public_relation_officer: "Public Relation Officer"
     },
 
-    footerTitle: {
+    footer: {
         logo: "Logo",
         connectWithUs: "Connect With Us",
+        linksTitle: {
+            home: "Home",
+            about: "About Us",
+            stories: "Stories",
+            articles: "Articles",
+        },
+        socialMedia: {
+            instagram: {
+                name: "Instagram",
+                url: "https://www.instagram.com/mychild_polimas?igsh=MW5pOWZmdDYyOGU1cw=="
+            },
+            facebook: {
+                name: "Facebook",
+                url: "https://www.facebook.com/share/12ADScDU6hV/?mibextid=wwXIfr"
+            },
+            tiktok: {
+                name: "TikTok",
+                url: "https://www.tiktok.com/@yourpage"
+            },
+            whatsapp: {
+                name: "WhatsApp",
+                url: "https://wa.me/60196974820"
+            },
+            email: {
+                name: "Email",
+                address: "mychild2021is@gmail.com"
+            }
+        },
+        quickLinksSection: "Quick Links",
+        copyright: "© {year} MyChild. All rights reserved.",
     },
-    quickLinksSection: "Quick Links",
-    linksTitle: {
-        home: "Home",
-        about: "About Us",
-        stories: "Stories",
-        articles: "Articles",
-    },
-    socialMedia: {
-        instagram: "Instagram",
-        facebook: "Facebook",
-        tiktok: "TikTok",
-        telegram: "Telegram",
-        whatsapp: "WhatsApp",
-    },
+
     footerText: {
         copyright: "Copyright &copy; MyChild {year}",
         subscribe: "Subscribe Now",

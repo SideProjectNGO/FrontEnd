@@ -8,87 +8,87 @@ const {t} = useI18n();
     <div class="main-container">
       <div class="links-item">
         <div class="logo-container">
-          <h2>{{ t('footerTitle.logo') }}</h2>
+          <h2>{{ t('footer.logo') }}</h2>
           <div class="logo-img">
             <a>
-              <img src="../public/images/landing-image-1.jpeg" alt="logo">
+              <img src="../public/images/MyChild%20logo.png" alt="logo">
             </a>
           </div>
         </div>
 
         <div class="links">
-          <h2>{{ t('quickLinksSection') }}</h2>
+          <h2>{{ t('footer.quickLinksSection') }}</h2>
           <ul class="links-list">
             <li>
               <router-link to="/home">
                 <UIcon name="material-symbols-contact-page" class="links-icon"/>
-                {{ t('linksTitle.home') }}
+                {{ t('footer.linksTitle.home') }}
               </router-link>
             </li>
             <li>
               <router-link to="/about">
                 <UIcon name="mdi-about" class="links-icon"/>
-                {{ t('linksTitle.about') }}
+                {{ t('footer.linksTitle.about') }}
               </router-link>
             </li>
             <li>
               <router-link to="/stories">
                 <UIcon name="mdi-book" class="links-icon"/>
-                {{ t('linksTitle.stories') }}
+                {{ t('footer.linksTitle.stories') }}
               </router-link>
             </li>
             <li>
               <router-link to="/articles">
                 <UIcon name="mdi-book" class="links-icon"/>
-                {{ t('linksTitle.articles') }}
+                {{ t('footer.linksTitle.articles') }}
               </router-link>
             </li>
           </ul>
         </div>
 
         <div class="social-media-section">
-          <h2>{{ t('footerTitle.connectWithUs') }}</h2>
+          <h2>{{ t('footer.connectWithUs') }}</h2>
           <ul class="links-list">
             <li>
-              <a href="https://www.instagram.com/yourpage" target="_blank">
+              <a href="https://www.instagram.com/mychild_polimas?igsh=MW5pOWZmdDYyOGU1cw==" target="_blank">
                 <UIcon name="mdi-instagram" class="links-icon"/>
-                {{ t('socialMedia.instagram') }}
+                {{ t('footer.socialMedia.instagram.name') }}
               </a>
             </li>
             <li>
-              <a href="https://www.facebook.com/yourpage" target="_blank">
+              <a href="https://www.facebook.com/share/12ADScDU6hV/?mibextid=wwXIfr" target="_blank">
                 <UIcon name="mdi-facebook" class="links-icon"/>
-                {{ t('socialMedia.facebook') }}
+                {{ t('footer.socialMedia.facebook.name') }}
               </a>
             </li>
             <li>
               <a href="https://www.tiktok.com/@yourpage" target="_blank">
                 <UIcon name="mdi-user" class="links-icon"/>
-                {{ t('socialMedia.tiktok') }}
+                {{ t('footer.socialMedia.tiktok.name') }}
               </a>
             </li>
             <li>
-              <a href="https://t.me/yourchannel" target="_blank">
-                <UIcon name="mdi-telegram" class="links-icon"/>
-                {{ t('socialMedia.telegram') }}
-              </a>
-            </li>
-            <li>
-              <a href="https://wa.me/yourphonenumber" target="_blank">
+              <a href="https://wa.me/60196974820" target="_blank">
                 <UIcon name="mdi-whatsapp" class="links-icon"/>
-                {{ t('socialMedia.whatsapp') }}
+                {{ t('footer.socialMedia.whatsapp.name') }}
+              </a>
+            </li>
+            <li>
+              <a href="mailto:mychild2021is@gmail.com">
+                <UIcon name="mdi-email" class="links-icon"/>
+                {{ t('footer.socialMedia.email.name') }}
               </a>
             </li>
           </ul>
-        </div>
 
+        </div>
 
       </div>
 
       <hr class="divider">
 
       <div class="footer-bottom">
-        <p>{{ t('footerText.copyright', {year: currentYear}) }}</p>
+        <p>{{ t('footer.copyright', { year: currentYear }) }}</p>
       </div>
 
       <TranslateNavbar/>

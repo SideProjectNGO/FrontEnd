@@ -90,10 +90,6 @@ export default {
         reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
         downloadButton: "Muat Turun",
     },
-    footerTitle: {
-        logo: "Logo",
-        connectWithUs: "Berhubung Dengan Kami",
-    },
     volunteer_form: {
         title: "Borang Sukarelawan",
         description: "Sertai misi kami untuk mencipta masa depan yang lebih cerah untuk kanak-kanak! Di Mychild, kami percaya bahawa setiap kanak-kanak berhak mendapat kasih sayang, penjagaan, dan peluang untuk berkembang dalam persekitaran yang selamat dan memupuk. Dengan menjadi sukarelawan, anda akan memainkan peranan penting dalam membentuk kehidupan muda—sama ada dengan memberikan pendidikan, sokongan emosi, atau hanya dengan menjadi kehadiran yang prihatin.",
@@ -157,22 +153,41 @@ export default {
         public_relation_officer: "Pegawai Perhubungan Awam"
     },
 
-    linksTitle: {
-        home: "Laman Utama",
-        about: "Tentang Kami",
-        stories: "Kisah",
-        articles: "Artikel",
+    footer: {
+        logo: "Logo",
+        connectWithUs: "Hubungi Kami",
+        linksTitle: {
+            home: "Laman Utama",
+            about: "Tentang Kami",
+            stories: "Kisah",
+            articles: "Artikel",
+        },
+        socialMedia: {
+            instagram: {
+                name: "Instagram",
+                url: "https://www.instagram.com/mychild_polimas?igsh=MW5pOWZmdDYyOGU1cw=="
+            },
+            facebook: {
+                name: "Facebook",
+                url: "https://www.facebook.com/share/12ADScDU6hV/?mibextid=wwXIfr"
+            },
+            tiktok: {
+                name: "TikTok",
+                url: "https://www.tiktok.com/@yourpage"
+            },
+            whatsapp: {
+                name: "WhatsApp",
+                url: "https://wa.me/60196974820"
+            },
+            email: {
+                name: "Email",
+                address: "mychild2021is@gmail.com"
+            }
+        },        quickLinksSection: "Pautan Pantas",
+        copyright: "© {year} MyChild. Semua hak cipta terpelihara.",
     },
     footerText: {
         copyright: "Hak cipta &copy; Anak saya {year}",
         subscribe: "Langgan Sekarang",
-    },
-    quickLinksSection: "Pautan Pantas",
-    socialMedia: {
-        instagram: "Instagram",
-        facebook: "Facebook",
-        tiktok: "TikTok",
-        telegram: "Telegram",
-        whatsapp: "WhatsApp",
     },
 };

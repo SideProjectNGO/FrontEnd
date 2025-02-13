@@ -80,7 +80,6 @@ const articles: Article[] = [
 
 const currentIndex = ref(0);
 const itemsPerPage = 3;
-
 const visibleArticles = computed(() =>
     articles.slice(currentIndex.value, currentIndex.value + itemsPerPage)
 );
