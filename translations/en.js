@@ -190,7 +190,6 @@ export default {
         quickLinksSection: "Quick Links",
         copyright: "© {year} MyChild. All rights reserved.",
     },
-
     footerText: {
         copyright: "Copyright &copy; MyChild {year}",
         subscribe: "Subscribe Now",

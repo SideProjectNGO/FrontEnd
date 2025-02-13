@@ -78,9 +78,7 @@ const handleFormSubmit = () => {
   } else {
     console.log("Valid data:", formData.value);
 
-    const fakeToken = "your_fake_access_token";
-
-    useCookie('token').value = fakeToken;
+    useCookie('token').value = "your_fake_access_token";
 
     alert("Login successfully!");
     navigateTo('/admin');
@@ -152,7 +150,7 @@ const handleFormSubmit = () => {
 
       <div class="info-container">
         <h2 class="info-title">Every Child is My Child</h2>
-        <img src="../public/images/logo.webp" alt="Login illustration" class="info-image" />
+        <img src="../public/images/login.png" alt="Login illustration" class="info-image" />
       </div>
     </div>
 
@@ -280,8 +278,13 @@ const handleFormSubmit = () => {
 
 .social-links ul li {
   font-size: 1.5rem;
-  color: var(--primary-hover);
+  color: var(--primary-color);
   cursor: pointer;
+}
+
+.social-links ul li:hover {
+  color: var(--primary-hover);
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .info-container {
