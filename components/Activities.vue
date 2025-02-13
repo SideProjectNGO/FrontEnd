@@ -68,7 +68,6 @@ function viewActivity(id: number) {
 
 console.log(activities);
 </script>
-
 <template>
   <div class="activities-wrapper">
     <h1 class="activities-title">Our Activities</h1>
@@ -202,7 +201,8 @@ console.log(activities);
 }
 
 .pagination-button {
-  padding: 10px 20px;
+  padding: 5px 10px;
+  width: 150px;
   border: 2px solid var(--primary-hover);
   background: transparent;
   color: var(--primary-hover);
@@ -220,14 +220,83 @@ console.log(activities);
 }
 
 @media (max-width: 768px) {
-  .pagination-wrapper {
+  .activities-title {
+    font-size: 1.5rem;
+  }
+
+  .activities-grid {
+    display: block;
+  }
+
+  .activity-card-body {
     flex-direction: column;
-    gap: 10px;
+    padding: 15px;
+  }
+
+  .activity-image-wrapper img {
+    height: 200px;
+  }
+
+  .activity-details h3 {
+    font-size: 1rem;
+  }
+
+  .activity-details p {
+    font-size: 0.8rem;
+    margin: 15px 0;
+  }
+
+  .activity-link {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .pagination-wrapper {
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .pagination-button {
     width: 100%;
-    max-width: 200px;
+    max-width: 120px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .activities-title {
+    font-size: 1.2rem;
+  }
+
+  .activities-grid {
+    display: block;
+    gap: 30px;
+  }
+
+  .activity-card-body {
+    padding: 10px;
+  }
+
+  .activity-image-wrapper img {
+    height: 150px;
+  }
+
+  .activity-details h3 {
+    font-size: 0.9rem;
+  }
+
+  .activity-details p {
+    font-size: 0.7rem;
+    margin: 10px 0;
+  }
+
+  .activity-link {
+    padding: 6px;
+    font-size: 0.7rem;
+  }
+
+  .pagination-button {
+    font-size: 0.8rem;
   }
 }
 </style>
