@@ -1,78 +1,115 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useI18n } from '#imports';
+import {ref, computed} from 'vue';
+import {useI18n} from '#imports';
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 interface Message {
   id: number;
   message: string;
   image: string;
-  title: string;
+  name: string;
 }
 
 const messages: Message[] = [
   {
     id: 1,
-    title: t("messages.supportingChildren"),
-    message: t("messages.message1"),
-    image: "images/child.jpeg",
+    message: t("messages.ainiHazrin"),
+    image: "/images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
+    name: "PN. AINI HAZRIN AHMAD ANUAR",
   },
   {
     id: 2,
-    title: t("messages.empathyAndAction"),
-    message: t("messages.message2"),
-    image: "images/child.jpeg",
+    message: t("messages.sitiMuyassarah"),
+    image: "/images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
+    name: "DR. SITI MUYASSARAH ABD NASIR",
   },
   {
     id: 3,
-    title: t("messages.powerOfEducation"),
-    message: t("messages.message3"),
-    image: "images/child.jpeg",
+    message: t("messages.mohdAzmi"),
+    image: "/images/team/HJ. MOHD AZMI B. ABDUL HAMID.avif",
+    name: "HJ. MOHD AZMI B. ABDUL HAMID",
   },
   {
     id: 4,
-    title: t("messages.protectingInnocence"),
-    message: t("messages.message4"),
-    image: "images/child.jpeg",
+    message: t("messages.wanNorSheila"),
+    image: "/images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.jpg",
+    name: "PN. WAN NOR SHEILA MIOR SHARIFFUDIN",
   },
   {
     id: 5,
-    title: t("messages.investingInChildren"),
-    message: t("messages.message5"),
-    image: "images/child.jpeg",
+    message: t("messages.azzamurni"),
+    image: "/images/team/PN. AZZAMURNI MOHTAR.jpg",
+    name: "PN. AZZAMURNI MOHTAR",
   },
   {
     id: 6,
-    title: t("messages.hopeForEveryChild"),
-    message: t("messages.message6"),
-    image: "images/child.jpeg",
+    message: t("messages.norhazaliana"),
+    image: "/images/team/PN. NORHAZALIANA AFFENDI.jpg",
+    name: "PN. NORHAZALIANA AFFENDI",
   },
   {
     id: 7,
-    title: t("messages.rightToCare"),
-    message: t("messages.message7"),
-    image: "images/child.jpeg",
+    message: t("messages.sharifahNadiya"),
+    image: "/images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.jpg",
+    name: "DR. SHARIFAH NADIYA BT SYED YAHYA",
   },
   {
     id: 8,
-    title: t("messages.togetherWeCan"),
-    message: t("messages.message8"),
-    image: "images/child.jpeg",
+    message: t("messages.azizahSiron"),
+    image: "/images/team/PN. AZIZAH SIRON.jpg",
+    name: "PN. AZIZAH SIRON",
   },
   {
     id: 9,
-    title: t("messages.raisingLeaders"),
-    message: t("messages.message9"),
-    image: "images/child.jpeg",
+    message: t("messages.nurAkhtar"),
+    image: "/images/team/CIK NUR AKHTAR AMIN.jpg",
+    name: "CIK NUR AKHTAR AMIN",
   },
   {
     id: 10,
-    title: t("messages.noChildLeftBehind"),
-    message: t("messages.message10"),
-    image: "images/child.jpeg",
-  }
+    message: t("messages.sitiKhairul"),
+    image: "/images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.jpg",
+    name: "PN. SITI KHAIRUL BARIYAH MOHAMOOD",
+  },
+  {
+    id: 11,
+    message: t("messages.zurina"),
+    image: "/images/team/PN. ZURINA ABDUL KADIR.jpg",
+    name: "PN. ZURINA ABDUL KADIR",
+  },
+  {
+    id: 12,
+    message: t("messages.quqriah"),
+    image: "/images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.jpg",
+    name: "PN. QUQRIAH AQYNIZA BINTI ZAKARIA",
+  },
+  {
+    id: 13,
+    message: t("messages.mahani"),
+    image: "/images/team/PN. MAHANI ZAKARIA.jpg",
+    name: "PN. MAHANI ZAKARIA",
+  },
+  {
+    id: 14,
+    message: t("messages.mohdLutfi"),
+    image: "/images/team/EN. MOHD LUTFI B. MOHD KHIDIR.jpg",
+    name: "EN. MOHD LUTFI B. MOHD KHIDIR",
+  },
+  {
+    id: 15,
+    message: t("messages.sitiFariza"),
+    image: "/images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.jpg",
+    name: "DR. SITI FARIZA BINTI MOHAMAD ISA",
+  },
+  {
+    id: 16,
+    message: t("messages.mohdRedzuan"),
+    image: "/images/team/MOHD REDZUAN BIN ZULKIFLEE.jpg",
+    name: "MOHD REDZUAN BIN ZULKIFLEE",
+  },
 ];
+
 
 const currentIndex = ref(0);
 const itemsPerPage = 1;
@@ -91,38 +128,40 @@ function prevPage() {
 </script>
 
 <template>
-  <div class="messages-section">
+  <section class="messages-section">
     <div class="content-wrapper">
       <button @click="prevPage" aria-label="Previous message" class="nav-btn">
-        <UIcon name="mdi-arrow-left"/>
+        <UIcon name="mdi-arrow-left" />
       </button>
+
       <div
-          class="message-card"
           v-for="message in visibleMessages"
           :key="message.id"
+          class="message-card"
           :style="{ animation: 'fadeIn 1s ease-out' }"
       >
-        <div class="message-image" v-if="message.image">
-          <img :src="message.image" alt="Message Image"/>
+        <div v-if="message.image" class="message-image">
+          <img :src="message.image" alt="Message Image" loading="lazy" />
         </div>
         <div class="message-text">
-          <h3 class="message-title">{{ message.title }}</h3>
           <p class="message-description">{{ message.message }}</p>
         </div>
       </div>
+
       <button @click="nextPage" aria-label="Next message" class="nav-btn">
-        <UIcon name="mdi-arrow-right"/>
+        <UIcon name="mdi-arrow-right" />
       </button>
     </div>
+
     <div class="navigation-buttons">
       <button @click="prevPage" aria-label="Previous message" class="nav-btn">
-        <UIcon name="mdi-arrow-left"/>
+        <UIcon name="mdi-arrow-left" />
       </button>
       <button @click="nextPage" aria-label="Next message" class="nav-btn">
-        <UIcon name="mdi-arrow-right"/>
+        <UIcon name="mdi-arrow-right" />
       </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -139,19 +178,22 @@ function prevPage() {
   flex-direction: column;
 }
 
-.messages-section .content-wrapper {
+.content-wrapper {
   max-width: 1200px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
-.messages-section .message-card {
+.message-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: var(--primary-color);
-  width: 75%;
+  width: 70%;
+  min-width: 600px;
   margin: 20px auto;
   padding: 20px;
   animation: fadeIn 1s ease-out;
@@ -159,29 +201,30 @@ function prevPage() {
   border-radius: 50px 0;
 }
 
-.messages-section .message-image {
+.message-image {
   width: 150px;
   height: 150px;
   min-height: 170px;
   overflow: hidden;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.messages-section .message-image img {
+.message-image img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  align-content: center;
 }
 
 .message-text {
   text-align: center;
   min-height: 180px;
-}
-
-.message-title {
-  font-size: 1.5rem;
-  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .message-description {
@@ -199,6 +242,9 @@ function prevPage() {
   height: 50px;
   border: 2px solid var(--primary-color);
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-btn:hover {
@@ -220,13 +266,18 @@ function prevPage() {
 }
 
 @media (max-width: 768px) {
-  .messages-section .content-wrapper {
+  .content-wrapper {
     flex-direction: column;
     padding: 20px;
   }
 
-  .messages-section .content-wrapper button {
+  .content-wrapper .nav-btn {
     display: none;
+  }
+
+  .message-card {
+    width: 100%;
+    min-width: unset;
   }
 
   .message-text {
@@ -240,31 +291,11 @@ function prevPage() {
     margin-top: 20px;
   }
 
-  .navigation-buttons button {
+  .navigation-buttons .nav-btn {
     width: 50px;
     height: 50px;
     margin: 0 10px;
     font-size: 1.5rem;
   }
-
-  .messages-section .message-card {
-    width: 100%;
-  }
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

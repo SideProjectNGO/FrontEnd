@@ -11,6 +11,12 @@ export default {
             donate: "Menderma"
         },
     },
+    landing: {
+        headline: "Setiap Kanak-Kanak adalah Anak Saya",
+        description:
+            "Jutaan kanak-kanak di seluruh dunia menghadapi kehilangan yang dahsyat dan masa depan yang tidak menentu akibat konflik bersenjata yang semakin meningkat, ketidaksamaan, dan kesan perubahan iklim terhadap kehidupan dan kesihatan mereka.",
+        more_about: "LEBIH LANJUT TENTANG MYCHILD",
+    },
     about: {
         sectionTitle: "Lebih lanjut mengenai MyChild",
         aboutUs: {
@@ -26,31 +32,27 @@ export default {
             content: "Misi kami adalah untuk menyediakan penjagaan holistik, pendidikan, dan sokongan kepada kanak-kanak yang memerlukan. Melalui program berasaskan komuniti, advokasi, dan penyelesaian yang mampan, kami berusaha untuk memastikan setiap kanak-kanak mempunyai akses kepada persekitaran yang selamat, penyayang, dan sumber yang mereka perlukan untuk mencapai potensi penuh mereka.",
         },
     },
+    messages: {
+        ainiHazrin: "Setiap kanak-kanak berhak mendapat masa depan yang penuh harapan dan peluang. Mari kita bekerjasama untuk merealisasikannya.",
+        sitiMuyassarah: "Empati mendorong tindakan. Melalui advokasi dan pendidikan, kita boleh mencipta dunia yang lebih baik untuk kanak-kanak.",
+        mohdAzmi: "Misi kami adalah untuk memperkasakan kanak-kanak melalui pendidikan, perlindungan, dan sokongan.",
+        wanNorSheila: "Melindungi keperawanan kanak-kanak adalah tanggungjawab bersama. Setiap usaha penting.",
+        azzamurni: "Advokasi adalah langkah pertama ke arah perubahan. Kita mesti bersuara untuk setiap kanak-kanak yang memerlukan.",
+        norhazaliana: "Kesedaran awam boleh mengubah hidup. Mari kita gunakan suara kita untuk mereka yang tidak bersuara.",
+        sharifahNadiya: "Melabur dalam kanak-kanak bermakna melabur dalam masa depan. Setiap tindakan kecil membawa perubahan besar.",
+        azizahSiron: "Kerjasama antarabangsa boleh memperluaskan impak kita. Bersama-sama, kita boleh lakukan lebih banyak.",
+        nurAkhtar: "Kanak-kanak berhak mendapat kepimpinan yang melindungi dan memupuk mereka. Mari kita jadi perubahan itu.",
+        sitiKhairul: "Tiada kanak-kanak yang patut ketinggalan. Peluang yang sama untuk semua.",
+        zurina: "Multimedia adalah alat yang berkuasa untuk menyebarkan kesedaran dan memacu perubahan.",
+        quqriah: "Pendokumentasian yang tepat membantu kita mengukur impak dan menambah baik pendekatan kita.",
+        mahani: "Logistik yang cekap memastikan sumber kita sampai kepada mereka yang paling memerlukan.",
+        mohdLutfi: "Media sosial boleh memperkuatkan misi kita. Mari kita gunakannya untuk perubahan positif.",
+        sitiFariza: "Perhubungan awam memainkan peranan penting dalam menghubungkan dengan komuniti dan pihak berkepentingan.",
+        mohdRedzuan: "Di sebalik setiap misi yang hebat terdapat asas logistik yang kukuh."
+    },
 
     partnerships: {
         title: "Kekuatan dalam Perkongsian",
-    },
-    messages: {
-        supportingChildren: "Menyokong Kanak-kanak untuk Masa Depan yang Lebih Baik",
-        message1: "Setiap kanak-kanak berhak mendapat peluang untuk berkembang. NGO seperti kami memainkan peranan penting dalam menyediakan penjagaan, pendidikan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
-        empathyAndAction: "Empati dan Tindakan: Nyawa untuk Kanak-kanak",
-        message2: "Ia bukan sekadar menyediakan keperluan asas. Ia adalah tentang menawarkan ruang yang selamat di mana kanak-kanak dapat merasai kasih sayang dan sokongan, membolehkan mereka berkembang dan mencapai potensi penuh mereka.",
-        powerOfEducation: "Kekuatan Pendidikan",
-        message3: "Apabila kita mendidik seorang kanak-kanak, kita membuka pintu kepada kemungkinan yang tidak berkesudahan. NGO seperti kami menyediakan sumber pendidikan yang penting yang memutuskan kitaran kemiskinan dan membina masa depan yang lebih baik.",
-        protectingInnocence: "Melindungi Keperawanan",
-        message4: "Kanak-kanak adalah masa depan, dan ia adalah tanggungjawab kita untuk melindungi mereka. Dengan menyokong organisasi yang menjaga kanak-kanak yang terdedah, kita boleh membantu melindungi keperawanan mereka dan menyediakan peluang untuk pertumbuhan.",
-        investingInChildren: "Melabur dalam Kanak-kanak, Melabur dalam Masa Depan",
-        message5: "Menyokong kanak-kanak hari ini adalah pelaburan dalam dunia yang lebih baik dan lebih penyayang. Melalui usaha kami, kami membantu membentuk pemimpin masa depan yang berdaya tahan dan berdaya saing.",
-        hopeForEveryChild: "Harapan untuk Setiap Kanak-kanak",
-        message6: "Di banyak bahagian dunia, kanak-kanak menghadapi cabaran yang tidak dapat dibayangkan. NGO bekerja tanpa henti untuk membawa harapan dan perubahan melalui pendidikan, penjagaan kesihatan, dan sumber yang penting.",
-        rightToCare: "Hak untuk Penjagaan dan Pendidikan",
-        message7: "Setiap kanak-kanak berhak untuk berkembang dalam persekitaran yang selamat dan menerima pendidikan yang mereka layak. NGO kami berusaha untuk memastikan tiada kanak-kanak yang tertinggal kerana keadaan mereka.",
-        togetherWeCan: "Bersama-sama Kita Boleh Membuat Perbezaan",
-        message8: "Melalui tindakan kolektif, kita dapat memastikan bahawa kanak-kanak yang terdedah mendapat penjagaan, sokongan, dan pendidikan yang mereka perlukan untuk berjaya dalam kehidupan. Sertai kami dalam memberikan impak yang berkekalan!",
-        raisingLeaders: "Membesarkan Generasi Pemimpin",
-        message9: "Apabila kanak-kanak dijaga, dilindungi, dan diberi peluang, mereka berkembang menjadi pemimpin yang yakin yang dapat membentuk dunia menjadi lebih baik. Mari kita menjadi sebahagian daripada perubahan itu.",
-        noChildLeftBehind: "Tiada Kanak-kanak yang Harus Ditinggalkan",
-        message10: "Setiap kanak-kanak berhak untuk bermimpi dan berjaya. Melalui NGO, kami memastikan setiap kanak-kanak, tanpa mengira latar belakang mereka, mendapat sokongan yang mereka perlukan untuk membina masa depan yang cerah."
     },
     names: {
         john: "John",
@@ -95,12 +97,6 @@ export default {
         tiktok: "TikTok",
         telegram: "Telegram",
         whatsapp: "WhatsApp",
-    },
-    landing: {
-        headline: "Setiap Kanak-Kanak adalah Anak Saya",
-        description:
-            "Jutaan kanak-kanak di seluruh dunia menghadapi kehilangan yang dahsyat dan masa depan yang tidak menentu akibat konflik bersenjata yang semakin meningkat, ketidaksamaan, dan kesan perubahan iklim terhadap kehidupan dan kesihatan mereka.",
-        more_about: "LEBIH LANJUT TENTANG MYCHILD",
     },
     volunteer_form: {
         title: "Borang Sukarelawan",

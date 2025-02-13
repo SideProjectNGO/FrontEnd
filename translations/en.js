@@ -11,6 +11,12 @@ export default {
             donate: "Donate",
         },
     },
+    landing: {
+        headline: "Every Child is My Child",
+        description:
+            "Millions of children around the world face devastating losses and an uncertain future due to escalating armed conflicts, inequalities, and the impact of climate change on their lives and health.",
+        more_about: "MORE ABOUT MYCHILD",
+    },
     about: {
         sectionTitle: "More about MyChild",
         aboutUs: {
@@ -27,31 +33,27 @@ export default {
             content: "Our mission is to provide holistic care, education, and support to children in need. Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has access to a safe, nurturing environment and the resources they need to unlock their full potential.",
         },
     },
+    messages: {
+        ainiHazrin: "Every child deserves a future filled with hope and opportunity. Let's work together to make it a reality.",
+        sitiMuyassarah: "Empathy drives action. Through advocacy and education, we can create a better world for children.",
+        mohdAzmi: "Our mission is to empower children through education, protection, and support.",
+        wanNorSheila: "Protecting children's innocence is a collective responsibility. Every effort counts.",
+        azzamurni: "Advocacy is the first step towards change. We must speak up for every child in need.",
+        norhazaliana: "Public awareness can transform lives. Let's use our voice for the voiceless.",
+        sharifahNadiya: "Investing in children means investing in the future. Every small act matters.",
+        azizahSiron: "International collaboration can expand our impact. Together, we can do more.",
+        nurAkhtar: "Children deserve leadership that protects and nurtures them. Let's be that change.",
+        sitiKhairul: "No child should be left behind. Equal opportunities for all.",
+        zurina: "Multimedia is a powerful tool for spreading awareness and driving change.",
+        quqriah: "Accurate documentation helps us measure impact and refine our approach.",
+        mahani: "Efficient logistics ensure that our resources reach those who need them most.",
+        mohdLutfi: "Social media can amplify our mission. Let's use it for positive change.",
+        sitiFariza: "Public relations play a crucial role in connecting with communities and stakeholders.",
+        mohdRedzuan: "Behind every great mission is a strong logistical foundation."
+    },
 
     partnerships: {
         title: "Strength in Partnerships",
-    },
-    messages: {
-        supportingChildren: "Supporting Children for a Better Future",
-        message1: "Every child deserves a chance to thrive. NGOs like ours play a pivotal role in providing care, education, and a brighter future for children in need.",
-        empathyAndAction: "Empathy and Action: A Lifeline for Children",
-        message2: "It’s not just about providing basic needs. It’s about offering a safe space where children can feel loved and supported, enabling them to flourish and reach their full potential.",
-        powerOfEducation: "The Power of Education",
-        message3: "When we educate a child, we open doors to endless possibilities. NGOs like ours provide critical educational resources that break the cycle of poverty and build a better tomorrow.",
-        protectingInnocence: "Protecting Innocence",
-        message4: "Children are the future, and it’s our responsibility to protect them. By supporting organizations that care for vulnerable children, we can help safeguard their innocence and provide opportunities for growth.",
-        investingInChildren: "Investing in Children, Investing in Tomorrow",
-        message5: "Supporting children today is an investment in a better, more compassionate world. Through our efforts, we help shape resilient, empowered future leaders.",
-        hopeForEveryChild: "Hope for Every Child",
-        message6: "In many parts of the world, children face unimaginable challenges. NGOs are working tirelessly to bring hope and change through education, healthcare, and essential resources.",
-        rightToCare: "A Right to Care and Education",
-        message7: "Every child has a right to grow in a safe environment and receive the education they deserve. Our NGO works to ensure that no child is left behind due to their circumstances.",
-        togetherWeCan: "Together We Can Make a Difference",
-        message8: "Through collective action, we can ensure that vulnerable children receive the care, support, and education they need to succeed in life. Join us in making a lasting impact!",
-        raisingLeaders: "Raising a Generation of Leaders",
-        message9: "When children are nurtured, cared for, and given opportunities, they grow into confident leaders who can shape the world for the better. Let’s be part of that transformation.",
-        noChildLeftBehind: "No Child Should Be Left Behind",
-        message10: "Every child deserves an opportunity to dream and achieve. Through NGOs, we are ensuring that every child, regardless of their background, gets the support they need to build a bright future."
     },
     annualReport: {
         reportTitle: "Our Annual Report: A Year of Impact",
@@ -96,12 +98,6 @@ export default {
     footerText: {
         copyright: "Copyright &copy; MyChild {year}",
         subscribe: "Subscribe Now",
-    },
-    landing: {
-        headline: "Every Child is My Child",
-        description:
-            "Millions of children around the world face devastating losses and an uncertain future due to escalating armed conflicts, inequalities, and the impact of climate change on their lives and health.",
-        more_about: "MORE ABOUT MYCHILD",
     },
     volunteer_form: {
         title: "Volunteer Form",
