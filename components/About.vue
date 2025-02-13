@@ -8,19 +8,19 @@ const aboutItem = [
     id: 1,
     title: t("about.aboutUs.title"),
     content: t("about.aboutUs.content"),
-    image: "images/about-us.webp",
+    image: "../public/images/about-us.webp",
   },
   {
     id: 2,
     title: t("about.vision.title"),
     content: t("about.vision.content"),
-    image: "images/vision.jpeg",
+    image: "../public/images/vision.jpeg",
   },
   {
     id: 3,
     title: t("about.mission.title"),
     content: t("about.mission.content"),
-    image: "images/mission.webp",
+    image: "../public/images/mission.webp",
   },
 ];
 </script>
