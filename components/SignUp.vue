@@ -157,7 +157,7 @@ const handleFormSubmit = () => {
 
       <div class="info-section">
         <h2 class="info-heading">Every Child is My Child</h2>
-        <img src="/images/logo.webp" alt="Login illustration" class="info-image"/>
+        <img src="/images/logo.jpg" alt="Login illustration" class="info-image"/>
       </div>
     </div>
 
