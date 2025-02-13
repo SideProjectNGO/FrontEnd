@@ -15,7 +15,7 @@ const messages: Message[] = [
   {
     id: 1,
     message: t("messages.ainiHazrin"),
-    image: "/images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
+    image: "images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
     name: "PN. AINI HAZRIN AHMAD ANUAR",
   },
   {
