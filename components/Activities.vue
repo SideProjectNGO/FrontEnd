@@ -21,7 +21,7 @@ const activities: Activity[] = [
     date: "2025-01-15",
     author_name: "Jane Smith",
     author_country: "Canada",
-    main_photo_url: "/images/landing-image-1.jpeg",
+    main_photo_url: "images/landing-image-1.jpeg",
   },
   {
     activity_id: 2,
@@ -32,7 +32,7 @@ const activities: Activity[] = [
     date: "2025-01-18",
     author_name: "Michael Lee",
     author_country: "Australia",
-    main_photo_url: "/images/landing-image-1.jpeg",
+    main_photo_url: "images/landing-image-1.jpeg",
   },
   {
     activity_id: 3,
@@ -43,7 +43,7 @@ const activities: Activity[] = [
     date: "2025-01-20",
     author_name: "Sarah Khan",
     author_country: "India",
-    main_photo_url: "/images/landing-image-1.jpeg",
+    main_photo_url: "images/landing-image-1.jpeg",
   },
 ];
 
