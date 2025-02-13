@@ -11,9 +11,15 @@ export default defineNuxtConfig({
         detectBrowserLanguage: false,
         strategy: 'prefix_except_default',
     },
+    app: {
+        baseURL: process.env.NODE_ENV === 'development' ? '' : '/FrontEnd/',
+    },
+    nitro: {
+        preset: 'github_pages'
+    },
     runtimeConfig: {
         public: {
-            baseURL: process.env.BASE_URL || '/',
+            isDev: process.env.NODE_ENV === 'development',
         },
     },
     colorMode: {
