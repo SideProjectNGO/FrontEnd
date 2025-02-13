@@ -3,6 +3,8 @@
 
 <template>
   <NavBar/>
+  <LandingPage/>
+  <DonateButton/>
   <DonateManual/>
   <Footer/>
 </template>
