@@ -1,38 +1,38 @@
 <script setup>
-import { useI18n } from "#imports";
+import {useI18n} from "#imports";
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 </script>
 
 <template>
-  <template>
-    <section class="donate-section">
-      <div class="donate-manual-container">
-        <h2 class="title">{{ t("donate_title") }}</h2>
-        <h3 class="sub-title">{{ t("donate_subtitle") }}</h3>
-        <ul aria-label="Bank transfer instructions">
-          <li>
-            <UIcon name="mdi-bank" class="icon"/>
-            <strong>{{ t("donate_bank_transfer") }}</strong>
-            {{ t("donate_bank_details") }}
-          </li>
-          <li>
-            <UIcon name="mdi-email" class="icon"/>
-            <span v-html="t('donate_email', { email: '<a href=\'mailto:donate@mychild.org\'>donate@mychild.org</a>' })"></span>
-          </li>
-          <li>
-            <UIcon name="mdi-receipt" class="icon"/>
-            {{ t("donate_receipt") }}
-          </li>
-          <li class="thank-you">
-            <UIcon name="mdi-heart" class="icon text-red-500"/>
-            {{ t("donate_thank_you") }}
-          </li>
-        </ul>
-      </div>
-    </section>
-  </template>
+
+  <section class="donate-section">
+    <div class="donate-manual-container">
+      <h2 class="title">{{ t("donate_title") }}</h2>
+      <h3 class="sub-title">{{ t("donate_subtitle") }}</h3>
+      <ul aria-label="Bank transfer instructions">
+        <li>
+          <UIcon name="mdi-bank" class="icon"/>
+          <strong>{{ t("donate_bank_transfer" ) }}</strong>
+          {{ t("donate_bank_details") }}
+        </li>
+        <li>
+          <UIcon name="mdi-email" class="icon"/>
+          <span
+              v-html="t('donate_email', { email: '<a href=\'mailto:donate@mychild.org\'>mychild2021is@gmail.com</a>' })"></span>
+        </li>
+        <li>
+          <UIcon name="mdi-receipt" class="icon"/>
+          {{ t("donate_receipt") }}
+        </li>
+        <li class="thank-you">
+          <UIcon name="mdi-heart" class="icon text-red-500"/>
+          {{ t("donate_thank_you") }}
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <style scoped>

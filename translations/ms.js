@@ -163,7 +163,7 @@ export default {
     donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
     donate_subtitle: "Sokongan anda boleh mengubah kehidupan. Setiap sumbangan membantu menyediakan pendidikan, penjagaan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
     donate_bank_transfer: "Sumbang melalui pemindahan bank:",
-    donate_bank_details: "Liberty to Learn Berhad, RHB Bank – Nombor Akaun: 214234324234230",
+    donate_bank_details: "Liberty to Learn, May Bank – Nombor Akaun: 562263540066",
     donate_email: "Sila e-mel kami di {email} dengan nama anda dan slip pemindahan supaya kami boleh menjejaki sumbangan anda.",
     donate_receipt: "Sumbangan kepada MyChild tidak layak untuk potongan cukai, tetapi kami akan mengeluarkan resit sebagai pengesahan sumbangan anda.",
     donate_thank_you: "Terima kasih kerana menjadi sebahagian daripada misi kami untuk menjaga kanak-kanak di mana sahaja mereka berada. Kebaikan anda membawa perubahan!",

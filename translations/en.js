@@ -164,7 +164,7 @@ export default {
     donate_title: "Empower a Child’s Future, Change the World",
     donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
     donate_bank_transfer: "Donate via bank transfer:",
-    donate_bank_details: "Liberty to Learn Berhad, RHB Bank – Account Number: 214234324234230",
+    donate_bank_details: "Liberty to Learn, May Bank – Account Number: 562263540066",
     donate_email: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
     donate_receipt: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
     donate_thank_you: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
