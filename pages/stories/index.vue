@@ -4,7 +4,9 @@ import Stories from "~/components/Stories.vue";
 </script>
 
 <template>
+  <TranslateNavbar/>
   <NavBar/>
+  <LandingPage/>
   <Stories/>
   <Footer/>
 </template>
