@@ -100,7 +100,6 @@ const handleFormSubmit = () => {
 
       <div class="form-section">
         <form @submit.prevent="handleFormSubmit">
-          <h2 class="form-heading">Welcome Back </h2>
           <div v-for="field in fields" :key="field.id" class="form-group">
             <label :for="field.id">
               <span class="icon">
@@ -117,14 +116,6 @@ const handleFormSubmit = () => {
                 v-model="formData[field.validationKey]"
                 required
             />
-            <textarea
-                v-else
-                :id="field.id"
-                :placeholder="field.placeholder"
-                v-model="formData[field.validationKey]"
-                required
-            >
-            </textarea>
             <p v-if="errors[field.validationKey]?.[0]" class="error-message">{{ errors[field.validationKey]?.[0] }}</p>
           </div>
           <div class="form-actions">
@@ -149,15 +140,14 @@ const handleFormSubmit = () => {
         </div>
 
         <div class="form-divider">
-          <hr/>
           <router-link to="/login" class="divider-text">Login</router-link>
-          <hr/>
+          <router-link to="/home" class="divider-text">Home</router-link>
         </div>
       </div>
 
       <div class="info-section">
         <h2 class="info-heading">Every Child is My Child</h2>
-        <img src="/images/logo.jpg" alt="Login illustration" class="info-image"/>
+        <img src="/images/signup.png" alt="Login illustration" class="info-image"/>
       </div>
     </div>
 
@@ -199,14 +189,6 @@ const handleFormSubmit = () => {
   padding: 30px;
   background-color: #eeeeee;
   min-height: 600px;
-}
-
-.form-heading {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  text-align: center;
 }
 
 .form-section form {
@@ -285,8 +267,13 @@ const handleFormSubmit = () => {
 
 .social-media-links ul li {
   font-size: 1.5rem;
-  color: var(--primary-hover);
+  color: var(--primary-color);
   cursor: pointer;
+}
+
+.social-media-links ul li:hover {
+  color: var(--primary-hover);
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .info-section {
@@ -343,18 +330,11 @@ const handleFormSubmit = () => {
   padding: 20px 0;
 }
 
-.form-divider hr {
-  flex: 1;
-  border: none;
-  border-top: 2px solid var(--primary-hover);
-}
-
 .divider-text {
   font-size: 1.2rem;
   color: var(--primary-color);
   padding: 0 10px;
 }
-
 
 @media (max-width: 1200px) {
   .signup-container {
@@ -367,10 +347,6 @@ const handleFormSubmit = () => {
   .info-section {
     padding: 20px;
     min-height: auto;
-  }
-
-  .form-heading {
-    font-size: 1.5rem;
   }
 
   .info-heading {
@@ -398,10 +374,6 @@ const handleFormSubmit = () => {
 }
 
 @media (max-width: 480px) {
-  .form-heading {
-    font-size: 1.2rem;
-  }
-
   .btn-submit {
     font-size: 0.8rem;
   }
