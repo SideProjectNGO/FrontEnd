@@ -94,7 +94,6 @@ onMounted(() => {
 .logo-box .logo {
   width: 50px;
   height: 40px;
-  border-radius: 10px;
 }
 
 .social-link {
