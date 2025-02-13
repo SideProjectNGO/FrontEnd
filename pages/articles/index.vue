@@ -3,7 +3,9 @@
 </script>
 
 <template>
+  <TranslateNavbar/>
   <NavBar/>
+  <LandingPage/>
   <Articles/>
   <Footer/>
 </template>
