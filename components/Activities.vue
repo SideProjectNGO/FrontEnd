@@ -8,7 +8,7 @@ interface Activity {
   date: string;
   author_name: string;
   author_country: string;
-  main_photo_url: string;
+  main_photo: string;
 }
 
 const activities: Activity[] = [
@@ -21,7 +21,7 @@ const activities: Activity[] = [
     date: "2025-01-15",
     author_name: "Jane Smith",
     author_country: "Canada",
-    main_photo_url: "images/landing-image-1.jpeg",
+    main_photo: "images/MyChild%20logo.png",
   },
   {
     activity_id: 2,
@@ -32,7 +32,7 @@ const activities: Activity[] = [
     date: "2025-01-18",
     author_name: "Michael Lee",
     author_country: "Australia",
-    main_photo_url: "images/landing-image-1.jpeg",
+    main_photo: "images/MyChild%20logo.png",
   },
   {
     activity_id: 3,
@@ -43,7 +43,7 @@ const activities: Activity[] = [
     date: "2025-01-20",
     author_name: "Sarah Khan",
     author_country: "India",
-    main_photo_url: "images/landing-image-1.jpeg",
+    main_photo: "images/MyChild%20logo.png",
   },
 ];
 
@@ -83,7 +83,7 @@ console.log(activities);
         <div class="activity-card">
           <div class="activity-card-body">
             <div class="activity-image-wrapper">
-              <img :src="activity.main_photo_url" :alt="activity.title"/>
+              <img :src="activity.main_photo" :alt="activity.title"/>
             </div>
             <div class="activity-details">
               <h3 class="activity-title">{{ activity.title }}</h3>
