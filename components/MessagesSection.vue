@@ -109,11 +109,8 @@ const messages: Message[] = [
     name: "MOHD REDZUAN BIN ZULKIFLEE",
   },
 ];
-
-
 const currentIndex = ref(0);
 const itemsPerPage = 1;
-
 const visibleMessages = computed(() =>
     messages.slice(currentIndex.value, currentIndex.value + itemsPerPage)
 );
@@ -121,7 +118,6 @@ const visibleMessages = computed(() =>
 function nextPage() {
   currentIndex.value = (currentIndex.value + itemsPerPage) % messages.length;
 }
-
 function prevPage() {
   currentIndex.value = (currentIndex.value - itemsPerPage + messages.length) % messages.length;
 }
