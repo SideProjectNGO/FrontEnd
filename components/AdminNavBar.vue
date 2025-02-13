@@ -29,7 +29,7 @@ onMounted(() => {
       <div class="logo-area">
         <div class="logo-container">
           <a href="">
-            <img src="/images/logo%20mychild.png" alt="MyChild_Logo" />
+<!--            <img src="/images/logo%20mychild.png" alt="MyChild_Logo" />-->
           </a>
         </div>
         <button v-if="isMobile" @click="toggleLinksVisibility" class="menu-button">
