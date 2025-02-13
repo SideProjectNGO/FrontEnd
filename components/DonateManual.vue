@@ -9,26 +9,26 @@ const {t} = useI18n();
 
   <section class="donate-section">
     <div class="donate-manual-container">
-      <h2 class="title">{{ t("donate_title") }}</h2>
-      <h3 class="sub-title">{{ t("donate_subtitle") }}</h3>
+      <h2 class="title">{{ t("donate.donate_title") }}</h2>
+      <h3 class="sub-title">{{ t("donate.donate_subtitle") }}</h3>
       <ul aria-label="Bank transfer instructions">
         <li>
           <UIcon name="mdi-bank" class="icon"/>
-          <strong>{{ t("donate_bank_transfer" ) }}</strong>
-          {{ t("donate_bank_details") }}
+          <strong>{{ t("donate.donate_bank_transfer") }}</strong>
+          {{ t("donate.donate_bank_details") }}
         </li>
         <li>
           <UIcon name="mdi-email" class="icon"/>
           <span
-              v-html="t('donate_email', { email: '<a href=\'mailto:donate@mychild.org\'>mychild2021is@gmail.com</a>' })"></span>
+              v-html="t('donate.donate_email', { email: '<a href=\'mailto:donate@mychild.org\'>mychild2021is@gmail.com</a>' })"></span>
         </li>
         <li>
           <UIcon name="mdi-receipt" class="icon"/>
-          {{ t("donate_receipt") }}
+          {{ t("donate.donate_receipt") }}
         </li>
         <li class="thank-you">
           <UIcon name="mdi-heart" class="icon text-red-500"/>
-          {{ t("donate_thank_you") }}
+          {{ t("donate.donate_thank_you") }}
         </li>
       </ul>
     </div>

@@ -51,10 +51,24 @@ export default {
         sitiFariza: "Public relations play a crucial role in connecting with communities and stakeholders.",
         mohdRedzuan: "Behind every great mission is a strong logistical foundation."
     },
-
     partnerships: {
         title: "Strength in Partnerships",
     },
+    donate:{
+        donate_title: "Empower a Child’s Future, Change the World",
+        donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
+        donate_bank_transfer: "Donate via bank transfer:",
+        donate_bank_details: "Liberty to Learn, May Bank – Account Number: 562263540066",
+        donate_email: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
+        donate_receipt: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
+        donate_thank_you: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
+        donate_message_title: "Give Hope, Change a Child’s Future",
+        donate_message_text: "Every child deserves love, education, and a chance for a better tomorrow. Your donation can provide food, shelter, and learning opportunities to children in need. Together, we can transform lives and create a brighter future. Join us in making a difference today!",
+        donate_benefit_1: "Access to quality education and school supplies",
+        donate_benefit_2: "Safe shelter and healthcare support",
+        donate_benefit_3: "A brighter future full of hope and opportunities"
+    },
+
     annualReport: {
         reportTitle: "Our Annual Report: A Year of Impact",
         reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
@@ -161,17 +175,5 @@ export default {
         socmed_tiktok: "SOCMED - TikTok",
         public_relation_officer: "Public Relation Officer"
     },
-    donate_title: "Empower a Child’s Future, Change the World",
-    donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
-    donate_bank_transfer: "Donate via bank transfer:",
-    donate_bank_details: "Liberty to Learn, May Bank – Account Number: 562263540066",
-    donate_email: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
-    donate_receipt: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
-    donate_thank_you: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
-    donate_message_title: "Give Hope, Change a Child’s Future",
-    donate_message_text: "Every child deserves love, education, and a chance for a better tomorrow. Your donation can provide food, shelter, and learning opportunities to children in need. Together, we can transform lives and create a brighter future. Join us in making a difference today!",
-    donate_benefit_1: "Access to quality education and school supplies",
-    donate_benefit_2: "Safe shelter and healthcare support",
-    donate_benefit_3: "A brighter future full of hope and opportunities"
 };
 
