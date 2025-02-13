@@ -25,22 +25,22 @@ onMounted(() => {
       </div>
 
       <div class="donate-message-container">
-        <h2 class="donate-title">{{ t("donate_message_title") }}</h2>
+        <h2 class="donate-title">{{ t("donate.donate_message_title") }}</h2>
         <p class="message">
-          {{ t("donate_message_text") }}
+          {{ t("donate.donate_message_text") }}
         </p>
         <ul class="donation-benefits">
           <li>
             <UIcon name="mdi-check-circle" class="icon"/>
-            {{ t("donate_benefit_1") }}
+            {{ t("donate.donate_benefit_1") }}
           </li>
           <li>
             <UIcon name="mdi-check-circle" class="icon"/>
-            {{ t("donate_benefit_2") }}
+            {{ t("donate.donate_benefit_2") }}
           </li>
           <li>
             <UIcon name="mdi-check-circle" class="icon"/>
-            {{ t("donate_benefit_3") }}
+            {{ t("donate.donate_benefit_3") }}
           </li>
         </ul>
       </div>

@@ -91,28 +91,6 @@ export default {
         olivia: "Olivia",
         michael: "Michael",
     },
-    footerTitle: {
-        logo: "Logo",
-        connectWithUs: "Connect With Us",
-    },
-    quickLinksSection: "Quick Links",
-    linksTitle: {
-        home: "Home",
-        about: "About Us",
-        stories: "Stories",
-        articles: "Articles",
-    },
-    socialMedia: {
-        instagram: "Instagram",
-        facebook: "Facebook",
-        tiktok: "TikTok",
-        telegram: "Telegram",
-        whatsapp: "WhatsApp",
-    },
-    footerText: {
-        copyright: "Copyright &copy; MyChild {year}",
-        subscribe: "Subscribe Now",
-    },
     volunteer_form: {
         title: "Volunteer Form",
         description: "Join our mission to create a brighter future for children! At Mychild, we believe that every child deserves love, care, and the opportunity to grow in a safe and nurturing environment. By becoming a volunteer, you will play a vital role in shaping young lives—whether by providing education, emotional support, or simply being a caring presence.",
@@ -174,6 +152,29 @@ export default {
         logistic: "Logistic",
         socmed_tiktok: "SOCMED - TikTok",
         public_relation_officer: "Public Relation Officer"
+    },
+
+    footerTitle: {
+        logo: "Logo",
+        connectWithUs: "Connect With Us",
+    },
+    quickLinksSection: "Quick Links",
+    linksTitle: {
+        home: "Home",
+        about: "About Us",
+        stories: "Stories",
+        articles: "Articles",
+    },
+    socialMedia: {
+        instagram: "Instagram",
+        facebook: "Facebook",
+        tiktok: "TikTok",
+        telegram: "Telegram",
+        whatsapp: "WhatsApp",
+    },
+    footerText: {
+        copyright: "Copyright &copy; MyChild {year}",
+        subscribe: "Subscribe Now",
     },
 };
 

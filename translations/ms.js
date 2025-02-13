@@ -94,24 +94,6 @@ export default {
         logo: "Logo",
         connectWithUs: "Berhubung Dengan Kami",
     },
-    quickLinksSection: "Pautan Pantas",
-    linksTitle: {
-        home: "Laman Utama",
-        about: "Tentang Kami",
-        stories: "Kisah",
-        articles: "Artikel",
-    },
-    footerText: {
-        copyright: "Hak cipta &copy; Anak saya {year}",
-        subscribe: "Langgan Sekarang",
-    },
-    socialMedia: {
-        instagram: "Instagram",
-        facebook: "Facebook",
-        tiktok: "TikTok",
-        telegram: "Telegram",
-        whatsapp: "WhatsApp",
-    },
     volunteer_form: {
         title: "Borang Sukarelawan",
         description: "Sertai misi kami untuk mencipta masa depan yang lebih cerah untuk kanak-kanak! Di Mychild, kami percaya bahawa setiap kanak-kanak berhak mendapat kasih sayang, penjagaan, dan peluang untuk berkembang dalam persekitaran yang selamat dan memupuk. Dengan menjadi sukarelawan, anda akan memainkan peranan penting dalam membentuk kehidupan muda—sama ada dengan memberikan pendidikan, sokongan emosi, atau hanya dengan menjadi kehadiran yang prihatin.",
@@ -173,5 +155,24 @@ export default {
         logistic: "Logistik",
         socmed_tiktok: "Media Sosial - TikTok",
         public_relation_officer: "Pegawai Perhubungan Awam"
+    },
+
+    linksTitle: {
+        home: "Laman Utama",
+        about: "Tentang Kami",
+        stories: "Kisah",
+        articles: "Artikel",
+    },
+    footerText: {
+        copyright: "Hak cipta &copy; Anak saya {year}",
+        subscribe: "Langgan Sekarang",
+    },
+    quickLinksSection: "Pautan Pantas",
+    socialMedia: {
+        instagram: "Instagram",
+        facebook: "Facebook",
+        tiktok: "TikTok",
+        telegram: "Telegram",
+        whatsapp: "WhatsApp",
     },
 };
