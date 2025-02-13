@@ -4,10 +4,10 @@ import {useI18n} from "#imports";
 
 const {t} = useI18n();
 const images = [
-  {id: 1, title: "MAPIM", image: "images/partnership-logo-1.webp"},
-  {id: 2, title: "UN", image: "images/partnership-logo-2.webp"},
-  {id: 3, title: "MALAYSIA", image: "images/partnership-logo-3.webp"},
-  {id: 4, title: "MALAYSIA", image: "images/partnership-logo-4.webp"},
+  {id: 1, title: "MAPIM", image: "images/partnership/partnership-logo-1.webp"},
+  {id: 2, title: "UN", image: "images/partnership/partnership-logo-2.webp"},
+  {id: 3, title: "MALAYSIA", image: "images/partnership/partnership-logo-3.webp"},
+  {id: 4, title: "MALAYSIA", image: "images/partnership/partnership-logo-4.webp"},
 ];
 const rowPattern = [5, 4];
 const groupedImages = computed(() => {
