@@ -162,6 +162,8 @@ export default {
             about: "About Us",
             stories: "Stories",
             articles: "Articles",
+            volunteer: "Volunteer",
+            donate: "Donate",
         },
         socialMedia: {
             instagram: {

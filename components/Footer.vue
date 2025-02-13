@@ -43,6 +43,16 @@ const {t} = useI18n();
                 {{ t('footer.linksTitle.articles') }}
               </router-link>
             </li>
+            <li>
+              <NuxtLink to="/volunteer-form">
+                <UIcon name="mdi-user" class="links-icon"/>
+                {{ t("footer.linksTitle.volunteer") }}</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/donate">
+                <UIcon name="mdi-money" class="links-icon"/>
+                {{ t("footer.linksTitle.donate") }}</NuxtLink>
+            </li>
           </ul>
         </div>
 

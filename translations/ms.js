@@ -161,6 +161,8 @@ export default {
             about: "Tentang Kami",
             stories: "Kisah",
             articles: "Artikel",
+            volunteer: "Sukarelawan",
+            donate: "Menderma"
         },
         socialMedia: {
             instagram: {
