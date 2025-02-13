@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-router.replace('https://sideprojectngo.github.io/FrontEnd/home/')
+router.replace('home/')
 </script>
 
 <template>
