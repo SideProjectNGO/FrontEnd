@@ -1,18 +1,13 @@
 <script setup>
-import { computed } from "vue";
-import { useI18n } from "#imports";
+import {computed} from "vue";
+import {useI18n} from "#imports";
 
-const { t } = useI18n();
+const {t} = useI18n();
 const images = [
-  { id: 1, title: "names.john", image: "/images/mychild logo.jpg" },
-  { id: 2, title: "names.jane", image: "/images/mychild logo.jpg" },
-  { id: 3, title: "names.alex", image: "/images/mychild logo.jpg" },
-  { id: 4, title: "names.emma", image: "/images/mychild logo.jpg" },
-  { id: 5, title: "names.chris", image: "/images/mychild logo.jpg" },
-  { id: 6, title: "names.sophia", image: "/images/mychild logo.jpg" },
-  { id: 7, title: "names.daniel", image: "/images/mychild logo.jpg" },
-  { id: 8, title: "names.olivia", image: "/images/mychild logo.jpg" },
-  { id: 9, title: "names.michael", image: "/images/mychild logo.jpg" },
+  {id: 1, title: "MAPIM", image: "images/partnership-logo-1.webp"},
+  {id: 2, title: "UN", image: "images/partnership-logo-2.webp"},
+  {id: 3, title: "MALAYSIA", image: "images/partnership-logo-3.webp"},
+  {id: 4, title: "MALAYSIA", image: "images/partnership-logo-4.webp"},
 ];
 const rowPattern = [5, 4];
 const groupedImages = computed(() => {
@@ -32,53 +27,71 @@ const groupedImages = computed(() => {
 </script>
 
 <template>
-  <div class="partnerships-section">
+  <section class="partnerships-section">
     <h1 class="title">{{ t("partnerships.title") }}</h1>
     <div class="container">
-      <div v-for="(row, rowIndex) in groupedImages" :key="'row-' + rowIndex" class="row">
-        <div v-for="image in row" :key="image.id" class="image-container">
-          <img src="../public/images/un-logo-1.avif" :alt="t(image.title)" class="image" />
+      <div
+          v-for="(row, rowIndex) in groupedImages"
+          :key="`row-${rowIndex}`"
+          class="content-container"
+      >
+        <div
+            v-for="image in row"
+            :key="image.id"
+            class="image-container"
+        >
+          <img
+              :src="image.image"
+              :alt="t(image.title)"
+              :title="t(image.title)"
+              class="image"
+              loading="lazy"
+          />
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
 .partnerships-section {
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: var(--background);
+  margin: 5rem auto;
 }
 
-.partnerships-section .title {
+.title {
   text-align: center;
   font-size: 2rem;
   color: var(--primary-hover);
 }
 
 .container {
-  max-width: 1200px;
-  margin: auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.row {
+.content-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  width: 100%;
-  margin: 1rem auto;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .image-container {
-  flex: 1;
-  max-width: calc(16.666% - 1.5rem);
+  flex: 1 1 calc(15% - 1.5rem);
+  max-width: calc(15% - 1.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image {
   width: 100%;
+  max-width: 70px;
+  max-height: 70px;
   height: auto;
-  border-radius: 8px;
   transition: transform 0.3s ease;
 }
 
@@ -88,18 +101,21 @@ const groupedImages = computed(() => {
 
 @media (max-width: 1024px) {
   .image-container {
+    flex: 1 1 calc(20% - 1.5rem);
     max-width: calc(20% - 1.5rem);
   }
 }
 
 @media (max-width: 768px) {
   .image-container {
+    flex: 1 1 calc(33.333% - 1.5rem);
     max-width: calc(33.333% - 1.5rem);
   }
 }
 
 @media (max-width: 480px) {
   .image-container {
+    flex: 1 1 100%;
     max-width: 100%;
   }
 }
