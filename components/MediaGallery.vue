@@ -66,7 +66,7 @@ const closePopup = () => {
         <span class="close-btn" @click="closePopup">&times;</span>
         <img v-if="type === 'image'" :src="selectedMedia?.media" class="popup-img" :alt="selectedMedia?.sub_title"/>
         <video v-else class="popup-video" :src="selectedMedia?.media" controls autoplay/>
-        <p class="popup-title">{{ selectedMedia?.sub_title }}</p>
+<!--        <p class="popup-title">{{ selectedMedia?.sub_title }}</p>-->
       </div>
     </div>
   </div>
