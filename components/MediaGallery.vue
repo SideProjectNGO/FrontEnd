@@ -9,30 +9,24 @@ interface MediaItem {
 }
 
 const props = defineProps<{ type: 'image' | 'video' }>();
-
 const mediaList = computed<MediaItem[]>(() => {
   return props.type === 'image'
-      ? mediaData.images.map((item) => ({id: item.id, sub_title: item.sub_title, media: item.image}))
+      ? mediaData.images.map((item) => ({id: item.id, sub_title: item.sub_title, media: item.media}))
       : mediaData.videos;
 });
-
 const currentPage = ref(1);
 const pageSize = 8;
 const selectedMedia = ref<MediaItem | null>(null);
 const isPopupVisible = ref(false);
-
 const paginatedMedia = computed(() => {
   const start = (currentPage.value - 1) * pageSize;
   const end = start + pageSize;
   return mediaList.value.slice(start, end);
 });
-
 const totalPages = computed(() => Math.ceil(mediaList.value.length / pageSize));
-
 const nextPage = () => {
   if (currentPage.value < totalPages.value) currentPage.value++;
 };
-
 const prevPage = () => {
   if (currentPage.value > 1) currentPage.value--;
 };
