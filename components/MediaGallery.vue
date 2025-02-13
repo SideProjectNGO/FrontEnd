@@ -73,6 +73,13 @@ const closePopup = () => {
 </template>
 
 
+
+
+
+
+
+
+
 <style scoped>
 .media-gallery {
   display: block;
@@ -103,6 +110,7 @@ const closePopup = () => {
   padding: 10px;
   border-radius: 10px;
   transition: transform 0.2s;
+  margin: 0 auto;
 }
 
 .media-card:hover {
@@ -160,6 +168,12 @@ const closePopup = () => {
   align-items: center;
 }
 
+@media screen and (max-width: 800px) {
+  .popup-content {
+    max-width: 90%;
+  }
+}
+
 .popup-img, .popup-video {
   width: 100%;
   height: 100%;
@@ -176,11 +190,5 @@ const closePopup = () => {
   right: 15px;
   font-size: 24px;
   cursor: pointer;
-}
-
-.popup-title {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: bold;
 }
 </style>
