@@ -142,9 +142,8 @@ const handleFormSubmit = () => {
         </div>
 
         <div class="form-footer">
-          <hr />
           <router-link to="/signup" class="signup-link">Sign Up</router-link>
-          <hr />
+          <router-link to="/signup" class="signup-link">Home</router-link>
         </div>
       </div>
 
