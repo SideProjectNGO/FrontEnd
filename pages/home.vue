@@ -8,7 +8,6 @@ import MediaGallery from "~/components/MediaGallery.vue";
   <LandingPage/>
   <MediaGallery type="image" />
   <MessagesSection/>
-  <MediaGallery type="video" />
   <Activities/>
   <Stories/>
   <Articles/>
