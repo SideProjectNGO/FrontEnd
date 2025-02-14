@@ -1,6 +1,8 @@
 <script setup>
 import {defineEmits, defineProps} from 'vue'
+import {useI18n} from "#imports";
 
+const {t} = useI18n();
 const props = defineProps({
   show: Boolean
 })
@@ -22,15 +24,12 @@ const fullDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate
         </div>
         <div class="thank-info">
           <p>
-            Dear Volunteer,
-            Thank you for submitting your application. We have successfully received it, and our team will review it within the next **three days**.
-            You will be notified of any updates or if further information is required.
+            {{ t("volunteer.thank_you_message") }}
             <br><br>
-            **Submission Date:** {{fullDate}}
+            <strong>{{ t("volunteer.submission_date") }}</strong> {{ fullDate }}
           </p>
-          <h2>We appreciate your patience and support.</h2>
+          <h2>{{ t("volunteer.appreciation") }}</h2>
         </div>
-
       </div>
       <hr class="divider">
     </div>
