@@ -141,15 +141,17 @@ function toggleLinks(index) {
 
 .links-section a {
   text-decoration: none;
+  color: var(--text-color);
 }
 
 .sidebar-btn .icon-img {
   margin-right: 10px;
+  color: var(--text-color);
 }
 
 .links-section .icon-img {
   margin-right: 10px;
-  color: var(--primary-hover);
+  color: var(--text-color);
 }
 
 </style>
