@@ -199,7 +199,7 @@ const handleFormSubmit = () => {
         <h2 class="description-title">{{ t('volunteer.volunteer_form_title') }}</h2>
         <div class="description-text">
           <p class="description">{{ t('volunteer.description') }}</p>
-          <h3 class="sub-title">{{ t('volunteer_form.why_volunteer') }}</h3>
+          <h3 class="sub-title">{{ t('volunteer.why_volunteer') }}</h3>
           <ul>
             <li>
               <UIcon
