@@ -75,24 +75,40 @@ export default {
             "Be part of a compassionate and dedicated team",
             "Experience the joy of giving back"
         ],
+        form_fields: {
+            name: "Name",
+            email: "Email",
+            phone: "Phone",
+            dob: "Date of Birth",
+            gender: "Gender",
+            nationality: "Nationality",
+            days: "Preferred Days and Times",
+            address: "Address",
+            message: "Message",
+            cv: "CV"
+        },
+        placeholders: {
+            name: "Enter your name",
+            notes:"Enter your message or notes",
+            email: "Enter your email address",
+            phone: "Enter your phone number",
+            dob: "Select your date of birth",
+            gender: "Select your gender",
+            nationality: "Select your nationality",
+            days: "Select your availability",
+            address: "Enter your address",
+            cv: "Upload your CV"
+        },
+        validation: {
+            required: "This field is required",
+            email: "Invalid email address",
+            phone: "Phone number must be valid",
+            cv: "CV must be a PNG, JPG, PDF, or Word file"
+        },
+        submit: "Submit",
         thank_you_message: "Dear Volunteer, Thank you for submitting your application. We have successfully received it, and our team will review it within the next three days. You will be notified of any updates or if further information is required.",
         submission_date: "Submission Date:",
         appreciation: "We appreciate your patience and support."
-    },
-
-    donate: {
-        donate_title: "Empower a Child’s Future, Change the World",
-        donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
-        donate_bank_transfer: "Donate via bank transfer:",
-        donate_bank_details: "Liberty to Learn, May Bank – Account Number: 562263540066",
-        donate_email: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
-        donate_receipt: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
-        donate_thank_you: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
-        donate_message_title: "Give Hope, Change a Child’s Future",
-        donate_message_text: "Every child deserves love, education, and a chance for a better tomorrow. Your donation can provide food, shelter, and learning opportunities to children in need. Together, we can transform lives and create a brighter future. Join us in making a difference today!",
-        donate_benefit_1: "Access to quality education and school supplies",
-        donate_benefit_2: "Safe shelter and healthcare support",
-        donate_benefit_3: "A brighter future full of hope and opportunities"
     },
 
     annualReport: {
@@ -100,6 +116,7 @@ export default {
         reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
         openPopupButton: "Open Popup",
     },
+
     popup: {
         title: "Annual Year Popup",
         reportTitle: "Our Annual Report: A Year of Impact",
@@ -116,39 +133,6 @@ export default {
         daniel: "Daniel",
         olivia: "Olivia",
         michael: "Michael",
-    },
-    volunteer_form: {
-        form_fields: {
-            name: "Name",
-            email: "Email",
-            phone: "Phone",
-            dob: "Date of Birth",
-            gender: "Gender",
-            nationality: "Nationality",
-            days: "Preferred Days and Times",
-            address: "Address",
-            message: "Message",
-            cv: "CV"
-        },
-        placeholders: {
-            name: "Enter your name",
-            email: "Enter your email address",
-            phone: "Enter your phone number",
-            dob: "Select your date of birth",
-            gender: "Select your gender",
-            nationality: "Select your nationality",
-            days: "Select your availability",
-            address: "Enter your address",
-            message: "Enter your message or notes",
-            cv: "Upload your CV"
-        },
-        validation: {
-            required: "This field is required",
-            email: "Invalid email address",
-            phone: "Phone number must be valid",
-            cv: "CV must be a PNG, JPG, PDF, or Word file"
-        },
-        submit: "Submit"
     },
     team: {
         meet_our_team: "Meet Our Team",
@@ -170,7 +154,20 @@ export default {
         socmed_tiktok: "SOCMED - TikTok",
         public_relation_officer: "Public Relation Officer"
     },
-
+    donate: {
+        donate_title: "Empower a Child’s Future, Change the World",
+        donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
+        donate_bank_transfer: "Donate via bank transfer:",
+        donate_bank_details: "Liberty to Learn, May Bank – Account Number: 562263540066",
+        donate_email: "Kindly email us at {email} with your name and transfer slips so we can track your contribution.",
+        donate_receipt: "Donations to MyChild are not tax-deductible, but we will issue a receipt to acknowledge your generosity.",
+        donate_thank_you: "Thank you for being a part of our mission to care for children wherever they are. Your kindness makes a difference!",
+        donate_message_title: "Give Hope, Change a Child’s Future",
+        donate_message_text: "Every child deserves love, education, and a chance for a better tomorrow. Your donation can provide food, shelter, and learning opportunities to children in need. Together, we can transform lives and create a brighter future. Join us in making a difference today!",
+        donate_benefit_1: "Access to quality education and school supplies",
+        donate_benefit_2: "Safe shelter and healthcare support",
+        donate_benefit_3: "A brighter future full of hope and opportunities"
+    },
     footer: {
         logo: "Logo",
         connectWithUs: "Connect With Us",

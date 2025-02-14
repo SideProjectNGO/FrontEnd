@@ -74,49 +74,6 @@ export default {
             "Menjadi sebahagian daripada pasukan yang penyayang dan berdedikasi",
             "Rasai kegembiraan memberi kembali"
         ],
-        thank_you_message: "Kepada Sukarelawan, Terima kasih kerana menghantar permohonan anda. Kami telah menerimanya dengan jayanya, dan pasukan kami akan menyemaknya dalam tempoh tiga hari akan datang. Anda akan dimaklumkan mengenai sebarang perkembangan atau jika maklumat tambahan diperlukan.",
-        submission_date: "Tarikh Penghantaran:",
-        appreciation: "Kami menghargai kesabaran dan sokongan anda."
-    },
-
-    donate: {
-        donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
-        donate_subtitle: "Sokongan anda boleh mengubah kehidupan. Setiap sumbangan membantu menyediakan pendidikan, penjagaan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
-        donate_bank_transfer: "Sumbang melalui pemindahan bank:",
-        donate_bank_details: "Liberty to Learn, May Bank – Nombor Akaun: 562263540066",
-        donate_email: "Sila e-mel kami di {email} dengan nama anda dan slip pemindahan supaya kami boleh menjejaki sumbangan anda.",
-        donate_receipt: "Sumbangan kepada MyChild tidak layak untuk potongan cukai, tetapi kami akan mengeluarkan resit sebagai pengesahan sumbangan anda.",
-        donate_thank_you: "Terima kasih kerana menjadi sebahagian daripada misi kami untuk menjaga kanak-kanak di mana sahaja mereka berada. Kebaikan anda membawa perubahan!",
-        donate_message_title: "Beri Harapan, Ubah Masa Depan Kanak-Kanak",
-        donate_message_text: "Setiap kanak-kanak berhak mendapat kasih sayang, pendidikan, dan peluang untuk masa depan yang lebih baik. Sumbangan anda boleh menyediakan makanan, tempat tinggal, dan peluang pembelajaran kepada kanak-kanak yang memerlukan. Bersama-sama, kita boleh mengubah kehidupan dan mencipta masa depan yang lebih cerah. Sertai kami dalam membawa perubahan hari ini!",
-        donate_benefit_1: "Akses kepada pendidikan berkualiti dan kelengkapan sekolah",
-        donate_benefit_2: "Tempat perlindungan yang selamat dan sokongan penjagaan kesihatan",
-        donate_benefit_3: "Masa depan yang lebih cerah penuh dengan harapan dan peluang"
-    },
-
-    names: {
-        john: "John",
-        jane: "Jane",
-        alex: "Alex",
-        emma: "Emma",
-        chris: "Chris",
-        sophia: "Sophia",
-        daniel: "Daniel",
-        olivia: "Olivia",
-        michael: "Michael",
-    },
-    annualReport: {
-        reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
-        reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
-        openPopupButton: "Buka Popup",
-    },
-    popup: {
-        title: "Popup Tahun Tahunan",
-        reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
-        reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
-        downloadButton: "Muat Turun",
-    },
-    volunteer_form: {
         form_fields: {
             name: "Nama",
             email: "Emel",
@@ -131,6 +88,7 @@ export default {
         },
         placeholders: {
             name: "Masukkan nama anda",
+            notes:"Masukkan mesej atau nota anda",
             email: "Masukkan alamat emel anda",
             phone: "Masukkan nombor telefon anda",
             dob: "Pilih tarikh lahir anda",
@@ -138,7 +96,6 @@ export default {
             nationality: "Pilih kewarganegaraan anda",
             days: "Pilih ketersediaan anda",
             address: "Masukkan alamat anda",
-            message: "Masukkan mesej atau nota anda",
             cv: "Muat naik CV anda"
         },
         validation: {
@@ -147,7 +104,34 @@ export default {
             phone: "Nombor telefon mesti sah",
             cv: "CV mesti dalam format PNG, JPG, PDF, atau Word"
         },
-        submit: "Hantar"
+        submit: "Hantar",
+        thank_you_message: "Kepada Sukarelawan, Terima kasih kerana menghantar permohonan anda. Kami telah menerimanya dengan jayanya, dan pasukan kami akan menyemaknya dalam tempoh tiga hari akan datang. Anda akan dimaklumkan mengenai sebarang perkembangan atau jika maklumat tambahan diperlukan.",
+        submission_date: "Tarikh Penghantaran:",
+        appreciation: "Kami menghargai kesabaran dan sokongan anda."
+    },
+
+    names: {
+        john: "John",
+        jane: "Jane",
+        alex: "Alex",
+        emma: "Emma",
+        chris: "Chris",
+        sophia: "Sophia",
+        daniel: "Daniel",
+        olivia: "Olivia",
+        michael: "Michael",
+    },
+
+    annualReport: {
+        reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
+        reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
+        openPopupButton: "Buka Popup",
+    },
+    popup: {
+        title: "Popup Tahun Tahunan",
+        reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
+        reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
+        downloadButton: "Muat Turun",
     },
     team: {
         meet_our_team: "Temui Pasukan Kami",
@@ -168,6 +152,20 @@ export default {
         logistic: "Logistik",
         socmed_tiktok: "Media Sosial - TikTok",
         public_relation_officer: "Pegawai Perhubungan Awam"
+    },
+    donate: {
+        donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
+        donate_subtitle: "Sokongan anda boleh mengubah kehidupan. Setiap sumbangan membantu menyediakan pendidikan, penjagaan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
+        donate_bank_transfer: "Sumbang melalui pemindahan bank:",
+        donate_bank_details: "Liberty to Learn, May Bank – Nombor Akaun: 562263540066",
+        donate_email: "Sila e-mel kami di {email} dengan nama anda dan slip pemindahan supaya kami boleh menjejaki sumbangan anda.",
+        donate_receipt: "Sumbangan kepada MyChild tidak layak untuk potongan cukai, tetapi kami akan mengeluarkan resit sebagai pengesahan sumbangan anda.",
+        donate_thank_you: "Terima kasih kerana menjadi sebahagian daripada misi kami untuk menjaga kanak-kanak di mana sahaja mereka berada. Kebaikan anda membawa perubahan!",
+        donate_message_title: "Beri Harapan, Ubah Masa Depan Kanak-Kanak",
+        donate_message_text: "Setiap kanak-kanak berhak mendapat kasih sayang, pendidikan, dan peluang untuk masa depan yang lebih baik. Sumbangan anda boleh menyediakan makanan, tempat tinggal, dan peluang pembelajaran kepada kanak-kanak yang memerlukan. Bersama-sama, kita boleh mengubah kehidupan dan mencipta masa depan yang lebih cerah. Sertai kami dalam membawa perubahan hari ini!",
+        donate_benefit_1: "Akses kepada pendidikan berkualiti dan kelengkapan sekolah",
+        donate_benefit_2: "Tempat perlindungan yang selamat dan sokongan penjagaan kesihatan",
+        donate_benefit_3: "Masa depan yang lebih cerah penuh dengan harapan dan peluang"
     },
 
     footer: {
