@@ -98,7 +98,7 @@ function toggleLinks(index) {
 
 <style scoped>
 .sidebar-menu {
-  background-color: var(--background);
+  background-color: var(--primary-color);
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -112,17 +112,18 @@ function toggleLinks(index) {
 
 .sidebar-btn {
   width: 100%;
-  padding: 10px;
+  padding: 5px 10px;
   text-align: left;
   background-color: transparent;
-  color: var(--primary-hover);
+  color: var(--text-color);
   border: none;
-  border-radius: 5px;
+  outline: none;
   cursor: pointer;
 }
 
 .sidebar-btn:hover {
-  background-color: var(--text-hover);
+  color: var(--text-hover);
+  transition: color ease-in-out 0.2s;
 }
 
 .links-section {
@@ -140,12 +141,10 @@ function toggleLinks(index) {
 
 .links-section a {
   text-decoration: none;
-  color: var(--primary-hover);
 }
 
 .sidebar-btn .icon-img {
   margin-right: 10px;
-  color: var(--primary-hover);
 }
 
 .links-section .icon-img {
