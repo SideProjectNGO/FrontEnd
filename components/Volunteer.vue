@@ -1,6 +1,6 @@
 <script lang="ts">
-import { useI18n } from "vue-i18n";
-import { defineComponent } from "vue";
+import {useI18n} from "vue-i18n";
+import {defineComponent} from "vue";
 
 interface Step {
   step: number;
@@ -10,7 +10,7 @@ interface Step {
 
 export default defineComponent({
   setup() {
-    const { t } = useI18n();
+    const {t} = useI18n();
 
     const steps: Step[] = [
       {
@@ -47,7 +47,6 @@ export default defineComponent({
   },
 });
 </script>
-
 <template>
   <section class="volunteer">
     <h2 class="volunteer-title">{{ t("volunteer.volunteer_title") }}</h2>
@@ -55,7 +54,7 @@ export default defineComponent({
       <div class="steps-volunteer-container">
         <ul class="volunteer-list">
           <li v-for="(step, index) in steps" :key="index">
-            <UIcon :name="step.icon" class="volunteer-icon" />
+            <UIcon :name="step.icon" class="volunteer-icon"/>
             {{ step.content }}
           </li>
         </ul>
@@ -64,6 +63,13 @@ export default defineComponent({
         <img src="../public/images/volunteer-image.png" alt="volunteer-image" class="volunteer-image">
       </div>
     </div>
+    <router-link to="/volunteer-form" class="volunteer-btn">
+      <UIcon
+          name="mdi-register"
+          class="register-icon"
+      />
+      {{ t("volunteer.volunteer_button") }}
+    </router-link>
   </section>
 </template>
 
@@ -74,11 +80,12 @@ export default defineComponent({
   max-width: 1200px;
   margin: 5rem auto;
   padding: 0 1rem;
+  text-align: center;
 }
 
 .volunteer .container {
   display: grid;
-  grid-template-columns:2fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
 }
 
@@ -99,7 +106,7 @@ export default defineComponent({
 .volunteer li {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   margin-bottom: 1rem;
   font-size: 1.1rem;
   color: var(--primary-hover);
@@ -110,39 +117,63 @@ export default defineComponent({
   margin-right: 1rem;
 }
 
+.volunteer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-hover);
+  padding: 0.75rem 1.5rem;
+  width: auto;
+  color: var(--text-color);
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 2rem auto;
+}
+
+.volunteer-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.register-icon {
+  margin-right: 0.75rem;
+}
+
 .volunteer-image {
   width: 100%;
   max-width: 300px;
+  max-height: 300px;
   height: auto;
-  margin: 0 auto ;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .volunteer .container {
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
-  .volunteer .container {
-    padding: 0 0.5rem;
+    grid-template-columns: 1fr;
   }
 
-  .volunteer li {
-    font-size: 1rem;
+  .volunteer-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .volunteer .container {
-    display: block;
-  }
   .volunteer h2 {
     font-size: 1.5rem;
   }
 
   .volunteer li {
     font-size: 0.9rem;
+  }
+
+  .volunteer-btn {
+    width: 100%;
+    max-width: 200px;
   }
 }
 </style>

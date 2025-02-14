@@ -56,6 +56,7 @@ export default {
 
     volunteer: {
         volunteer_title: "Bagaimana Menjadi Sukarelawan Bersama Kami",
+        volunteer_button: "DAFTAR SEKARANG",
         steps: [
             "Isi borang sukarelawan dengan butiran dan minat anda.",
             "Pasukan kami akan menyemak permohonan anda dalam masa 3 hari.",

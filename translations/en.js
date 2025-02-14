@@ -57,6 +57,7 @@ export default {
 
     volunteer: {
         volunteer_title: "How to Be a Volunteer with Us",
+        volunteer_button: "REGISTER NOW",
         steps: [
             "Fill out the volunteer form with your details and interests.",
             "Our team will review your application within 3 days.",
