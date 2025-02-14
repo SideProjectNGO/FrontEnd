@@ -202,6 +202,8 @@ export default {
             }
         },
         quickLinksSection: "Quick Links",
+        donateSection:"Donate Now",
+        account_number: "Account Number: 562263540066",
         copyright: "© {year} MyChild. All rights reserved.",
     },
     footerText: {

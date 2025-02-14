@@ -200,7 +200,10 @@ export default {
                 name: "Email",
                 address: "mychild2021is@gmail.com"
             }
-        }, quickLinksSection: "Pautan Pantas",
+        },
+        quickLinksSection: "Pautan Pantas",
+        donateSection:"Menderma Sekarang",
+        account_number: "nombor akaun: 562263540066",
         copyright: "© {year} MyChild. Semua hak cipta terpelihara.",
     },
     footerText: {

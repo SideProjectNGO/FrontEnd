@@ -46,12 +46,14 @@ const {t} = useI18n();
             <li>
               <NuxtLink to="/volunteer-form">
                 <UIcon name="mdi-user" class="links-icon"/>
-                {{ t("footer.linksTitle.volunteer") }}</NuxtLink>
+                {{ t("footer.linksTitle.volunteer") }}
+              </NuxtLink>
             </li>
             <li>
               <NuxtLink to="/donate">
                 <UIcon name="mdi-money" class="links-icon"/>
-                {{ t("footer.linksTitle.donate") }}</NuxtLink>
+                {{ t("footer.linksTitle.donate") }}
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -78,7 +80,7 @@ const {t} = useI18n();
               </a>
             </li>
             <li>
-              <a  href="https://wa.me/60194021066" target="_blank">
+              <a href="https://wa.me/60194021066" target="_blank">
                 <UIcon name="mdi-whatsapp" class="links-icon"/>
                 {{ t('footer.socialMedia.whatsapp.name') }}
               </a>
@@ -93,12 +95,27 @@ const {t} = useI18n();
 
         </div>
 
+        <div>
+          <h2>{{ t('footer.donateSection') }}</h2>
+
+          <div class="donate-section">
+            <img src="../public/images/maybanklogo.png" alt="maybank-logo" class="donate-section-image"/>
+            <div class="box">
+              <span>{{ t('footer.account_number') }}</span>
+              <span>
+              <router-link to="/donate" class="donate-btn">Donate Now</router-link>
+              </span>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
       <hr class="divider">
 
       <div class="footer-bottom">
-        <p>{{ t('footer.copyright', { year: currentYear }) }}</p>
+        <p>{{ t('footer.copyright', {year: currentYear}) }}</p>
       </div>
 
       <TranslateNavbar/>
@@ -181,6 +198,32 @@ const {t} = useI18n();
 
 .links-icon {
   margin-right: 10px;
+}
+
+.donate-section .donate-section-image {
+  width: 120px;
+  height: 70px;
+  margin: .5rem;
+}
+
+.donate-section .box span {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  text-align: start;
+  margin: 1rem;
+}
+
+.donate-section .box .donate-btn {
+  background-color: var(--background);
+  color: var(--primary-color);
+  padding: .5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: .5rem;
+  margin: 1rem auto;
 }
 
 .footer-bottom {
