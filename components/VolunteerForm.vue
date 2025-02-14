@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import {ref, watch} from "vue";
-import {z} from "zod";
-import {nationalities} from "~/utils/dropdownOptions.js";
-import {useI18n} from "#imports";
+import { ref, watch } from "vue";
+import { z } from "zod";
+import { nationalities } from "~/utils/dropdownOptions.js";
+import { useI18n } from "#imports";
+import Popup from "~/components/VolunteerSubmitPopup.vue";
 
-const {t} = useI18n();
+const { t } = useI18n();
 
 const formSchema = z.object({
   form_id: z.string().min(1, t('volunteer_form.validation.required')),
@@ -13,14 +14,16 @@ const formSchema = z.object({
   phone: z.string().regex(/^\+?\d{10,15}$/, t('volunteer_form.validation.phone')),
   address: z.string().min(10, t('volunteer_form.validation.required')),
   message: z.string().optional(),
-  cv: z.string()
-      .refine((value) => /\.(png|jpe?g|pdf|docx?)$/i.test(value), t('volunteer_form.validation.cv')),
+  cv: z.instanceof(File)
+      .refine((file) => /\.(png|jpe?g|pdf|docx?)$/i.test(file.name), t('volunteer_form.validation.cv')),
   status: z.enum(["pending"]),
-  gender: z.string().optional(),
+  gender: z.enum(["male", "female"]).optional(),
   created_at: z.string().optional(),
-  dob: z.string().optional(),
-  nationality: z.string().optional(),
-  days: z.string().optional(),
+  dob: z.string()
+      .refine((value) => /^\d{4}-\d{2}-\d{2}$/.test(value), t('volunteer_form.validation.dob_format'))
+      .optional(),
+  nationality: z.enum(nationalities.map((n) => n.value)).optional(),
+  days: z.enum(["weekdays", "weekends", "evenings"]).optional(),
 });
 
 type Field = {
@@ -114,7 +117,7 @@ const fields: Field[] = [
   },
 ];
 
-const formData = ref<Record<keyof typeof formSchema.shape, string | null>>({
+const formData = ref<Record<keyof typeof formSchema.shape, string | File | null>>({
   form_id: "",
   name: "",
   email: "",
@@ -127,7 +130,7 @@ const formData = ref<Record<keyof typeof formSchema.shape, string | null>>({
   address: "",
   days: null,
   gender: null,
-  nationality: null
+  nationality: null,
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
@@ -146,7 +149,13 @@ const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>(
   days: undefined,
 });
 
-function validateField(fieldName: keyof typeof formSchema.shape, value: string) {
+const isPopupVisible = ref(false);
+
+function validateField(fieldName: keyof typeof formSchema.shape, value: string | File | null) {
+  if (value === null || value === "") {
+    errors.value[fieldName] = undefined;
+    return;
+  }
   try {
     formSchema.shape[fieldName].parse(value);
     errors.value[fieldName] = undefined;
@@ -161,7 +170,9 @@ fields.forEach((field) => {
   watch(
       () => formData.value[field.id as keyof typeof formSchema.shape],
       (newValue) => {
-        validateField(field.id, newValue || "");
+        if (field.id !== "cv") {
+          validateField(field.id, newValue || "");
+        }
       }
   );
 });
@@ -172,24 +183,41 @@ const handleFileInput = (event: Event) => {
   if (files && files.length > 0) {
     formData.value.cv = files[0];
   } else {
-    formData.value.cv = "";
+    formData.value.cv = null;
   }
 };
 
 const handleFormSubmit = () => {
   fields.forEach((field) => {
-    validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape] || "");
+    if (field.id !== "cv") {
+      validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape] || "");
+    }
   });
 
+  // Validate the CV file separately
+  if (formData.value.cv instanceof File) {
+    try {
+      formSchema.shape.cv.parse(formData.value.cv);
+      errors.value.cv = undefined;
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        errors.value.cv = err.issues.map((issue) => issue.message);
+      }
+    }
+  } else {
+    errors.value.cv = [t('volunteer_form.validation.cv')];
+  }
+
+  // Check for validation errors
   if (Object.values(errors.value).some((error) => error?.length)) {
     console.log("Validation errors:", errors.value);
   } else {
     console.log("Valid data:", formData.value);
-    alert("Form submitted successfully");
+    isPopupVisible.value = true;
   }
 };
-
 </script>
+
 
 <template>
   <div class="volunteer-form">
@@ -287,7 +315,9 @@ const handleFormSubmit = () => {
             />
 
           </div>
-          <button type="submit" class="btn-submit  full-width">{{ t('volunteer_form.submit') }}</button>
+          <button @click.once="isPopupVisible = true"  type="submit" class="btn-submit  full-width">{{ t('volunteer_form.submit') }}</button>
+          <Popup :show="isPopupVisible" @update:show="isPopupVisible = $event">
+          </Popup>
         </form>
 
       </div>
