@@ -24,8 +24,7 @@ const fullDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate
         </div>
         <div class="thank-info">
           <p>
-            {{ t("volunteer.thank_you_message") }}
-            <br><br>
+            {{ t("volunteer.thank_you_message") }}.
             <strong>{{ t("volunteer.submission_date") }}</strong> {{ fullDate }}
           </p>
           <h2>{{ t("volunteer.appreciation") }}</h2>
