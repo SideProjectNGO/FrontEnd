@@ -11,6 +11,7 @@ import MediaGallery from "~/components/MediaGallery.vue";
   <Activities/>
   <Stories/>
   <Articles/>
+  <Volunteer/>
   <Footer/>
 </template>
 

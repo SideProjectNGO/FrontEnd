@@ -54,6 +54,18 @@ export default {
     partnerships: {
         title: "Strength in Partnerships",
     },
+
+    volunteer: {
+        volunteer_title: "How to Be a Volunteer with Us",
+        steps: [
+            "Fill out the volunteer form with your details and interests.",
+            "Our team will review your application within 3 days.",
+            "If accepted, you will receive a confirmation email.",
+            "Start volunteering and contribute to our mission!",
+            "Stay connected with our volunteer community."
+        ]
+    },
+
     donate:{
         donate_title: "Empower a Child’s Future, Change the World",
         donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",

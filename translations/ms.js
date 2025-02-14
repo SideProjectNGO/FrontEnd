@@ -53,6 +53,18 @@ export default {
     partnerships: {
         title: "Kekuatan dalam Perkongsian",
     },
+
+    volunteer: {
+        volunteer_title: "Bagaimana Menjadi Sukarelawan Bersama Kami",
+        steps: [
+            "Isi borang sukarelawan dengan butiran dan minat anda.",
+            "Pasukan kami akan menyemak permohonan anda dalam masa 3 hari.",
+            "Jika diterima, anda akan menerima e-mel pengesahan.",
+            "Mulakan sukarelawan dan menyumbang kepada misi kami!",
+            "Terus berhubung dengan komuniti sukarelawan kami."
+        ]
+    },
+
     donate: {
         donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
         donate_subtitle: "Sokongan anda boleh mengubah kehidupan. Setiap sumbangan membantu menyediakan pendidikan, penjagaan, dan masa depan yang lebih cerah untuk kanak-kanak yang memerlukan.",
@@ -185,7 +197,7 @@ export default {
                 name: "Email",
                 address: "mychild2021is@gmail.com"
             }
-        },        quickLinksSection: "Pautan Pantas",
+        }, quickLinksSection: "Pautan Pantas",
         copyright: "© {year} MyChild. Semua hak cipta terpelihara.",
     },
     footerText: {
