@@ -196,9 +196,9 @@ const handleFormSubmit = () => {
     <div class="container">
 
       <div class="description-wrapper">
-        <h2 class="description-title">{{ t('volunteer_form.title') }}</h2>
+        <h2 class="description-title">{{ t('volunteer.volunteer_form_title') }}</h2>
         <div class="description-text">
-          <p class="description">{{ t('volunteer_form.description') }}</p>
+          <p class="description">{{ t('volunteer.description') }}</p>
           <h3 class="sub-title">{{ t('volunteer_form.why_volunteer') }}</h3>
           <ul>
             <li>
@@ -206,28 +206,28 @@ const handleFormSubmit = () => {
                   name="mdi-user"
                   class="icons"
               />
-              {{ t('volunteer_form.list.1') }}
+              {{ t('volunteer.list.1') }}
             </li>
             <li>
               <UIcon
                   name="mdi-user"
                   class="icons"
               />
-              {{ t('volunteer_form.list.2') }}
+              {{ t('volunteer.list.2') }}
             </li>
             <li>
               <UIcon
                   name="mdi-user"
                   class="icons"
               />
-              {{ t('volunteer_form.list.3') }}
+              {{ t('volunteer.list.3') }}
             </li>
             <li>
               <UIcon
                   name="mdi-user"
                   class="icons"
               />
-              {{ t('volunteer_form.list.4') }}
+              {{ t('volunteer.list.4') }}
             </li>
           </ul>
         </div>

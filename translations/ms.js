@@ -63,7 +63,16 @@ export default {
             "Jika diterima, anda akan menerima e-mel pengesahan.",
             "Mulakan sukarelawan dan menyumbang kepada misi kami!",
             "Terus berhubung dengan komuniti sukarelawan kami."
-        ]
+        ],
+        volunteer_form_title: "Borang Sukarelawan",
+        description: "Sertai misi kami untuk mencipta masa depan yang lebih cerah untuk kanak-kanak! Di Mychild, kami percaya bahawa setiap kanak-kanak berhak mendapat kasih sayang, penjagaan, dan peluang untuk berkembang dalam persekitaran yang selamat dan memupuk. Dengan menjadi sukarelawan, anda akan memainkan peranan penting dalam membentuk kehidupan muda—sama ada dengan memberikan pendidikan, sokongan emosi, atau hanya dengan menjadi kehadiran yang prihatin.",
+        why_volunteer: "Kenapa Sukarelawan?",
+        list: [
+            "Buat impak yang bermakna dalam kehidupan kanak-kanak",
+            "Dapatkan pengalaman berharga dalam penjagaan kanak-kanak dan perkhidmatan komuniti",
+            "Menjadi sebahagian daripada pasukan yang penyayang dan berdedikasi",
+            "Rasai kegembiraan memberi kembali"
+        ],
     },
 
     donate: {
@@ -104,15 +113,6 @@ export default {
         downloadButton: "Muat Turun",
     },
     volunteer_form: {
-        title: "Borang Sukarelawan",
-        description: "Sertai misi kami untuk mencipta masa depan yang lebih cerah untuk kanak-kanak! Di Mychild, kami percaya bahawa setiap kanak-kanak berhak mendapat kasih sayang, penjagaan, dan peluang untuk berkembang dalam persekitaran yang selamat dan memupuk. Dengan menjadi sukarelawan, anda akan memainkan peranan penting dalam membentuk kehidupan muda—sama ada dengan memberikan pendidikan, sokongan emosi, atau hanya dengan menjadi kehadiran yang prihatin.",
-        why_volunteer: "Kenapa Sukarelawan?",
-        list: {
-            1: "Buat impak yang bermakna dalam kehidupan kanak-kanak",
-            2: "Dapatkan pengalaman berharga dalam penjagaan kanak-kanak dan perkhidmatan komuniti",
-            3: "Menjadi sebahagian daripada pasukan yang penyayang dan berdedikasi",
-            4: "Rasai kegembiraan memberi kembali"
-        },
         form_fields: {
             name: "Nama",
             email: "Emel",

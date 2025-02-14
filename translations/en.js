@@ -64,10 +64,19 @@ export default {
             "If accepted, you will receive a confirmation email.",
             "Start volunteering and contribute to our mission!",
             "Stay connected with our volunteer community."
+        ],
+        volunteer_form_title: "Volunteer Form",
+        description: "Join our mission to create a brighter future for children! At Mychild, we believe that every child deserves love, care, and the opportunity to grow in a safe and nurturing environment. By becoming a volunteer, you will play a vital role in shaping young lives—whether by providing education, emotional support, or simply being a caring presence.",
+        why_volunteer: "Why Volunteer?",
+        list: [
+            "Make a meaningful impact on children's lives",
+            "Gain valuable experience in child care and community service",
+            "Be part of a compassionate and dedicated team",
+            "Experience the joy of giving back"
         ]
     },
 
-    donate:{
+    donate: {
         donate_title: "Empower a Child’s Future, Change the World",
         donate_subtitle: "Your support can transform lives. Every donation helps provide education, care, and a brighter future for children in need.",
         donate_bank_transfer: "Donate via bank transfer:",
@@ -105,15 +114,6 @@ export default {
         michael: "Michael",
     },
     volunteer_form: {
-        title: "Volunteer Form",
-        description: "Join our mission to create a brighter future for children! At Mychild, we believe that every child deserves love, care, and the opportunity to grow in a safe and nurturing environment. By becoming a volunteer, you will play a vital role in shaping young lives—whether by providing education, emotional support, or simply being a caring presence.",
-        why_volunteer: "Why Volunteer?",
-        list: {
-            1: "Make a meaningful impact on children's lives",
-            2: "Gain valuable experience in child care and community service",
-            3: "Be part of a compassionate and dedicated team",
-            4: "Experience the joy of giving back"
-        },
         form_fields: {
             name: "Name",
             email: "Email",
