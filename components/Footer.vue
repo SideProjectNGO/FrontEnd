@@ -96,6 +96,7 @@ const {t} = useI18n();
         </div>
 
         <div>
+
           <h2>{{ t('footer.donateSection') }}</h2>
 
           <div class="donate-section">
