@@ -74,6 +74,9 @@ export default {
             "Menjadi sebahagian daripada pasukan yang penyayang dan berdedikasi",
             "Rasai kegembiraan memberi kembali"
         ],
+        thank_you_message: "Kepada Sukarelawan, Terima kasih kerana menghantar permohonan anda. Kami telah menerimanya dengan jayanya, dan pasukan kami akan menyemaknya dalam tempoh tiga hari akan datang. Anda akan dimaklumkan mengenai sebarang perkembangan atau jika maklumat tambahan diperlukan.",
+        submission_date: "Tarikh Penghantaran:",
+        appreciation: "Kami menghargai kesabaran dan sokongan anda."
     },
 
     donate: {

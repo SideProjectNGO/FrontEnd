@@ -235,6 +235,7 @@ const handleFormSubmit = () => {
 
       <div class="form-wrapper">
         <form @submit.prevent="handleFormSubmit" class="volunteer-form-grid">
+
           <div
               v-for="field in fields"
               :key="field.id"
@@ -260,7 +261,6 @@ const handleFormSubmit = () => {
               </option>
             </select>
 
-
             <input
                 v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
                 :id="field.id"
@@ -269,6 +269,7 @@ const handleFormSubmit = () => {
                 v-model="formData[field.id]"
                 class="text-input"
             />
+
             <textarea
                 v-else-if="field.type === 'textarea'"
                 :id="field.id"
@@ -276,6 +277,7 @@ const handleFormSubmit = () => {
                 v-model="formData[field.id]"
                 class="textarea-input"
             ></textarea>
+
             <input
                 v-else-if="field.type === 'file'"
                 :id="field.id"
@@ -283,6 +285,7 @@ const handleFormSubmit = () => {
                 class="file-input"
                 @change="handleFileInput"
             />
+
           </div>
           <button type="submit" class="btn-submit  full-width">{{ t('volunteer_form.submit') }}</button>
         </form>
@@ -333,7 +336,7 @@ const handleFormSubmit = () => {
 
 .container .description-wrapper h2{
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.2rem;
   color: var(--text-hover);
   margin-bottom: 20px;
@@ -341,7 +344,7 @@ const handleFormSubmit = () => {
 
 .container .description-wrapper h3 {
   text-align: start;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.2rem;
   color: var(--text-hover);
   margin-bottom: 20px;
@@ -386,6 +389,13 @@ const handleFormSubmit = () => {
 
 .full-width {
   grid-column: span 2;
+}
+
+@media (max-width: 800px) {
+  .volunteer-form-grid {
+    display: block;
+    gap: 0 15px;
+  }
 }
 
 .volunteer-form-group label {

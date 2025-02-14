@@ -74,7 +74,10 @@ export default {
             "Gain valuable experience in child care and community service",
             "Be part of a compassionate and dedicated team",
             "Experience the joy of giving back"
-        ]
+        ],
+        thank_you_message: "Dear Volunteer, Thank you for submitting your application. We have successfully received it, and our team will review it within the next three days. You will be notified of any updates or if further information is required.",
+        submission_date: "Submission Date:",
+        appreciation: "We appreciate your patience and support."
     },
 
     donate: {
