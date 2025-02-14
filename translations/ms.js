@@ -68,6 +68,7 @@ export default {
         description: "Sertai misi kami untuk mencipta masa depan yang lebih cerah untuk kanak-kanak! Di Mychild, kami percaya bahawa setiap kanak-kanak berhak mendapat kasih sayang, penjagaan, dan peluang untuk berkembang dalam persekitaran yang selamat dan memupuk. Dengan menjadi sukarelawan, anda akan memainkan peranan penting dalam membentuk kehidupan muda—sama ada dengan memberikan pendidikan, sokongan emosi, atau hanya dengan menjadi kehadiran yang prihatin.",
         why_volunteer: "Kenapa Sukarelawan?",
         list: [
+            "",
             "Buat impak yang bermakna dalam kehidupan kanak-kanak",
             "Dapatkan pengalaman berharga dalam penjagaan kanak-kanak dan perkhidmatan komuniti",
             "Menjadi sebahagian daripada pasukan yang penyayang dan berdedikasi",

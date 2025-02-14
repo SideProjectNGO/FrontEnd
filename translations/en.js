@@ -69,6 +69,7 @@ export default {
         description: "Join our mission to create a brighter future for children! At Mychild, we believe that every child deserves love, care, and the opportunity to grow in a safe and nurturing environment. By becoming a volunteer, you will play a vital role in shaping young lives—whether by providing education, emotional support, or simply being a caring presence.",
         why_volunteer: "Why Volunteer?",
         list: [
+            "",
             "Make a meaningful impact on children's lives",
             "Gain valuable experience in child care and community service",
             "Be part of a compassionate and dedicated team",
