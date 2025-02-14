@@ -78,7 +78,7 @@ const {t} = useI18n();
               </a>
             </li>
             <li>
-              <a href="https://wa.me/60196974820" target="_blank">
+              <a  href="https://wa.me/60194021066" target="_blank">
                 <UIcon name="mdi-whatsapp" class="links-icon"/>
                 {{ t('footer.socialMedia.whatsapp.name') }}
               </a>
