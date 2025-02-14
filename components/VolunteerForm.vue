@@ -153,6 +153,7 @@ const handleSubmit = () => {
   console.log("Uploaded File:", form.resume);
   alert("Form submitted successfully!");
   isPopupVisible.value = true;
+  location.reload();
 };
 </script>
 
