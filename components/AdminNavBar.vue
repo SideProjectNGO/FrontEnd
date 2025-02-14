@@ -70,8 +70,7 @@ onMounted(() => {
 
 .logo-container img {
   width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  height: 40px;
 }
 
 .nav-items {
