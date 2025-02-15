@@ -7,7 +7,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-dashboard',
     links: [
-      {name: 'Overview', url: '/admin', icon: 'uil-eye'},
+      {name: 'Overview', url: 'admin/', icon: 'uil-eye'},
     ]
   },
   {
