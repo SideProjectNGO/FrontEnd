@@ -51,7 +51,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-users-alt',
     links: [
-      {name: 'All Volunteers', url: '/admin', icon: 'uil-list-ul'},
+      {name: 'All Volunteers', url: '/admin/mange-volunteer', icon: 'uil-list-ul'},
       {name: 'Add New Volunteer', url: '/volunteer-form', icon: 'uil-user-plus'}
     ]
   },
