@@ -1,13 +1,11 @@
 <script lang="ts">
-import {defineComponent} from 'vue'
 
-export default defineComponent({
-name: "mange-volunteers"
-})
 </script>
 
 <template>
-
+  <AdminNavBar/>
+  <VolunteerDashboard/>
+  <AdminFooter/>
 </template>
 
 <style scoped>
