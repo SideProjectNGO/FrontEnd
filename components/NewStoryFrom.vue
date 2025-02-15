@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import {ref, watch} from "vue";
+import {ref, watch, watchEffect} from "vue";
 import {z} from "zod";
+import {useI18n} from "vue-i18n";
+
+
+const {t, locale} = useI18n();
+const switchLanguage = () => {
+  locale.value = locale.value === "en" ? "ms" : "en";
+};
 
 const formSchema = z.object({
   title: z.string().min(5, "Title is required"),
@@ -15,7 +22,7 @@ const formSchema = z.object({
   author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
 });
 
-type Field = {
+type StoryQuestionsField = {
   icon: string;
   label: string;
   type: string;
@@ -24,63 +31,63 @@ type Field = {
   options?: { value: string; label: string }[];
 };
 
-const fields: Field[] = [
+const storyQuestions: StoryQuestionsField[] = [
   {
     id: "title",
-    label: "Title",
+    label: t("stories.new_story.form.title"),
     type: "text",
-    placeholder: "Enter article title",
+    placeholder: t("stories.new_story.placeholder.title"),
     icon: "mdi-book-open"
   },
   {
     id: "content",
-    label: "Content",
+    label: t("stories.new_story.form.content"),
     type: "textarea",
-    placeholder: "Enter article content",
+    placeholder: t("stories.new_story.placeholder.content"),
     icon: "mdi-file-document"
   },
   {
     id: "summary",
-    label: "Summary",
+    label: t("stories.new_story.form.summary"),
     type: "text",
-    placeholder: "Enter article summary",
+    placeholder: t("stories.new_story.placeholder.summary"),
     icon: "mdi-note-outline"
   },
   {
     id: "author_name",
-    label: "Author Name",
+    label: t("stories.new_story.form.author_name"),
     type: "text",
-    placeholder: "Enter author name",
+    placeholder: t("stories.new_story.placeholder.author_name"),
     icon: "mdi-account"
   },
   {
     id: "author_country",
-    label: "Author Country",
+    label: t("stories.new_story.form.author_country"),
     type: "select",
-    placeholder: "Enter author country",
+    placeholder: t("stories.new_story.placeholder.author_country"),
     icon: "mdi-earth",
-    options: nationalities,
+    options: nationalities
   },
   {
     id: "main_photo",
-    label: "Main Photo",
+    label: t("stories.new_story.form.main_photo"),
     type: "file",
-    placeholder: "Upload main photo",
-    icon: "mdi-image"
+    placeholder: "",
+    icon: "mdi-camera"
   },
   {
     id: "sub_photo",
-    label: "Sub Photos",
+    label: t("stories.new_story.form.sub_photo"),
     type: "file",
-    placeholder: "Upload sub photos",
-    icon: "mdi-image"
+    placeholder: "",
+    icon: "mdi-folder-multiple-image"
   },
   {
     id: "author_photo",
-    label: "Author Photo",
+    label: t("stories.new_story.form.author_photo"),
     type: "file",
-    placeholder: "Upload author photo",
-    icon: "mdi-account-circle"
+    placeholder: "",
+    icon: "mdi-account-box"
   },
 ];
 
@@ -97,20 +104,9 @@ const formData = ref<Record<keyof typeof formSchema.shape, any>>({
   author_photo: null,
 });
 
-const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
-  title: undefined,
-  content: undefined,
-  summary: undefined,
-  author_id: undefined,
-  date: undefined,
-  author_name: undefined,
-  author_country: undefined,
-  main_photo: undefined,
-  sub_photo: undefined,
-  author_photo: undefined,
-});
+const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({});
 
-function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
+const validateField = (fieldName: keyof typeof formSchema.shape, value: any) => {
   try {
     formSchema.shape[fieldName].parse(value);
     errors.value[fieldName] = undefined;
@@ -119,14 +115,12 @@ function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
       errors.value[fieldName] = err.issues.map((issue) => issue.message);
     }
   }
-}
+};
 
-fields.forEach((field) => {
+storyQuestions.forEach((field) => {
   watch(
       () => formData.value[field.id as keyof typeof formSchema.shape],
-      (newValue) => {
-        validateField(field.id, newValue);
-      }
+      (newValue) => validateField(field.id, newValue)
   );
 });
 
@@ -137,26 +131,21 @@ const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape)
   if (files && files.length > 0) {
     const file = files[0];
     const allowedTypes = ['image/png', 'image/jpeg'];
-    const fileType = file.type;
 
-    if (allowedTypes.includes(fileType)) {
-      console.log("Selected valid file:", file);
+    if (allowedTypes.includes(file.type)) {
       if (fieldName === "sub_photo") {
         formData.value[fieldName].push(file);
       } else {
         formData.value[fieldName] = file;
       }
     } else {
-      console.log("Invalid file type. Please upload a PNG or JPG file.");
       alert("Invalid file type. Please upload a PNG or JPG file.");
     }
-  } else {
-    console.log("No file selected");
   }
 };
 
 const handleFormSubmit = () => {
-  fields.forEach((field) => {
+  storyQuestions.forEach((field) => {
     validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape]);
   });
 
@@ -165,9 +154,16 @@ const handleFormSubmit = () => {
   } else {
     console.log("Valid data:", formData.value);
     alert("Form submitted successfully");
-    // location.reload();
   }
 };
+
+watchEffect(() => {
+  storyQuestions.forEach((field) => {
+    field.label = t(`stories.new_story.form.${field.id}`);
+    field.placeholder = t(`stories.new_story.placeholder.${field.id}`);
+  });
+});
+
 </script>
 
 <template>
@@ -176,51 +172,54 @@ const handleFormSubmit = () => {
       <div class="side-bar">
         <AdminSidebar/>
       </div>
-      <div class="new-article-form">
+      <div class="new-story-form">
         <div class="container">
-          <h2 class="form-heading">Add New Story</h2>
+          <h2 class="form-heading">{{ t('stories.new_story.main_title') }}</h2>
+          <button @click="switchLanguage" class="lang-switch-btn">
+            {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
+          </button>
           <form @submit.prevent="handleFormSubmit">
-            <div v-for="field in fields" :key="field.id" class="form-group">
-              <label :for="field.id">
+            <div v-for="storyQuestion in storyQuestions" :key="storyQuestion.id" class="form-group">
+              <label :for="storyQuestion.id">
                 <span class="icon">
-                  <UIcon :name="field.icon"/>
+                  <UIcon :name="storyQuestion.icon"/>
                 </span>
-                {{ field.label }}
+                {{ storyQuestion.label }}
               </label>
               <select
-                  v-if="field.type === 'select'"
-                  :id="field.id"
-                  v-model="formData[field.id]"
+                  v-if="storyQuestion.type === 'select'"
+                  :id="storyQuestion.id"
+                  v-model="formData[storyQuestion.id]"
                   class="select-input"
               >
-                <option value="" disabled>{{ field.placeholder }}</option>
-                <option v-for="option in field.options" :key="option.value" :value="option.value">
+                <option value="" disabled>{{ storyQuestion.placeholder }}</option>
+                <option v-for="option in storyQuestion.options" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </option>
               </select>
               <input
-                  v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
-                  :id="field.id"
-                  :type="field.type"
-                  :placeholder="field.placeholder"
-                  v-model="formData[field.id]"
+                  v-else-if="storyQuestion.type !== 'textarea' && storyQuestion.type !== 'select' && storyQuestion.type !== 'file'"
+                  :id="storyQuestion.id"
+                  :type="storyQuestion.type"
+                  :placeholder="storyQuestion.placeholder"
+                  v-model="formData[storyQuestion.id]"
                   class="text-input"
               />
               <textarea
-                  v-else-if="field.type === 'textarea'"
-                  :id="field.id"
-                  :placeholder="field.placeholder"
-                  v-model="formData[field.id]"
+                  v-else-if="storyQuestion.type === 'textarea'"
+                  :id="storyQuestion.id"
+                  :placeholder="storyQuestion.placeholder"
+                  v-model="formData[storyQuestion.id]"
                   class="textarea-input"
               ></textarea>
               <input
-                  v-else-if="field.type === 'file'"
-                  :id="field.id"
+                  v-else-if="storyQuestion.type === 'file'"
+                  :id="storyQuestion.id"
                   type="file"
                   class="file-input"
-                  @change="handleFileInput($event, field.id)"
+                  @change="handleFileInput($event, storyQuestion.id)"
               />
-              <p v-if="errors[field.id]?.[0]" class="error-message">{{ errors[field.id]?.[0] }}</p>
+              <p v-if="errors[storyQuestion.id]?.[0]" class="error-message">{{ errors[storyQuestion.id]?.[0] }}</p>
             </div>
             <button type="submit" class="btn-submit">Submit</button>
           </form>
@@ -238,7 +237,7 @@ const handleFormSubmit = () => {
   padding: 20px;
 }
 
-.new-article-form {
+.new-story-form {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
@@ -250,6 +249,23 @@ const handleFormSubmit = () => {
   margin: auto;
   padding: 10px 40px;
   border-radius: 10px;
+}
+
+.lang-switch-btn {
+  margin-bottom: 1rem;
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-switch-btn:hover {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.15s;
 }
 
 .form-heading {

@@ -4,6 +4,10 @@ import {z} from "zod";
 import {useI18n} from "vue-i18n";
 
 const {t, locale} = useI18n();
+const switchLanguage = () => {
+
+  locale.value = locale.value === "en" ? "ms" : "en";
+};
 const formSchema = z.object({
   title: z.string().min(5, "Title is required"),
   content: z.string().min(50, "Content is required"),
@@ -16,10 +20,6 @@ const formSchema = z.object({
   sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
   author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
 });
-
-const switchLanguage = () => {
-  locale.value = locale.value === "en" ? "ms" : "en";
-};
 
 type ArticleQuestionsField = {
   icon: string;
