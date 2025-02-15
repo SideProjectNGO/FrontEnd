@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {ref, watch} from "vue";
-import {z} from "zod";
-import {useI18n} from "vue-i18n";
+import { ref, watch, watchEffect } from "vue";
+import { z } from "zod";
+import { useI18n } from "vue-i18n";
 
-const {t, locale} = useI18n();
+const { t, locale } = useI18n();
 
 const switchLanguage = () => {
   locale.value = locale.value === "en" ? "ms" : "en";
@@ -19,7 +19,7 @@ const formSchema = z.object({
   author_country: z.string().min(5, "Author Country is required"),
   main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
   sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
-  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
+  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG")
 });
 
 type QuestionActivityField = {
@@ -37,28 +37,28 @@ const activityQuestions: QuestionActivityField[] = [
     label: t("activities.new_activity.form.title"),
     type: "text",
     placeholder: t("activities.new_activity.placeholder.title"),
-    icon: "mdi-book-open",
+    icon: "mdi-book-open"
   },
   {
     id: "content",
     label: t("activities.new_activity.form.content"),
     type: "textarea",
     placeholder: t("activities.new_activity.placeholder.content"),
-    icon: "mdi-file-document",
+    icon: "mdi-file-document"
   },
   {
     id: "summary",
     label: t("activities.new_activity.form.summary"),
     type: "text",
     placeholder: t("activities.new_activity.placeholder.summary"),
-    icon: "mdi-note-outline",
+    icon: "mdi-note-outline"
   },
   {
     id: "author_name",
     label: t("activities.new_activity.form.author_name"),
     type: "text",
     placeholder: t("activities.new_activity.placeholder.author_name"),
-    icon: "mdi-account",
+    icon: "mdi-account"
   },
   {
     id: "author_country",
@@ -66,29 +66,29 @@ const activityQuestions: QuestionActivityField[] = [
     type: "select",
     placeholder: t("activities.new_activity.placeholder.author_country"),
     icon: "mdi-earth",
-    options: nationalities,
+    options: nationalities
   },
   {
     id: "main_photo",
     label: t("activities.new_activity.form.main_photo"),
     type: "file",
     placeholder: "",
-    icon: "mdi-camera",
+    icon: "mdi-camera"
   },
   {
     id: "sub_photo",
     label: t("activities.new_activity.form.sub_photo"),
     type: "file",
     placeholder: "",
-    icon: "mdi-folder-multiple-image",
+    icon: "mdi-folder-multiple-image"
   },
   {
     id: "author_photo",
     label: t("activities.new_activity.form.author_photo"),
     type: "file",
     placeholder: "",
-    icon: "mdi-account-box",
-  },
+    icon: "mdi-account-box"
+  }
 ];
 
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
@@ -101,7 +101,7 @@ const formData = ref<Record<keyof typeof formSchema.shape, any>>({
   author_country: "",
   main_photo: null,
   sub_photo: [],
-  author_photo: null,
+  author_photo: null
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
@@ -114,7 +114,7 @@ const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>(
   author_country: undefined,
   main_photo: undefined,
   sub_photo: undefined,
-  author_photo: undefined,
+  author_photo: undefined
 });
 
 function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
@@ -144,29 +144,21 @@ watchEffect(() => {
   });
 });
 
-
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
   const target = event.target as HTMLInputElement;
   const files = target.files;
-
   if (files && files.length > 0) {
     const file = files[0];
-    const allowedTypes = ['image/png', 'image/jpeg'];
-    const fileType = file.type;
-
-    if (allowedTypes.includes(fileType)) {
-      console.log("Selected valid file:", file);
+    const allowedTypes = ["image/png", "image/jpeg"];
+    if (allowedTypes.includes(file.type)) {
       if (fieldName === "sub_photo") {
         formData.value[fieldName].push(file);
       } else {
         formData.value[fieldName] = file;
       }
     } else {
-      console.log("Invalid file type. Please upload a PNG or JPG file.");
       alert("Invalid file type. Please upload a PNG or JPG file.");
     }
-  } else {
-    console.log("No file selected");
   }
 };
 
@@ -174,13 +166,11 @@ const handleFormSubmit = () => {
   activityQuestions.forEach((field) => {
     validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape]);
   });
-
   if (Object.values(errors.value).some((error) => error)) {
     console.log("Validation errors:", errors.value);
   } else {
     console.log("Valid data:", formData.value);
     alert("Form submitted successfully");
-    // location.reload();
   }
 };
 </script>
