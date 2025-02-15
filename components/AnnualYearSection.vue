@@ -19,6 +19,7 @@ const closePopup = () => {
 <template>
   <div class="annual-report">
     <div class="content-wrapper">
+
       <div class="text-box">
         <h2 class="report-title">{{ t("annualReport.reportTitle") }}</h2>
         <p class="report-description">
@@ -29,11 +30,11 @@ const closePopup = () => {
       <div class="image-box">
         <img src="../public/images/MyChild%20logo.png" alt="annual year report"/>
       </div>
+
     </div>
     <Popup v-if="annualYearPopup" @close="closePopup"></Popup>
   </div>
 </template>
-
 
 <style scoped>
 
@@ -49,6 +50,13 @@ const closePopup = () => {
   gap: 2rem;
   margin: 2rem auto;
   align-items: center;
+}
+
+@media (max-width: 800px) {
+  .content-wrapper{
+    display: block;
+    width: 80%;
+  }
 }
 
 .text-box {
