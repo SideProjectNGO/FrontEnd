@@ -25,6 +25,7 @@ const closeUserPopup = () => {
   showUserPopup.value = false;
 };
 </script>
+
 <template>
   <div class="admin-dashboard">
     <div class="admin-wrapper">
