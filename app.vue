@@ -11,7 +11,7 @@
   --text-hover: #EEEEEE;
   --black-text-hover: black;
   --background: #f5f5f5;
-  --border-color: #5C7285;
+  --border-color: #e5e7eb;
   --btn-submit-color: #388e3c;
 }
 </style>
