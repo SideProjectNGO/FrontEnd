@@ -42,8 +42,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-users-alt',
     links: [
-      {name: 'User Management', url: '/users/manage', icon: 'uil-user-check'},
-      {name: 'Add New User', url: '/admin/new-admin-form', icon: 'uil-user-plus'}
+      {name: 'User Management', url: '/users/manage-users', icon: 'uil-user-check'},
+      {name: 'Add New User', url: '/admin/new-user-form', icon: 'uil-user-plus'}
     ]
   },
   {
