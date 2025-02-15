@@ -22,7 +22,7 @@ const formSchema = z.object({
   author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
 });
 
-type QuestionField = {
+type QuestionActivityField = {
   icon: string;
   label: string;
   type: string;
@@ -31,7 +31,7 @@ type QuestionField = {
   options?: { value: string; label: string }[];
 };
 
-const fields: QuestionField[] = [
+const activityQuestions: QuestionActivityField[] = [
   {
     id: "title",
     label: t("activities.new_activity.form.title"),
@@ -128,7 +128,7 @@ function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
   }
 }
 
-fields.forEach((field) => {
+activityQuestions.forEach((field) => {
   watch(
       () => formData.value[field.id as keyof typeof formSchema.shape],
       (newValue) => {
@@ -138,7 +138,7 @@ fields.forEach((field) => {
 });
 
 watchEffect(() => {
-  fields.forEach((field) => {
+  activityQuestions.forEach((field) => {
     field.label = t(`activities.new_activity.form.${field.id}`);
     field.placeholder = t(`activities.new_activity.placeholder.${field.id}`);
   });
@@ -171,7 +171,7 @@ const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape)
 };
 
 const handleFormSubmit = () => {
-  fields.forEach((field) => {
+  activityQuestions.forEach((field) => {
     validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape]);
   });
 
@@ -198,47 +198,47 @@ const handleFormSubmit = () => {
             {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
           </button>
           <form @submit.prevent="handleFormSubmit">
-            <div v-for="field in fields" :key="field.id" class="form-group">
-              <label :for="field.id">
+            <div v-for="activityQuestion in activityQuestions" :key="activityQuestion.id" class="form-group">
+              <label :for="activityQuestion.id">
                 <span class="icon">
-                  <UIcon :name="field.icon"/>
+                  <UIcon :name="activityQuestion.icon"/>
                 </span>
-                {{ field.label }}
+                {{ activityQuestion.label }}
               </label>
               <select
-                  v-if="field.type === 'select'"
-                  :id="field.id"
-                  v-model="formData[field.id]"
+                  v-if="activityQuestion.type === 'select'"
+                  :id="activityQuestion.id"
+                  v-model="formData[activityQuestion.id]"
                   class="select-input"
               >
-                <option value="" disabled>{{ field.placeholder }}</option>
-                <option v-for="option in field.options" :key="option.value" :value="option.value">
+                <option value="" disabled>{{ activityQuestion.placeholder }}</option>
+                <option v-for="option in activityQuestion.options" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </option>
               </select>
               <input
-                  v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
-                  :id="field.id"
-                  :type="field.type"
-                  :placeholder="field.placeholder"
-                  v-model="formData[field.id]"
+                  v-else-if="activityQuestion.type !== 'textarea' && activityQuestion.type !== 'select' && activityQuestion.type !== 'file'"
+                  :id="activityQuestion.id"
+                  :type="activityQuestion.type"
+                  :placeholder="activityQuestion.placeholder"
+                  v-model="formData[activityQuestion.id]"
                   class="text-input"
               />
               <textarea
-                  v-else-if="field.type === 'textarea'"
-                  :id="field.id"
-                  :placeholder="field.placeholder"
-                  v-model="formData[field.id]"
+                  v-else-if="activityQuestion.type === 'textarea'"
+                  :id="activityQuestion.id"
+                  :placeholder="activityQuestion.placeholder"
+                  v-model="formData[activityQuestion.id]"
                   class="textarea-input"
               ></textarea>
               <input
-                  v-else-if="field.type === 'file'"
-                  :id="field.id"
+                  v-else-if="activityQuestion.type === 'file'"
+                  :id="activityQuestion.id"
                   type="file"
                   class="file-input"
-                  @change="handleFileInput($event, field.id)"
+                  @change="handleFileInput($event, activityQuestion.id)"
               />
-              <p v-if="errors[field.id]?.[0]" class="error-message">{{ errors[field.id]?.[0] }}</p>
+              <p v-if="errors[activityQuestion.id]?.[0]" class="error-message">{{ errors[activityQuestion.id]?.[0] }}</p>
             </div>
             <button type="submit" class="btn-submit">Submit</button>
           </form>
