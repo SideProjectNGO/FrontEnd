@@ -7,7 +7,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-dashboard',
     links: [
-      {name: 'Overview', url: 'admin/', icon: 'uil-eye', target: '_self'},
+      {name: 'Overview', url: '/admin', icon: 'uil-eye', target: '_self'},
     ]
   },
   {
@@ -15,7 +15,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-file-alt',
     links: [
-      {name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul', target: '_self'},
+      {name: 'All Articles', url: '/articles/admin', icon: 'uil-list-ul', target: '_self'},
       {name: 'Add New Article', url: '/articles/admin/new-article-form', icon: 'uil-plus-circle', target: '_self'}
     ]
   },
