@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {ref, watch} from "vue";
 import {z} from "zod";
+import {useI18n} from "vue-i18n";
 
+const {t, locale} = useI18n();
 const formSchema = z.object({
   title: z.string().min(5, "Title is required"),
   content: z.string().min(50, "Content is required"),
@@ -15,7 +17,11 @@ const formSchema = z.object({
   author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
 });
 
-type Field = {
+const switchLanguage = () => {
+  locale.value = locale.value === "en" ? "ms" : "en";
+};
+
+type ArticleQuestionsField = {
   icon: string;
   label: string;
   type: string;
@@ -24,63 +30,63 @@ type Field = {
   options?: { value: string; label: string }[];
 };
 
-const fields: Field[] = [
+const articleQuestions: ArticleQuestionsField[] = [
   {
     id: "title",
-    label: "Title",
+    label: t("articles.new_article.form.title"),
     type: "text",
-    placeholder: "Enter article title",
-    icon: "mdi-book-open"
+    placeholder: t("articles.new_article.placeholder.title"),
+    icon: "mdi-book-open",
   },
   {
     id: "content",
-    label: "Content",
+    label: t("articles.new_article.form.content"),
     type: "textarea",
-    placeholder: "Enter article content",
-    icon: "mdi-file-document"
+    placeholder: t("articles.new_article.placeholder.content"),
+    icon: "mdi-file-document",
   },
   {
     id: "summary",
-    label: "Summary",
+    label: t("articles.new_article.form.summary"),
     type: "text",
-    placeholder: "Enter article summary",
-    icon: "mdi-note-outline"
+    placeholder: t("articles.new_article.placeholder.summary"),
+    icon: "mdi-note-outline",
   },
   {
     id: "author_name",
-    label: "Author Name",
+    label: t("articles.new_article.form.author_name"),
     type: "text",
-    placeholder: "Enter author name",
-    icon: "mdi-account"
+    placeholder: t("articles.new_article.placeholder.author_name"),
+    icon: "mdi-account",
   },
   {
     id: "author_country",
-    label: "Author Country",
+    label: t("articles.new_article.form.author_country"),
     type: "select",
-    placeholder: "Enter author country",
+    placeholder: t("articles.new_article.placeholder.author_country"),
     icon: "mdi-earth",
     options: nationalities,
   },
   {
     id: "main_photo",
-    label: "Main Photo",
+    label: t("articles.new_article.form.main_photo"),
     type: "file",
-    placeholder: "Upload main photo",
-    icon: "mdi-image"
+    placeholder: "",
+    icon: "mdi-camera",
   },
   {
     id: "sub_photo",
-    label: "Sub Photos",
+    label: t("articles.new_article.form.sub_photo"),
     type: "file",
-    placeholder: "Upload sub photos",
-    icon: "mdi-image"
+    placeholder: "",
+    icon: "mdi-folder-multiple-image",
   },
   {
     id: "author_photo",
-    label: "Author Photo",
+    label: t("articles.new_article.form.author_photo"),
     type: "file",
-    placeholder: "Upload author photo",
-    icon: "mdi-account-circle"
+    placeholder: "",
+    icon: "mdi-account-box",
   },
 ];
 
@@ -121,13 +127,20 @@ function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
   }
 }
 
-fields.forEach((field) => {
+articleQuestions.forEach((field) => {
   watch(
       () => formData.value[field.id as keyof typeof formSchema.shape],
       (newValue) => {
         validateField(field.id, newValue);
       }
   );
+});
+
+watchEffect(() => {
+  articleQuestions.forEach((field) => {
+    field.label = t(`articles.new_article.form.${field.id}`);
+    field.placeholder = t(`articles.new_article.placeholder.${field.id}`);
+  });
 });
 
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
@@ -156,7 +169,7 @@ const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape)
 };
 
 const handleFormSubmit = () => {
-  fields.forEach((field) => {
+  articleQuestions.forEach((field) => {
     validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape]);
   });
 
@@ -178,49 +191,52 @@ const handleFormSubmit = () => {
       </div>
       <div class="new-article-form">
         <div class="container">
-          <h2 class="form-heading">Add New article</h2>
+          <h2 class="form-heading">{{ t('articles.new_article.main_title') }}</h2>
+          <button @click="switchLanguage" class="lang-switch-btn">
+            {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
+          </button>
           <form @submit.prevent="handleFormSubmit">
-            <div v-for="field in fields" :key="field.id" class="form-group">
-              <label :for="field.id">
+            <div v-for="articleQuestion in articleQuestions" :key="articleQuestion.id" class="form-group">
+              <label :for="articleQuestion.id">
                 <span class="icon">
-                  <UIcon :name="field.icon"/>
+                  <UIcon :name="articleQuestion.icon"/>
                 </span>
-                {{ field.label }}
+                {{ articleQuestion.label }}
               </label>
               <select
-                  v-if="field.type === 'select'"
-                  :id="field.id"
-                  v-model="formData[field.id]"
+                  v-if="articleQuestion.type === 'select'"
+                  :id="articleQuestion.id"
+                  v-model="formData[articleQuestion.id]"
                   class="select-input"
               >
-                <option value="" disabled>{{ field.placeholder }}</option>
-                <option v-for="option in field.options" :key="option.value" :value="option.value">
+                <option value="" disabled>{{ articleQuestion.placeholder }}</option>
+                <option v-for="option in articleQuestion.options" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </option>
               </select>
               <input
-                  v-else-if="field.type !== 'textarea' && field.type !== 'select' && field.type !== 'file'"
-                  :id="field.id"
-                  :type="field.type"
-                  :placeholder="field.placeholder"
-                  v-model="formData[field.id]"
+                  v-else-if="articleQuestion.type !== 'textarea' && articleQuestion.type !== 'select' && articleQuestion.type !== 'file'"
+                  :id="articleQuestion.id"
+                  :type="articleQuestion.type"
+                  :placeholder="articleQuestion.placeholder"
+                  v-model="formData[articleQuestion.id]"
                   class="text-input"
               />
               <textarea
-                  v-else-if="field.type === 'textarea'"
-                  :id="field.id"
-                  :placeholder="field.placeholder"
-                  v-model="formData[field.id]"
+                  v-else-if="articleQuestion.type === 'textarea'"
+                  :id="articleQuestion.id"
+                  :placeholder="articleQuestion.placeholder"
+                  v-model="formData[articleQuestion.id]"
                   class="textarea-input"
               ></textarea>
               <input
-                  v-else-if="field.type === 'file'"
-                  :id="field.id"
+                  v-else-if="articleQuestion.type === 'file'"
+                  :id="articleQuestion.id"
                   type="file"
                   class="file-input"
-                  @change="handleFileInput($event, field.id)"
+                  @change="handleFileInput($event, articleQuestion.id)"
               />
-              <p v-if="errors[field.id]?.[0]" class="error-message">{{ errors[field.id]?.[0] }}</p>
+              <p v-if="errors[articleQuestion.id]?.[0]" class="error-message">{{ errors[articleQuestion.id]?.[0] }}</p>
             </div>
             <button type="submit" class="btn-submit">Submit</button>
           </form>
@@ -250,6 +266,23 @@ const handleFormSubmit = () => {
   margin: auto;
   padding: 10px 40px;
   border-radius: 10px;
+}
+
+.lang-switch-btn {
+  margin-bottom: 1rem;
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-switch-btn:hover {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.15s;
 }
 
 .form-heading {
