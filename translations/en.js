@@ -55,6 +55,39 @@ export default {
         title: "Strength in Partnerships",
     },
 
+    activities: {
+        new_activity: {
+            main_title:"Add new activity",
+            form: {
+                title: "Title",
+                content: "Content",
+                summary: "Summary",
+                author_name: "Author Name",
+                author_country: "Author Country",
+                main_photo: "Main Photo",
+                sub_photo: "Sub Photos",
+                author_photo: "Author Photo",
+            },
+            placeholder: {
+                title: "Enter activity title",
+                content: "Enter activity content",
+                summary: "Enter activity summary",
+                author_name: "Enter author name",
+                author_country: "Select author country",
+            },
+            validation: {
+                title: "Title is required (min: 5 characters)",
+                content: "Content is required (min: 50 characters)",
+                summary: "Summary is required (min: 50 characters)",
+                author_name: "Author Name is required (min: 5 characters)",
+                author_country: "Author Country is required (min: 5 characters)",
+                main_photo: "Main photo must be PNG or JPG",
+                sub_photo: "Sub photos must be PNG or JPG",
+                author_photo: "Author photo must be PNG or JPG",
+            },
+        },
+    },
+
     volunteer: {
         volunteer_title: "How to Be a Volunteer with Us",
         volunteer_button: "REGISTER NOW",
@@ -89,7 +122,7 @@ export default {
         },
         placeholders: {
             name: "Enter your name",
-            notes:"Enter your message or notes",
+            notes: "Enter your message or notes",
             email: "Enter your email address",
             phone: "Enter your phone number",
             dob: "Select your date of birth",
@@ -116,7 +149,6 @@ export default {
         reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
         openPopupButton: "Open Popup",
     },
-
     popup: {
         title: "Annual Year Popup",
         reportTitle: "Our Annual Report: A Year of Impact",
@@ -202,13 +234,15 @@ export default {
             }
         },
         quickLinksSection: "Quick Links",
-        donateSection:"Donate Now",
+        donateSection: "Donate Now",
         account_number: "Account Number: 562263540066",
         copyright: "© {year} MyChild. All rights reserved.",
     },
+
     footerText: {
         copyright: "Copyright &copy; MyChild {year}",
         subscribe: "Subscribe Now",
-    },
+    }
+
 };
 

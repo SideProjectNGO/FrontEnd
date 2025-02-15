@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import {ref, watch} from "vue";
 import {z} from "zod";
+import {useI18n} from "vue-i18n";
+
+const {t, locale} = useI18n();
+
+const switchLanguage = () => {
+  locale.value = locale.value === "en" ? "ms" : "en";
+};
 
 const formSchema = z.object({
   title: z.string().min(5, "Title is required"),
@@ -27,60 +34,60 @@ type QuestionField = {
 const fields: QuestionField[] = [
   {
     id: "title",
-    label: "Title",
+    label: t("activities.new_activity.form.title"),
     type: "text",
-    placeholder: "Enter article title",
-    icon: "mdi-book-open"
+    placeholder: t("activities.new_activity.placeholder.title"),
+    icon: "mdi-book-open",
   },
   {
     id: "content",
-    label: "Content",
+    label: t("activities.new_activity.form.content"),
     type: "textarea",
-    placeholder: "Enter article content",
-    icon: "mdi-file-document"
+    placeholder: t("activities.new_activity.placeholder.content"),
+    icon: "mdi-file-document",
   },
   {
     id: "summary",
-    label: "Summary",
+    label: t("activities.new_activity.form.summary"),
     type: "text",
-    placeholder: "Enter article summary",
-    icon: "mdi-note-outline"
+    placeholder: t("activities.new_activity.placeholder.summary"),
+    icon: "mdi-note-outline",
   },
   {
     id: "author_name",
-    label: "Author Name",
+    label: t("activities.new_activity.form.author_name"),
     type: "text",
-    placeholder: "Enter author name",
-    icon: "mdi-account"
+    placeholder: t("activities.new_activity.placeholder.author_name"),
+    icon: "mdi-account",
   },
   {
     id: "author_country",
-    label: "Author Country",
+    label: t("activities.new_activity.form.author_country"),
     type: "select",
-    placeholder: "Enter author country",
+    placeholder: t("activities.new_activity.placeholder.author_country"),
     icon: "mdi-earth",
     options: nationalities,
   },
   {
     id: "main_photo",
-    label: "Main Photo",
+    label: t("activities.new_activity.form.main_photo"),
     type: "file",
-    placeholder: "Upload main photo",
-    icon: "mdi-image"
+    placeholder: "",
+    icon: "mdi-camera",
   },
   {
     id: "sub_photo",
-    label: "Sub Photos",
+    label: t("activities.new_activity.form.sub_photo"),
     type: "file",
-    placeholder: "Upload sub photos",
-    icon: "mdi-image"
+    placeholder: "",
+    icon: "mdi-folder-multiple-image",
   },
   {
     id: "author_photo",
-    label: "Author Photo",
+    label: t("activities.new_activity.form.author_photo"),
     type: "file",
-    placeholder: "Upload author photo",
-    icon: "mdi-account-circle"
+    placeholder: "",
+    icon: "mdi-account-box",
   },
 ];
 
@@ -130,6 +137,14 @@ fields.forEach((field) => {
   );
 });
 
+watchEffect(() => {
+  fields.forEach((field) => {
+    field.label = t(`activities.new_activity.form.${field.id}`);
+    field.placeholder = t(`activities.new_activity.placeholder.${field.id}`);
+  });
+});
+
+
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
   const target = event.target as HTMLInputElement;
   const files = target.files;
@@ -178,7 +193,10 @@ const handleFormSubmit = () => {
       </div>
       <div class="new-article-form">
         <div class="container">
-          <h2 class="form-heading">Add New article</h2>
+          <h2 class="form-heading">{{ t('activities.new_activity.main_title') }}</h2>
+          <button @click="switchLanguage" class="lang-switch-btn">
+            {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
+          </button>
           <form @submit.prevent="handleFormSubmit">
             <div v-for="field in fields" :key="field.id" class="form-group">
               <label :for="field.id">
@@ -257,6 +275,23 @@ const handleFormSubmit = () => {
   text-align: start;
   color: var(--primary-color);
   padding: 10px 0;
+}
+
+.lang-switch-btn {
+  margin-bottom: 1rem;
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-switch-btn:hover {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.15s;
 }
 
 .form-group {
