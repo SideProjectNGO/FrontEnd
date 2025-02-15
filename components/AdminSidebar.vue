@@ -7,7 +7,7 @@ const buttons = [
     type: 'admin',
     icon: 'uil-dashboard',
     links: [
-      {name: 'Overview', url: 'admin/', icon: 'uil-eye'},
+      {name: 'Overview', url: 'admin/', icon: 'uil-eye', target: '_self'},
     ]
   },
   {
@@ -15,8 +15,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-file-alt',
     links: [
-      {name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul'},
-      {name: 'Add New Article', url: '/articles/admin/new-article-form', icon: 'uil-plus-circle'}
+      {name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul', target: '_self'},
+      {name: 'Add New Article', url: '/articles/admin/new-article-form', icon: 'uil-plus-circle', target: '_self'}
     ]
   },
   {
@@ -24,8 +24,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-book-open',
     links: [
-      {name: 'All Stories', url: '/stories/admin/', icon: 'uil-list-ul'},
-      {name: 'Add New Story', url: '/stories/admin/new-story-form', icon: 'uil-plus-circle'}
+      {name: 'All Stories', url: '/stories/admin/', icon: 'uil-list-ul', target: '_self'},
+      {name: 'Add New Story', url: '/stories/admin/new-story-form', icon: 'uil-plus-circle', target: '_self'}
     ]
   },
   {
@@ -42,8 +42,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-users-alt',
     links: [
-      {name: 'User Management', url: '/admin/manage-users', icon: 'uil-user-check'},
-      {name: 'Add New User', url: '/admin/new-user-form', icon: 'uil-user-plus'}
+      {name: 'User Management', url: '/admin/manage-users', icon: 'uil-user-check', target: '_self'},
+      {name: 'Add New User', url: '/admin/new-user-form', icon: 'uil-user-plus', target: '_self'}
     ]
   },
   {
@@ -51,8 +51,8 @@ const buttons = [
     type: 'admin',
     icon: 'uil-users-alt',
     links: [
-      {name: 'All Volunteers', url: '/admin/mange-volunteers', icon: 'uil-list-ul'},
-      {name: 'Add New Volunteer', url: '/volunteer-form', icon: 'uil-user-plus'}
+      {name: 'All Volunteers', url: '/admin/mange-volunteers', icon: 'uil-list-ul', target: "_self"},
+      {name: 'Add New Volunteer', url: '/volunteer-form', icon: 'uil-user-plus', target: "_blank"}
     ]
   },
 ];
@@ -87,7 +87,7 @@ function toggleLinks(index) {
                 :name="link.icon"
                 class="icon-img"
             />
-            <a :href="link.url">{{ link.name }}</a>
+            <a :href="link.url" :target="link.target">{{ link.name }}</a>
           </li>
         </ul>
       </div>
