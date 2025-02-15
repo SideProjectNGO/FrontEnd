@@ -4,7 +4,7 @@
 
 <template>
   <AdminNavBar/>
-  <NewArticleForm/>
+  <ArticleForm/>
   <AdminFooter/>
 </template>
 

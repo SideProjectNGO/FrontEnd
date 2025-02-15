@@ -1,16 +1,14 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
-import NewActivityFrom from "~/components/NewActivityFrom.vue";
 
 export default defineComponent({
-  name: "new-story",
-  components: {NewActivityFrom}
+  name: "new-story"
 })
 </script>
 
 <template>
   <AdminNavBar/>
-  <NewActivityFrom/>
+  <StoryFrom/>
   <AdminFooter/>
 </template>
 
