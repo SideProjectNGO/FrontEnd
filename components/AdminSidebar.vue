@@ -16,7 +16,7 @@ const buttons = [
     icon: 'uil-file-alt',
     links: [
       {name: 'All Articles', url: '/articles/admin/', icon: 'uil-list-ul'},
-      {name: 'Add New Article', url: '/articles/admin/new-article', icon: 'uil-plus-circle'}
+      {name: 'Add New Article', url: '/articles/admin/new-article-form', icon: 'uil-plus-circle'}
     ]
   },
   {
@@ -25,7 +25,7 @@ const buttons = [
     icon: 'uil-book-open',
     links: [
       {name: 'All Stories', url: '/stories/admin/', icon: 'uil-list-ul'},
-      {name: 'Add New Story', url: '/stories/admin/new-story', icon: 'uil-plus-circle'}
+      {name: 'Add New Story', url: '/stories/admin/new-story-form', icon: 'uil-plus-circle'}
     ]
   },
   {
@@ -34,7 +34,7 @@ const buttons = [
     icon: 'uil-calendar',
     links: [
       {name: 'All Activities', url: '/activities/admin/', icon: 'uil-calendar-alt'},
-      {name: 'Add New Activity', url: '/activities/admin/new-activity', icon: 'uil-plus-circle'}
+      {name: 'Add New Activity', url: '/activities/admin/new-activity-form', icon: 'uil-plus-circle'}
     ]
   },
   {
