@@ -99,7 +99,7 @@ console.log(articles);
   <div class="admin-dashboard">
     <div class="dashboard-wrapper">
       <div class="sidebar">
-        <AdminSidebar />
+        <AdminSidebar/>
       </div>
       <div class="dashboard-content">
         <h2 class="page-title">Management Articles</h2>
@@ -237,6 +237,22 @@ console.log(articles);
 @media (max-width: 768px) {
   .dashboard-wrapper {
     grid-template-columns: 1fr;
+  }
+
+  .pagination-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+
+  .pagination-buttons {
+    display: flex;
+    gap: 25px;
+  }
+
+  .pagination-buttons button {
+    display: flex;
+    min-width: 90px;
+    margin: 0;
   }
 }
 </style>
