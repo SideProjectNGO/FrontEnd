@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AdminSidebar from '~/components/AdminSidebar.vue';
-import {ref} from 'vue';
-
+import {ref, computed} from 'vue';
 
 definePageMeta({
   middleware: 'auth',
@@ -10,11 +9,20 @@ definePageMeta({
 const users = ref([
   {id: 1, name: 'John Doe', phone: '+123456789', email: 'john@example.com', country: 'USA', age: 30},
   {id: 2, name: 'Jane Smith', phone: '+987654321', email: 'jane@example.com', country: 'UK', age: 28},
-  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32}
+  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 4, name: 'John Doe', phone: '+123456789', email: 'john@example.com', country: 'USA', age: 30},
+  {id: 5, name: 'Jane Smith', phone: '+987654321', email: 'jane@example.com', country: 'UK', age: 28},
+  {id: 6, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 7, name: 'John Doe', phone: '+123456789', email: 'john@example.com', country: 'USA', age: 30},
+  {id: 8, name: 'Jane Smith', phone: '+987654321', email: 'jane@example.com', country: 'UK', age: 28},
+  {id: 9, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 10, name: 'John Doe', phone: '+123456789', email: 'john@example.com', country: 'USA', age: 30},
 ]);
 
 const selectedUser = ref<Record<string, any> | null>(null);
 const showUserPopup = ref(false);
+const currentPage = ref(1);
+const usersPerPage = 5;
 
 const viewUser = (user: any) => {
   selectedUser.value = user;
@@ -24,14 +32,35 @@ const viewUser = (user: any) => {
 const closeUserPopup = () => {
   showUserPopup.value = false;
 };
+
+const displayedUsers = computed(() => {
+  const start = (currentPage.value - 1) * usersPerPage;
+  const end = start + usersPerPage;
+  return users.value.slice(start, end);
+});
+
+const totalPages = computed(() => {
+  return Math.ceil(users.value.length / usersPerPage);
+});
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
 </script>
 
 <template>
   <div class="admin-dashboard">
     <div class="admin-wrapper">
-
       <div class="sidebar">
-        <AdminSidebar/>
+        <AdminSidebar />
       </div>
 
       <div class="dashboard-content">
@@ -43,13 +72,19 @@ const closeUserPopup = () => {
             <tr class="table-header">
               <th>User Name</th>
               <th>Phone Number</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>Age</th>
               <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="user in users" :key="user.id" class="table-row">
+            <tr v-for="user in displayedUsers" :key="user.id" class="table-row">
               <td>{{ user.name }}</td>
               <td>{{ user.phone }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.country }}</td>
+              <td>{{ user.age }}</td>
               <td>
                 <button @click="viewUser(user)" class="view-button">
                   View
@@ -60,10 +95,19 @@ const closeUserPopup = () => {
           </table>
         </div>
 
+        <div class="pagination-controls">
+          <button @click="prevPage" :disabled="currentPage === 1" class="pagination-button">
+            Previous
+          </button>
+          <span class="pagination-info">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button @click="nextPage" :disabled="currentPage === totalPages" class="pagination-button">
+            Next
+          </button>
+        </div>
+
         <div v-if="showUserPopup" class="user-popup-overlay">
           <div class="user-popup-content">
             <h3 class="user-popup-title">User Details</h3>
-
             <table class="details-table">
               <tbody>
               <tr v-for="(value, key) in selectedUser" :key="key" class="details-row">
@@ -72,21 +116,17 @@ const closeUserPopup = () => {
               </tr>
               </tbody>
             </table>
-
             <button @click="closeUserPopup" class="close-button">
               Close
             </button>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
 </template>
 
 <style scoped>
-
 .admin-wrapper {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -97,12 +137,9 @@ const closeUserPopup = () => {
 .dashboard-content {
   padding: 20px;
   border-radius: 10px;
-}
-
-.dashboard-content {
-  padding: 1.5rem;
-  background-color: #f9fafb;
+  background-color: var(--background);
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .dashboard-title {
@@ -114,6 +151,7 @@ const closeUserPopup = () => {
 
 .table-container {
   overflow-x: auto;
+  width: 100%;
   background-color: var(--background);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -122,6 +160,20 @@ const closeUserPopup = () => {
 .user-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .user-table {
+    width: 100%;
+    min-width: 600px;
+  }
 }
 
 .table-header {
@@ -235,10 +287,45 @@ const closeUserPopup = () => {
   transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s;
 }
 
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.pagination-button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  margin: 0 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  cursor: pointer;
+  transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s;
+  outline: none;
+}
+
+.pagination-info {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  margin: 0 1rem;
+}
+
 @media (max-width: 768px) {
   .admin-wrapper {
     grid-template-columns: 1fr;
   }
 }
 </style>
-
