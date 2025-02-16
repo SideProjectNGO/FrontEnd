@@ -14,20 +14,23 @@ const {t} = useI18n();
       <ul aria-label="Bank transfer instructions">
         <li>
           <UIcon name="mdi-bank" class="icon"/>
-          <strong>{{ t("donate.donate_bank_transfer") }}</strong>
+          {{ t("donate.donate_bank_transfer") }}
           {{ t("donate.donate_bank_details") }}
         </li>
         <li>
           <UIcon name="mdi-email" class="icon"/>
           <span
-              v-html="t('donate.donate_email', { email: '<a href=\'mailto:donate@mychild.org\'>mychild2021is@gmail.com</a>' })"></span>
+              v-html="t('donate.donate_email',
+               { email: '<a href=\'mailto:donate@mychild.org\'>mychild2021is@gmail.com</a>' })">
+
+          </span>
         </li>
         <li>
           <UIcon name="mdi-receipt" class="icon"/>
           {{ t("donate.donate_receipt") }}
         </li>
         <li class="thank-you">
-          <UIcon name="mdi-heart" class="icon text-red-500"/>
+          <UIcon name="mdi-heart" class="icon"/>
           {{ t("donate.donate_thank_you") }}
         </li>
       </ul>
@@ -71,7 +74,7 @@ const {t} = useI18n();
   font-size: 1rem;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 5rem auto;
 }
 
 .donate-manual-container ul li {
@@ -82,6 +85,7 @@ const {t} = useI18n();
 
 .donate-manual-container ul li .icon {
   margin-right: 1rem;
+  font-size: 2rem;
   color: var(--primary-color);
 }
 
