@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import {ref, computed} from "vue";
+import {useI18n} from "vue-i18n";
 
 interface TeamMember {
   member_id: number;
@@ -11,38 +11,38 @@ interface TeamMember {
   photo_url: string;
 }
 
-const { t } = useI18n();
+const {t} = useI18n();
 const team: TeamMember[] = [
   {
     member_id: 1,
-    name: "PN. AINI HAZRIN AHMAD ANUAR",
-    countries: "Malaysia",
-    flag_icon_name: "twemoji-flag-malaysia",
-    position: "VICE_CHAIRMAN",
-    photo_url: "images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
-  },
-  {
-    member_id: 2,
-    name: "DR. SITI MUYASSARAH ABD NASIR",
-    countries: "Malaysia",
-    flag_icon_name: "twemoji-flag-malaysia",
-    position: "SECRETARY",
-    photo_url: "images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
-  },
-  {
-    member_id: 3,
     name: "HJ. MOHD AZMI B. ABDUL HAMID",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "Chairman",
+    position: "team_member_position.Chairman",
     photo_url: "images/team/HJ. MOHD AZMI B. ABDUL HAMID.avif",
+  },
+  {
+    member_id: 2,
+    name: "PN. AINI HAZRIN AHMAD ANUAR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "team_member_position.VICE_CHAIRMAN",
+    photo_url: "images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
+  },
+  {
+    member_id: 3,
+    name: "DR. SITI MUYASSARAH ABD NASIR",
+    countries: "Malaysia",
+    flag_icon_name: "twemoji-flag-malaysia",
+    position: "team_member_position.SECRETARY",
+    photo_url: "images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
   },
   {
     member_id: 4,
     name: "PN. WAN NOR SHEILA MIOR SHARIFFUDIN",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "SOCMED- INSTAGRAM",
+    position: "team_member_position.socmed_instagram",
     photo_url: "images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.jpg",
   },
   {
@@ -50,7 +50,7 @@ const team: TeamMember[] = [
     name: "PN. AZZAMURNI MOHTAR",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "ADVOCACY",
+    position: "team_member_position.ADVOCACY",
     photo_url: "images/team/PN. AZZAMURNI MOHTAR.jpg",
   },
   {
@@ -58,7 +58,7 @@ const team: TeamMember[] = [
     name: "PN. NORHAZALIANA AFFENDI",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "PUBLICITY & PROMOTION",
+    position: "team_member_position.PUBLICITY_PROMOTION",
     photo_url: "images/team/PN. NORHAZALIANA AFFENDI.jpg",
   },
   {
@@ -66,7 +66,7 @@ const team: TeamMember[] = [
     name: "DR. SHARIFAH NADIYA BT SYED YAHYA",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "SPONSORSHIP",
+    position: "team_member_position.SPONSORSHIP",
     photo_url: "images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.jpg",
   },
   {
@@ -74,7 +74,7 @@ const team: TeamMember[] = [
     name: "PN. AZIZAH SIRON",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "INTERNATIONAL LIASON",
+    position: "team_member_position.INTERNATIONAL_LIASON",
     photo_url: "images/team/PN. AZIZAH SIRON.jpg",
   },
   {
@@ -82,7 +82,7 @@ const team: TeamMember[] = [
     name: "CIK NUR AKHTAR AMIN",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "PROTOCOL",
+    position: "team_member_position.PROTOCOL",
     photo_url: "images/team/CIK NUR AKHTAR AMIN.jpg",
   },
   {
@@ -90,7 +90,7 @@ const team: TeamMember[] = [
     name: "PN. SITI KHAIRUL BARIYAH MOHAMOOD",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "SOCMED (FACEBOOK)",
+    position: "team_member_position.socmed_facebook",
     photo_url: "images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.jpg",
   },
   {
@@ -98,7 +98,7 @@ const team: TeamMember[] = [
     name: "PN. ZURINA ABDUL KADIR",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "MULTIMEDIA",
+    position: "team_member_position.MULTIMEDIA",
     photo_url: "images/team/PN. ZURINA ABDUL KADIR.jpg",
   },
   {
@@ -106,7 +106,7 @@ const team: TeamMember[] = [
     name: "PN. QUQRIAH AQYNIZA BINTI ZAKARIA",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "DOCUMENTATION & REPORT",
+    position: "team_member_position.DOCUMENTATION_REPORT",
     photo_url: "images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.jpg",
   },
   {
@@ -114,7 +114,7 @@ const team: TeamMember[] = [
     name: "PN. MAHANI ZAKARIA",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "LOGISTIC",
+    position: "team_member_position.LOGISTIC",
     photo_url: "images/team/PN. MAHANI ZAKARIA.jpg",
   },
   {
@@ -122,7 +122,7 @@ const team: TeamMember[] = [
     name: "EN. MOHD LUTFI B. MOHD KHIDIR",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "SOCMED- TIKTOK",
+    position: "team_member_position.SOCMED_TIKTOK",
     photo_url: "images/team/EN. MOHD LUTFI B. MOHD KHIDIR.jpg",
   },
   {
@@ -130,7 +130,7 @@ const team: TeamMember[] = [
     name: "DR. SITI FARIZA BINTI MOHAMAD ISA",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "Public Relation Officer",
+    position: "team_member_position.Public_Relation_Officer",
     photo_url: "images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.jpg",
   },
   {
@@ -138,7 +138,7 @@ const team: TeamMember[] = [
     name: "MOHD REDZUAN BIN ZULKIFLEE",
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
-    position: "LOGISTIC",
+    position: "team_member_position.LOGISTIC",
     photo_url: "images/team/MOHD REDZUAN BIN ZULKIFLEE.jpg",
   }
 ];
@@ -158,7 +158,24 @@ function prevPage() {
 
 <template>
   <div class="team-section">
-    <h2 class="team-title">{{ t('team.meet_our_team') }}</h2>
+    <h2 class="team-title">{{ t('team.team_title') }}</h2>
+
+    <div class="team-president-info">
+      <div class="image-container">
+        <img
+            src="../public/images/team/HAJI%20MOHD%20AZMI%20BIN%20ABDUL%20HAMID.png"
+            :alt="t('president.altText')"
+            class="president-image"
+            loading="lazy"
+        />
+      </div>
+
+      <div class="description-container">
+        <h3 class="president-name">{{ t('team.president.name') }}</h3>
+        <p class="president-description">{{ t('team.president.description') }}</p>
+      </div>
+    </div>
+
     <div class="team-grid">
       <div v-for="member in visibleTeam" :key="member.member_id" class="team-card">
         <div class="team-photo">
@@ -168,7 +185,7 @@ function prevPage() {
           <div class="box">
             <h2>{{ member.name }}</h2>
             <p>
-              <UIcon name="twemoji-flag-malaysia" class="flag-icon" />
+              <UIcon name="twemoji-flag-malaysia" class="flag-icon"/>
               {{ member.countries }}
             </p>
           </div>
@@ -201,6 +218,72 @@ function prevPage() {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 40px 0;
+}
+
+.team-president-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 20px;
+}
+
+.image-container {
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  height: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.president-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description-container {
+  text-align: center;
+}
+
+.president-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.president-description {
+  font-size: 1rem;
+  color: var(--primary-color);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .team-president-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .president-name {
+    font-size: 1.2rem;
+  }
+
+  .president-description {
+    font-size: 0.9rem;
+  }
 }
 
 .team-grid {

@@ -57,7 +57,7 @@ export default {
 
     stories: {
         new_story: {
-            main_title:"Add new story",
+            main_title: "Add new story",
             form: {
                 title: "Title",
                 content: "Content",
@@ -89,7 +89,7 @@ export default {
     },
     articles: {
         new_article: {
-            main_title:"Add new article",
+            main_title: "Add new article",
             form: {
                 title: "Title",
                 content: "Content",
@@ -121,7 +121,7 @@ export default {
     },
     activities: {
         new_activity: {
-            main_title:"Add new activity",
+            main_title: "Add new activity",
             form: {
                 title: "Title",
                 content: "Content",
@@ -151,8 +151,6 @@ export default {
             },
         },
     },
-
-
     volunteer: {
         volunteer_title: "How to Be a Volunteer with Us",
         volunteer_button: "REGISTER NOW",
@@ -220,36 +218,33 @@ export default {
         reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
         downloadButton: "Download",
     },
-    names: {
-        john: "John",
-        jane: "Jane",
-        alex: "Alex",
-        emma: "Emma",
-        chris: "Chris",
-        sophia: "Sophia",
-        daniel: "Daniel",
-        olivia: "Olivia",
-        michael: "Michael",
-    },
+
     team: {
-        meet_our_team: "Meet Our Team",
+        team_title: "Meet Our Community",
+        president: {
+            name: "Tn. Haji Mohd Azmi Bin Abdul Hamid",
+            description: "The Malaysian Consultative Council of Islamic Organizations (MAPIM) is a non-governmental organization registered under the Registrar of Societies Act of Malaysia in 2012. Its mission is to serve as a consultative forum to address the various issues and challenges faced by the ummah specifically, and humanity at large. Under MAPIM, MyChild was founded to safeguard the welfare of children affected by war, disasters, and orphanhood. The initiative focuses on organizing campaigns and providing support in the form of material aid, education, and emotional care.",
+            altText: "Portrait of Haji Mohd Azmi Bin Abdul Hamid",
+        },
+        team_member_position:{
+            vice_chairman: "Vice Chairman",
+            secretary: "Secretary",
+            chairman: "Chairman",
+            socmed_instagram: "SOCMED - Instagram",
+            advocacy: "Advocacy",
+            publicity_promotion: "Publicity & Promotion",
+            sponsorship: "Sponsorship",
+            international_liason: "International Liaison",
+            protocol: "Protocol",
+            socmed_facebook: "SOCMED - Facebook",
+            multimedia: "Multimedia",
+            documentation_report: "Documentation & Report",
+            logistic: "Logistic",
+            socmed_tiktok: "SOCMED - TikTok",
+            public_relation_officer: "Public Relation Officer",
+        },
         previous: "Previous",
         next: "Next",
-        vice_chairman: "Vice Chairman",
-        secretary: "Secretary",
-        chairman: "Chairman",
-        socmed_instagram: "SOCMED - Instagram",
-        advocacy: "Advocacy",
-        publicity_promotion: "Publicity & Promotion",
-        sponsorship: "Sponsorship",
-        international_liason: "International Liaison",
-        protocol: "Protocol",
-        socmed_facebook: "SOCMED - Facebook",
-        multimedia: "Multimedia",
-        documentation_report: "Documentation & Report",
-        logistic: "Logistic",
-        socmed_tiktok: "SOCMED - TikTok",
-        public_relation_officer: "Public Relation Officer"
     },
     donate: {
         donate_title: "Empower a Child’s Future, Change the World",
@@ -303,7 +298,6 @@ export default {
         account_number: "Account Number: 562263540066",
         copyright: "© {year} MyChild. All rights reserved.",
     },
-
     footerText: {
         copyright: "Copyright &copy; MyChild {year}",
         subscribe: "Subscribe Now",

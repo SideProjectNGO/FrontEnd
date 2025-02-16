@@ -151,7 +151,6 @@ export default {
             },
         },
     },
-
     volunteer: {
         volunteer_title: "Bagaimana Menjadi Sukarelawan Bersama Kami",
         volunteer_button: "DAFTAR SEKARANG",
@@ -208,18 +207,6 @@ export default {
         appreciation: "Kami menghargai kesabaran dan sokongan anda."
     },
 
-    names: {
-        john: "John",
-        jane: "Jane",
-        alex: "Alex",
-        emma: "Emma",
-        chris: "Chris",
-        sophia: "Sophia",
-        daniel: "Daniel",
-        olivia: "Olivia",
-        michael: "Michael",
-    },
-
     annualReport: {
         reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
         reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
@@ -232,24 +219,31 @@ export default {
         downloadButton: "Muat Turun",
     },
     team: {
-        meet_our_team: "Temui Pasukan Kami",
+        team_title: "Temui Pasukan Kami",
+        president: {
+            name: "Tn. Haji Mohd Azmi Bin Abdul Hamid",
+            description: "Majlis Perundingan Pertubuhan Islam Malaysia (MAPIM) adalah sebuah pertubuhan bukan kerajaan yang didaftarkan di bawah Akta Pertubuhan Malaysia pada tahun 2012. Misi MAPIM adalah untuk berfungsi sebagai forum perundingan bagi menangani pelbagai isu dan cabaran yang dihadapi oleh ummah khususnya, dan manusia sejagat amnya. Di bawah MAPIM, MyChild telah ditubuhkan untuk menjaga kebajikan kanak-kanak yang terjejas akibat perang, bencana, dan kehilangan ibu bapa. Inisiatif ini memberi tumpuan kepada menganjurkan kempen dan menyediakan sokongan dalam bentuk bantuan material, pendidikan, dan penjagaan emosi.",
+            altText: "Gambar Haji Mohd Azmi Bin Abdul Hamid",
+        },
+        team_member_position: {
+            vice_chairman: "Naib Pengerusi",
+            secretary: "Setiausaha",
+            chairman: "Pengerusi",
+            socmed_instagram: "Media Sosial - Instagram",
+            advocacy: "Advokasi",
+            publicity_promotion: "Publisiti & Promosi",
+            sponsorship: "Penajaan",
+            international_liason: "Perhubungan Antarabangsa",
+            protocol: "Protokol",
+            socmed_facebook: "Media Sosial - Facebook",
+            multimedia: "Multimedia",
+            documentation_report: "Dokumentasi & Laporan",
+            logistic: "Logistik",
+            socmed_tiktok: "Media Sosial - TikTok",
+            public_relation_officer: "Pegawai Perhubungan Awam",
+        },
         previous: "Sebelumnya",
         next: "Seterusnya",
-        vice_chairman: "Naib Pengerusi",
-        secretary: "Setiausaha",
-        chairman: "Pengerusi",
-        socmed_instagram: "Media Sosial - Instagram",
-        advocacy: "Advokasi",
-        publicity_promotion: "Publisiti & Promosi",
-        sponsorship: "Penajaan",
-        international_liason: "Perhubungan Antarabangsa",
-        protocol: "Protokol",
-        socmed_facebook: "Media Sosial - Facebook",
-        multimedia: "Multimedia",
-        documentation_report: "Dokumentasi & Laporan",
-        logistic: "Logistik",
-        socmed_tiktok: "Media Sosial - TikTok",
-        public_relation_officer: "Pegawai Perhubungan Awam"
     },
     donate: {
         donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",
@@ -265,7 +259,6 @@ export default {
         donate_benefit_2: "Tempat perlindungan yang selamat dan sokongan penjagaan kesihatan",
         donate_benefit_3: "Masa depan yang lebih cerah penuh dengan harapan dan peluang"
     },
-
     footer: {
         logo: "Logo",
         connectWithUs: "Hubungi Kami",
