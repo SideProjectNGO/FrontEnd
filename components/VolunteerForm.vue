@@ -167,7 +167,7 @@ const handleSubmit = () => {
           <h3 class="sub-title">{{ t('volunteer.why_volunteer') }}</h3>
           <ul>
             <li v-for="i in 4" :key="i">
-              <UIcon name="mdi-user" class="icons"/>
+              <UIcon name="mid-hand-holding-heart" class="icons"/>
               {{ t(`volunteer.list.${i}`) }}
             </li>
           </ul>
@@ -255,7 +255,7 @@ const handleSubmit = () => {
 
 @media (max-width: 1024px) {
   .container {
-    grid-template-columns: 1fr;
+    display: block;
     width: 100%;
   }
 }
@@ -359,6 +359,18 @@ label {
 .file-input:hover {
   border-color: var(--primary-color);
 }
+
+@media (max-width: 800px) {
+  .text-input,
+  .select-input,
+  .textarea-input {
+    width: 100%;
+  }
+  .file-input {
+    width: 100%;
+  }
+}
+
 
 .btn-submit {
   display: block;
