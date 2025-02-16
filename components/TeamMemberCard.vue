@@ -9,10 +9,6 @@ interface TeamMember {
   flag_icon_name: string;
   position: string;
   photo_url: string;
-  social_media: {
-    whatsapp: string;
-    email: string;
-  };
 }
 
 const { t } = useI18n();
@@ -23,11 +19,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "VICE_CHAIRMAN",
-    photo_url: "/images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
   },
   {
     member_id: 2,
@@ -35,11 +27,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "SECRETARY",
-    photo_url: "/images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
   },
   {
     member_id: 3,
@@ -47,11 +35,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "Chairman",
-    photo_url: "/images/team/HJ. MOHD AZMI B. ABDUL HAMID.avif",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/HJ. MOHD AZMI B. ABDUL HAMID.avif",
   },
   {
     member_id: 4,
@@ -59,11 +43,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "SOCMED- INSTAGRAM",
-    photo_url: "/images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.jpg",
   },
   {
     member_id: 5,
@@ -71,11 +51,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "ADVOCACY",
-    photo_url: "/images/team/PN. AZZAMURNI MOHTAR.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. AZZAMURNI MOHTAR.jpg",
   },
   {
     member_id: 6,
@@ -83,11 +59,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "PUBLICITY & PROMOTION",
-    photo_url: "/images/team/PN. NORHAZALIANA AFFENDI.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. NORHAZALIANA AFFENDI.jpg",
   },
   {
     member_id: 7,
@@ -95,11 +67,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "SPONSORSHIP",
-    photo_url: "/images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.jpg",
   },
   {
     member_id: 8,
@@ -107,11 +75,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "INTERNATIONAL LIASON",
-    photo_url: "/images/team/PN. AZIZAH SIRON.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. AZIZAH SIRON.jpg",
   },
   {
     member_id: 9,
@@ -119,11 +83,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "PROTOCOL",
-    photo_url: "/images/team/CIK NUR AKHTAR AMIN.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/CIK NUR AKHTAR AMIN.jpg",
   },
   {
     member_id: 10,
@@ -131,11 +91,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "SOCMED (FACEBOOK)",
-    photo_url: "/images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.jpg",
   },
   {
     member_id: 11,
@@ -143,11 +99,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "MULTIMEDIA",
-    photo_url: "/images/team/PN. ZURINA ABDUL KADIR.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. ZURINA ABDUL KADIR.jpg",
   },
   {
     member_id: 12,
@@ -155,11 +107,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "DOCUMENTATION & REPORT",
-    photo_url: "/images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.jpg",
   },
   {
     member_id: 13,
@@ -167,11 +115,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "LOGISTIC",
-    photo_url: "/images/team/PN. MAHANI ZAKARIA.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/PN. MAHANI ZAKARIA.jpg",
   },
   {
     member_id: 14,
@@ -179,11 +123,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "SOCMED- TIKTOK",
-    photo_url: "/images/team/EN. MOHD LUTFI B. MOHD KHIDIR.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/EN. MOHD LUTFI B. MOHD KHIDIR.jpg",
   },
   {
     member_id: 15,
@@ -191,11 +131,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "Public Relation Officer",
-    photo_url: "/images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
+    photo_url: "images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.jpg",
   },
   {
     member_id: 16,
@@ -204,10 +140,6 @@ const team: TeamMember[] = [
     flag_icon_name: "twemoji-flag-malaysia",
     position: "LOGISTIC",
     photo_url: "images/team/MOHD REDZUAN BIN ZULKIFLEE.jpg",
-    social_media: {
-      whatsapp: "",
-      email: ""
-    }
   }
 ];
 const currentIndex = ref(0);
@@ -241,15 +173,6 @@ function prevPage() {
             </p>
           </div>
           <h3>{{ t(`team.${member.position.toLowerCase().replace(/[\s&-]/g, "_")}`) }}</h3>
-        </div>
-
-        <div class="team-contact-info">
-          <a v-if="member.social_media.whatsapp" :href="'https://wa.me/' + member.social_media.whatsapp" target="_blank" aria-label="WhatsApp">
-            <UIcon name="mdi-whatsapp"/>
-          </a>
-          <a v-if="member.social_media.email" :href="'mailto:' + member.social_media.email" target="_blank" aria-label="Email">
-            <UIcon name="mdi-email"/>
-          </a>
         </div>
       </div>
     </div>
@@ -336,17 +259,6 @@ function prevPage() {
 .team-details h3 {
   font-size: .8rem;
   font-weight: 800;
-}
-
-.team-contact-info {
-  display: flex;
-  justify-content: center;
-}
-
-.team-contact-info a {
-  font-size: 1.5rem;
-  margin-right: 15px;
-  cursor: pointer;
 }
 
 .container .btn-container {
