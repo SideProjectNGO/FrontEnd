@@ -63,7 +63,6 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: transparent;
-  margin: 0 auto;
   gap: 1rem;
 }
 
@@ -102,7 +101,7 @@ onMounted(() => {
   list-style: none;
   font-size: 1rem;
   color: var(--primary-color);
-  margin: 2rem 0;
+  margin: 3rem auto;
 }
 
 .donation-benefits li {
@@ -115,7 +114,12 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .donate-section {
-    padding: 0 0.5rem;
+    padding: 0;
+    width: 90%;
+  }
+
+  .donate-container {
+    padding: 2rem 0;
   }
 
   .donate-title {
