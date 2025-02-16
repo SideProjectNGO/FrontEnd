@@ -154,7 +154,6 @@ const prevPage = () => {
   width: 100%;
   background-color: var(--background);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .user-table {
