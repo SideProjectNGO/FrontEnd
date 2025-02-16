@@ -1,55 +1,89 @@
 <script setup lang="ts">
 import AdminSidebar from '~/components/AdminSidebar.vue';
-import {ref} from 'vue';
+import {computed, ref} from 'vue';
 
 
 definePageMeta({
   middleware: 'auth',
 });
 
-const users = ref([
+const volunteers = ref([
   {id: 1, name: 'John Doe', phone: '+123456789', email: 'john@example.com', country: 'USA', age: 30},
   {id: 2, name: 'Jane Smith', phone: '+987654321', email: 'jane@example.com', country: 'UK', age: 28},
-  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32}
+  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
+  {id: 3, name: 'Ali Khan', phone: '+1122334455', email: 'ali@example.com', country: 'Pakistan', age: 32},
 ]);
 
-const selectedUser = ref<Record<string, any> | null>(null);
-const showUserPopup = ref(false);
-
+const selectedVolunteer = ref<Record<string, any> | null>(null);
+const showVolunteerPopup = ref(false);
+const currentPage = ref(1);
+const volunteersPerPage = 5;
 const viewUser = (user: any) => {
-  selectedUser.value = user;
-  showUserPopup.value = true;
+  selectedVolunteer.value = user;
+  showVolunteerPopup.value = true;
 };
 
 const closeUserPopup = () => {
-  showUserPopup.value = false;
+  showVolunteerPopup.value = false;
+};
+
+
+const displayedVolunteers = computed(() => {
+  const start = (currentPage.value - 1) * volunteersPerPage;
+  const end = start + volunteersPerPage;
+  return volunteers.value.slice(start, end);
+});
+
+const totalPages = computed(() => {
+  return Math.ceil(volunteers.value.length / volunteersPerPage);
+});
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
 };
 </script>
 
 <template>
-  <div class="admin-dashboard">
-    <div class="admin-wrapper">
+  <div class="admin-volunteer-dashboard">
+    <div class="admin-volunteer-wrapper">
 
       <div class="sidebar">
         <AdminSidebar/>
       </div>
 
-      <div class="dashboard-content">
+      <div class="volunteer-dashboard-content">
         <h2 class="dashboard-title">Volunteer Dashboard</h2>
 
         <div class="table-container">
-          <table class="user-table">
+          <table class="volunteer-table">
             <thead>
             <tr class="table-header">
               <th>User Name</th>
               <th>Phone Number</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>Age</th>
               <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="user in users" :key="user.id" class="table-row">
+            <tr v-for="user in displayedVolunteers" :key="user.id" class="table-row">
               <td>{{ user.name }}</td>
               <td>{{ user.phone }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.country }}</td>
+              <td>{{ user.age }}</td>
               <td>
                 <button @click="viewUser(user)" class="view-button">
                   View
@@ -60,13 +94,23 @@ const closeUserPopup = () => {
           </table>
         </div>
 
-        <div v-if="showUserPopup" class="user-popup-overlay">
-          <div class="user-popup-content">
-            <h3 class="user-popup-title">User Details</h3>
+        <div class="pagination-controls">
+          <button @click="prevPage" :disabled="currentPage === 1" class="pagination-button">
+            Previous
+          </button>
+          <span class="pagination-info">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button @click="nextPage" :disabled="currentPage === totalPages" class="pagination-button">
+            Next
+          </button>
+        </div>
+
+        <div v-if="showVolunteerPopup" class="volunteer-popup-overlay">
+          <div class="volunteer-popup-content">
+            <h3 class="volunteer-popup-title">User Details</h3>
 
             <table class="details-table">
               <tbody>
-              <tr v-for="(value, key) in selectedUser" :key="key" class="details-row">
+              <tr v-for="(value, key) in displayedVolunteers" :key="key" class="details-row">
                 <td class="details-key">{{ key }}</td>
                 <td class="details-value">{{ value }}</td>
               </tr>
@@ -87,22 +131,19 @@ const closeUserPopup = () => {
 
 <style scoped>
 
-.admin-wrapper {
+.admin-volunteer-wrapper {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
   padding: 20px;
 }
 
-.dashboard-content {
+.volunteer-dashboard-content {
   padding: 20px;
   border-radius: 10px;
-}
-
-.dashboard-content {
-  padding: 1.5rem;
-  background-color: #f9fafb;
+  background-color: var(--background);
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .dashboard-title {
@@ -114,14 +155,29 @@ const closeUserPopup = () => {
 
 .table-container {
   overflow-x: auto;
+  width: 100%;
   background-color: var(--background);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.user-table {
+.volunteer-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .volunteer-table {
+    width: 100%;
+    min-width: 600px;
+  }
 }
 
 .table-header {
@@ -166,7 +222,7 @@ const closeUserPopup = () => {
   outline: none;
 }
 
-.user-popup-overlay {
+.volunteer-popup-overlay {
   position: fixed;
   inset: 0;
   display: flex;
@@ -175,7 +231,7 @@ const closeUserPopup = () => {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.user-popup-content {
+.volunteer-popup-content {
   background-color: white;
   padding: 2rem;
   border-radius: 0.5rem;
@@ -185,7 +241,7 @@ const closeUserPopup = () => {
   min-width: 700px;
 }
 
-.user-popup-title {
+.volunteer-popup-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--primary-color);
@@ -235,8 +291,44 @@ const closeUserPopup = () => {
   transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s;
 }
 
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.pagination-button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  margin: 0 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  cursor: pointer;
+  transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s;
+  outline: none;
+}
+
+.pagination-info {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  margin: 0 1rem;
+}
+
 @media (max-width: 768px) {
-  .admin-wrapper {
+  .admin-volunteer-wrapper {
     grid-template-columns: 1fr;
   }
 }
