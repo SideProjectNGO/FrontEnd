@@ -230,9 +230,26 @@ console.log(activities);
   transition: background-color 0.3s ease-in-out;
 }
 
+
 @media (max-width: 768px) {
   .admin-wrapper {
     grid-template-columns: 1fr;
+  }
+
+  .pagination-container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .pagination-buttons {
+    display: flex;
+    gap: 25px;
+  }
+
+  .pagination-buttons button {
+    display: flex;
+    min-width: 90px;
+    margin: 0;
   }
 }
 </style>
