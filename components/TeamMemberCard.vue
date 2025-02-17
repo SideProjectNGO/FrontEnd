@@ -19,7 +19,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.Chairman",
-    photo_url: "images/team/HJ. MOHD AZMI B. ABDUL HAMID.avif",
+    photo_url: "images/team/HJ. MOHD AZMI B. ABDUL HAMID.png",
   },
   {
     member_id: 2,
@@ -27,7 +27,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.VICE_CHAIRMAN",
-    photo_url: "images/team/PN. AINI HAZRIN AHMAD ANUAR.jpg",
+    photo_url: "images/team/PN. AINI HAZRIN AHMAD ANUAR.png",
   },
   {
     member_id: 3,
@@ -35,7 +35,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.SECRETARY",
-    photo_url: "images/team/DR. SITI MUYASSARAH ABD NASIR.jpg",
+    photo_url: "images/team/DR. SITI MUYASSARAH ABD NASIR.png",
   },
   {
     member_id: 4,
@@ -43,7 +43,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.socmed_instagram",
-    photo_url: "images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.jpg",
+    photo_url: "images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.png",
   },
   {
     member_id: 5,
@@ -51,7 +51,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.ADVOCACY",
-    photo_url: "images/team/PN. AZZAMURNI MOHTAR.jpg",
+    photo_url: "images/team/PN. AZZAMURNI MOHTAR.png",
   },
   {
     member_id: 6,
@@ -59,7 +59,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.PUBLICITY_PROMOTION",
-    photo_url: "images/team/PN. NORHAZALIANA AFFENDI.jpg",
+    photo_url: "images/team/PN. NORHAZALIANA AFFENDI.png",
   },
   {
     member_id: 7,
@@ -67,7 +67,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.SPONSORSHIP",
-    photo_url: "images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.jpg",
+    photo_url: "images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.png",
   },
   {
     member_id: 8,
@@ -75,7 +75,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.INTERNATIONAL_LIASON",
-    photo_url: "images/team/PN. AZIZAH SIRON.jpg",
+    photo_url: "images/team/PN. AZIZAH SIRON.png",
   },
   {
     member_id: 9,
@@ -83,7 +83,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.PROTOCOL",
-    photo_url: "images/team/CIK NUR AKHTAR AMIN.jpg",
+    photo_url: "images/team/CIK NUR AKHTAR AMIN.png",
   },
   {
     member_id: 10,
@@ -91,7 +91,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.socmed_facebook",
-    photo_url: "images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.jpg",
+    photo_url: "images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.png",
   },
   {
     member_id: 11,
@@ -99,7 +99,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.MULTIMEDIA",
-    photo_url: "images/team/PN. ZURINA ABDUL KADIR.jpg",
+    photo_url: "images/team/PN. ZURINA ABDUL KADIR.png",
   },
   {
     member_id: 12,
@@ -107,7 +107,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.DOCUMENTATION_REPORT",
-    photo_url: "images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.jpg",
+    photo_url: "images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.png",
   },
   {
     member_id: 13,
@@ -115,7 +115,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.LOGISTIC",
-    photo_url: "images/team/PN. MAHANI ZAKARIA.jpg",
+    photo_url: "images/team/PN. MAHANI ZAKARIA.png",
   },
   {
     member_id: 14,
@@ -123,7 +123,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.SOCMED_TIKTOK",
-    photo_url: "images/team/EN. MOHD LUTFI B. MOHD KHIDIR.jpg",
+    photo_url: "images/team/EN. MOHD LUTFI B. MOHD KHIDIR.png",
   },
   {
     member_id: 15,
@@ -131,7 +131,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.Public_Relation_Officer",
-    photo_url: "images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.jpg",
+    photo_url: "images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.png",
   },
   {
     member_id: 16,
@@ -139,7 +139,7 @@ const team: TeamMember[] = [
     countries: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.LOGISTIC",
-    photo_url: "images/team/MOHD REDZUAN BIN ZULKIFLEE.jpg",
+    photo_url: "images/team/MOHD REDZUAN BIN ZULKIFLEE.png",
   }
 ];
 const currentIndex = ref(0);
@@ -163,7 +163,7 @@ function prevPage() {
     <div class="team-president-info">
       <div class="image-container">
         <img
-            src="../public/images/team/HAJI%20MOHD%20AZMI%20BIN%20ABDUL%20HAMID.png"
+            src="../public/images/team/HJ.%20MOHD%20AZMI%20B.%20ABDUL%20HAMID.png"
             :alt="t('president.altText')"
             class="president-image"
             loading="lazy"
