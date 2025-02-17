@@ -5,7 +5,7 @@ import {useI18n} from "vue-i18n";
 interface TeamMember {
   member_id: number;
   name: string;
-  countries: string;
+  country: string;
   flag_icon_name: string;
   position: string;
   photo_url: string;
@@ -16,7 +16,7 @@ const team: TeamMember[] = [
   {
     member_id: 1,
     name: "HJ. MOHD AZMI B. ABDUL HAMID",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.Chairman",
     photo_url: "images/team/HJ. MOHD AZMI B. ABDUL HAMID.png",
@@ -24,7 +24,7 @@ const team: TeamMember[] = [
   {
     member_id: 2,
     name: "PN. AINI HAZRIN AHMAD ANUAR",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.VICE_CHAIRMAN",
     photo_url: "images/team/PN. AINI HAZRIN AHMAD ANUAR.png",
@@ -32,7 +32,7 @@ const team: TeamMember[] = [
   {
     member_id: 3,
     name: "DR. SITI MUYASSARAH ABD NASIR",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.SECRETARY",
     photo_url: "images/team/DR. SITI MUYASSARAH ABD NASIR.png",
@@ -40,7 +40,7 @@ const team: TeamMember[] = [
   {
     member_id: 4,
     name: "PN. WAN NOR SHEILA MIOR SHARIFFUDIN",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.socmed_instagram",
     photo_url: "images/team/PN. WAN NOR SHEILA MIOR SHARIFFUDIN.png",
@@ -48,7 +48,7 @@ const team: TeamMember[] = [
   {
     member_id: 5,
     name: "PN. AZZAMURNI MOHTAR",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.ADVOCACY",
     photo_url: "images/team/PN. AZZAMURNI MOHTAR.png",
@@ -56,7 +56,7 @@ const team: TeamMember[] = [
   {
     member_id: 6,
     name: "PN. NORHAZALIANA AFFENDI",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.PUBLICITY_PROMOTION",
     photo_url: "images/team/PN. NORHAZALIANA AFFENDI.png",
@@ -64,7 +64,7 @@ const team: TeamMember[] = [
   {
     member_id: 7,
     name: "DR. SHARIFAH NADIYA BT SYED YAHYA",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.SPONSORSHIP",
     photo_url: "images/team/DR. SHARIFAH NADIYA BT SYED YAHYA.png",
@@ -72,7 +72,7 @@ const team: TeamMember[] = [
   {
     member_id: 8,
     name: "PN. AZIZAH SIRON",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.INTERNATIONAL_LIASON",
     photo_url: "images/team/PN. AZIZAH SIRON.png",
@@ -80,7 +80,7 @@ const team: TeamMember[] = [
   {
     member_id: 9,
     name: "CIK NUR AKHTAR AMIN",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.PROTOCOL",
     photo_url: "images/team/CIK NUR AKHTAR AMIN.png",
@@ -88,7 +88,7 @@ const team: TeamMember[] = [
   {
     member_id: 10,
     name: "PN. SITI KHAIRUL BARIYAH MOHAMOOD",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.socmed_facebook",
     photo_url: "images/team/PN. SITI KHAIRUL BARIYAH MOHAMOOD.png",
@@ -96,7 +96,7 @@ const team: TeamMember[] = [
   {
     member_id: 11,
     name: "PN. ZURINA ABDUL KADIR",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.MULTIMEDIA",
     photo_url: "images/team/PN. ZURINA ABDUL KADIR.png",
@@ -104,7 +104,7 @@ const team: TeamMember[] = [
   {
     member_id: 12,
     name: "PN. QUQRIAH AQYNIZA BINTI ZAKARIA",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.DOCUMENTATION_REPORT",
     photo_url: "images/team/PN. QUQRIAH AQYNIZA BINTI ZAKARIA.png",
@@ -112,7 +112,7 @@ const team: TeamMember[] = [
   {
     member_id: 13,
     name: "PN. MAHANI ZAKARIA",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.LOGISTIC",
     photo_url: "images/team/PN. MAHANI ZAKARIA.png",
@@ -120,7 +120,7 @@ const team: TeamMember[] = [
   {
     member_id: 14,
     name: "EN. MOHD LUTFI B. MOHD KHIDIR",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.SOCMED_TIKTOK",
     photo_url: "images/team/EN. MOHD LUTFI B. MOHD KHIDIR.png",
@@ -128,7 +128,7 @@ const team: TeamMember[] = [
   {
     member_id: 15,
     name: "DR. SITI FARIZA BINTI MOHAMAD ISA",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.Public_Relation_Officer",
     photo_url: "images/team/DR. SITI FARIZA BINTI MOHAMAD ISA.png",
@@ -136,7 +136,7 @@ const team: TeamMember[] = [
   {
     member_id: 16,
     name: "MOHD REDZUAN BIN ZULKIFLEE",
-    countries: "Malaysia",
+    country: "Malaysia",
     flag_icon_name: "twemoji-flag-malaysia",
     position: "team_member_position.LOGISTIC",
     photo_url: "images/team/MOHD REDZUAN BIN ZULKIFLEE.png",
@@ -186,7 +186,7 @@ function prevPage() {
             <h2>{{ member.name }}</h2>
             <p>
               <UIcon name="twemoji-flag-malaysia" class="flag-icon"/>
-              {{ member.countries }}
+              {{ member.country }}
             </p>
           </div>
           <h3>{{ t(`team.${member.position.toLowerCase().replace(/[\s&-]/g, "_")}`) }}</h3>
