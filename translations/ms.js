@@ -32,11 +32,6 @@ export default {
             content: "Misi kami adalah untuk menyediakan penjagaan holistik, pendidikan, dan sokongan kepada kanak-kanak yang memerlukan. Melalui program berasaskan komuniti, advokasi, dan penyelesaian yang mampan, kami berusaha untuk memastikan setiap kanak-kanak mempunyai akses kepada persekitaran yang selamat, penyayang, dan sumber yang mereka perlukan untuk mencapai potensi penuh mereka.",
         },
     },
-    partnerships: {
-        title: "Kekuatan dalam Perkongsian",
-    },
-
-
     stories: {
         new_story: {
             main_title:"Tambah cerita baharu",
@@ -188,7 +183,6 @@ export default {
         submission_date: "Tarikh Penghantaran:",
         appreciation: "Kami menghargai kesabaran dan sokongan anda."
     },
-
     annualReport: {
         reportTitle: "Laporan Tahunan Kami: Tahun yang Memberi Impak",
         reportDescription: "Temui kemajuan luar biasa yang telah kami capai di MyChild sepanjang tahun lalu. Laporan tahunan kami menyoroti pencapaian, cabaran, dan pencapaian yang telah membentuk misi kami untuk memperkasakan kanak-kanak. Dari kisah kejayaan kanak-kanak yang kami layani hingga dedikasi pasukan dan penyokong kami, laporan ini menawarkan gambaran menyeluruh mengenai impak yang telah kami capai bersama.",
@@ -244,6 +238,9 @@ export default {
         },
         previous: "Sebelumnya",
         next: "Seterusnya",
+    },
+    partnerships: {
+        title: "Kekuatan dalam Perkongsian",
     },
     donate: {
         donate_title: "Bantu Masa Depan Kanak-Kanak, Ubah Dunia",

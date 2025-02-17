@@ -33,9 +33,6 @@ export default {
             content: "Our mission is to provide holistic care, education, and support to children in need. Through community-driven programs, advocacy, and sustainable solutions, we aim to ensure every child has access to a safe, nurturing environment and the resources they need to unlock their full potential.",
         },
     },
-    partnerships: {
-        title: "Strength in Partnerships",
-    },
 
     stories: {
         new_story: {
@@ -188,7 +185,6 @@ export default {
         submission_date: "Submission Date:",
         appreciation: "We appreciate your patience and support."
     },
-
     annualReport: {
         reportTitle: "Our Annual Report: A Year of Impact",
         reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
@@ -200,7 +196,9 @@ export default {
         reportDescription: "Discover the incredible progress we’ve made at MyChild over the past year. Our annual report highlights the achievements, challenges, and milestones that have shaped our mission to empower children. From the success stories of the children we serve to the dedication of our team and supporters, this report offers a comprehensive look at the impact we’ve had together.",
         downloadButton: "Download",
     },
-
+    partnerships: {
+        title: "Strength in Partnerships",
+    },
     team: {
         team_title: "Meet Our Community",
         president: {
