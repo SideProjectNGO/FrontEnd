@@ -49,11 +49,12 @@ const {t} = useI18n();
 }
 
 .landing-image {
-  width: 100%;
-  max-width: 600px;
+  width: 90%;
+  max-width: 450px;
   height: auto;
   object-fit: cover;
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 .text-container {
