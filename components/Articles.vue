@@ -112,7 +112,7 @@ console.log(articles);
             <button @click="viewArticle(article.article_id)" class="learn-more-btn">Learn More</button>
           </div>
           <div class="article-image-container">
-            <img src="../public/images/mychild%20logo.jpg" alt="Article Image" class="article-image" />
+            <img src="../public/images/child.jpeg" alt="Article Image" class="article-image" />
           </div>
           <div class="article-details">
             <h3 class="article-title">{{ article.title }}</h3>
