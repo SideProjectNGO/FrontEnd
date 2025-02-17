@@ -1,12 +1,13 @@
 <script setup lang="ts">
 
 import Stories from "~/components/Stories.vue";
+import Landing from "~/components/Landing.vue";
 </script>
 
 <template>
   <TranslateNavbar/>
   <NavBar/>
-  <LandingPage/>
+  <Landing/>
   <Stories/>
   <Footer/>
 </template>

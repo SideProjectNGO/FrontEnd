@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import MediaGallery from "~/components/MediaGallery.vue";
+import Landing from "~/components/Landing.vue";
 </script>
 
 <template>
   <TranslateNavbar/>
   <NavBar/>
-  <LandingPage/>
+  <Landing/>
   <MediaGallery type="image" />
   <MessagesSection/>
   <Activities/>

@@ -1,9 +1,15 @@
 <script lang="ts">
+import {defineComponent} from "vue";
+import Landing from "~/components/Landing.vue";
+
+export default defineComponent({
+  components: {Landing}
+})
 </script>
 
 <template>
   <NavBar/>
-  <LandingPage/>
+  <Landing/>
   <DonateButton/>
   <DonateManual/>
   <Footer/>
