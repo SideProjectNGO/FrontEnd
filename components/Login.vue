@@ -4,7 +4,13 @@ import {z} from "zod";
 
 const loginSchema = z.object({
   username: z.string().min(4, "Username is required").max(20, "Username must be under 20 characters"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  password: z
+      .string()
+      .min(12, "Password must be at least 12 characters long")
+      .max(15, "Password must not exceed 15 characters")
+      .regex(/[a-zA-Z]/, "Password must include at least one letter")
+      .regex(/\d/, "Password must include at least one number")
+      .regex(/[@$!%*?&]/, "Password must include at least one special character"),
 });
 
 type Field = {
