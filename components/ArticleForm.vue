@@ -104,7 +104,6 @@ const articleQuestions: ArticleQuestionsField[] = [
   }
 ];
 
-
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
   title_en: "",
   content_en: "",
@@ -152,7 +151,6 @@ articleQuestions.forEach((field) => {
       }
   );
 });
-
 
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
   const target = event.target as HTMLInputElement;
@@ -244,6 +242,7 @@ const handleFormSubmit = () => {
                   type="file"
                   class="file-input"
                   @change="handleFileInput($event, articleQuestion.id)"
+                  multiple
               />
               <p v-if="errors[articleQuestion.id]?.[0]" class="error-message">{{ errors[articleQuestion.id]?.[0] }}</p>
             </div>
