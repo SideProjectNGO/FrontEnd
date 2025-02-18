@@ -15,9 +15,9 @@ const formSchema = z.object({
   sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
   author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
   activity_type: z.enum(["Event", "Project", "Campaign"]), // New Enum field
-  start_date: z.date().refine(date => !isNaN(date.getTime()), "Start date is required"), // Datetime validation
-  end_date: z.date().nullable(), // Nullable field
-  location: z.string().optional(), // Optional string for location
+  start_date: z.date().refine(date => !isNaN(date.getTime()), "Start date is required"),
+  end_date: z.date().nullable(),
+  location: z.string().optional(),
 });
 
 type QuestionActivityField = {
@@ -34,14 +34,14 @@ const activityQuestions: QuestionActivityField[] = [
     id: "title_en",
     label: "Title (English)",
     type: "text",
-    placeholder: "Enter the article title in English",
+    placeholder: "Enter the activity title in English",
     icon: "mdi-book-open"
   },
   {
     id: "content_en",
     label: "Content (English)",
     type: "textarea",
-    placeholder: "Enter the article content in English",
+    placeholder: "Enter the activity content in English",
     icon: "mdi-file-document"
   },
   {
@@ -55,14 +55,14 @@ const activityQuestions: QuestionActivityField[] = [
     id: "title_ms",
     label: "Tajuk (Bahasa Melayu)",
     type: "text",
-    placeholder: "Masukkan tajuk artikel dalam Bahasa Melayu",
+    placeholder: "Masukkan tajuk aktiviti dalam Bahasa Melayu",
     icon: "mdi-book-open"
   },
   {
     id: "content_ms",
     label: "Kandungan (Bahasa Melayu)",
     type: "textarea",
-    placeholder: "Masukkan kandungan artikel dalam Bahasa Melayu",
+    placeholder: "Masukkan kandungan aktiviti dalam Bahasa Melayu",
     icon: "mdi-file-document"
   },
   {
