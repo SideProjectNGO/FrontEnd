@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import { ref, watch, watchEffect } from "vue";
-import { z } from "zod";
-import { useI18n } from "vue-i18n";
-
-const { t, locale } = useI18n();
-
-const switchLanguage = () => {
-  locale.value = locale.value === "en" ? "ms" : "en";
-};
+import {ref, watch,} from "vue";
+import {z} from "zod";
 
 const formSchema = z.object({
-  title: z.string().min(5, "Title is required"),
-  content: z.string().min(50, "Content is required"),
-  summary: z.string().min(50, "Summary is required"),
-  author_id: z.number().min(1, "Author ID is required"),
-  date: z.string().min(1, "Date is required"),
+  title_en: z.string().min(5, "Title is required"),
+  content_en: z.string().min(50, "Content is required"),
+  summary_en: z.string().min(50, "Summary is required"),
+  title_ms: z.string().min(5, "Tajuk diperlukan"),
+  content_ms: z.string().min(50, "Kandungan diperlukan"),
+  summary_ms: z.string().min(50, "Ringkasan diperlukan"),
   author_name: z.string().min(5, "Author Name is required"),
   author_country: z.string().min(5, "Author Country is required"),
   main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
   sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
-  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG")
+  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
+  activity_type: z.enum(["Event", "Project", "Campaign"]), // New Enum field
+  start_date: z.date().refine(date => !isNaN(date.getTime()), "Start date is required"), // Datetime validation
+  end_date: z.date().nullable(), // Nullable field
+  location: z.string().optional(), // Optional string for location
 });
 
 type QuestionActivityField = {
@@ -33,88 +31,130 @@ type QuestionActivityField = {
 
 const activityQuestions: QuestionActivityField[] = [
   {
-    id: "title",
-    label: t("activities.new_activity.form.title"),
+    id: "title_en",
+    label: "Title (English)",
     type: "text",
-    placeholder: t("activities.new_activity.placeholder.title"),
+    placeholder: "Enter the article title in English",
     icon: "mdi-book-open"
   },
   {
-    id: "content",
-    label: t("activities.new_activity.form.content"),
+    id: "content_en",
+    label: "Content (English)",
     type: "textarea",
-    placeholder: t("activities.new_activity.placeholder.content"),
+    placeholder: "Enter the article content in English",
     icon: "mdi-file-document"
   },
   {
-    id: "summary",
-    label: t("activities.new_activity.form.summary"),
+    id: "summary_en",
+    label: "Summary (English)",
     type: "text",
-    placeholder: t("activities.new_activity.placeholder.summary"),
+    placeholder: "Enter a short summary in English",
     icon: "mdi-note-outline"
   },
   {
-    id: "author_name",
-    label: t("activities.new_activity.form.author_name"),
+    id: "title_ms",
+    label: "Tajuk (Bahasa Melayu)",
     type: "text",
-    placeholder: t("activities.new_activity.placeholder.author_name"),
-    icon: "mdi-account"
+    placeholder: "Masukkan tajuk artikel dalam Bahasa Melayu",
+    icon: "mdi-book-open"
   },
   {
-    id: "author_country",
-    label: t("activities.new_activity.form.author_country"),
-    type: "select",
-    placeholder: t("activities.new_activity.placeholder.author_country"),
-    icon: "mdi-earth",
-    options: nationalities
+    id: "content_ms",
+    label: "Kandungan (Bahasa Melayu)",
+    type: "textarea",
+    placeholder: "Masukkan kandungan artikel dalam Bahasa Melayu",
+    icon: "mdi-file-document"
+  },
+  {
+    id: "summary_ms",
+    label: "Ringkasan (Bahasa Melayu)",
+    type: "text",
+    placeholder: "Masukkan ringkasan pendek dalam Bahasa Melayu",
+    icon: "mdi-note-outline"
   },
   {
     id: "main_photo",
-    label: t("activities.new_activity.form.main_photo"),
+    label: "Main Photo",
     type: "file",
     placeholder: "",
     icon: "mdi-camera"
   },
   {
     id: "sub_photo",
-    label: t("activities.new_activity.form.sub_photo"),
+    label: "Sub Photos",
     type: "file",
     placeholder: "",
     icon: "mdi-folder-multiple-image"
   },
   {
-    id: "author_photo",
-    label: t("activities.new_activity.form.author_photo"),
-    type: "file",
+    id: "activity_type",
+    label: "Activity Type",
+    type: "select",
     placeholder: "",
-    icon: "mdi-account-box"
+    icon: "mdi-layers",
+    options: [
+      {value: "event", label: "Event"},
+      {value: "project", label: "Project"},
+      {value: "campaign", label: "Campaign"}
+    ]
+  },
+  {
+    id: "start_date",
+    label: "Start Date",
+    type: "datetime-local",
+    placeholder: "",
+    icon: "mdi-calendar-clock"
+  },
+  {
+    id: "end_date",
+    label: "End Date",
+    type: "datetime-local",
+    placeholder: "(Optional) End Date",
+    icon: "mdi-calendar-clock"
+  },
+  {
+    id: "location",
+    label: "Location",
+    type: "text",
+    placeholder: "(Optional) Enter location",
+    icon: "mdi-map-marker"
   }
 ];
 
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
-  title: "",
-  content: "",
-  summary: "",
-  author_id: 0,
-  date: "",
+  title_en: "",
+  content_en: "",
+  summary_en: "",
+  title_ms: "",
+  content_ms: "",
+  summary_ms: "",
   author_name: "",
   author_country: "",
   main_photo: null,
   sub_photo: [],
-  author_photo: null
+  author_photo: null,
+  activity_type: "",
+  start_date: null,
+  end_date: null,
+  location: ""
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
-  title: undefined,
-  content: undefined,
-  summary: undefined,
-  author_id: undefined,
-  date: undefined,
+  title_en: undefined,
+  content_en: undefined,
+  summary_en: undefined,
+  title_ms: undefined,
+  content_ms: undefined,
+  summary_ms: undefined,
   author_name: undefined,
   author_country: undefined,
   main_photo: undefined,
   sub_photo: undefined,
-  author_photo: undefined
+  author_photo: undefined,
+  activity_type: undefined,
+  start_date: undefined,
+  end_date: undefined,
+  location: undefined,
 });
 
 function validateField(fieldName: keyof typeof formSchema.shape, value: any) {
@@ -137,11 +177,12 @@ activityQuestions.forEach((field) => {
   );
 });
 
-watchEffect(() => {
-  activityQuestions.forEach((field) => {
-    field.label = t(`activities.new_activity.form.${field.id}`);
-    field.placeholder = t(`activities.new_activity.placeholder.${field.id}`);
-  });
+const currentPage = ref(1);
+const questionsPerPage = 5;
+
+const paginatedQuestions = computed(() => {
+  const startIndex = (currentPage.value - 1) * questionsPerPage;
+  return activityQuestions.slice(startIndex, startIndex + questionsPerPage);
 });
 
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
@@ -181,56 +222,85 @@ const handleFormSubmit = () => {
       <div class="side-bar">
         <AdminSidebar/>
       </div>
-      <div class="new-article-form">
+      <div class="new-activity-form">
         <div class="container">
-          <h2 class="form-heading">{{ t('activities.new_activity.main_title') }}</h2>
-          <button @click="switchLanguage" class="lang-switch-btn">
-            {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
-          </button>
+          <h2 class="form-heading">Add new activity</h2>
           <form @submit.prevent="handleFormSubmit">
-            <div v-for="activityQuestion in activityQuestions" :key="activityQuestion.id" class="form-group">
-              <label :for="activityQuestion.id">
+            <div v-for="articleQuestion in paginatedQuestions" :key="articleQuestion.id" class="form-group">
+              <label :for="articleQuestion.id">
                 <span class="icon">
-                  <UIcon :name="activityQuestion.icon"/>
+                  <UIcon :name="articleQuestion.icon"/>
                 </span>
-                {{ activityQuestion.label }}
+                {{ articleQuestion.label }}
               </label>
+
               <select
-                  v-if="activityQuestion.type === 'select'"
-                  :id="activityQuestion.id"
-                  v-model="formData[activityQuestion.id]"
+                  v-if="articleQuestion.type === 'select'"
+                  :id="articleQuestion.id"
+                  v-model="formData[articleQuestion.id]"
                   class="select-input"
               >
-                <option value="" disabled>{{ activityQuestion.placeholder }}</option>
-                <option v-for="option in activityQuestion.options" :key="option.value" :value="option.value">
+                <option value="" disabled>{{ articleQuestion.placeholder }}</option>
+                <option v-for="option in articleQuestion.options" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </option>
               </select>
+
               <input
-                  v-else-if="activityQuestion.type !== 'textarea' && activityQuestion.type !== 'select' && activityQuestion.type !== 'file'"
-                  :id="activityQuestion.id"
-                  :type="activityQuestion.type"
-                  :placeholder="activityQuestion.placeholder"
-                  v-model="formData[activityQuestion.id]"
+                  v-else-if="articleQuestion.type !== 'textarea' && articleQuestion.type !== 'select' && articleQuestion.type !== 'file'"
+                  :id="articleQuestion.id"
+                  :type="articleQuestion.type"
+                  :placeholder="articleQuestion.placeholder"
+                  v-model="formData[articleQuestion.id]"
                   class="text-input"
               />
+
               <textarea
-                  v-else-if="activityQuestion.type === 'textarea'"
-                  :id="activityQuestion.id"
-                  :placeholder="activityQuestion.placeholder"
-                  v-model="formData[activityQuestion.id]"
+                  v-else-if="articleQuestion.type === 'textarea'"
+                  :id="articleQuestion.id"
+                  :placeholder="articleQuestion.placeholder"
+                  v-model="formData[articleQuestion.id]"
                   class="textarea-input"
               ></textarea>
+
               <input
-                  v-else-if="activityQuestion.type === 'file'"
-                  :id="activityQuestion.id"
+                  v-else-if="articleQuestion.type === 'file'"
+                  :id="articleQuestion.id"
                   type="file"
                   class="file-input"
-                  @change="handleFileInput($event, activityQuestion.id)"
+                  @change="handleFileInput($event, articleQuestion.id)"
+                  multiple
               />
-              <p v-if="errors[activityQuestion.id]?.[0]" class="error-message">{{ errors[activityQuestion.id]?.[0] }}</p>
+
+              <p v-if="errors[articleQuestion.id]?.[0]" class="error-message">{{ errors[articleQuestion.id]?.[0] }}</p>
+
             </div>
-            <button type="submit" class="btn-submit">Submit</button>
+
+            <div class="pagination-controls">
+              <button
+                  @click="currentPage = Math.max(1, currentPage - 1)"
+                  :disabled="currentPage === 1"
+                  class="btn-nav"
+              >
+                ← Previous
+              </button>
+
+              <button
+                  v-if="currentPage < Math.ceil(activityQuestions.length / questionsPerPage)"
+                  @click="currentPage = Math.min(Math.ceil(activityQuestions.length / questionsPerPage), currentPage + 1)"
+                  class="btn-nav"
+              >
+                Next →
+              </button>
+
+              <button
+                  v-if="currentPage === Math.ceil(activityQuestions.length / questionsPerPage)"
+                  type="submit"
+                  class="btn-submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -246,7 +316,7 @@ const handleFormSubmit = () => {
   padding: 20px;
 }
 
-.new-article-form {
+.new-activity-form {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
@@ -265,23 +335,6 @@ const handleFormSubmit = () => {
   text-align: start;
   color: var(--primary-color);
   padding: 10px 0;
-}
-
-.lang-switch-btn {
-  margin-bottom: 1rem;
-  padding: 8px 12px;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-}
-
-.lang-switch-btn:hover {
-  background-color: var(--primary-hover);
-  color: var(--text-hover);
-  transition: background-color ease-in-out 0.3s, color ease-in-out 0.15s;
 }
 
 .form-group {
@@ -353,26 +406,6 @@ textarea {
   background-color: var(--btn-submit-color);
 }
 
-.btn-submit {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  outline: none;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 1rem auto;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: var(--primary-hover);
-}
-
 .select-input {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -381,6 +414,50 @@ textarea {
   color: var(--primary-color);
   background-color: var(--background);
 }
+
+.btn-nav {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.btn-nav:disabled {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  cursor: not-allowed;
+  outline: none;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-submit {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
 
 @media (max-width: 768px) {
   .admin-container {
