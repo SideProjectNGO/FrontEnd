@@ -210,6 +210,7 @@ const handleFormSubmit = () => {
                 </span>
                 {{ articleQuestion.label }}
               </label>
+
               <select
                   v-if="articleQuestion.type === 'select'"
                   :id="articleQuestion.id"
@@ -221,6 +222,7 @@ const handleFormSubmit = () => {
                   {{ option.label }}
                 </option>
               </select>
+
               <input
                   v-else-if="articleQuestion.type !== 'textarea' && articleQuestion.type !== 'select' && articleQuestion.type !== 'file'"
                   :id="articleQuestion.id"
@@ -229,6 +231,7 @@ const handleFormSubmit = () => {
                   v-model="formData[articleQuestion.id]"
                   class="text-input"
               />
+
               <textarea
                   v-else-if="articleQuestion.type === 'textarea'"
                   :id="articleQuestion.id"
@@ -236,6 +239,7 @@ const handleFormSubmit = () => {
                   v-model="formData[articleQuestion.id]"
                   class="textarea-input"
               ></textarea>
+
               <input
                   v-else-if="articleQuestion.type === 'file'"
                   :id="articleQuestion.id"
@@ -244,8 +248,11 @@ const handleFormSubmit = () => {
                   @change="handleFileInput($event, articleQuestion.id)"
                   multiple
               />
+
               <p v-if="errors[articleQuestion.id]?.[0]" class="error-message">{{ errors[articleQuestion.id]?.[0] }}</p>
+
             </div>
+
             <div class="pagination-controls">
               <button
                   @click="currentPage = Math.max(1, currentPage - 1)"
