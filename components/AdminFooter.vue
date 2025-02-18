@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from "#imports";
+import {useI18n} from "#imports";
 
-const { t } = useI18n();
+const {t} = useI18n();
 const currentYear = new Date().getFullYear();
 </script>
 
@@ -9,8 +9,9 @@ const currentYear = new Date().getFullYear();
   <div class="footer-admin-section">
     <div class="footer-container">
       <p>
-        &copy; {{ t("footer.copyright") }}
-        <a href="">My Child {{ currentYear }}</a>
+        <a href="">
+          {{ t("footer.copyright", { year: currentYear }) }}
+        </a>
       </p>
     </div>
   </div>
@@ -26,7 +27,7 @@ const currentYear = new Date().getFullYear();
 .footer-container {
   display: flex;
   justify-content: space-between;
-  margin: 0  auto;
+  margin: 0 auto;
   text-align: center;
   font-size: 1.2rem;
   padding: .5rem;
