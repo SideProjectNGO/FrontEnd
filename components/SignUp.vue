@@ -3,14 +3,23 @@ import {ref, watch} from "vue";
 import {z} from "zod";
 
 const loginSchema = z.object({
-  username: z.string().min(4, "Username is required").max(20, "Username must be under 20 characters"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  username: z.string()
+      .min(4, "Username is required")
+      .max(20, "Username must be under 20 characters"),
+  password: z
+      .string()
+      .min(12, "Password must be at least 12 characters long")
+      .max(15, "Password must not exceed 15 characters")
+      .regex(/[a-zA-Z]/, "Password must include at least one letter")
+      .regex(/\d/, "Password must include at least one number")
+      .regex(/[@$!%*?&]/, "Password must include at least one special character"),
   email: z.string().email("Invalid email address"),
+  status: z.literal("Inactive")
 });
 
 type Field = {
   id: string;
-  icon: string,
+  icon: string;
   label: string;
   type: string;
   placeholder: string;
@@ -44,16 +53,18 @@ const fields: Field[] = [
   },
 ];
 
-const formData = ref<Record<keyof typeof loginSchema.shape, string>>({
+const formData = ref<Omit<Record<keyof typeof loginSchema.shape, string>, "status"> & { status: "Inactive" }>({
   username: "",
   password: "",
   email: "",
+  status: "Inactive"
 });
 
 const errors = ref<Record<keyof typeof loginSchema.shape, string[] | undefined>>({
-  email: undefined,
+  username: undefined,
   password: undefined,
-  username: undefined
+  email: undefined,
+  status: undefined
 });
 
 function validateField(fieldName: keyof typeof loginSchema.shape, value: string) {
@@ -77,18 +88,16 @@ fields.forEach((field) => {
 });
 
 const handleFormSubmit = () => {
-
   fields.forEach((field) => {
     validateField(field.validationKey, formData.value[field.id as keyof typeof loginSchema.shape] || "");
-    alert("Sign up successfully")
-    location.reload();
   });
 
   if (Object.values(errors.value).some((error) => error)) {
     console.log("Validation errors:", errors.value);
   } else {
-    console.log("Valid data:", formData.value);
-    errors.value = {email: undefined, password: undefined, username: undefined};
+    console.log("User created successfully!", formData.value);
+    alert("User created successfully!");
+    // location.reload();
   }
 };
 </script>
