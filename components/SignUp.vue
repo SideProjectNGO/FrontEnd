@@ -100,8 +100,8 @@ const handleFormSubmit = () => {
     // location.reload();
   }
 };
-</script>
 
+</script>
 
 <template>
   <div class="signup-wrapper">
