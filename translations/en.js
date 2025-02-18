@@ -1,4 +1,10 @@
 export default {
+
+    // admin side
+
+    // user side
+
+
     header: {
         tagline: "Every Child is My Child",
         nav: {
@@ -34,36 +40,7 @@ export default {
         },
     },
     articles: {
-        new_article: {
-            main_title: "Add new article",
-            form: {
-                title: "Title",
-                content: "Content",
-                summary: "Summary",
-                author_name: "Author Name",
-                author_country: "Author Country",
-                main_photo: "Main Photo",
-                sub_photo: "Sub Photos",
-                author_photo: "Author Photo",
-            },
-            placeholder: {
-                title: "Enter article title",
-                content: "Enter article content",
-                summary: "Enter article summary",
-                author_name: "Enter author name",
-                author_country: "Select author country",
-            },
-            validation: {
-                title: "Title is required (min: 5 characters)",
-                content: "Content is required (min: 50 characters)",
-                summary: "Summary is required (min: 50 characters)",
-                author_name: "Author Name is required (min: 5 characters)",
-                author_country: "Author Country is required (min: 5 characters)",
-                main_photo: "Main photo must be PNG or JPG",
-                sub_photo: "Sub photos must be PNG or JPG",
-                author_photo: "Author photo must be PNG or JPG",
-            },
-        },
+
     },
     activities: {
         new_activity: {
@@ -205,7 +182,7 @@ export default {
             description: "The Malaysian Consultative Council of Islamic Organizations (MAPIM) is a non-governmental organization registered under the Registrar of Societies Act of Malaysia in 2012. Its mission is to serve as a consultative forum to address the various issues and challenges faced by the ummah specifically, and humanity at large. Under MAPIM, MyChild was founded to safeguard the welfare of children affected by war, disasters, and orphanhood. The initiative focuses on organizing campaigns and providing support in the form of material aid, education, and emotional care.",
             altText: "Portrait of Haji Mohd Azmi Bin Abdul Hamid",
         },
-        team_member_position:{
+        team_member_position: {
             vice_chairman: "Vice Chairman",
             secretary: "Secretary",
             chairman: "Chairman",
@@ -293,12 +270,9 @@ export default {
         quickLinksSection: "Quick Links",
         donateSection: "Donate Now",
         account_number: "Account Number: 562263540066",
-        copyright: "© {year} MyChild. All rights reserved.",
-    },
-    footerText: {
-        copyright: "Copyright &copy; MyChild {year}",
+        copyright: "© MyChild {year} . All rights reserved.",
         subscribe: "Subscribe Now",
-    }
+    },
 
 };
 

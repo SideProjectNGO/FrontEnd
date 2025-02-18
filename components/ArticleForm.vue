@@ -1,25 +1,6 @@
 <script setup lang="ts">
-import { ref, watch, watchEffect } from "vue";
-import { z } from "zod";
-import { useI18n } from "vue-i18n";
-
-const { t, locale } = useI18n();
-const switchLanguage = () => {
-  locale.value = locale.value === "en" ? "ms" : "en";
-};
-
-const formSchema = z.object({
-  title: z.string().min(5, "Title is required"),
-  content: z.string().min(50, "Content is required"),
-  summary: z.string().min(50, "Summary is required"),
-  author_id: z.number().min(1, "Author ID is required"),
-  date: z.string().min(1, "Date is required"),
-  author_name: z.string().min(5, "Author Name is required"),
-  author_country: z.string().min(5, "Author Country is required"),
-  main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
-  sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
-  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG")
-});
+import {ref, watch,} from "vue";
+import {z} from "zod";
 
 type ArticleQuestionsField = {
   icon: string;
@@ -29,73 +10,108 @@ type ArticleQuestionsField = {
   id: keyof typeof formSchema.shape;
   options?: { value: string; label: string }[];
 };
-
+const formSchema = z.object({
+  title_en: z.string().min(5, "Title is required"),
+  content_en: z.string().min(50, "Content is required"),
+  summary_en: z.string().min(50, "Summary is required"),
+  title_ms: z.string().min(5, "Title is required"),
+  content_ms: z.string().min(50, "Content is required"),
+  summary_ms: z.string().min(50, "Summary is required"),
+  author_name: z.string().min(5, "Author Name is required"),
+  author_country: z.string().min(5, "Author Country is required"),
+  main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
+  sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
+  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG")
+});
 const articleQuestions: ArticleQuestionsField[] = [
   {
-    id: "title",
-    label: t("articles.new_article.form.title"),
+    id: "title_en",
+    label: "Title (English)",
     type: "text",
-    placeholder: t("articles.new_article.placeholder.title"),
+    placeholder: "Enter the article title in English",
     icon: "mdi-book-open"
   },
   {
-    id: "content",
-    label: t("articles.new_article.form.content"),
+    id: "content_en",
+    label: "Content (English)",
     type: "textarea",
-    placeholder: t("articles.new_article.placeholder.content"),
+    placeholder: "Enter the article content in English",
     icon: "mdi-file-document"
   },
   {
-    id: "summary",
-    label: t("articles.new_article.form.summary"),
+    id: "summary_en",
+    label: "Summary (English)",
     type: "text",
-    placeholder: t("articles.new_article.placeholder.summary"),
+    placeholder: "Enter a short summary in English",
     icon: "mdi-note-outline"
   },
   {
-    id: "author_name",
-    label: t("articles.new_article.form.author_name"),
+    id: "title_ms",
+    label: "Tajuk (Bahasa Melayu)",
     type: "text",
-    placeholder: t("articles.new_article.placeholder.author_name"),
-    icon: "mdi-account"
+    placeholder: "Masukkan tajuk artikel dalam Bahasa Melayu",
+    icon: "mdi-book-open"
   },
   {
-    id: "author_country",
-    label: t("articles.new_article.form.author_country"),
-    type: "select",
-    placeholder: t("articles.new_article.placeholder.author_country"),
-    icon: "mdi-earth",
-    options: nationalities
+    id: "content_ms",
+    label: "Kandungan (Bahasa Melayu)",
+    type: "textarea",
+    placeholder: "Masukkan kandungan artikel dalam Bahasa Melayu",
+    icon: "mdi-file-document"
+  },
+  {
+    id: "summary_ms",
+    label: "Ringkasan (Bahasa Melayu)",
+    type: "text",
+    placeholder: "Masukkan ringkasan pendek dalam Bahasa Melayu",
+    icon: "mdi-note-outline"
   },
   {
     id: "main_photo",
-    label: t("articles.new_article.form.main_photo"),
+    label: "Main Photo",
     type: "file",
     placeholder: "",
     icon: "mdi-camera"
   },
   {
     id: "sub_photo",
-    label: t("articles.new_article.form.sub_photo"),
+    label: "Sub Photos",
     type: "file",
     placeholder: "",
     icon: "mdi-folder-multiple-image"
   },
   {
+    id: "author_name",
+    label: "Author Name",
+    type: "text",
+    placeholder: "Enter the author's name",
+    icon: "mdi-account"
+  },
+  {
+    id: "author_country",
+    label: "Author Country",
+    type: "select",
+    placeholder: "Select the author's country",
+    icon: "mdi-earth",
+    options: nationalities
+  },
+  {
     id: "author_photo",
-    label: t("articles.new_article.form.author_photo"),
+    label: "Author Photo",
     type: "file",
     placeholder: "",
     icon: "mdi-account-box"
   }
 ];
 
+
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
-  title: "",
-  content: "",
-  summary: "",
-  author_id: 0,
-  date: "",
+  title_en: "",
+  content_en: "",
+  summary_en: "",
+  title_ms: "",
+  content_ms: "",
+  summary_ms: "",
   author_name: "",
   author_country: "",
   main_photo: null,
@@ -104,11 +120,12 @@ const formData = ref<Record<keyof typeof formSchema.shape, any>>({
 });
 
 const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
-  title: undefined,
-  content: undefined,
-  summary: undefined,
-  author_id: undefined,
-  date: undefined,
+  title_en: undefined,
+  content_en: undefined,
+  summary_en: undefined,
+  title_ms: undefined,
+  content_ms: undefined,
+  summary_ms: undefined,
   author_name: undefined,
   author_country: undefined,
   main_photo: undefined,
@@ -136,12 +153,6 @@ articleQuestions.forEach((field) => {
   );
 });
 
-watchEffect(() => {
-  articleQuestions.forEach((field) => {
-    field.label = t(`articles.new_article.form.${field.id}`);
-    field.placeholder = t(`articles.new_article.placeholder.${field.id}`);
-  });
-});
 
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
   const target = event.target as HTMLInputElement;
@@ -161,6 +172,14 @@ const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape)
   }
 };
 
+const currentPage = ref(1);
+const questionsPerPage = 5;
+
+const paginatedQuestions = computed(() => {
+  const startIndex = (currentPage.value - 1) * questionsPerPage;
+  return articleQuestions.slice(startIndex, startIndex + questionsPerPage);
+});
+
 const handleFormSubmit = () => {
   articleQuestions.forEach((field) => {
     validateField(field.id, formData.value[field.id as keyof typeof formSchema.shape]);
@@ -177,17 +196,16 @@ const handleFormSubmit = () => {
 <template>
   <div class="admin-dashboard">
     <div class="admin-container">
+
       <div class="side-bar">
         <AdminSidebar/>
       </div>
+
       <div class="new-article-form">
         <div class="container">
-          <h2 class="form-heading">{{ t('articles.new_article.main_title') }}</h2>
-          <button @click="switchLanguage" class="lang-switch-btn">
-            {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
-          </button>
+          <h2 class="form-heading">Add new article</h2>
           <form @submit.prevent="handleFormSubmit">
-            <div v-for="articleQuestion in articleQuestions" :key="articleQuestion.id" class="form-group">
+            <div v-for="articleQuestion in paginatedQuestions" :key="articleQuestion.id" class="form-group">
               <label :for="articleQuestion.id">
                 <span class="icon">
                   <UIcon :name="articleQuestion.icon"/>
@@ -229,7 +247,31 @@ const handleFormSubmit = () => {
               />
               <p v-if="errors[articleQuestion.id]?.[0]" class="error-message">{{ errors[articleQuestion.id]?.[0] }}</p>
             </div>
-            <button type="submit" class="btn-submit">Submit</button>
+            <div class="pagination-controls">
+              <button
+                  @click="currentPage = Math.max(1, currentPage - 1)"
+                  :disabled="currentPage === 1"
+                  class="btn-nav"
+              >
+                ← Previous
+              </button>
+
+              <button
+                  v-if="currentPage < Math.ceil(articleQuestions.length / questionsPerPage)"
+                  @click="currentPage = Math.min(Math.ceil(articleQuestions.length / questionsPerPage), currentPage + 1)"
+                  class="btn-nav"
+              >
+                Next →
+              </button>
+
+              <button
+                  v-if="currentPage === Math.ceil(articleQuestions.length / questionsPerPage)"
+                  type="submit"
+                  class="btn-submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -257,23 +299,6 @@ const handleFormSubmit = () => {
   margin: auto;
   padding: 10px 40px;
   border-radius: 10px;
-}
-
-.lang-switch-btn {
-  margin-bottom: 1rem;
-  padding: 8px 12px;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-}
-
-.lang-switch-btn:hover {
-  background-color: var(--primary-hover);
-  color: var(--text-hover);
-  transition: background-color ease-in-out 0.3s, color ease-in-out 0.15s;
 }
 
 .form-heading {
@@ -352,24 +377,47 @@ textarea {
   background-color: var(--btn-submit-color);
 }
 
-.btn-submit {
-  display: flex;
-  justify-content: center;
-  width: 90%;
+.btn-nav {
   background-color: var(--primary-color);
   color: var(--text-color);
   border: none;
-  outline: none;
-  padding: 10px 15px;
-  font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  margin: 1rem auto;
-  transition: background-color 0.3s ease;
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.btn-nav:disabled {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  cursor: not-allowed;
+  outline: none;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-submit {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
 }
 
 .btn-submit:hover {
-  background-color: var(--primary-hover);
+  background-color: #218838;
 }
 
 .select-input {

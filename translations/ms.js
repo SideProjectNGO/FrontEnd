@@ -1,4 +1,9 @@
 export default {
+
+    // admin side
+
+
+    // user side
     header: {
         tagline: "Setiap Kanak-Kanak adalah Anak Saya",
         nav: {
@@ -33,36 +38,7 @@ export default {
         },
     },
     articles: {
-        new_article: {
-            main_title:"Tambah artikel baharu",
-            form: {
-                title: "Tajuk",
-                content: "Kandungan",
-                summary: "Ringkasan",
-                author_name: "Nama Penulis",
-                author_country: "Negara Penulis",
-                main_photo: "Foto Utama",
-                sub_photo: "Foto Tambahan",
-                author_photo: "Foto Penulis",
-            },
-            placeholder: {
-                title: "Masukkan tajuk artikel",
-                content: "Masukkan kandungan artikel",
-                summary: "Masukkan ringkasan artikel",
-                author_name: "Masukkan nama penulis",
-                author_country: "Pilih negara penulis",
-            },
-            validation: {
-                title: "Tajuk diperlukan (min: 5 aksara)",
-                content: "Kandungan diperlukan (min: 50 aksara)",
-                summary: "Ringkasan diperlukan (min: 50 aksara)",
-                author_name: "Nama Penulis diperlukan (min: 5 aksara)",
-                author_country: "Negara Penulis diperlukan",
-                main_photo: "Foto utama mesti dalam format PNG atau JPG",
-                sub_photo: "Foto tambahan mesti dalam format PNG atau JPG",
-                author_photo: "Foto penulis mesti dalam format PNG atau JPG",
-            },
-        },
+
     },
     activities: {
         new_activity: {
@@ -287,15 +263,13 @@ export default {
             email: {
                 name: "Email",
                 address: "mychild2021is@gmail.com"
-            }
+            },
         },
         quickLinksSection: "Pautan Pantas",
         donateSection:"Menderma Sekarang",
         account_number: "nombor akaun: 562263540066",
-        copyright: "© {year} MyChild. Semua hak cipta terpelihara.",
-    },
-    footerText: {
-        copyright: "Hak cipta &copy; Anak saya {year}",
+        copyright: "©MyChild {year} . Semua hak cipta terpelihara.",
         subscribe: "Langgan Sekarang",
     },
+
 };
