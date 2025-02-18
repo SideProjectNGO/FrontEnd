@@ -383,6 +383,15 @@ textarea {
   background-color: var(--btn-submit-color);
 }
 
+.select-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 30px;
+  color: var(--primary-color);
+  background-color: var(--background);
+}
+
 .btn-nav {
   background-color: var(--primary-color);
   color: var(--text-color);
@@ -423,17 +432,9 @@ textarea {
 }
 
 .btn-submit:hover {
-  background-color: #218838;
+  background-color: var(--primary-hover);
 }
 
-.select-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding-right: 30px;
-  color: var(--primary-color);
-  background-color: var(--background);
-}
 
 @media (max-width: 768px) {
   .admin-container {

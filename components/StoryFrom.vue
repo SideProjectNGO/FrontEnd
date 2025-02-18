@@ -1,25 +1,19 @@
 <script setup lang="ts">
-import {ref, watch, watchEffect} from "vue";
+import {ref, watch, } from "vue";
 import {z} from "zod";
-import {useI18n} from "vue-i18n";
-
-
-const {t, locale} = useI18n();
-const switchLanguage = () => {
-  locale.value = locale.value === "en" ? "ms" : "en";
-};
 
 const formSchema = z.object({
-  title: z.string().min(5, "Title is required"),
-  content: z.string().min(50, "Content is required"),
-  summary: z.string().min(50, "Summary is required"),
-  author_id: z.number().min(1, "Author ID is required"),
-  date: z.string().min(1, "Date is required"),
+  title_en: z.string().min(5, "Title is required"),
+  content_en: z.string().min(50, "Content is required"),
+  summary_en: z.string().min(50, "Summary is required"),
+  title_ms: z.string().min(5, "Tajuk diperlukan"),
+  content_ms: z.string().min(50, "Kandungan diperlukan"),
+  summary_ms: z.string().min(50, "Ringkasan diperlukan"),
   author_name: z.string().min(5, "Author Name is required"),
   author_country: z.string().min(5, "Author Country is required"),
   main_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Main photo must be PNG or JPG"),
   sub_photo: z.array(z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Sub photos must be PNG or JPG")),
-  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG"),
+  author_photo: z.instanceof(File).refine((file) => /\.(png|jpe?g)$/i.test(file.name), "Author photo must be PNG or JPG")
 });
 
 type StoryQuestionsField = {
@@ -33,78 +27,97 @@ type StoryQuestionsField = {
 
 const storyQuestions: StoryQuestionsField[] = [
   {
-    id: "title",
-    label: t("stories.new_story.form.title"),
+    id: "title_en",
+    label: "Title (English)",
     type: "text",
-    placeholder: t("stories.new_story.placeholder.title"),
+    placeholder: "Enter the article title in English",
     icon: "mdi-book-open"
   },
   {
-    id: "content",
-    label: t("stories.new_story.form.content"),
+    id: "content_en",
+    label: "Content (English)",
     type: "textarea",
-    placeholder: t("stories.new_story.placeholder.content"),
+    placeholder: "Enter the article content in English",
     icon: "mdi-file-document"
   },
   {
-    id: "summary",
-    label: t("stories.new_story.form.summary"),
+    id: "summary_en",
+    label: "Summary (English)",
     type: "text",
-    placeholder: t("stories.new_story.placeholder.summary"),
+    placeholder: "Enter a short summary in English",
     icon: "mdi-note-outline"
   },
   {
-    id: "author_name",
-    label: t("stories.new_story.form.author_name"),
+    id: "title_ms",
+    label: "Tajuk (Bahasa Melayu)",
     type: "text",
-    placeholder: t("stories.new_story.placeholder.author_name"),
-    icon: "mdi-account"
+    placeholder: "Masukkan tajuk artikel dalam Bahasa Melayu",
+    icon: "mdi-book-open"
   },
   {
-    id: "author_country",
-    label: t("stories.new_story.form.author_country"),
-    type: "select",
-    placeholder: t("stories.new_story.placeholder.author_country"),
-    icon: "mdi-earth",
-    options: nationalities
+    id: "content_ms",
+    label: "Kandungan (Bahasa Melayu)",
+    type: "textarea",
+    placeholder: "Masukkan kandungan artikel dalam Bahasa Melayu",
+    icon: "mdi-file-document"
+  },
+  {
+    id: "summary_ms",
+    label: "Ringkasan (Bahasa Melayu)",
+    type: "text",
+    placeholder: "Masukkan ringkasan pendek dalam Bahasa Melayu",
+    icon: "mdi-note-outline"
   },
   {
     id: "main_photo",
-    label: t("stories.new_story.form.main_photo"),
+    label: "Main Photo",
     type: "file",
     placeholder: "",
     icon: "mdi-camera"
   },
   {
     id: "sub_photo",
-    label: t("stories.new_story.form.sub_photo"),
+    label: "Sub Photos",
     type: "file",
     placeholder: "",
     icon: "mdi-folder-multiple-image"
   },
   {
     id: "author_photo",
-    label: t("stories.new_story.form.author_photo"),
+    label: "Author Photo",
     type: "file",
     placeholder: "",
     icon: "mdi-account-box"
-  },
+  }
 ];
 
 const formData = ref<Record<keyof typeof formSchema.shape, any>>({
-  title: "",
-  content: "",
-  summary: "",
-  author_id: 0,
-  date: "",
+  title_en: "",
+  content_en: "",
+  summary_en: "",
+  title_ms: "",
+  content_ms: "",
+  summary_ms: "",
   author_name: "",
   author_country: "",
   main_photo: null,
   sub_photo: [],
-  author_photo: null,
+  author_photo: null
 });
 
-const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({});
+const errors = ref<Record<keyof typeof formSchema.shape, string[] | undefined>>({
+  title_en: undefined,
+  content_en: undefined,
+  summary_en: undefined,
+  title_ms: undefined,
+  content_ms: undefined,
+  summary_ms: undefined,
+  author_name: undefined,
+  author_country: undefined,
+  main_photo: undefined,
+  sub_photo: undefined,
+  author_photo: undefined
+});
 
 const validateField = (fieldName: keyof typeof formSchema.shape, value: any) => {
   try {
@@ -124,6 +137,13 @@ storyQuestions.forEach((field) => {
   );
 });
 
+const currentPage = ref(1);
+const questionsPerPage = 5;
+
+const paginatedQuestions = computed(() => {
+  const startIndex = (currentPage.value - 1) * questionsPerPage;
+  return storyQuestions.slice(startIndex, startIndex + questionsPerPage);
+});
 const handleFileInput = (event: Event, fieldName: keyof typeof formSchema.shape) => {
   const target = event.target as HTMLInputElement;
   const files = target.files;
@@ -157,12 +177,6 @@ const handleFormSubmit = () => {
   }
 };
 
-watchEffect(() => {
-  storyQuestions.forEach((field) => {
-    field.label = t(`stories.new_story.form.${field.id}`);
-    field.placeholder = t(`stories.new_story.placeholder.${field.id}`);
-  });
-});
 
 </script>
 
@@ -174,54 +188,83 @@ watchEffect(() => {
       </div>
       <div class="new-story-form">
         <div class="container">
-          <h2 class="form-heading">{{ t('stories.new_story.main_title') }}</h2>
-          <button @click="switchLanguage" class="lang-switch-btn">
-            {{ locale === "en" ? "🇲🇾 Switch to Malay" : "🇬🇧 Switch to English" }}
-          </button>
+          <h2 class="form-heading">Add new story</h2>
           <form @submit.prevent="handleFormSubmit">
-            <div v-for="storyQuestion in storyQuestions" :key="storyQuestion.id" class="form-group">
-              <label :for="storyQuestion.id">
+            <div v-for="articleQuestion in paginatedQuestions" :key="articleQuestion.id" class="form-group">
+              <label :for="articleQuestion.id">
                 <span class="icon">
-                  <UIcon :name="storyQuestion.icon"/>
+                  <UIcon :name="articleQuestion.icon"/>
                 </span>
-                {{ storyQuestion.label }}
+                {{ articleQuestion.label }}
               </label>
+
               <select
-                  v-if="storyQuestion.type === 'select'"
-                  :id="storyQuestion.id"
-                  v-model="formData[storyQuestion.id]"
+                  v-if="articleQuestion.type === 'select'"
+                  :id="articleQuestion.id"
+                  v-model="formData[articleQuestion.id]"
                   class="select-input"
               >
-                <option value="" disabled>{{ storyQuestion.placeholder }}</option>
-                <option v-for="option in storyQuestion.options" :key="option.value" :value="option.value">
+                <option value="" disabled>{{ articleQuestion.placeholder }}</option>
+                <option v-for="option in articleQuestion.options" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </option>
               </select>
+
               <input
-                  v-else-if="storyQuestion.type !== 'textarea' && storyQuestion.type !== 'select' && storyQuestion.type !== 'file'"
-                  :id="storyQuestion.id"
-                  :type="storyQuestion.type"
-                  :placeholder="storyQuestion.placeholder"
-                  v-model="formData[storyQuestion.id]"
+                  v-else-if="articleQuestion.type !== 'textarea' && articleQuestion.type !== 'select' && articleQuestion.type !== 'file'"
+                  :id="articleQuestion.id"
+                  :type="articleQuestion.type"
+                  :placeholder="articleQuestion.placeholder"
+                  v-model="formData[articleQuestion.id]"
                   class="text-input"
               />
+
               <textarea
-                  v-else-if="storyQuestion.type === 'textarea'"
-                  :id="storyQuestion.id"
-                  :placeholder="storyQuestion.placeholder"
-                  v-model="formData[storyQuestion.id]"
+                  v-else-if="articleQuestion.type === 'textarea'"
+                  :id="articleQuestion.id"
+                  :placeholder="articleQuestion.placeholder"
+                  v-model="formData[articleQuestion.id]"
                   class="textarea-input"
               ></textarea>
+
               <input
-                  v-else-if="storyQuestion.type === 'file'"
-                  :id="storyQuestion.id"
+                  v-else-if="articleQuestion.type === 'file'"
+                  :id="articleQuestion.id"
                   type="file"
                   class="file-input"
-                  @change="handleFileInput($event, storyQuestion.id)"
+                  @change="handleFileInput($event, articleQuestion.id)"
+                  multiple
               />
-              <p v-if="errors[storyQuestion.id]?.[0]" class="error-message">{{ errors[storyQuestion.id]?.[0] }}</p>
+
+              <p v-if="errors[articleQuestion.id]?.[0]" class="error-message">{{ errors[articleQuestion.id]?.[0] }}</p>
+
             </div>
-            <button type="submit" class="btn-submit">Submit</button>
+
+            <div class="pagination-controls">
+              <button
+                  @click="currentPage = Math.max(1, currentPage - 1)"
+                  :disabled="currentPage === 1"
+                  class="btn-nav"
+              >
+                ← Previous
+              </button>
+
+              <button
+                  v-if="currentPage < Math.ceil(storyQuestions.length / questionsPerPage)"
+                  @click="currentPage = Math.min(Math.ceil(storyQuestions.length / questionsPerPage), currentPage + 1)"
+                  class="btn-nav"
+              >
+                Next →
+              </button>
+
+              <button
+                  v-if="currentPage === Math.ceil(storyQuestions.length / questionsPerPage)"
+                  type="submit"
+                  class="btn-submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -249,23 +292,6 @@ watchEffect(() => {
   margin: auto;
   padding: 10px 40px;
   border-radius: 10px;
-}
-
-.lang-switch-btn {
-  margin-bottom: 1rem;
-  padding: 8px 12px;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-}
-
-.lang-switch-btn:hover {
-  background-color: var(--primary-hover);
-  color: var(--text-hover);
-  transition: background-color ease-in-out 0.3s, color ease-in-out 0.15s;
 }
 
 .form-heading {
@@ -344,26 +370,6 @@ textarea {
   background-color: var(--btn-submit-color);
 }
 
-.btn-submit {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  outline: none;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 1rem auto;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: var(--primary-hover);
-}
-
 .select-input {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -372,6 +378,50 @@ textarea {
   color: var(--primary-color);
   background-color: var(--background);
 }
+
+.btn-nav {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.btn-nav:disabled {
+  background-color: var(--primary-hover);
+  color: var(--text-hover);
+  cursor: not-allowed;
+  outline: none;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-submit {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
 
 @media (max-width: 768px) {
   .admin-container {

@@ -75,36 +75,6 @@ export default {
         },
     },
     stories: {
-        new_story: {
-            main_title: "Add new story",
-            form: {
-                title: "Title",
-                content: "Content",
-                summary: "Summary",
-                author_name: "Author Name",
-                author_country: "Author Country",
-                main_photo: "Main Photo",
-                sub_photo: "Sub Photos",
-                author_photo: "Author Photo",
-            },
-            placeholder: {
-                title: "Enter story title",
-                content: "Enter story content",
-                summary: "Enter story summary",
-                author_name: "Enter author name",
-                author_country: "Select author country",
-            },
-            validation: {
-                title: "Title is required (min: 5 characters)",
-                content: "Content is required (min: 50 characters)",
-                summary: "Summary is required (min: 50 characters)",
-                author_name: "Author Name is required (min: 5 characters)",
-                author_country: "Author Country is required (min: 5 characters)",
-                main_photo: "Main photo must be PNG or JPG",
-                sub_photo: "Sub photos must be PNG or JPG",
-                author_photo: "Author photo must be PNG or JPG",
-            },
-        },
     },
     volunteer: {
         volunteer_title: "How to Be a Volunteer with Us",
