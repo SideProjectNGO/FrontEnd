@@ -117,13 +117,6 @@ const handleFormSubmit = () => {
                 v-model="formData[field.validationKey]"
                 required
             />
-            <textarea
-                v-else
-                :id="field.id"
-                :placeholder="field.placeholder"
-                v-model="formData[field.validationKey]"
-                required
-            ></textarea>
             <p v-if="errors[field.validationKey]?.[0]" class="error-text">{{ errors[field.validationKey]?.[0] }}</p>
           </div>
           <div class="form-actions">
